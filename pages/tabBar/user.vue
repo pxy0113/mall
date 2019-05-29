@@ -302,7 +302,7 @@
 		height: 0;
 		position: fixed;
 		z-index: 10;
-		background-color: #f06c7a;
+		background-color: #8bbce7;
 		top: 0;
 		/*  #ifdef  APP-PLUS  */
 		height: var(--status-bar-height);//覆盖样式
@@ -320,7 +320,7 @@
 		position: fixed;
 		top: 0;
 		z-index: 10;
-		background-color: #f06c7a;
+		background-color: #8bbce7;
 		/*  #ifdef  APP-PLUS  */
 		top: var(--status-bar-height);
 		/*  #endif  */
@@ -341,7 +341,7 @@
 		}
 	}
 	.place{
-		background-color: #f06c7a;
+		background-color: #8bbce7;
 		height: 100upx;
 		/*  #ifdef  APP-PLUS  */
 		margin-top: var(--status-bar-height);
@@ -356,7 +356,7 @@
 		display: flex;
 		align-items: center;
 		// position: relative;
-		background-color: #f06c7a;
+		background-color: #8bbce7;
 		padding-bottom: 120upx;
 		.left{
 			width: 20vw;

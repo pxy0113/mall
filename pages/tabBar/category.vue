@@ -127,7 +127,7 @@
 			toCategory(e){
 				//uni.showToast({title: e.name,icon:"none"});
 				uni.navigateTo({
-					url: '../goods/goods-list?cid='+e.id+'&name='+e.name
+					url: '../../goodPage/goods/goods-list?cid='+e.id+'&name='+e.name
 				});
 			},
 			//搜索跳转

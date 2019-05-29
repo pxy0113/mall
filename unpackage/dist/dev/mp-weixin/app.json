@@ -4,8 +4,6 @@
     "pages/tabBar/category",
     "pages/tabBar/cart",
     "pages/tabBar/user",
-    "pages/goods/goods-list",
-    "pages/goods/goods",
     "pages/login/login",
     "pages/login/register",
     "pages/login/resetpasswd",
@@ -21,10 +19,18 @@
     "pages/user/address/edit/edit",
     "pages/user/deposit/deposit",
     "pages/pay/payment/payment",
-    "pages/pay/success/success",
-    "pages/search/searchView"
+    "pages/pay/success/success"
   ],
-  "subPackages": [],
+  "subPackages": [
+    {
+      "root": "goodPage",
+      "pages": [
+        "goods/goods-list",
+        "goods/goods",
+        "search/searchView"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "",
@@ -36,7 +42,7 @@
   "usingComponents": {},
   "tabBar": {
     "color": "#333333",
-    "selectedColor": "#f06c7a",
+    "selectedColor": "#8bbce7",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
@@ -65,6 +71,14 @@
         "text": "我的"
       }
     ]
+  },
+  "preloadRule": {
+    "goodPage/search/searchView": {
+      "network": "all",
+      "packages": [
+        "__APP__"
+      ]
+    }
   },
   "permission": {
     "scope.userLocation": {

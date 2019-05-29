@@ -463,7 +463,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7348,10 +7348,10 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "D:\\pxy\\gits\\coc\\coc1203\\coc\\dist\\mall\\common\\SDK\\amap-wx.js":
-/*!*******************************************************************!*\
-  !*** D:/pxy/gits/coc/coc1203/coc/dist/mall/common/SDK/amap-wx.js ***!
-  \*******************************************************************/
+/***/ "D:\\pxy\\mall\\common\\SDK\\amap-wx.js":
+/*!*****************************************!*\
+  !*** D:/pxy/mall/common/SDK/amap-wx.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7360,10 +7360,10 @@ function AMapWX(a) {this.key = a.key, this.requestConfig = { key: a.key, s: "rsx
 
 /***/ }),
 
-/***/ "D:\\pxy\\gits\\coc\\coc1203\\coc\\dist\\mall\\common\\SDK\\md5.min.js":
-/*!*******************************************************************!*\
-  !*** D:/pxy/gits/coc/coc1203/coc/dist/mall/common/SDK/md5.min.js ***!
-  \*******************************************************************/
+/***/ "D:\\pxy\\mall\\common\\SDK\\md5.min.js":
+/*!*****************************************!*\
+  !*** D:/pxy/mall/common/SDK/md5.min.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7383,10 +7383,10 @@ function AMapWX(a) {this.key = a.key, this.requestConfig = { key: a.key, s: "rsx
 
 /***/ }),
 
-/***/ "D:\\pxy\\gits\\coc\\coc1203\\coc\\dist\\mall\\pages.json":
-/*!********************************************************!*\
-  !*** D:/pxy/gits/coc/coc1203/coc/dist/mall/pages.json ***!
-  \********************************************************/
+/***/ "D:\\pxy\\mall\\pages.json":
+/*!******************************!*\
+  !*** D:/pxy/mall/pages.json ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

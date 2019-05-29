@@ -39,34 +39,12 @@
 			"path": "pages/tabBar/user",
 			"style": {
 				"enablePullDownRefresh": true,
-				"navigationBarBackgroundColor":"#f06c7a",
-				"backgroundColorTop":"#f06c7a",
+				"navigationBarBackgroundColor":"#8bbce7",
+				"backgroundColorTop":"#8bbce7",
 				"navigationBarTextStyle":"white",
 				"app-plus": {
 					"titleNView": false //禁用原生导航栏
 					
-				}
-			}
-		},
-		{
-            "path" : "pages/goods/goods-list",
-            "style" : {
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh": true
-			}
-        },
-		{
-		    "path" : "pages/goods/goods",
-		    "style" : {
-				"navigationBarTitleText" : "",
-				"navigationBarBackgroundColor":"#f1f1f1",
-				"onReachBottomDistance":50,
-				"h5":{
-					"titleNView":false
-				},
-				"app-plus": {
-					"titleNView": false ,//禁用原生导航栏
-					"bounce":"none"
 				}
 			}
 		},
@@ -146,7 +124,7 @@
             "style" : {
 				"enablePullDownRefresh": true,
 				"navigationBarTitleText": "消息列表",
-				"navigationBarBackgroundColor":"#f06c7a",
+				"navigationBarBackgroundColor":"#8bbce7",
 				"navigationBarTextStyle":"white"
 			}
         }
@@ -166,7 +144,7 @@
             "path" : "pages/user/coupon/coupon",
             "style" : {
 				"navigationBarTitleText": "优惠券",
-				"navigationBarBackgroundColor":"#f06c7a",
+				"navigationBarBackgroundColor":"#8bbce7",
 				"navigationBarTextStyle":"white",
 				"app-plus":{
 					"bounce":"none"
@@ -177,7 +155,7 @@
             "path" : "pages/user/keep/keep",
             "style" : {
 				"navigationBarTitleText": "我的收藏",
-				"navigationBarBackgroundColor":"#f06c7a",
+				"navigationBarBackgroundColor":"#8bbce7",
 				"navigationBarTextStyle":"white",
 				"app-plus":{
 					"bounce":"none"
@@ -229,16 +207,45 @@
 				"backgroundColorBottom":"#ffffff"
 			}
         }
-		,{
-		    "path" : "pages/search/searchView",
+    ],
+	"subPackages": [{
+		"root":"goodPage",
+		"pages": [{
+			    "path" : "goods/goods-list",
+			    "style" : {
+					"navigationBarTitleText" : "",
+					"enablePullDownRefresh": true
+				}
+		},{
+			    "path" : "goods/goods",
+			    "style" : {
+					"navigationBarTitleText" : "",
+					"navigationBarBackgroundColor":"#f1f1f1",
+					"onReachBottomDistance":50,
+					"h5":{
+						"titleNView":false
+					},
+					"app-plus": {
+						"titleNView": false ,//禁用原生导航栏
+						"bounce":"none"
+					}
+				}
+		},{
+		    "path" : "search/searchView",
 		    "style" : {
 				"navigationBarBackgroundColor":"#ffffff",
 				"navigationBarTitleText":"搜索商品",
 				"backgroundColorTop":"#ffffff",
 				"backgroundColorBottom":"#ffffff"
 			}
-		}
-    ],
+		}]
+	}],
+	 "preloadRule": {
+        "goodPage/search/searchView": {
+            "network": "all",
+            "packages": ["__APP__"]
+        }
+    },
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText" : "",
@@ -249,7 +256,7 @@
 	},
 	"tabBar": {
 		"color": "#333333",
-		"selectedColor": "#f06c7a",
+		"selectedColor": "#8bbce7",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		"list": [{

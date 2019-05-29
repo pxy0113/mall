@@ -25,7 +25,7 @@
 /* 透明度 */
 /* 文章场景相关 */
 page {
-  background-color: #f06c7a;
+  background-color: #8bbce7;
 }
 .block {
   width: 100%;

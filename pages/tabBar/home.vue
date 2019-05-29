@@ -11,11 +11,12 @@
 			</view>
 			<!-- 搜索框 -->
 			<view class="input-box">
-				<input
+					<text style="color: #C0C0C0;font-size: 12px;padding-left: 5px;width: 100%;" @tap="toSearch()">搜索</text>
+<!-- 				<input
 					placeholder="默认关键字"
 					placeholder-style="color:#c0c0c0;"
 					@tap="toSearch()"
-				/>
+				/> -->
 				<view class="icon search"></view>
 			</view>
 			<!-- 右侧图标按钮 -->
@@ -260,7 +261,7 @@ export default {
 		// #endif
 		this.amapPlugin = new amap.AMapWX({
 			//高德地图KEY，随时失效，请务必替换为自己的KEY，参考：http://ask.dcloud.net.cn/article/35070
-			key: '	04cff6663be3cb476b9915914506122e'
+			key: '04cff6663be3cb476b9915914506122e'
 		});
 		//定位地址
 		this.amapPlugin.getRegeo({
@@ -376,7 +377,7 @@ export default {
 		//搜索跳转
 		toSearch() {
 			uni.navigateTo({
-				url: '../search/searchView'
+				url: '../../goodPage/search/searchView'
 			});
 		},
 		//轮播图跳转
@@ -387,7 +388,7 @@ export default {
 		toCategory(e) {
 			//uni.showToast({title: e.name,icon:"none"});
 			uni.navigateTo({
-				url: '../goods/goods-list?cid=' + e.id + '&name=' + e.name
+				url: '../../goodPage/goods/goods-list?cid=' + e.id + '&name=' + e.name
 			});
 		},
 		//推荐商品跳转
@@ -398,7 +399,7 @@ export default {
 		toGoods(e) {
 			uni.showToast({ title: '商品' + e.goods_id, icon: 'none' });
 			uni.navigateTo({
-				url: '../goods/goods'
+				url: '../../goodPage/goods/goods'
 			});
 		},
 		//轮播图指示器

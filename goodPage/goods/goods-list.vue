@@ -118,7 +118,7 @@
 			toGoods(e){
 				uni.showToast({title: '商品'+e.goods_id,icon:"none"});
 				uni.navigateTo({
-					url: '../goods/goods' 
+					url: '../../goodPage/goods/goods' 
 				});
 			},
 			//排序类型

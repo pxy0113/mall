@@ -134,7 +134,7 @@
 		</view>
 		<!-- 标题 价格 -->
 		<view class="info-box goods-info">
-			<view class="price">￥{{goodsData.price}}</view>
+			<view class="price">{{goodsData.price}}</view>
 			<view class="title">
 				{{goodsData.name}}
 			</view>
@@ -249,7 +249,9 @@ export default {
 		this.showBack = false;
 		// #endif
 		//option为object类型，会序列化上个页面传递的参数
-		console.log(option.cid); //打印出上个页面传递的参数。
+		this.goodsData.name =option.name;
+		this.goodsData.price = option.price;
+		console.log(option); //打印出上个页面传递的参数。
 	},
 	onReady(){
 		this.calcAnchor();//计算锚点高度，页面数据是ajax加载时，请把此行放在数据渲染完成事件中执行以保证高度计算正确
@@ -275,7 +277,24 @@ export default {
 	},
 	methods: {
 		toSwiper(item){
-			console.log('ok')
+			let arr = [];
+			this.swiperList.forEach(item =>{
+				arr.push(item.img);
+			});
+			uni.previewImage({
+				urls:arr,
+				current: item.img,
+				longPressActions: {
+				itemList: ['发送给朋友', '保存图片', '收藏'],
+				itemColor:['skyblue','green','orange'],
+					success: function (res) {
+						console.log('选中了第' + (res.tapIndex + 1) + '个按钮');
+					},
+					fail: function (res) {
+						console.log(res.errMsg);
+					}    
+				}
+			});
 		},
 		//轮播图指示器
 		swiperChange(event) {

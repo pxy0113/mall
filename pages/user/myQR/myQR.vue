@@ -12,9 +12,9 @@
 		<view class="btn" v-show="showBtn" @tap="printscreen">
 			{{tis}}
 		</view>
-		<view class="logo">
+<!-- 		<view class="logo">
 			<image mode="widthFix" src="../../../static/img/qrlogo.png"></image>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -72,7 +72,7 @@
 
 <style lang="scss">
 page{
-	background-color: #f06c7a;
+	background-color: #8bbce7;
 }
 .block{
 	width: 100%;

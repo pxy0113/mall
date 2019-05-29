@@ -86,10 +86,11 @@ export default {
 					uni.hideLoading();
 					this.keyCode = code;
 					this.showTrash = false;
-					this.searchSession.push(code)
+					this.searchSession.push(code);
+					let d = Array.from(new Set(this.searchSession));//去重
 					uni.setStorage({
 						key: 'searchSession',
-						data: this.searchSession,
+						data: d,
 						success: () =>{
 							console.log('success');
 						}
@@ -97,6 +98,11 @@ export default {
 				}, 2000);
 			}
 
+		},
+		toGoods(goods){
+			uni.navigateTo({
+				url: '../../goodPage/goods/goods?cid='+goods.goods_id+'&&name='+goods.name+'&&img='+goods.img+'&&price='+goods.price
+			});
 		},
 		clearSession(){
 			this.searchSession = [];
