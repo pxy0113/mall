@@ -1,11 +1,14 @@
 <template>
 	<div class="main">
 		<view class="input-box">
-			<input placeholder="默认关键字" placeholder-style="color:#c0c0c0;" v-model="keyCode" />
+			<input placeholder="默认关键字" placeholder-style="color:#c0c0c0;" v-model="keyCode"confirm-type="search" @confirm="search(keyCode)" />
 			<view class="icon search" @click="search(keyCode)"></view>
 		</view>
 		<view v-if="showTrash">
-			<text style="font-size: 28upx;">历史纪录</text>
+			<view class="sessionText" v-if="searchSession.length>0">
+				<text>历史纪录</text>
+				<text @click="clearSession">清除</text>
+			</view>
 			<view class="tagList">
 				<text class="tag" 
 				v-for="(ss,index) in searchSession"
@@ -77,22 +80,32 @@ export default {
 	methods: {
 		//方法
 		search(code) {
-			uni.showToast({ title: '加载中...',icon:'loading'});
-			setTimeout(() =>{
-				uni.hideLoading();
-				this.keyCode = code;
-				this.showTrash = false;
-				console.log('搜索了' + code);
-				this.searchSession.push(code)
-				uni.setStorage({
-					key: 'searchSession',
-					data: this.searchSession,
-					success: function () {
-						console.log('success');
-					}
-				});
-			}, 2000);
+			if(code!==''){
+				uni.showToast({ title: '加载中...',icon:'loading'});
+				setTimeout(() =>{
+					uni.hideLoading();
+					this.keyCode = code;
+					this.showTrash = false;
+					this.searchSession.push(code)
+					uni.setStorage({
+						key: 'searchSession',
+						data: this.searchSession,
+						success: () =>{
+							console.log('success');
+						}
+					});
+				}, 2000);
+			}
 
+		},
+		clearSession(){
+			this.searchSession = [];
+			uni.removeStorage({
+				key: 'searchSession',
+				success:(res) =>{
+					console.log('success');
+				}
+			});
 		}
 	},
 	computed: {
@@ -112,7 +125,6 @@ export default {
 			key: 'searchSession',
 			success: (res) =>{
 				this.searchSession = res.data;
-				console.log(this.searchSession)
 			}
 		});
 	}
@@ -130,7 +142,7 @@ export default {
 }
 .input-box {
 	width: 100%;
-	height: 60upx;
+	height: 65upx;
 	background-color: #f5f5f5;
 	border-radius: 30upx;
 	position: relative;
@@ -198,7 +210,7 @@ export default {
 	}
 }
 .goods-list {
-	margin-top: 20upx;
+	margin-top: 10upx;
 	.loading-text {
 		width: 100%;
 		display: flex;
@@ -252,6 +264,16 @@ export default {
 				}
 			}
 		}
+	}
+}
+.sessionText{
+	font-size: 28upx;
+	margin: 3upx;
+	display: flex;
+	justify-content: space-between;
+	text{
+		padding: 8px 0;
+		color:#c0c0c0;
 	}
 }
 </style>

@@ -125,7 +125,7 @@
 		</view>
 		<!-- 商品主图轮播 -->
 		<view class="swiper-box">
-			<swiper circular="true" autoplay="true" @change="swiperChange">
+			<swiper circular="true"  @change="swiperChange">
 				<swiper-item v-for="swiper in swiperList" :key="swiper.id">
 					<image :src="swiper.img" @tap="toSwiper(swiper)"></image>
 				</swiper-item>
@@ -274,6 +274,9 @@ export default {
 		
 	},
 	methods: {
+		toSwiper(item){
+			console.log('ok')
+		},
 		//轮播图指示器
 		swiperChange(event) {
 			this.currentSwiper = event.detail.current;

@@ -47,6 +47,9 @@
 
 
 
+
+
+
 {
   name: 'searchView',
   components: {
@@ -87,21 +90,31 @@
   methods: {
     //方法
     search: function search(code) {var _this = this;
-      uni.showToast({ title: '加载中...', icon: 'loading' });
-      setTimeout(function () {
-        uni.hideLoading();
-        _this.keyCode = code;
-        _this.showTrash = false;
-        console.log('搜索了' + code);
-        _this.searchSession.push(code);
-        uni.setStorage({
-          key: 'searchSession',
-          data: _this.searchSession,
-          success: function success() {
-            console.log('success');
-          } });
+      if (code !== '') {
+        uni.showToast({ title: '加载中...', icon: 'loading' });
+        setTimeout(function () {
+          uni.hideLoading();
+          _this.keyCode = code;
+          _this.showTrash = false;
+          _this.searchSession.push(code);
+          uni.setStorage({
+            key: 'searchSession',
+            data: _this.searchSession,
+            success: function success() {
+              console.log('success');
+            } });
 
-      }, 2000);
+        }, 2000);
+      }
+
+    },
+    clearSession: function clearSession() {
+      this.searchSession = [];
+      uni.removeStorage({
+        key: 'searchSession',
+        success: function success(res) {
+          console.log('success');
+        } });
 
     } },
 
@@ -122,7 +135,6 @@
       key: 'searchSession',
       success: function success(res) {
         _this2.searchSession = res.data;
-        console.log(_this2.searchSession);
       } });
 
   } };exports.default = _default;
@@ -170,10 +182,14 @@ var render = function() {
         attrs: {
           placeholder: "默认关键字",
           "placeholder-style": "color:#c0c0c0;",
+          "confirm-type": "search",
           eventid: "739ca1ea-0"
         },
         domProps: { value: _vm.keyCode },
         on: {
+          confirm: function($event) {
+            _vm.search(_vm.keyCode)
+          },
           input: function($event) {
             if ($event.target.composing) {
               return
@@ -194,9 +210,19 @@ var render = function() {
     ]),
     _vm.showTrash
       ? _c("view", [
-          _c("text", { staticStyle: { "font-size": "28rpx" } }, [
-            _vm._v("历史纪录")
-          ]),
+          _vm.searchSession.length > 0
+            ? _c("view", { staticClass: "sessionText" }, [
+                _c("text", [_vm._v("历史纪录")]),
+                _c(
+                  "text",
+                  {
+                    attrs: { eventid: "739ca1ea-2" },
+                    on: { click: _vm.clearSession }
+                  },
+                  [_vm._v("清除")]
+                )
+              ])
+            : _vm._e(),
           _c(
             "view",
             { staticClass: "tagList" },
@@ -206,7 +232,7 @@ var render = function() {
                 {
                   key: index,
                   staticClass: "tag",
-                  attrs: { eventid: "739ca1ea-2-" + index },
+                  attrs: { eventid: "739ca1ea-3-" + index },
                   on: {
                     tap: function($event) {
                       _vm.search(ss)
@@ -229,7 +255,7 @@ var render = function() {
                 {
                   key: index,
                   staticClass: "tag",
-                  attrs: { eventid: "739ca1ea-3-" + index },
+                  attrs: { eventid: "739ca1ea-4-" + index },
                   on: {
                     tap: function($event) {
                       _vm.search(item)
@@ -253,7 +279,7 @@ var render = function() {
                 {
                   key: goods.goods_id,
                   staticClass: "product",
-                  attrs: { eventid: "739ca1ea-4-" + index0 },
+                  attrs: { eventid: "739ca1ea-5-" + index0 },
                   on: {
                     tap: function($event) {
                       _vm.toGoods(goods)

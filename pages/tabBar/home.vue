@@ -260,13 +260,17 @@ export default {
 		// #endif
 		this.amapPlugin = new amap.AMapWX({
 			//高德地图KEY，随时失效，请务必替换为自己的KEY，参考：http://ask.dcloud.net.cn/article/35070
-			key: '7c235a9ac4e25e482614c6b8eac6fd8e'
+			key: '	04cff6663be3cb476b9915914506122e'
 		});
 		//定位地址
 		this.amapPlugin.getRegeo({
 			success: data => {
 				this.city = data[0].regeocodeData.addressComponent.city.replace(/市/g, ''); //把"市"去掉
-			}
+			},
+		  fail: info => {
+			//失败回调
+			console.log(info)
+		  }
 		});
 		//开启定时器
 		this.Timer();
@@ -371,7 +375,6 @@ export default {
 		},
 		//搜索跳转
 		toSearch() {
-			uni.showToast({ title: '建议跳转到新页面做搜索功能' });
 			uni.navigateTo({
 				url: '../search/searchView'
 			});

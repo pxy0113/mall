@@ -284,6 +284,9 @@
 
   },
   methods: {
+    toSwiper: function toSwiper(item) {
+      console.log('ok');
+    },
     //轮播图指示器
     swiperChange: function swiperChange(event) {
       this.currentSwiper = event.detail.current;
@@ -868,11 +871,7 @@ var render = function() {
         _c(
           "swiper",
           {
-            attrs: {
-              circular: "true",
-              autoplay: "true",
-              eventid: "8ec63718-27"
-            },
+            attrs: { circular: "true", eventid: "8ec63718-27" },
             on: { change: _vm.swiperChange }
           },
           _vm._l(_vm.swiperList, function(swiper, index0) {

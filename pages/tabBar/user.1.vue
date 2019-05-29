@@ -17,14 +17,11 @@
 		<view class="user">
 			<!-- 头像 -->
 			<view class="left">
-				<image :src="personInfo.avatarUrl" @tap="toSetting"></image>
-				<!-- #ifdef MP-WEIXIN -->
-				<button class="" open-type="getUserInfo" @getuserinfo="wxGetUserInfo" withCredentials="true">登陆</button>
-				<!-- #endif -->
+				<image :src="user.face" @tap="toSetting"></image>
 			</view>
 			<!-- 昵称,个性签名 -->
 			<view class="right">
-				<view class="username">{{personInfo.nickName?personInfo.nickName:'游客'}}</view>
+				<view class="username" @tap="toLogin">{{user.username}}</view>
 				<view class="signature" @tap="toSetting">{{user.signature}}</view>
 			</view>
 			<!-- 二维码按钮 -->
@@ -33,13 +30,13 @@
 			</view>
 		</view>
 		<!-- VIP banner -->
-<!-- 		<view class="VIP">
+		<view class="VIP">
 			<view class="img">
 				<image src="../../static/img/VIP.png"></image>
 			</view>
 			<view class="title">开通VIP会员</view>
 			<view class="tis">会员特权</view>
-		</view> -->
+		</view>
 		<!-- 订单-余额 -->
 		<view class="order">
 			<!-- 订单类型 -->
@@ -98,7 +95,6 @@
 	export default {
 		data() {
 			return {
-				personInfo:{},
 				isfirst:true,
 				headerPosition:"fixed",
 				headerTop:null,
@@ -184,35 +180,6 @@
 			});
 		},
 		methods: {
-			wxGetUserInfo(res){
-				if (!res.detail.iv) {
-					uni.showToast({
-						title: "您取消了授权,登录失败",
-						icon: "none"
-					});
-					return false;
-				}
-				console.log('-------用户授权，并获取用户基本信息和加密数据------')
-				this.personInfo = res.detail.userInfo;
-				uni.login({
-					provider: 'weixin',
-					success: function(loginRes) {
-						console.log('-------获取code-------')
-						console.log(loginRes.code);
-						wx.request({
-							url: 'https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code',//change
-							success: function(info) {
-								console.log('-------获取sessionKey、openid(unionid)-------')
-								console.log(info);
-							},
-							fail: function(e) {
-								console.log(e)
-							}
-						})
-					}
-				});
-
-			},
 			//消息列表
 			toMsg(){
 				uni.navigateTo({

@@ -102,9 +102,13 @@
 
 
 
+
+
+
 {
   data: function data() {
     return {
+      personInfo: {},
       isfirst: true,
       headerPosition: "fixed",
       headerTop: null,
@@ -190,6 +194,35 @@
 
   },
   methods: {
+    wxGetUserInfo: function wxGetUserInfo(res) {
+      if (!res.detail.iv) {
+        uni.showToast({
+          title: "您取消了授权,登录失败",
+          icon: "none" });
+
+        return false;
+      }
+      console.log('-------用户授权，并获取用户基本信息和加密数据------');
+      this.personInfo = res.detail.userInfo;
+      uni.login({
+        provider: 'weixin',
+        success: function success(loginRes) {
+          console.log('-------获取code-------');
+          console.log(loginRes.code);
+          wx.request({
+            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code', //change
+            success: function success(info) {
+              console.log('-------获取sessionKey、openid(unionid)-------');
+              console.log(info);
+            },
+            fail: function fail(e) {
+              console.log(e);
+            } });
+
+        } });
+
+
+    },
     //消息列表
     toMsg: function toMsg() {
       uni.navigateTo({
@@ -295,22 +328,35 @@ var render = function() {
     ),
     _c("view", { staticClass: "place" }),
     _c("view", { staticClass: "user" }, [
-      _c("view", { staticClass: "left" }, [
-        _c("image", {
-          attrs: { src: _vm.user.face, eventid: "4fe65c13-2" },
-          on: { tap: _vm.toSetting }
-        })
-      ]),
+      _c(
+        "view",
+        { staticClass: "left" },
+        [
+          _c("image", {
+            attrs: { src: _vm.personInfo.avatarUrl, eventid: "4fe65c13-2" },
+            on: { tap: _vm.toSetting }
+          }),
+          _c(
+            "button",
+            {
+              attrs: {
+                "open-type": "getUserInfo",
+                withCredentials: "true",
+                eventid: "4fe65c13-3"
+              },
+              on: { getuserinfo: _vm.wxGetUserInfo }
+            },
+            [_vm._v("登陆")]
+          )
+        ],
+        1
+      ),
       _c("view", { staticClass: "right" }, [
-        _c(
-          "view",
-          {
-            staticClass: "username",
-            attrs: { eventid: "4fe65c13-3" },
-            on: { tap: _vm.toLogin }
-          },
-          [_vm._v(_vm._s(_vm.user.username))]
-        ),
+        _c("view", { staticClass: "username" }, [
+          _vm._v(
+            _vm._s(_vm.personInfo.nickName ? _vm.personInfo.nickName : "游客")
+          )
+        ]),
         _c(
           "view",
           {
@@ -331,7 +377,6 @@ var render = function() {
         [_c("view", { staticClass: "icon qr" })]
       )
     ]),
-    _vm._m(0),
     _c("view", { staticClass: "order" }, [
       _c(
         "view",
@@ -387,7 +432,7 @@ var render = function() {
               attrs: { eventid: "4fe65c13-7" },
               on: { tap: _vm.toDeposit }
             },
-            [_vm._m(1), _c("view", { staticClass: "text" }, [_vm._v("充值")])]
+            [_vm._m(0), _c("view", { staticClass: "text" }, [_vm._v("充值")])]
           )
         ])
       ])
@@ -424,18 +469,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("view", { staticClass: "VIP" }, [
-      _c("view", { staticClass: "img" }, [
-        _c("image", { attrs: { src: "../../static/img/VIP.png" } })
-      ]),
-      _c("view", { staticClass: "title" }, [_vm._v("开通VIP会员")]),
-      _c("view", { staticClass: "tis" }, [_vm._v("会员特权")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
