@@ -81,10 +81,10 @@ export default {
 		//方法
 		search(code) {
 			if(code!==''){
+				this.keyCode = code;
 				uni.showToast({ title: '加载中...',icon:'loading'});
 				setTimeout(() =>{
-					uni.hideLoading();
-					this.keyCode = code;
+					uni.hideLoading();					
 					this.showTrash = false;
 					this.searchSession.push(code);
 					let d = Array.from(new Set(this.searchSession));//去重

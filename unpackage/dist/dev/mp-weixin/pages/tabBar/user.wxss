@@ -443,4 +443,14 @@ page {
         font-size: 26rpx;
         color: #3d3d3d;
 }
+.userinfo-avatar {
+  overflow: hidden;
+  display: block;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
 

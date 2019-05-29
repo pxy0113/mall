@@ -354,7 +354,7 @@ export default {
 				data:tmpList,
 				success: () => {
 					uni.navigateTo({
-						url:'../order/confirmation'
+						url:'../../pages/order/confirmation'
 					})
 				}
 			})

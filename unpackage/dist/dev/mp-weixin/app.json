@@ -4,9 +4,6 @@
     "pages/tabBar/category",
     "pages/tabBar/cart",
     "pages/tabBar/user",
-    "pages/login/login",
-    "pages/login/register",
-    "pages/login/resetpasswd",
     "pages/order/confirmation",
     "pages/user/order_list/order_list",
     "pages/user/setting/setting",
@@ -17,9 +14,7 @@
     "pages/user/keep/keep",
     "pages/user/address/address",
     "pages/user/address/edit/edit",
-    "pages/user/deposit/deposit",
-    "pages/pay/payment/payment",
-    "pages/pay/success/success"
+    "pages/user/deposit/deposit"
   ],
   "subPackages": [
     {
@@ -28,6 +23,21 @@
         "goods/goods-list",
         "goods/goods",
         "search/searchView"
+      ]
+    },
+    {
+      "root": "payPage",
+      "pages": [
+        "payment/payment",
+        "success/success"
+      ]
+    },
+    {
+      "root": "loginPage",
+      "pages": [
+        "login",
+        "register",
+        "resetpasswd"
       ]
     }
   ],
@@ -73,10 +83,16 @@
     ]
   },
   "preloadRule": {
-    "goodPage/search/searchView": {
+    "pages/tabBar/home": {
       "network": "all",
       "packages": [
         "__APP__"
+      ]
+    },
+    "pages/order/confirmation": {
+      "network": "all",
+      "packages": [
+        "payPage"
       ]
     }
   },

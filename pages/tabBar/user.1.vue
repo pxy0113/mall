@@ -202,7 +202,7 @@
 			toLogin(){
 				uni.showToast({title: '请登录',icon:"none"});
 				uni.navigateTo({
-					url:'../login/login'
+					url:'../../loginPage/login'
 				})
 				this.isfirst = false;
 			},

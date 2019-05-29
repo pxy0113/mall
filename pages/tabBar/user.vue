@@ -17,9 +17,12 @@
 		<view class="user">
 			<!-- 头像 -->
 			<view class="left">
-				<image :src="personInfo.avatarUrl" @tap="toSetting"></image>
+				<image :src="personInfo.avatarUrl" @tap="toSetting" v-if="personInfo.avatarUrl"></image>
 				<!-- #ifdef MP-WEIXIN -->
-				<button class="" open-type="getUserInfo" @getuserinfo="wxGetUserInfo" withCredentials="true">登陆</button>
+				<!-- <button class="" open-type="getUserInfo" @getuserinfo="wxGetUserInfo" withCredentials="true">登陆</button> -->
+					<button v-else class="userinfo-avatar" open-type="getUserInfo" @getuserinfo="wxGetUserInfo" withCredentials="true">
+						<span >游客</span>
+					</button>
 				<!-- #endif -->
 			</view>
 			<!-- 昵称,个性签名 -->
@@ -184,6 +187,56 @@
 			});
 		},
 		methods: {
+			// getInfo(){
+			// 	let that = this;
+			// 	wx.getSetting({ //查询是否有权限
+			// 	  success(res) {
+			// 		if(res.authSetting['scope.userInfo']){ //有权限
+			// 			that.isAuth = true;
+			// 		}else{
+			// 			that.showButton = true;
+			// 		}
+			// 	  }
+			// 	});
+			// },
+			// userInfoHandler(e){
+			// 	let that = this;
+			// 	if(e.mp.detail.userInfo){
+			// 		wx.login({
+			// 		  success(res) {
+			// 			  console.log(res)
+			// 			if (res.code) {
+			// 			  wx.request({
+			// 				  url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx0904846d9b4c40fe&secret=119afffd251e8b1b6e0f0a96e977bb7d&js_code='+res.code+'&grant_type=authorization_code',
+			// 				  success(){
+			// 					  console.log('登录成功');
+			// 					  that.showButton = false;
+			// 					  that.isAuth = true;
+			// 				  },
+			// 				  fail(err){
+			// 					  console.log(err)
+			// 				  }
+			// 			  })
+			// 			} 
+			// 		  }
+			// 		});
+			// 	}
+			// },
+			// getSetting(){
+			// 	let that = this;
+			// 	wx.checkSession({ //有没有登录态 有就直接请求getInfo  没有就查看是否授权
+			// 	  success() {
+			// 		that.isAuth= true;
+			// 		console.log('有登陆态') //从这一步过去的人已经登陆过了 授权过了没不知道啊
+			// 		// this.getInfo();
+			// 	  },
+			// 	  fail(err) {
+			// 		// session_key 已经失效，需要重新执行登录流程
+			// 		console.log(err);
+			// 		that.getInfo();				
+			// 	  }
+			// 	});
+			// },
 			wxGetUserInfo(res){
 				if (!res.detail.iv) {
 					uni.showToast({
@@ -235,7 +288,7 @@
 			toLogin(){
 				uni.showToast({title: '请登录',icon:"none"});
 				uni.navigateTo({
-					url:'../login/login'
+					url:'../../loginPage/login'
 				})
 				this.isfirst = false;
 			},
@@ -558,4 +611,13 @@
 			}
 		}
 	}
+	.userinfo-avatar {  
+	  overflow:hidden;  
+	  display: block;  
+	  width: 150rpx;  
+	  height: 150rpx;   
+	  border-radius: 50%;  
+	  border: 2px solid #fff;
+	  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+	}  
 </style>

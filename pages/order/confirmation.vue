@@ -186,7 +186,7 @@
 						success: () => {
 							uni.hideLoading();
 							uni.redirectTo({
-								url:"../pay/payment/payment?amount="+this.sumPrice
+								url:"../../payPage/payment/payment?amount="+this.sumPrice
 							})
 						}
 					})

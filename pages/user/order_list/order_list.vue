@@ -139,7 +139,7 @@
 						success: () => {
 							uni.hideLoading();
 							uni.navigateTo({
-								url:'../../pay/payment/payment?amount='+row.payment
+								url:'../../payPage/payment/payment?amount='+row.payment
 							})
 						}
 					})
