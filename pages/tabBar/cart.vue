@@ -327,7 +327,7 @@
 			width: 35upx;
 			height: 35upx;
 			border-radius: 100%;
-			border: solid 2upx #f06c7a;
+			border: solid 2upx #8bbce7;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -335,7 +335,7 @@
 				width: 25upx;
 				height: 25upx;
 				border-radius: 100%;
-				background-color: #f06c7a;
+				background-color: #8bbce7;
 			}
 		}
 		.text{
@@ -557,8 +557,8 @@
 		bottom: 0upx;
 		z-index: 5;
 		.delBtn{
-			border: solid 1upx #f06c7a;
-			color: #f06c7a;
+			border: solid 1upx #8bbce7;
+			color: #8bbce7;
 			padding: 0 30upx;
 			height: 50upx;
 			border-radius: 30upx;
@@ -584,7 +584,7 @@
 			.btn{
 				padding: 0 30upx;
 				height: 50upx;
-				background-color: #f06c7a;
+				background-color: #8bbce7;
 				color: #fff;
 				display: flex;
 				justify-content: center;

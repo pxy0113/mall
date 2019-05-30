@@ -303,7 +303,7 @@ export default {
 		//消息列表
 		toMsg(){
 			uni.navigateTo({
-				url:'../msg/msg'
+				url:'../../pages/msg/msg'
 			})
 		},
 		// 客服
@@ -866,7 +866,7 @@ page {
 			background-color: #f0b46c;
 		}
 		.buy {
-			background-color: #f06c7a;
+			background-color: #8bbce7;
 		}
 	}
 }

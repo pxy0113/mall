@@ -712,7 +712,7 @@ page{
 					align-items: center;
 					justify-content: flex-end;
 					.bubble{
-						background-color: #f06c7a;
+						background-color: #8bbce7;
 						color: #fff;
 						&.voice{
 							.icon{

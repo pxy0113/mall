@@ -377,7 +377,7 @@ page {
 }
 .promotion .list .column .top .countdown view {
             height: 30rpx;
-            background-color: #f06c7a;
+            background-color: #8bbce7;
             display: -webkit-box;
             display: -webkit-flex;
             display: -ms-flexbox;

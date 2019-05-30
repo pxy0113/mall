@@ -20,8 +20,7 @@
 				<image :src="personInfo.avatarUrl" @tap="toSetting" v-if="personInfo.avatarUrl"></image>
 				<!-- #ifdef MP-WEIXIN -->
 				<!-- <button class="" open-type="getUserInfo" @getuserinfo="wxGetUserInfo" withCredentials="true">登陆</button> -->
-					<button v-else class="userinfo-avatar" open-type="getUserInfo" @getuserinfo="wxGetUserInfo" withCredentials="true">
-						<span >游客</span>
+					<button v-if="!personInfo.avatarUrl" class="userinfo-avatar" open-type="getUserInfo" @getuserinfo="wxGetUserInfo" withCredentials="true">						
 					</button>
 				<!-- #endif -->
 			</view>
@@ -101,6 +100,7 @@
 	export default {
 		data() {
 			return {
+				isTrue:false,//是否存在登陆态
 				personInfo:{},
 				isfirst:true,
 				headerPosition:"fixed",
@@ -125,12 +125,12 @@
 				],
 				// 工具栏列表
 				mytoolbarList:[
-					{url:'../user/keep/keep',text:'我的收藏',img:'../../static/img/user/point.png'},
-					{url:'../user/coupon/coupon',text:'优惠券',img:'../../static/img/user/quan.png'}, 
+					{url:'../../userPage/keep/keep',text:'我的收藏',img:'../../static/img/user/point.png'},
+					{url:'../../userPage/coupon/coupon',text:'优惠券',img:'../../static/img/user/quan.png'}, 
 					{url:'',text:'新客豪礼',img:'../../static/img/user/renw.png'},
 					{url:'',text:'领红包',img:'../../static/img/user/momey.png'},
 					
-					{url:'../user/address/address',text:'收货地址',img:'../../static/img/user/addr.png'},
+					{url:'../../userPage/address/address',text:'收货地址',img:'../../static/img/user/addr.png'},
 					{url:'',text:'账户安全',img:'../../static/img/user/security.png'},
 					{url:'',text:'银行卡',img:'../../static/img/user/bank.png'},
 					{url:'',text:'抽奖',img:'../../static/img/user/choujiang.png'},
@@ -159,84 +159,48 @@
 			// #endif
 		},
 		onReady(){
-			//此处，演示,每次页面初次渲染都把登录状态重置
-			uni.setStorage({
-				key: 'UserInfo',
-				data: false,
-				success: function () {
-				},
-				fail:function(e){
-				}
+			uni.showToast({
+				title: 'loading...',
+				icon:'loading',
+				image:"../../static/img/user/tre.gif",
+				duration:5000
 			});
+			//此处，演示,每次页面初次渲染都把登录状态重置
+			// uni.setStorage({
+			// 	key: 'UserInfo',
+			// 	data: false,
+			// 	success: function () {
+			// 	},
+			// 	fail:function(e){
+			// 	}
+			// });
 		},
 		onShow(){
 			uni.getStorage({
-				key: 'UserInfo',
-				success: (res)=>{
-					if(!res.data){
-						if(this.isfirst){
-							//this.toLogin();
-						}
-						return ;
-					}
-					this.user = res.data;
+				key: 'skey',
+				success: (res)=>{ //session存在skey，执行1
+					this.toCheckSession();
 				},
 				fail:(e)=>{
-					//this.toLogin(); 
+					//登陆.....tongshang
 				}
 			});
+			
 		},
 		methods: {
-			// getInfo(){
-			// 	let that = this;
-			// 	wx.getSetting({ //查询是否有权限
-			// 	  success(res) {
-			// 		if(res.authSetting['scope.userInfo']){ //有权限
-			// 			that.isAuth = true;
-			// 		}else{
-			// 			that.showButton = true;
-			// 		}
-			// 	  }
-			// 	});
-			// },
-			// userInfoHandler(e){
-			// 	let that = this;
-			// 	if(e.mp.detail.userInfo){
-			// 		wx.login({
-			// 		  success(res) {
-			// 			  console.log(res)
-			// 			if (res.code) {
-			// 			  wx.request({
-			// 				  url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx0904846d9b4c40fe&secret=119afffd251e8b1b6e0f0a96e977bb7d&js_code='+res.code+'&grant_type=authorization_code',
-			// 				  success(){
-			// 					  console.log('登录成功');
-			// 					  that.showButton = false;
-			// 					  that.isAuth = true;
-			// 				  },
-			// 				  fail(err){
-			// 					  console.log(err)
-			// 				  }
-			// 			  })
-			// 			} 
-			// 		  }
-			// 		});
-			// 	}
-			// },
-			// getSetting(){
-			// 	let that = this;
-			// 	wx.checkSession({ //有没有登录态 有就直接请求getInfo  没有就查看是否授权
-			// 	  success() {
-			// 		that.isAuth= true;
-			// 		console.log('有登陆态') //从这一步过去的人已经登陆过了 授权过了没不知道啊
-			// 		// this.getInfo();
-			// 	  },
-			// 	  fail(err) {
-			// 		// session_key 已经失效，需要重新执行登录流程
-			// 		console.log(err);
-			// 		that.getInfo();				
-			// 	  }
-			// 	});
-			// },
+			toCheckSession(){
+				uni.checkSession({
+					success: (res) => {
+						this.isTrue = true;
+						//直接拿openId
+						this.toGetUserData();
+					},
+					fail: (err) => {//没有登陆态
+						// this.toLogin();
+						//登陆=》登陆后通过code获取session_key 转换成skey存入storage
+					}
+				});
+			},
 			wxGetUserInfo(res){
 				if (!res.detail.iv) {
 					uni.showToast({
@@ -247,23 +211,7 @@
 				}
 				console.log('-------用户授权，并获取用户基本信息和加密数据------')
 				this.personInfo = res.detail.userInfo;
-				uni.login({
-					provider: 'weixin',
-					success: function(loginRes) {
-						console.log('-------获取code-------')
-						console.log(loginRes.code);
-						wx.request({
-							url: 'https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code',//change
-							success: function(info) {
-								console.log('-------获取sessionKey、openid(unionid)-------')
-								console.log(info);
-							},
-							fail: function(e) {
-								console.log(e)
-							}
-						})
-					}
-				});
+				this.toLogin();
 
 			},
 			//消息列表
@@ -273,24 +221,58 @@
 				})
 			},
 			toOrderList(index){
-				uni.navigateTo({url:'../user/order_list/order_list?tbIndex='+index}) 
+				uni.navigateTo({url:'../../userPage/order_list/order_list?tbIndex='+index}) 
 			},
 			toSetting(){
 				uni.navigateTo({
-					url:'../user/setting/setting'
+					url:'../../userPage/setting/setting'
 				})
 			},
 			toMyQR(){
 				uni.navigateTo({
-					url:'../user/myQR/myQR'
+					url:'../../userPage/myQR/myQR'
 				})
 			},
+			toGetUserData(){
+				uni.getUserInfo({
+					success: (c) => {
+						this.personInfo = c.userInfo;
+					}
+				});
+			},
 			toLogin(){
-				uni.showToast({title: '请登录',icon:"none"});
-				uni.navigateTo({
-					url:'../../loginPage/login'
-				})
-				this.isfirst = false;
+				uni.login({
+					provider: 'weixin',
+					success: function(loginRes) {
+						console.log('-------获取code-------')
+						console.log(loginRes.code);
+						this.getSkeyAndOpenId(loginRes.code);
+						this.isTrue = true;
+					}.bind(this)
+				});
+			},
+			getSkeyAndOpenId(code){//code换取session_key跟openid
+				let secret = '119afffd251e8b1b6e0f0a96e977bb7d';
+				let appid = 'wx0904846d9b4c40fe';
+				uni.request({
+					url: `https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${secret}&js_code=${code}&grant_type=authorization_code`,//change
+					success: function(info) {
+						this.saveStorage('skey',info.data.session_key);
+						this.saveStorage('openid',info.data.openid);
+					}.bind(this),
+					fail: function(e) {
+						console.log(e)
+					}
+				});
+			},
+			saveStorage(name,data){
+				uni.setStorage({
+					key: name,
+					data: data,
+					fail: (err) => {
+						console.log(err);
+					}
+				});
 			},
 			isLogin(){
 				//实际应用中,用户登录状态应该用token等方法去维持登录状态.
@@ -301,15 +283,29 @@
 				return false
 			},
 			toDeposit(){
-				uni.navigateTo({
-					url:'../user/deposit/deposit'
-				})
+				if(this.isTrue){
+					uni.navigateTo({
+						url:'../../userPage/deposit/deposit'
+					});
+				}else{
+					uni.showToast({
+						title:'请先登陆',
+						icon:'none'
+					});
+				}
 			},
 			toPage(url){
-				console.log("url: " + url);
-				uni.navigateTo({
-					url:url
-				})
+				if(this.isTrue){
+					uni.navigateTo({
+						url:url
+					});
+				}else{
+					uni.showToast({
+						title:'请先登陆',
+						icon:'none'
+					});
+				}
+				
 			}
 		}
 	} 
@@ -615,7 +611,8 @@
 	  overflow:hidden;  
 	  display: block;  
 	  width: 150rpx;  
-	  height: 150rpx;   
+	  height: 150rpx;
+	  background: #eee;
 	  border-radius: 50%;  
 	  border: 2px solid #fff;
 	  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  

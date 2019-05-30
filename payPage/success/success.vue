@@ -66,8 +66,8 @@
 	.btn{
 		padding: 0 50upx;
 		height: 70upx;
-		border: solid 2upx #f06c7a;
-		color: #f06c7a;
+		border: solid 2upx #8bbce7;
+		color: #8bbce7;
 		align-items: center;
 		border-radius: 10upx;
 		font-size: 34upx;

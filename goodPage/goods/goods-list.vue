@@ -183,7 +183,7 @@
 			color: #aaa;
 			&.on{
 				color: #555;
-				border-bottom: 4upx solid #f06c7a;
+				border-bottom: 4upx solid #8bbce7;
 				font-weight: 600;
 				font-size: 30upx;
 			}

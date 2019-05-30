@@ -448,6 +448,7 @@ page {
   display: block;
   width: 150rpx;
   height: 150rpx;
+  background: #eee;
   border-radius: 50%;
   border: 2px solid #fff;
   -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);

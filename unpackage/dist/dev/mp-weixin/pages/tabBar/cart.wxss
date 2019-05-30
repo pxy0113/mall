@@ -60,7 +60,7 @@ page {
     width: 35rpx;
     height: 35rpx;
     border-radius: 100%;
-    border: solid 2rpx #f06c7a;
+    border: solid 2rpx #8bbce7;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -78,7 +78,7 @@ page {
       width: 25rpx;
       height: 25rpx;
       border-radius: 100%;
-      background-color: #f06c7a;
+      background-color: #8bbce7;
 }
 .checkbox-box .text {
     font-size: 28rpx;
@@ -416,8 +416,8 @@ page {
   z-index: 5;
 }
 .footer .delBtn {
-    border: solid 1rpx #f06c7a;
-    color: #f06c7a;
+    border: solid 1rpx #8bbce7;
+    color: #8bbce7;
     padding: 0 30rpx;
     height: 50rpx;
     border-radius: 30rpx;
@@ -468,7 +468,7 @@ page {
 .footer .settlement .btn {
       padding: 0 30rpx;
       height: 50rpx;
-      background-color: #f06c7a;
+      background-color: #8bbce7;
       color: #fff;
       display: -webkit-box;
       display: -webkit-flex;

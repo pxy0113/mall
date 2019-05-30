@@ -54,35 +54,7 @@
             	"navigationBarTitleText": "确认订单",
 				"softinputNavBar":"none"
             }
-        }
-        ,{
-            "path" : "pages/user/order_list/order_list",
-            "style" : {
-				"navigationBarTitleText":"我的订单",
-				"navigationBarBackgroundColor":"#f8f8f8",
-				"backgroundColorTop":"#f3f3f3",
-				"backgroundColorBottom":"#ffffff"
-			}
-        }
-        ,{
-            "path" : "pages/user/setting/setting",
-            "style" : {
-				"navigationBarBackgroundColor":"#f8f8f8",
-				"navigationBarTitleText":"我的设置",
-				"backgroundColorTop":"#ffffff",
-				"backgroundColorBottom":"#f3f3f3"
-			}
-        }
-        ,{
-            "path" : "pages/user/myQR/myQR",
-            "style" : {
-				"navigationBarTitleText":"我的二维码",
-				"app-plus":{
-					"bounce":"none"
-				}
-			}
-        }
-        
+        }       
         ,{
             "path" : "pages/msg/msg",
             "style" : {
@@ -102,55 +74,6 @@
 					"softinputNavBar":"none",
 					"bounce":"none"
 				}
-			}
-        }
-        ,{
-            "path" : "pages/user/coupon/coupon",
-            "style" : {
-				"navigationBarTitleText": "优惠券",
-				"navigationBarBackgroundColor":"#8bbce7",
-				"navigationBarTextStyle":"white",
-				"app-plus":{
-					"bounce":"none"
-				}
-			}
-        }
-        ,{
-            "path" : "pages/user/keep/keep",
-            "style" : {
-				"navigationBarTitleText": "我的收藏",
-				"navigationBarBackgroundColor":"#8bbce7",
-				"navigationBarTextStyle":"white",
-				"app-plus":{
-					"bounce":"none"
-				}
-			}
-        }
-        ,{
-            "path" : "pages/user/address/address",
-            "style" : {
-				"navigationBarBackgroundColor":"#ffffff",
-				"navigationBarTitleText":"地址管理",
-				"backgroundColorTop":"#ffffff",
-				"backgroundColorBottom":"#ffffff"
-			}
-        }
-        ,{
-            "path" : "pages/user/address/edit/edit",
-            "style" : {
-				"navigationBarBackgroundColor":"#ffffff",
-				"navigationBarTitleText":"编辑收件人地址",
-				"backgroundColorTop":"#ffffff",
-				"backgroundColorBottom":"#ffffff"
-			}
-        }
-        ,{
-            "path" : "pages/user/deposit/deposit",
-            "style" : {
-				"navigationBarBackgroundColor":"#ffffff",
-				"navigationBarTitleText":"充值",
-				"backgroundColorTop":"#ffffff",
-				"backgroundColorBottom":"#ffffff"
 			}
         }
     ],
@@ -212,7 +135,7 @@
 			"path": "login",
 			"style": {
 				"navigationBarTitleText": "登录",
-				"navigationBarBackgroundColor":"#f06c7a",
+				"navigationBarBackgroundColor":"#8bbce7",
 				"navigationBarTextStyle":"white",
 				"app-plus": {
 		            "bounce": "none" ,//关闭窗口回弹效果
@@ -224,7 +147,7 @@
 			"path": "register",
 			"style": {
 				"navigationBarTitleText": "注册账号",
-				"navigationBarBackgroundColor":"#f06c7a",
+				"navigationBarBackgroundColor":"#8bbce7",
 				"navigationBarTextStyle":"white",
 				"app-plus": {
 				    "bounce": "none" ,//关闭窗口回弹效果
@@ -236,7 +159,7 @@
 			"path": "resetpasswd",
 			"style": {
 				"navigationBarTitleText": "重置密码",
-				"navigationBarBackgroundColor":"#f06c7a",
+				"navigationBarBackgroundColor":"#8bbce7",
 				"navigationBarTextStyle":"white",
 				"app-plus": {
 				    "bounce": "none" ,//关闭窗口回弹效果
@@ -244,6 +167,84 @@
 				}
 			}
 		}]
+	},{
+		"root":"userPage",
+		"pages":[{
+            "path" : "coupon/coupon",
+            "style" : {
+				"navigationBarTitleText": "优惠券",
+				"navigationBarBackgroundColor":"#8bbce7",
+				"navigationBarTextStyle":"white",
+				"app-plus":{
+					"bounce":"none"
+				}
+			}
+        }
+        ,{
+            "path" : "keep/keep",
+            "style" : {
+				"navigationBarTitleText": "我的收藏",
+				"navigationBarBackgroundColor":"#8bbce7",
+				"navigationBarTextStyle":"white",
+				"app-plus":{
+					"bounce":"none"
+				}
+			}
+        }
+        ,{
+            "path" : "address/address",
+            "style" : {
+				"navigationBarBackgroundColor":"#ffffff",
+				"navigationBarTitleText":"地址管理",
+				"backgroundColorTop":"#ffffff",
+				"backgroundColorBottom":"#ffffff"
+			}
+        }
+        ,{
+            "path" : "address/edit/edit",
+            "style" : {
+				"navigationBarBackgroundColor":"#ffffff",
+				"navigationBarTitleText":"编辑收件人地址",
+				"backgroundColorTop":"#ffffff",
+				"backgroundColorBottom":"#ffffff"
+			}
+        }
+        ,{
+            "path" : "deposit/deposit",
+            "style" : {
+				"navigationBarBackgroundColor":"#ffffff",
+				"navigationBarTitleText":"充值",
+				"backgroundColorTop":"#ffffff",
+				"backgroundColorBottom":"#ffffff"
+			}
+        }
+		,{
+            "path" : "order_list/order_list",
+            "style" : {
+				"navigationBarTitleText":"我的订单",
+				"navigationBarBackgroundColor":"#f8f8f8",
+				"backgroundColorTop":"#f3f3f3",
+				"backgroundColorBottom":"#ffffff"
+			}
+        }
+        ,{
+            "path" : "setting/setting",
+            "style" : {
+				"navigationBarBackgroundColor":"#f8f8f8",
+				"navigationBarTitleText":"我的设置",
+				"backgroundColorTop":"#ffffff",
+				"backgroundColorBottom":"#f3f3f3"
+			}
+        }
+        ,{
+            "path" : "myQR/myQR",
+            "style" : {
+				"navigationBarTitleText":"我的二维码",
+				"app-plus":{
+					"bounce":"none"
+				}
+			}
+        }]
 	}],
 	 "preloadRule": {
         "pages/tabBar/home": {
@@ -253,6 +254,10 @@
 		"pages/order/confirmation": {
 			"network":"all",
 			"packages":["payPage"]
+		},
+		"pages/tabBar/user": {
+			"network":"all",
+			"packages":["userPage"]
 		}
     },
 	"globalStyle": {

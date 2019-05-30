@@ -5,16 +5,8 @@
     "pages/tabBar/cart",
     "pages/tabBar/user",
     "pages/order/confirmation",
-    "pages/user/order_list/order_list",
-    "pages/user/setting/setting",
-    "pages/user/myQR/myQR",
     "pages/msg/msg",
-    "pages/msg/chat/chat",
-    "pages/user/coupon/coupon",
-    "pages/user/keep/keep",
-    "pages/user/address/address",
-    "pages/user/address/edit/edit",
-    "pages/user/deposit/deposit"
+    "pages/msg/chat/chat"
   ],
   "subPackages": [
     {
@@ -38,6 +30,19 @@
         "login",
         "register",
         "resetpasswd"
+      ]
+    },
+    {
+      "root": "userPage",
+      "pages": [
+        "coupon/coupon",
+        "keep/keep",
+        "address/address",
+        "address/edit/edit",
+        "deposit/deposit",
+        "order_list/order_list",
+        "setting/setting",
+        "myQR/myQR"
       ]
     }
   ],
@@ -93,6 +98,12 @@
       "network": "all",
       "packages": [
         "payPage"
+      ]
+    },
+    "pages/tabBar/user": {
+      "network": "all",
+      "packages": [
+        "userPage"
       ]
     }
   },

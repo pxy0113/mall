@@ -297,7 +297,7 @@
 							width: 10upx;
 							height: 80%;
 							top: 10%;
-							background-color: #f06c7a;
+							background-color: #8bbce7;
 						}
 					}
 				}

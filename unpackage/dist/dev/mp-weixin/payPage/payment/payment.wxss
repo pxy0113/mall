@@ -148,7 +148,7 @@
         -ms-flex-align: center;
             align-items: center;
     color: #fff;
-    background-color: #f06c7a;
+    background-color: #8bbce7;
     -webkit-box-shadow: 0rpx 5rpx 10rpx rgba(0, 0, 0, 0.2);
             box-shadow: 0rpx 5rpx 10rpx rgba(0, 0, 0, 0.2);
 }

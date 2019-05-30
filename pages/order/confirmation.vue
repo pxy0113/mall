@@ -196,7 +196,7 @@
 			//选择收货地址
 			selectAddress(){
 				uni.navigateTo({
-					url:'../user/address/address?type=select'
+					url:'../../userPage/address/address?type=select'
 				})
 			}
 		}
@@ -295,7 +295,7 @@
 					font-size: 28upx;
 					height: 40upx;
 					.price{
-						color: #f06c7a;
+						color: #8bbce7;
 					}
 					.number{
 						display: flex;
@@ -367,7 +367,7 @@
 			.btn{
 				padding: 0 30upx;
 				height: 60upx;
-				background-color: #f06c7a;
+				background-color: #8bbce7;
 				color: #fff;
 				display: flex;
 				justify-content: center;
@@ -393,7 +393,7 @@
 		}
 		.content{
 			font-size: 26upx;
-			color: #f06c7a;
+			color: #8bbce7;
 		}
 	}
 }

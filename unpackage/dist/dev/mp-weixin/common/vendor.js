@@ -7348,10 +7348,10 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "D:\\VUEJS\\mall\\common\\SDK\\amap-wx.js":
-/*!*******************************************!*\
-  !*** D:/VUEJS/mall/common/SDK/amap-wx.js ***!
-  \*******************************************/
+/***/ "D:\\pxy\\mall\\common\\SDK\\amap-wx.js":
+/*!*****************************************!*\
+  !*** D:/pxy/mall/common/SDK/amap-wx.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7360,10 +7360,10 @@ function AMapWX(a) {this.key = a.key, this.requestConfig = { key: a.key, s: "rsx
 
 /***/ }),
 
-/***/ "D:\\VUEJS\\mall\\common\\SDK\\md5.min.js":
-/*!*******************************************!*\
-  !*** D:/VUEJS/mall/common/SDK/md5.min.js ***!
-  \*******************************************/
+/***/ "D:\\pxy\\mall\\common\\SDK\\md5.min.js":
+/*!*****************************************!*\
+  !*** D:/pxy/mall/common/SDK/md5.min.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7383,10 +7383,10 @@ function AMapWX(a) {this.key = a.key, this.requestConfig = { key: a.key, s: "rsx
 
 /***/ }),
 
-/***/ "D:\\VUEJS\\mall\\pages.json":
-/*!********************************!*\
-  !*** D:/VUEJS/mall/pages.json ***!
-  \********************************/
+/***/ "D:\\pxy\\mall\\pages.json":
+/*!******************************!*\
+  !*** D:/pxy/mall/pages.json ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

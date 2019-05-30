@@ -679,7 +679,7 @@ page{position: relative;}
 					font-size: 20upx;
 					view {
 						height: 30upx;
-						background-color: #f06c7a;
+						background-color: #8bbce7;
 						display: flex;
 						justify-content: center;
 						align-items: center;

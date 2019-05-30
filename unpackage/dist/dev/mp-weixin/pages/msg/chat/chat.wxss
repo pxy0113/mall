@@ -538,7 +538,7 @@ page {
                   justify-content: flex-end;
 }
 .content .msg-list .row .my .left .bubble {
-            background-color: #f06c7a;
+            background-color: #8bbce7;
             color: #fff;
 }
 .content .msg-list .row .my .left .bubble.voice .icon {
