@@ -130,6 +130,7 @@ var _amapWx = _interopRequireDefault(__webpack_require__(/*! @/common/SDK/amap-w
 var _default = {
   data: function data() {
     return {
+      productName: 'product',
       afterHeaderOpacity: 1, //不透明度
       headerPosition: 'fixed',
       headerTop: null,
@@ -288,7 +289,22 @@ var _default = {
     //加载活动专区
     this.loadPromotion();
   },
+  onReady: function onReady() {
+    this.productList.forEach(function (item) {
+      console.log(item);
+    });
+
+  },
+  onUnload: function onUnload() {
+    if (observer) {
+      observer.disconnect();
+    }
+  },
   methods: {
+    tranProduct: function tranProduct(index) {
+      return "product-".concat(index);
+    },
+
     //加载Promotion 并设定倒计时,,实际应用中应该是ajax加载此数据。
     loadPromotion: function loadPromotion() {
       var cutTime = new Date();
@@ -625,13 +641,14 @@ var render = function() {
       _c(
         "view",
         { staticClass: "product-list" },
-        _vm._l(_vm.productList, function(product, index1) {
+        _vm._l(_vm.productList, function(product, index) {
           return _c(
             "view",
             {
               key: product.goods_id,
               staticClass: "product",
-              attrs: { eventid: "4fe06527-6-" + index1 },
+              class: "product-" + index,
+              attrs: { eventid: "4fe06527-6-" + index },
               on: {
                 tap: function($event) {
                   _vm.toGoods(product)

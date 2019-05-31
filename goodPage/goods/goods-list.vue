@@ -57,7 +57,6 @@
 			uni.setNavigationBarTitle({
 				title: option.name
 			});
-			
 			//兼容H5下排序栏位置
 			// #ifdef H5
 				//定时器方式循环获取高度为止，这么写的原因是onLoad中head未必已经渲染出来。

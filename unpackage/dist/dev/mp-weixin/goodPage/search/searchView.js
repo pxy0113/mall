@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -50,6 +50,10 @@
 
 
 
+
+
+
+var observer = null;var _default =
 {
   name: 'searchView',
   components: {
@@ -73,19 +77,35 @@
       showTrash: true,
       keyCode: '',
       goodsList: [
-      { goods_id: 0, img: '../../static/img/goods/p1.jpg', name: '牛肉牛肉', price: '￥168', slogan: '1235人付款' },
-      { goods_id: 1, img: '../../static/img/goods/p2.jpg', name: '鸡腿鸡推', price: '￥168', slogan: '1235人付款' },
-      { goods_id: 2, img: '../../static/img/goods/p3.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹', price: '￥168', slogan: '1235人付款' },
-      { goods_id: 3, img: '../../static/img/goods/p4.jpg', name: '蜜汁牛排', price: '￥168', slogan: '1235人付款' },
-      { goods_id: 4, img: '../../static/img/goods/p5.jpg', name: '意大利酒心巧克力', price: '￥168', slogan: '1235人付款' },
-      { goods_id: 5, img: '../../static/img/goods/p6.jpg', name: '咖啡伴侣330g', price: '￥168', slogan: '1235人付款' },
-      { goods_id: 6, img: '../../static/img/goods/p7.jpg', name: '肯德基折扣券110元', price: '￥168', slogan: '1235人付款' },
-      { goods_id: 7, img: '../../static/img/goods/p8.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹2', price: '￥168', slogan: '1235人付款' },
-      { goods_id: 8, img: '../../static/img/goods/p9.jpg', name: '意大利酒心巧克力芒果味', price: '￥168', slogan: '1235人付款' },
-      { goods_id: 9, img: '../../static/img/goods/p10.jpg', name: '冷冻大黄鱼', price: '￥168', slogan: '1235人付款' }],
+      { goods_id: 0, img: '../../static/img/goods/p1.jpg', name: '牛肉牛肉', price: '￥168', slogan: '1235人付款', show: true },
+      { goods_id: 1, img: '../../static/img/goods/p2.jpg', name: '鸡腿鸡推', price: '￥168', slogan: '1235人付款', show: true },
+      { goods_id: 2, img: '../../static/img/goods/p3.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹', price: '￥168', slogan: '1235人付款', show: true },
+      { goods_id: 3, img: '../../static/img/goods/p4.jpg', name: '蜜汁牛排', price: '￥168', slogan: '1235人付款', show: true },
+      { goods_id: 4, img: '../../static/img/goods/p5.jpg', name: '意大利酒心巧克力', price: '￥168', slogan: '1235人付款', show: true },
+      { goods_id: 5, img: '../../static/img/goods/p6.jpg', name: '咖啡伴侣330g', price: '￥168', slogan: '1235人付款', show: true },
+      { goods_id: 6, img: '../../static/img/goods/p7.jpg', name: '肯德基折扣券110元', price: '￥168', slogan: '1235人付款', show: true },
+      { goods_id: 7, img: '../../static/img/goods/p8.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹2', price: '￥168', slogan: '1235人付款', show: true },
+      { goods_id: 8, img: '../../static/img/goods/p9.jpg', name: '意大利酒心巧克力芒果味', price: '￥168', slogan: '1235人付款', show: true },
+      { goods_id: 9, img: '../../static/img/goods/p10.jpg', name: '冷冻大黄鱼', price: '￥168', slogan: '1235人付款', show: true }],
 
       loadingText: '正在加载...' };
 
+  },
+  onReady: function onReady() {
+    observer = uni.createIntersectionObserver(this, { selectAll: true });
+    this.goodsList.forEach(function (item, index) {
+      console.log(index);
+      // observer.relativeToViewport().observe(`.product-${index}`, (res) => {
+      // 	console.log(res.intersectionRatio)
+      //   if (res.intersectionRatio > 0) {
+      // 	  console.log('product-'+index)
+      // 	  this.$set(item,'show',true);
+      //   } else if (!res.intersectionRatio > 0) {
+      // 	  console.log('隐藏product-'+index);
+      // 	  this.$set(item,'show',false);
+      //   }
+      // });
+    });
   },
   methods: {
     //方法
@@ -274,18 +294,27 @@ var render = function() {
           )
         ])
       : _vm._e(),
-    !_vm.showTrash
+    _vm.showTrash
       ? _c("view", { staticClass: "goods-list" }, [
           _c(
             "view",
             { staticClass: "product-list" },
-            _vm._l(_vm.goodsList, function(goods, index0) {
+            _vm._l(_vm.goodsList, function(goods, index) {
               return _c(
                 "view",
                 {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: goods.show,
+                      expression: "goods.show"
+                    }
+                  ],
                   key: goods.goods_id,
                   staticClass: "product",
-                  attrs: { eventid: "7beac02f-5-" + index0 },
+                  class: "product-" + index,
+                  attrs: { eventid: "7beac02f-5-" + index },
                   on: {
                     tap: function($event) {
                       _vm.toGoods(goods)

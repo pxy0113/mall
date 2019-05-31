@@ -23,9 +23,12 @@
 				 @tap="search(item)">{{item}}</text>
 			</view>
 		</view>
-		<view class="goods-list" v-if="!showTrash">
+		<view class="goods-list" v-if="showTrash">
 			<view class="product-list">
-				<view class="product" v-for="goods in goodsList" :key="goods.goods_id" @tap="toGoods(goods)">
+				<view class="product" :class="'product-'+index" v-for="(goods,index) in goodsList" 
+				:key="goods.goods_id" 
+				@tap="toGoods(goods)"
+				v-show="goods.show">
 					<image mode="widthFix" :src="goods.img"></image>
 					<view class="name">{{ goods.name }}</view>
 					<view class="info">
@@ -40,6 +43,7 @@
 </template>
 
 <script>
+let observer = null;
 export default {
 	name: 'searchView',
 	components: {
@@ -63,19 +67,35 @@ export default {
 			showTrash: true,
 			keyCode: '',
 			goodsList: [
-				{ goods_id: 0, img: '../../static/img/goods/p1.jpg', name: '牛肉牛肉', price: '￥168', slogan: '1235人付款' },
-				{ goods_id: 1, img: '../../static/img/goods/p2.jpg', name: '鸡腿鸡推', price: '￥168', slogan: '1235人付款' },
-				{ goods_id: 2, img: '../../static/img/goods/p3.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹', price: '￥168', slogan: '1235人付款' },
-				{ goods_id: 3, img: '../../static/img/goods/p4.jpg', name: '蜜汁牛排', price: '￥168', slogan: '1235人付款' },
-				{ goods_id: 4, img: '../../static/img/goods/p5.jpg', name: '意大利酒心巧克力', price: '￥168', slogan: '1235人付款' },
-				{ goods_id: 5, img: '../../static/img/goods/p6.jpg', name: '咖啡伴侣330g', price: '￥168', slogan: '1235人付款' },
-				{ goods_id: 6, img: '../../static/img/goods/p7.jpg', name: '肯德基折扣券110元', price: '￥168', slogan: '1235人付款' },
-				{ goods_id: 7, img: '../../static/img/goods/p8.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹2', price: '￥168', slogan: '1235人付款' },
-				{ goods_id: 8, img: '../../static/img/goods/p9.jpg', name: '意大利酒心巧克力芒果味', price: '￥168', slogan: '1235人付款' },
-				{ goods_id: 9, img: '../../static/img/goods/p10.jpg', name: '冷冻大黄鱼', price: '￥168', slogan: '1235人付款' }
+				{ goods_id: 0, img: '../../static/img/goods/p1.jpg', name: '牛肉牛肉', price: '￥168', slogan: '1235人付款' ,show:true},
+				{ goods_id: 1, img: '../../static/img/goods/p2.jpg', name: '鸡腿鸡推', price: '￥168', slogan: '1235人付款'  ,show:true},
+				{ goods_id: 2, img: '../../static/img/goods/p3.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹', price: '￥168', slogan: '1235人付款'  ,show:true},
+				{ goods_id: 3, img: '../../static/img/goods/p4.jpg', name: '蜜汁牛排', price: '￥168', slogan: '1235人付款'  ,show:true},
+				{ goods_id: 4, img: '../../static/img/goods/p5.jpg', name: '意大利酒心巧克力', price: '￥168', slogan: '1235人付款'  ,show:true},
+				{ goods_id: 5, img: '../../static/img/goods/p6.jpg', name: '咖啡伴侣330g', price: '￥168', slogan: '1235人付款'  ,show:true},
+				{ goods_id: 6, img: '../../static/img/goods/p7.jpg', name: '肯德基折扣券110元', price: '￥168', slogan: '1235人付款'  ,show:true},
+				{ goods_id: 7, img: '../../static/img/goods/p8.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹2', price: '￥168', slogan: '1235人付款'  ,show:true},
+				{ goods_id: 8, img: '../../static/img/goods/p9.jpg', name: '意大利酒心巧克力芒果味', price: '￥168', slogan: '1235人付款'  ,show:true},
+				{ goods_id: 9, img: '../../static/img/goods/p10.jpg', name: '冷冻大黄鱼', price: '￥168', slogan: '1235人付款'  ,show:true}
 			],
 			loadingText: '正在加载...'
 		};
+	},
+	onReady() {
+	    observer = uni.createIntersectionObserver(this);
+		this.goodsList.forEach((item,index) =>{
+			console.log(index);
+			// observer.relativeToViewport().observe(`.product-${index}`, (res) => {
+			// 	console.log(res.intersectionRatio)
+			//   if (res.intersectionRatio > 0) {
+			// 	  console.log('product-'+index)
+			// 	  this.$set(item,'show',true);
+			//   } else if (!res.intersectionRatio > 0) {
+			// 	  console.log('隐藏product-'+index);
+			// 	  this.$set(item,'show',false);
+			//   }
+			// });
+		});
 	},
 	methods: {
 		//方法

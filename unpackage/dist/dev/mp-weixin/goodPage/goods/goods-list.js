@@ -67,7 +67,6 @@
     uni.setNavigationBarTitle({
       title: option.name });
 
-
     //兼容H5下排序栏位置
 
 

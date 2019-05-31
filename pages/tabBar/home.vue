@@ -96,8 +96,8 @@
 			</view>
 			<view class="product-list">
 				<view
-					class="product"
-					v-for="product in productList"
+					class="product" :class="'product-'+index"
+					v-for="(product,index) in productList"
 					:key="product.goods_id"
 					@tap="toGoods(product)"
 				>
@@ -120,6 +120,7 @@ import amap from '@/common/SDK/amap-wx.js';
 export default {
 	data() {
 		return {
+			productName:'product',
 			afterHeaderOpacity: 1,//不透明度
 			headerPosition: 'fixed',
 			headerTop:null,
@@ -278,7 +279,16 @@ export default {
 		//加载活动专区
 		this.loadPromotion();
 	},
+	onUnload() {
+		if (observer) {
+			observer.disconnect()
+		}
+	},
 	methods: {
+		tranProduct(index){
+			return `product-${index}`;
+		},
+		
 		//加载Promotion 并设定倒计时,,实际应用中应该是ajax加载此数据。
 		loadPromotion() {
 			let cutTime = new Date();
