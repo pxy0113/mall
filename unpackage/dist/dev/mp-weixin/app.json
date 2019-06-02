@@ -111,5 +111,6 @@
     "scope.userLocation": {
       "desc": "请点击确定"
     }
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

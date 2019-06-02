@@ -25,11 +25,12 @@
 		</view>
 		<view class="goods-list" v-if="showTrash">
 			<view class="product-list">
-				<view class="product" :class="'product-'+index" v-for="(goods,index) in goodsList" 
+				<view class="product" :class="'product-'+goods.goods_id" v-for="(goods,index) in goodsList" 
 				:key="goods.goods_id" 
 				@tap="toGoods(goods)"
-				v-show="goods.show">
-					<image mode="widthFix" :src="goods.img"></image>
+				>
+					<image mode="widthFix" :src="goods.img" v-if="goods.show"></image>
+					<image mode="widthFix" v-else :src="defaultImg"></image>
 					<view class="name">{{ goods.name }}</view>
 					<view class="info">
 						<view class="price">{{ goods.price }}</view>
@@ -43,7 +44,7 @@
 </template>
 
 <script>
-let observer = null;
+import zero from '../../static/img/goods/default.jpg'
 export default {
 	name: 'searchView',
 	components: {
@@ -62,41 +63,65 @@ export default {
 	data() {
 		//数据
 		return {
+			defaultImg:zero,
 			searchSession:[],//历史纪录
 			foodList:['蛋黄酥','烧肉粽','牛奶糖','三只松鼠坚果大礼包','百草味猪肉干','鳄鱼生鲜','糖'],
 			showTrash: true,
 			keyCode: '',
 			goodsList: [
-				{ goods_id: 0, img: '../../static/img/goods/p1.jpg', name: '牛肉牛肉', price: '￥168', slogan: '1235人付款' ,show:true},
-				{ goods_id: 1, img: '../../static/img/goods/p2.jpg', name: '鸡腿鸡推', price: '￥168', slogan: '1235人付款'  ,show:true},
-				{ goods_id: 2, img: '../../static/img/goods/p3.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹', price: '￥168', slogan: '1235人付款'  ,show:true},
-				{ goods_id: 3, img: '../../static/img/goods/p4.jpg', name: '蜜汁牛排', price: '￥168', slogan: '1235人付款'  ,show:true},
-				{ goods_id: 4, img: '../../static/img/goods/p5.jpg', name: '意大利酒心巧克力', price: '￥168', slogan: '1235人付款'  ,show:true},
-				{ goods_id: 5, img: '../../static/img/goods/p6.jpg', name: '咖啡伴侣330g', price: '￥168', slogan: '1235人付款'  ,show:true},
-				{ goods_id: 6, img: '../../static/img/goods/p7.jpg', name: '肯德基折扣券110元', price: '￥168', slogan: '1235人付款'  ,show:true},
-				{ goods_id: 7, img: '../../static/img/goods/p8.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹2', price: '￥168', slogan: '1235人付款'  ,show:true},
-				{ goods_id: 8, img: '../../static/img/goods/p9.jpg', name: '意大利酒心巧克力芒果味', price: '￥168', slogan: '1235人付款'  ,show:true},
-				{ goods_id: 9, img: '../../static/img/goods/p10.jpg', name: '冷冻大黄鱼', price: '￥168', slogan: '1235人付款'  ,show:true}
+				{ goods_id: 0, img: '../../static/img/goods/p1.jpg', name: '牛肉牛肉', price: '￥168', slogan: '1235人付款' ,show:false},
+				{ goods_id: 1, img: '../../static/img/goods/p2.jpg',name: '鸡腿鸡推', price: '￥168', slogan: '1235人付款'  ,show:false},
+				{ goods_id: 2, img: '../../static/img/goods/p3.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹', price: '￥168', slogan: '1235人付款'  ,show:false},
+				{ goods_id: 3, img: '../../static/img/goods/p4.jpg',name: '蜜汁牛排', price: '￥168', slogan: '1235人付款'  ,show:false},
+				{ goods_id: 4, img: '../../static/img/goods/p5.jpg', name: '意大利酒心巧克力', price: '￥168', slogan: '1235人付款'  ,show:false},
+				{ goods_id: 5, img: '../../static/img/goods/p6.jpg', name: '咖啡伴侣330g', price: '￥168', slogan: '1235人付款'  ,show:false},
+				{ goods_id: 6, img: '../../static/img/goods/p7.jpg',name: '肯德基折扣券110元', price: '￥168', slogan: '1235人付款'  ,show:false},
+				{ goods_id: 7, img: '../../static/img/goods/p8.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹2', price: '￥168', slogan: '1235人付款'  ,show:false},
+				{ goods_id: 8, img: '../../static/img/goods/p9.jpg', name: '意大利酒心巧克力芒果味', price: '￥168', slogan: '1235人付款'  ,show:false},
+				{ goods_id: 9, img: '../../static/img/goods/p10.jpg', name: '冷冻大黄鱼', price: '￥168', slogan: '1235人付款'  ,show:false}
 			],
 			loadingText: '正在加载...'
 		};
 	},
 	onReady() {
-	    observer = uni.createIntersectionObserver(this);
 		this.goodsList.forEach((item,index) =>{
-			console.log(index);
-			// observer.relativeToViewport().observe(`.product-${index}`, (res) => {
-			// 	console.log(res.intersectionRatio)
-			//   if (res.intersectionRatio > 0) {
-			// 	  console.log('product-'+index)
-			// 	  this.$set(item,'show',true);
-			//   } else if (!res.intersectionRatio > 0) {
-			// 	  console.log('隐藏product-'+index);
-			// 	  this.$set(item,'show',false);
-			//   }
-			// });
+			uni.createIntersectionObserver(this).relativeToViewport({bottom:100}).observe(`.product-${item.goods_id}`, (res) => {
+			  if (res.intersectionRatio > 0) {
+				  console.log('product-'+index+item.name)
+				  this.$set(item,'show',true);
+			  }
+			});
 		});
 	},
+	onReachBottom() {
+		uni.showToast({ title: '触发上拉加载' });
+		let len = this.goodsList.length;
+		if (len >= 40) {
+			this.loadingText = '到底了';
+			return false;
+		}
+		console.log('asdsadas');
+		// 演示,随机加入商品,生成环境请替换为ajax请求
+		let end_goods_id = this.goodsList[len - 1].goods_id;
+		for (let i = 1; i <= 10; i++) {
+			let goods_id = end_goods_id + i;
+			let p = {
+				goods_id: goods_id,
+				img:
+					'../../static/img/goods/p' + (goods_id % 10 == 0 ? 10 : goods_id % 10) + '.jpg',
+				name: goods_id,
+				price: '￥168',
+				show:true,
+				slogan: '1235人付款'
+			};
+			this.goodsList.push(p);
+		}
+		
+	},
+	onUnload(){
+		console.log('ok')
+         uni.createIntersectionObserver(this).disconnect();
+    },
 	methods: {
 		//方法
 		search(code) {

@@ -243,6 +243,11 @@ export default {
 		}
 		// 演示,随机加入商品,生成环境请替换为ajax请求
 		let end_goods_id = this.productList[len - 1].goods_id;
+		let list = {
+			"feedList[0]":{
+				name:'测试'
+			}
+		}
 		for (let i = 1; i <= 10; i++) {
 			let goods_id = end_goods_id + i;
 			let p = {
@@ -278,11 +283,6 @@ export default {
 		this.Timer();
 		//加载活动专区
 		this.loadPromotion();
-	},
-	onUnload() {
-		if (observer) {
-			observer.disconnect()
-		}
 	},
 	methods: {
 		tranProduct(index){
