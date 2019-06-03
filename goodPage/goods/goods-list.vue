@@ -7,11 +7,12 @@
 			</view>
 		</view> 
 		<!-- 占位 -->
-		<view class="place"></view>
+		<view class="place">
+		</view>
 		<!-- 商品列表 -->
 		<view class="goods-list">
 			<view class="product-list">
-				<view class="product" v-for="(goods) in goodsList" :key="goods.goods_id" @tap="toGoods(goods)">
+				<view class="product" :class="'product-'+index" v-for="(goods,index) in goodsList" :key="goods.goods_id" @tap="toGoods(goods)">
 					<image mode="widthFix" :src="goods.img"></image>
 					<view class="name">{{goods.name}}</view>
 					<view class="info">
@@ -26,20 +27,22 @@
 </template>
 
 <script>
+import zero from '../../static/img/goods/default.jpg'
 	export default {
 		data() {
 			return {
-				goodsList:[
-					{ goods_id: 0, img: '../../static/img/goods/p1.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 1, img: '../../static/img/goods/p2.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 2, img: '../../static/img/goods/p3.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 3, img: '../../static/img/goods/p4.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 4, img: '../../static/img/goods/p5.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 5, img: '../../static/img/goods/p6.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 6, img: '../../static/img/goods/p7.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 7, img: '../../static/img/goods/p8.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 8, img: '../../static/img/goods/p9.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' },
-					{ goods_id: 9, img: '../../static/img/goods/p10.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168', slogan:'1235人付款' }
+				defaultImg:zero,
+				goodsList: [
+					{ goods_id: 0, img: '../../static/img/goods/p1.jpg', name: '牛肉牛肉', price: '￥168', slogan: '1235人付款' ,show:false},
+					{ goods_id: 1, img: '../../static/img/goods/p2.jpg',name: '鸡腿鸡推', price: '￥168', slogan: '1235人付款'  ,show:false},
+					{ goods_id: 2, img: '../../static/img/goods/p3.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹', price: '￥168', slogan: '1235人付款'  ,show:false},
+					{ goods_id: 3, img: '../../static/img/goods/p4.jpg',name: '蜜汁牛排', price: '￥168', slogan: '1235人付款'  ,show:false},
+					{ goods_id: 4, img: '../../static/img/goods/p5.jpg', name: '意大利酒心巧克力', price: '￥168', slogan: '1235人付款'  ,show:false},
+					{ goods_id: 5, img: '../../static/img/goods/p6.jpg', name: '咖啡伴侣330g', price: '￥168', slogan: '1235人付款'  ,show:false},
+					{ goods_id: 6, img: '../../static/img/goods/p7.jpg',name: '肯德基折扣券110元', price: '￥168', slogan: '1235人付款'  ,show:false},
+					{ goods_id: 7, img: '../../static/img/goods/p8.jpg', name: '大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹大闸蟹2', price: '￥168', slogan: '1235人付款'  ,show:false},
+					{ goods_id: 8, img: '../../static/img/goods/p9.jpg', name: '意大利酒心巧克力芒果味', price: '￥168', slogan: '1235人付款'  ,show:false},
+					{ goods_id: 9, img: '../../static/img/goods/p10.jpg', name: '冷冻大黄鱼', price: '￥168', slogan: '1235人付款'  ,show:false}
 				],
 				loadingText:"正在加载...",
 				headerTop:"0px",
@@ -69,6 +72,16 @@
 				},1);
 			// #endif
 		},
+		onReady() {
+			this.goodsList.forEach((item,index) =>{
+				uni.createIntersectionObserver(this).relativeToViewport({bottom:100}).observe(`.product-${item.goods_id}`, (res) => {
+				  if (res.intersectionRatio > 0) {
+					  console.log('product-'+index+item.name)
+					  this.$set(item,'show',true);
+				  }
+				});
+			});
+		},
 		onPageScroll(e){
 			//兼容iOS端下拉时顶部漂移
 			if(e.scrollTop>=0){
@@ -76,6 +89,10 @@
 			}else{
 				this.headerPosition = "absolute";
 			}
+		},
+		onUnload(){
+			console.log('ok')
+		     uni.createIntersectionObserver(this).disconnect();
 		},
 		//下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
 		onPullDownRefresh() {
@@ -114,10 +131,9 @@
 				}
 			},
 			//商品跳转
-			toGoods(e){
-				uni.showToast({title: '商品'+e.goods_id,icon:"none"});
+			toGoods(goods){
 				uni.navigateTo({
-					url: '../../goodPage/goods/goods' 
+					url: '../../goodPage/goods/goods?cid='+goods.goods_id+'&&name='+goods.name+'&&img='+goods.img+'&&price='+goods.price
 				});
 			},
 			//排序类型
@@ -196,6 +212,31 @@
 		height: 100upx;
 
 	}
+.input-box {
+	width: 100%;
+	height: 65upx;
+	background-color: #f5f5f5;
+	border-radius: 30upx;
+	position: relative;
+	display: flex;
+	align-items: center;
+	.icon {
+		display: flex;
+		align-items: center;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 60upx;
+		height: 60upx;
+		font-size: 34upx;
+		color: #c0c0c0;
+	}
+	input {
+		padding-left: 28upx;
+		height: 28upx;
+		font-size: 28upx;
+	}
+}
 .goods-list{
 		.loading-text{
 			width: 100%;

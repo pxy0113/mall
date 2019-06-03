@@ -1,7 +1,0 @@
-{
-  "usingComponents": {},
-  "enablePullDownRefresh": true,
-  "navigationBarTitleText": "消息列表",
-  "navigationBarBackgroundColor": "#8bbce7",
-  "navigationBarTextStyle": "white"
-}

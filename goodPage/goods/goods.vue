@@ -7,7 +7,7 @@
 				<view class="back"><view class="icon xiangqian" @tap="back" v-if="showBack"></view></view> 
 				<view class="middle"></view>
 				<view class="icon-btn">
-					<view class="icon tongzhi" @tap="toMsg"></view>
+					<view class="icon tongzhi"></view>
 					<view class="icon cart" @tap="joinCart"></view>
 				</view>
 			</view>
@@ -18,7 +18,7 @@
 					<view v-for="(anchor,index) in anchorlist" :class="[selectAnchor==index ?'on':'']" :key="index" @tap="toAnchor(index)">{{anchor.name}}</view>
 				</view>
 				<view class="icon-btn">
-					<view class="icon tongzhi" @tap="toMsg"></view>
+					<view class="icon tongzhi"></view>
 					<view class="icon cart" @tap="joinCart"></view>
 				</view>
 			</view>
@@ -30,7 +30,7 @@
 					<view class="icon fenxiang"></view>
 					<view class="text">分享</view>
 				</view>
-				<view class="box" @tap="toChat">
+				<view class="box">
 					<view class="icon kefu"></view>
 					<view class="text">客服</view>
 				</view>
@@ -299,18 +299,6 @@ export default {
 		//轮播图指示器
 		swiperChange(event) {
 			this.currentSwiper = event.detail.current;
-		},
-		//消息列表
-		toMsg(){
-			uni.navigateTo({
-				url:'../../pages/msg/msg'
-			})
-		},
-		// 客服
-		toChat(){
-			uni.navigateTo({
-				url:"../msg/chat/chat?name=客服008"
-			})
 		},
 		// 分享
 		share(){

@@ -4,15 +4,17 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
-		"postcss": false
+		"urlCheck": false,
+		"es6": true,
+		"postcss": false,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.4",
 	"appid": "wx0904846d9b4c40fe",
 	"projectname": "商城",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -22,13 +24,24 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "343",
+					"pathName": "goodPage/search/searchView",
+					"scene": null
+				}
+			]
 		}
 	}
 }

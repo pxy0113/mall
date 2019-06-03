@@ -5,11 +5,11 @@
         <view class="header" :style="{position:headerPosition}">
 			<view class="addr"><view class="icon location"></view>{{city}}</view>
 			<view class="input-box">
-				<input placeholder="默认关键字" placeholder-style="color:#c0c0c0;" @tap="toSearch()"/>
+					<text style="color: #C0C0C0;font-size: 12px;padding-left: 5px;width: 100%;" @tap="toSearch()">搜索</text>
 				<view class="icon search"></view>
 			</view>
 			<view class="icon-btn">
-				<view class="icon tongzhi" @tap="toMsg"></view>
+				<view class="icon tongzhi"></view>
 			</view>
 		</view>
 		<!-- 占位 -->
@@ -104,7 +104,7 @@
 		onLoad() {
 			this.amapPlugin = new amap.AMapWX({  
 				//高德地图KEY，随时失效，请务必替换为自己的KEY，参考：http://ask.dcloud.net.cn/article/35070
-				key: '7c235a9ac4e25e482614c6b8eac6fd8e'  
+				key: '04cff6663be3cb476b9915914506122e'  
 			});
 			//定位地址
 			this.amapPlugin.getRegeo({  
@@ -114,12 +114,6 @@
 			}); 
 		},
 		methods: {
-			//消息列表
-			toMsg(){
-				uni.navigateTo({
-					url:'../msg/msg'
-				})
-			},
 			//分类切换显示
 			showCategory(index){
 				this.showCategoryIndex = index;
@@ -131,9 +125,11 @@
 				});
 			},
 			//搜索跳转
-			toSearch(){
-				uni.showToast({title: "建议跳转到新页面做搜索功能"});
-			}
+			toSearch() {
+				uni.navigateTo({
+					url: '../../goodPage/search/searchView'
+				});
+			},
 		}
 	}
 </script>

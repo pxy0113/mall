@@ -22,7 +22,7 @@
 			<!-- 右侧图标按钮 -->
 			<view class="icon-btn">
 				<view class="icon yuyin"></view>
-				<view class="icon tongzhi" @tap="toMsg"></view>
+				<view class="icon tongzhi"></view>
 			</view>
 		</view>
 		<!-- 占位 -->
@@ -377,12 +377,6 @@ export default {
 					}
 				}
 			}, 1000);
-		},
-		//消息列表
-		toMsg(){
-			uni.navigateTo({
-				url:'../msg/msg'
-			})
 		},
 		//搜索跳转
 		toSearch() {

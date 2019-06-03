@@ -4,9 +4,7 @@
     "pages/tabBar/category",
     "pages/tabBar/cart",
     "pages/tabBar/user",
-    "pages/order/confirmation",
-    "pages/msg/msg",
-    "pages/msg/chat/chat"
+    "pages/order/confirmation"
   ],
   "subPackages": [
     {
@@ -22,14 +20,6 @@
       "pages": [
         "payment/payment",
         "success/success"
-      ]
-    },
-    {
-      "root": "loginPage",
-      "pages": [
-        "login",
-        "register",
-        "resetpasswd"
       ]
     },
     {
@@ -111,6 +101,5 @@
     "scope.userLocation": {
       "desc": "请点击确定"
     }
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }

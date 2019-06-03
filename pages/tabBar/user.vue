@@ -7,7 +7,7 @@
 				
 			</view>
 			<view class="icon-btn">
-				<view class="icon tongzhi" @tap="toMsg"></view>
+				<view class="icon tongzhi"></view>
 				<view class="icon setting" @tap="toSetting"></view>
 			</view>
 		</view>
@@ -110,7 +110,7 @@
 				user:{
 					username:'游客1002',
 					face:'../../static/img/face.jpg',
-					signature:'点击昵称跳转登录/注册页',
+					signature:'',
 					integral:0,
 					balance:0,
 					envelope:0
@@ -127,13 +127,13 @@
 				mytoolbarList:[
 					{url:'../../userPage/keep/keep',text:'我的收藏',img:'../../static/img/user/point.png'},
 					{url:'../../userPage/coupon/coupon',text:'优惠券',img:'../../static/img/user/quan.png'}, 
-					{url:'',text:'新客豪礼',img:'../../static/img/user/renw.png'},
-					{url:'',text:'领红包',img:'../../static/img/user/momey.png'},
-					
+					// {url:'',text:'新客豪礼',img:'../../static/img/user/renw.png'},
+					// {url:'',text:'领红包',img:'../../static/img/user/momey.png'},
+					// 
 					{url:'../../userPage/address/address',text:'收货地址',img:'../../static/img/user/addr.png'},
-					{url:'',text:'账户安全',img:'../../static/img/user/security.png'},
-					{url:'',text:'银行卡',img:'../../static/img/user/bank.png'},
-					{url:'',text:'抽奖',img:'../../static/img/user/choujiang.png'},
+					// {url:'',text:'账户安全',img:'../../static/img/user/security.png'},
+					// {url:'',text:'银行卡',img:'../../static/img/user/bank.png'},
+					// {url:'',text:'抽奖',img:'../../static/img/user/choujiang.png'},
 					// {text:'客服',img:'../../static/img/user/kefu.png'},
 					// {text:'签到',img:'../../static/img/user/mingxi.png'}
 					
@@ -214,12 +214,6 @@
 				this.toLogin();
 
 			},
-			//消息列表
-			toMsg(){
-				uni.navigateTo({
-					url:'../msg/msg'
-				})
-			},
 			toOrderList(index){
 				uni.navigateTo({url:'../../userPage/order_list/order_list?tbIndex='+index}) 
 			},
@@ -251,7 +245,10 @@
 					}.bind(this)
 				});
 			},
-			getSkeyAndOpenId(code){//code换取session_key跟openid
+			getSkeyAndOpenId(code){
+				// code换取session_key跟openid  
+				// 这一步最好在后台做 也就是我直接传code给后台 后台写死secret跟appid 
+				// 然后得到session_key跟openid 用session_key进行sha1/md5加密后 把skey,openid给我
 				let secret = '119afffd251e8b1b6e0f0a96e977bb7d';
 				let appid = 'wx0904846d9b4c40fe';
 				uni.request({
