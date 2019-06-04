@@ -4,12 +4,9 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
-		"es6": true,
+		"urlCheck": true,
 		"postcss": false,
-		"minified": true,
-		"newFeature": true,
-		"autoAudits": false
+		"newFeature": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.4",
@@ -36,9 +33,10 @@
 			"current": 0,
 			"list": [
 				{
-					"id": -1,
-					"name": "343",
-					"pathName": "goodPage/search/searchView",
+					"id": 0,
+					"name": "goods",
+					"pathName": "goodPage/goods/discuss",
+					"query": "",
 					"scene": null
 				}
 			]

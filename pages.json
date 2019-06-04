@@ -86,6 +86,14 @@
 				"backgroundColorTop":"#ffffff",
 				"backgroundColorBottom":"#ffffff"
 			}
+		},{
+		    "path" : "goods/discuss",
+		    "style" : {
+				"navigationBarBackgroundColor":"#ffffff",
+				"navigationBarTitleText": "评论列表",
+				"backgroundColorTop":"#ffffff",
+				"backgroundColorBottom":"#ffffff"
+			}
 		}]
 	},{
 		"root":"payPage",

@@ -12,7 +12,8 @@
       "pages": [
         "goods/goods-list",
         "goods/goods",
-        "search/searchView"
+        "search/searchView",
+        "goods/discuss"
       ]
     },
     {

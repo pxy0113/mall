@@ -198,6 +198,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 {
   data: function data() {
     return {
@@ -239,6 +251,7 @@
         { name: "7天退换", description: "此商品享受7天无理由退换服务" }],
 
         spec: ["XS", "S", "M", "L", "XL", "XXL"],
+        goodsType: ["玫瑰金色链子粉晶拼珍珠", "彩虹珠子草编森女手串", "链子", "特价散珠*1", "波罗的海银色手镯"],
         comment: {
           number: 102,
           userface: '../../static/img/face.jpg',
@@ -247,7 +260,12 @@
 
 
 
+      goodsList: {
+        type: '',
+        spec: '' },
+
       selectSpec: null, //选中规格
+      selectGoods: null, //选中商品类型
       isKeep: false, //收藏
       //商品描述html
       descriptionStr: '<div style="text-align:center;"><img width="100%" src="https://s2.ax1x.com/2019/03/28/AdOogx.jpg"/><img width="100%" src="https://s2.ax1x.com/2019/03/28/AdOHKK.jpg"/><img width="100%" src="https://s2.ax1x.com/2019/03/28/AdOTv6.jpg"/></div>' };
@@ -326,7 +344,7 @@
     },
     // 加入购物车
     joinCart: function joinCart() {
-      if (this.selectSpec == null) {
+      if (this.selectSpec == null || this.selectGoods == null) {
         return this.showSpec(function () {
           uni.showToast({ title: "已加入购物车" });
         });
@@ -335,7 +353,7 @@
     },
     //立即购买
     buy: function buy() {var _this2 = this;
-      if (this.selectSpec == null) {
+      if (this.selectSpec == null || this.selectGoods == null) {
         return this.showSpec(function () {
           _this2.toConfirmation();
         });
@@ -359,11 +377,17 @@
     },
     //跳转评论列表
     showComments: function showComments(goodsid) {
+      uni.navigateTo({
+        url: './discuss' });
 
     },
     //选择规格
     setSelectSpec: function setSelectSpec(index) {
       this.selectSpec = index;
+    },
+    //选择类别
+    selectgoods: function selectgoods(index) {
+      this.selectGoods = index;
     },
     //减少数量
     sub: function sub() {
@@ -378,6 +402,7 @@
     },
     //跳转锚点
     toAnchor: function toAnchor(index) {
+      console.log(index);
       this.selectAnchor = index;
       uni.pageScrollTo({ scrollTop: this.anchorlist[index].top, duration: 200 });
     },
@@ -430,7 +455,6 @@
     hideSpec: function hideSpec() {var _this5 = this;
       this.specClass = 'hide';
       //回调
-
       this.selectSpec && this.specCallback && this.specCallback();
       this.specCallback = false;
       setTimeout(function () {
@@ -707,7 +731,7 @@ var render = function() {
                   attrs: { eventid: "2e32a098-12" },
                   on: { tap: _vm.hideService }
                 },
-                [_vm._v("完成")]
+                [_vm._v("关闭")]
               )
             ])
           ]
@@ -719,7 +743,7 @@ var render = function() {
       {
         staticClass: "popup spec",
         class: _vm.specClass,
-        attrs: { eventid: "2e32a098-22" },
+        attrs: { eventid: "2e32a098-23" },
         on: {
           touchmove: function($event) {
             $event.stopPropagation()
@@ -735,7 +759,7 @@ var render = function() {
           "view",
           {
             staticClass: "layer",
-            attrs: { eventid: "2e32a098-21" },
+            attrs: { eventid: "2e32a098-22" },
             on: {
               tap: function($event) {
                 $event.stopPropagation()
@@ -745,7 +769,38 @@ var render = function() {
           },
           [
             _c("view", { staticClass: "content" }, [
-              _c("view", { staticClass: "title" }, [_vm._v("选择规格：")]),
+              _c("view", { staticClass: "cartContent" }, [
+                _c("img", {
+                  staticClass: "cartImg",
+                  attrs: {
+                    src: "https://s2.ax1x.com/2019/03/28/AdOfUJ.jpg",
+                    alt: ""
+                  }
+                }),
+                _c("span", { staticClass: "price" }, [
+                  _vm._v(_vm._s(_vm.goodsData.price))
+                ])
+              ]),
+              _c(
+                "view",
+                { staticClass: "sp" },
+                _vm._l(_vm.goodsData.goodsType, function(item, index) {
+                  return _c(
+                    "view",
+                    {
+                      key: index,
+                      class: [index == _vm.selectGoods ? "on" : ""],
+                      attrs: { eventid: "2e32a098-15-" + index },
+                      on: {
+                        tap: function($event) {
+                          _vm.selectgoods(index)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(item))]
+                  )
+                })
+              ),
               _c(
                 "view",
                 { staticClass: "sp" },
@@ -755,7 +810,7 @@ var render = function() {
                     {
                       key: index,
                       class: [index == _vm.selectSpec ? "on" : ""],
-                      attrs: { eventid: "2e32a098-15-" + index },
+                      attrs: { eventid: "2e32a098-16-" + index },
                       on: {
                         tap: function($event) {
                           _vm.setSelectSpec(index)
@@ -766,15 +821,27 @@ var render = function() {
                   )
                 })
               ),
-              _vm.selectSpec != null
-                ? _c("view", { staticClass: "length" }, [
-                    _c("view", { staticClass: "text" }, [_vm._v("数量")]),
-                    _c("view", { staticClass: "number" }, [
+              _c(
+                "view",
+                {
+                  staticStyle: { "font-size": "28rpx", "margin-top": "60rpx" }
+                },
+                [
+                  _c(
+                    "view",
+                    {
+                      staticStyle: {
+                        display: "flex",
+                        "justify-content": "flex-start",
+                        "align-items": "center"
+                      }
+                    },
+                    [
                       _c(
                         "view",
                         {
                           staticClass: "sub",
-                          attrs: { eventid: "2e32a098-16" },
+                          attrs: { eventid: "2e32a098-17" },
                           on: {
                             tap: function($event) {
                               $event.stopPropagation()
@@ -788,7 +855,7 @@ var render = function() {
                         "view",
                         {
                           staticClass: "input",
-                          attrs: { eventid: "2e32a098-18" },
+                          attrs: { eventid: "2e32a098-19" },
                           on: {
                             tap: function($event) {
                               $event.stopPropagation()
@@ -806,7 +873,7 @@ var render = function() {
                                 expression: "goodsData.number"
                               }
                             ],
-                            attrs: { type: "number", eventid: "2e32a098-17" },
+                            attrs: { type: "number", eventid: "2e32a098-18" },
                             domProps: { value: _vm.goodsData.number },
                             on: {
                               input: function($event) {
@@ -823,7 +890,7 @@ var render = function() {
                         "view",
                         {
                           staticClass: "add",
-                          attrs: { eventid: "2e32a098-19" },
+                          attrs: { eventid: "2e32a098-20" },
                           on: {
                             tap: function($event) {
                               $event.stopPropagation()
@@ -832,17 +899,29 @@ var render = function() {
                           }
                         },
                         [_c("view", { staticClass: "icon jia" })]
+                      ),
+                      _c(
+                        "span",
+                        {
+                          staticStyle: {
+                            "font-size": "25rpx",
+                            color: "#C0C0C0",
+                            "padding-left": "5rpx"
+                          }
+                        },
+                        [_vm._v("库存 555 件")]
                       )
-                    ])
-                  ])
-                : _vm._e()
+                    ]
+                  )
+                ]
+              )
             ]),
             _c("view", { staticClass: "btn" }, [
               _c(
                 "view",
                 {
                   staticClass: "button",
-                  attrs: { eventid: "2e32a098-20" },
+                  attrs: { eventid: "2e32a098-21" },
                   on: { tap: _vm.hideSpec }
                 },
                 [_vm._v("完成")]
@@ -859,7 +938,7 @@ var render = function() {
         _c(
           "swiper",
           {
-            attrs: { circular: "true", eventid: "2e32a098-24" },
+            attrs: { circular: "true", eventid: "2e32a098-25" },
             on: { change: _vm.swiperChange }
           },
           _vm._l(_vm.swiperList, function(swiper, index0) {
@@ -868,7 +947,7 @@ var render = function() {
               { key: swiper.id, attrs: { mpcomid: "2e32a098-0-" + index0 } },
               [
                 _c("image", {
-                  attrs: { src: swiper.img, eventid: "2e32a098-23-" + index0 },
+                  attrs: { src: swiper.img, eventid: "2e32a098-24-" + index0 },
                   on: {
                     tap: function($event) {
                       _vm.toSwiper(swiper)
@@ -887,39 +966,48 @@ var render = function() {
       ],
       1
     ),
-    _c("view", { staticClass: "info-box goods-info" }, [
-      _c("view", { staticClass: "price" }, [
-        _vm._v(_vm._s(_vm.goodsData.price))
-      ]),
-      _c("view", { staticClass: "title" }, [_vm._v(_vm._s(_vm.goodsData.name))])
-    ]),
+    _c(
+      "view",
+      { staticClass: "info-box goods-info" },
+      [
+        _c("p", [
+          _c("span", { staticClass: "price" }, [
+            _vm._v(_vm._s(_vm.goodsData.price))
+          ]),
+          _c(
+            "span",
+            {
+              staticStyle: {
+                "text-decoration": "line-through",
+                "font-size": "22rpx",
+                "margin-left": "5rpx"
+              }
+            },
+            [_vm._v("￥299")]
+          )
+        ]),
+        _c("view", { staticClass: "title" }, [
+          _vm._v(_vm._s(_vm.goodsData.name))
+        ]),
+        _vm._m(2)
+      ],
+      1
+    ),
     _c("view", { staticClass: "info-box spec" }, [
       _c(
         "view",
         {
           staticClass: "row",
-          attrs: { eventid: "2e32a098-25" },
+          attrs: { eventid: "2e32a098-26" },
           on: { tap: _vm.showService }
         },
-        [
-          _c("view", { staticClass: "text" }, [_vm._v("服务")]),
-          _c(
-            "view",
-            { staticClass: "content" },
-            _vm._l(_vm.goodsData.service, function(item, index) {
-              return _c("view", { key: index, staticClass: "serviceitem" }, [
-                _vm._v(_vm._s(item.name))
-              ])
-            })
-          ),
-          _vm._m(2)
-        ]
+        [_c("view", { staticClass: "text" }, [_vm._v("服务")]), _vm._m(3)]
       ),
       _c(
         "view",
         {
           staticClass: "row",
-          attrs: { eventid: "2e32a098-26" },
+          attrs: { eventid: "2e32a098-27" },
           on: {
             tap: function($event) {
               _vm.showSpec(false)
@@ -927,22 +1015,23 @@ var render = function() {
           }
         },
         [
-          _c("view", { staticClass: "text" }, [_vm._v("选择")]),
-          _c("view", { staticClass: "content" }, [
-            _c("view", [_vm._v("选择规格：")]),
-            _c(
-              "view",
-              { staticClass: "sp" },
-              _vm._l(_vm.goodsData.spec, function(item, index) {
-                return _c(
-                  "view",
-                  { key: index, class: [index == _vm.selectSpec ? "on" : ""] },
-                  [_vm._v(_vm._s(item))]
+          _vm.selectSpec || _vm.selectGoods
+            ? _c("view", { staticClass: "text" }, [
+                _vm._v(
+                  "已选择 " +
+                    _vm._s(
+                      _vm.selectGoods
+                        ? _vm.goodsData.goodsType[_vm.selectGoods]
+                        : ""
+                    ) +
+                    " " +
+                    _vm._s(
+                      _vm.selectSpec ? _vm.goodsData.spec[_vm.selectSpec] : ""
+                    )
                 )
-              })
-            )
-          ]),
-          _vm._m(3)
+              ])
+            : _c("view", { staticClass: "text" }, [_vm._v("请选择商品型号")]),
+          _vm._m(4)
         ]
       )
     ]),
@@ -959,7 +1048,7 @@ var render = function() {
               "view",
               {
                 staticClass: "show",
-                attrs: { eventid: "2e32a098-27" },
+                attrs: { eventid: "2e32a098-28" },
                 on: {
                   tap: function($event) {
                     _vm.showComments(_vm.goodsData.id)
@@ -1031,6 +1120,16 @@ var staticRenderFns = [
         _c("image", { attrs: { src: "../../static/img/share/qq.png" } }),
         _c("view", { staticClass: "title" }, [_vm._v("QQ")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("view", { staticClass: "three" }, [
+      _c("span", { staticStyle: { width: "40vw" } }, [_vm._v("邮费:15.00")]),
+      _c("span", { staticStyle: { width: "40vw" } }, [_vm._v("销量 403")]),
+      _c("span", [_vm._v("西安")])
     ])
   },
   function() {

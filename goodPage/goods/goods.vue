@@ -92,7 +92,7 @@
 						<view class="description">{{item.description}}</view>
 					</view>
 				</view>
-				<view class="btn"><view class="button" @tap="hideService">完成</view></view>
+				<view class="btn"><view class="button" @tap="hideService">关闭</view></view>
 			</view>
 		</view>
 		<!-- 规格-模态层弹窗 -->
@@ -101,13 +101,19 @@
 			<view class="mask"></view>
 			<view class="layer" @tap.stop="discard">
 				<view class="content">
-					<view class="title">选择规格：</view>
+					<view class="cartContent">
+						<img src="https://s2.ax1x.com/2019/03/28/AdOfUJ.jpg" alt="" 
+						class="cartImg">
+						<span class="price">{{goodsData.price}}</span>
+					</view>
+					<view class="sp">
+						<view v-for="(item,index) in goodsData.goodsType" :class="[index==selectGoods?'on':'']" @tap="selectgoods(index)" :key="index">{{item}}</view>
+					</view>
 					<view class="sp">
 						<view v-for="(item,index) in goodsData.spec" :class="[index==selectSpec?'on':'']" @tap="setSelectSpec(index)" :key="index">{{item}}</view>
 					</view>
-					<view class="length" v-if="selectSpec!=null">
-						<view class="text">数量</view>
-						<view class="number">
+					<view style="font-size: 28rpx;margin-top: 60rpx;">
+						<view style="display: flex;justify-content: flex-start;align-items: center;">
 							<view class="sub" @tap.stop="sub">
 								<view class="icon jian"></view>
 							</view>
@@ -117,8 +123,10 @@
 							<view class="add"  @tap.stop="add">
 								<view class="icon jia"></view>
 							</view>
+							<span style="font-size: 25rpx;color: #C0C0C0;padding-left: 5rpx;">库存 555 件</span>
 						</view>
 					</view>
+					
 				</view>
 				<view class="btn"><view class="button" @tap="hideSpec">完成</view></view>
 			</view>
@@ -134,27 +142,31 @@
 		</view>
 		<!-- 标题 价格 -->
 		<view class="info-box goods-info">
-			<view class="price">{{goodsData.price}}</view>
+			<p>
+				<!-- <view class="price">{{goodsData.price}}</view> -->
+				<span class="price">{{goodsData.price}}</span>
+				 <span style="text-decoration: line-through;font-size: 22upx;margin-left: 5upx;">￥299</span>
+			</p>
 			<view class="title">
 				{{goodsData.name}}
+			</view>
+			<view class="three">
+				<span style="width: 40vw;">邮费:15.00</span>
+				<span style="width: 40vw;">销量 403</span>
+				<span >西安</span>
 			</view>
 		</view>
 		<!-- 服务-规则选择 -->
 		<view class="info-box spec">
 			<view class="row" @tap="showService">
 				<view class="text">服务</view>
-				<view class="content"><view class="serviceitem" v-for="(item,index) in goodsData.service" :key="index">{{item.name}}</view></view>
 				<view class="arrow"><view class="icon xiangyou"></view></view>
 			</view>
 			<view class="row" @tap="showSpec(false)">
-				<view class="text">选择</view>
-				<view class="content">
-					<view>选择规格：</view>
-					<view class="sp">
-						<view v-for="(item,index) in goodsData.spec" :key="index" :class="[index==selectSpec?'on':'']">{{item}}</view>
-					</view>
-					
-				</view>
+				<view v-if="selectSpec||selectGoods" class="text">
+					已选择 {{selectGoods?goodsData.goodsType[selectGoods]:''}} {{selectSpec?goodsData.spec[selectSpec]:''}}
+				</view>			
+				<view class="text" v-else>请选择商品型号</view>
 				<view class="arrow"><view class="icon xiangyou"></view></view>
 			</view>
 		</view>
@@ -229,6 +241,7 @@ export default {
 					{name:"7天退换",description:"此商品享受7天无理由退换服务"}
 				],
 				spec:["XS","S","M","L","XL","XXL"],
+				goodsType:["玫瑰金色链子粉晶拼珍珠","彩虹珠子草编森女手串","链子","特价散珠*1","波罗的海银色手镯"],
 				comment:{
 					number:102,
 					userface:'../../static/img/face.jpg',
@@ -237,7 +250,12 @@ export default {
 				}
 				
 			},
+			goodsList:{
+				type:'',
+				spec:''
+			},
 			selectSpec:null,//选中规格
+			selectGoods:null,//选中商品类型
 			isKeep:false,//收藏
 			//商品描述html
 			descriptionStr:'<div style="text-align:center;"><img width="100%" src="https://s2.ax1x.com/2019/03/28/AdOogx.jpg"/><img width="100%" src="https://s2.ax1x.com/2019/03/28/AdOHKK.jpg"/><img width="100%" src="https://s2.ax1x.com/2019/03/28/AdOTv6.jpg"/></div>'
@@ -316,7 +334,7 @@ export default {
 		},
 		// 加入购物车
 		joinCart(){
-			if(this.selectSpec==null){
+			if(this.selectSpec==null||this.selectGoods==null){
 				return this.showSpec(()=>{
 					uni.showToast({title: "已加入购物车"});
 				});
@@ -325,7 +343,7 @@ export default {
 		},
 		//立即购买
 		buy(){
-			if(this.selectSpec==null){
+			if(this.selectSpec==null||this.selectGoods==null){
 				return this.showSpec(()=>{
 					this.toConfirmation();
 				});
@@ -343,17 +361,23 @@ export default {
 				success: () => {
 					uni.navigateTo({
 						url:'../../pages/order/confirmation'
-					})
+					});
 				}
 			})
 		},
 		//跳转评论列表
 		showComments(goodsid){
-			
+			uni.navigateTo({
+				url:'./discuss'
+			});
 		},
 		//选择规格
 		setSelectSpec(index){
 			this.selectSpec = index;
+		},
+		//选择类别
+		selectgoods(index){
+			this.selectGoods = index;
 		},
 		//减少数量
 		sub(){
@@ -368,6 +392,7 @@ export default {
 		},
 		//跳转锚点
 		toAnchor(index){
+			console.log(index);
 			this.selectAnchor = index;
 			uni.pageScrollTo({scrollTop: this.anchorlist[index].top,duration: 200});
 		},
@@ -420,7 +445,6 @@ export default {
 		hideSpec() {
 			this.specClass = 'hide';
 			//回调
-
 			this.selectSpec&&this.specCallback&&this.specCallback();
 			this.specCallback = false;
 			setTimeout(() => {
@@ -437,6 +461,11 @@ export default {
 <style lang="scss">
 page {
 	background-color: #f8f8f8;
+}
+%flexs{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 @keyframes showPopup {
 		0% {
@@ -570,9 +599,7 @@ page {
 				margin-left: -10%;
 				width: 60upx;
 				height: 60upx;
-				display: flex;
-				align-items: center;
-				justify-content: center;
+				@extend %flexs;
 				font-size: 42upx;
 			}
 		}
@@ -590,9 +617,7 @@ page {
 				}
 				width: 60upx;
 				height: 60upx;
-				display: flex;
-				justify-content: center;
-				align-items: center;
+				@extend %flexs;
 				font-size: 42upx;
 			}
 		}
@@ -629,15 +654,11 @@ page {
 		.middle {
 			font-size: 32upx;
 			height: 90upx;
-			display: flex;
-			justify-content: center;
-			align-items: center;
+			@extend %flexs;
 			view {
 				padding: 0 3%;
 				margin: 0 3%;
-				display: flex;
-				justify-content: center;
-				align-items: center;
+				@extend %flexs;
 				&.on {
 					margin-bottom: -4upx;
 					color: #f47952;
@@ -662,9 +683,7 @@ page {
 		}
 	}
 	.indicator{
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		@extend %flexs;
 		padding: 0 25upx;
 		height: 40upx;
 		border-radius: 40upx;
@@ -688,10 +707,19 @@ page {
 		font-size: 46upx;
 		font-weight: 600;
 		color: #f47925;
+		padding: 10upx 0;
 	}
 	.title {
 		font-size: 30upx;
+		padding: 10upx 0;
 	}
+}
+.three{
+	display: flex;
+	justify-content: space-between;
+	font-size: 24upx;
+	color: #C0C0C0;
+	padding: 10upx 0;
 }
 .spec {
 	.row {
@@ -793,9 +821,7 @@ page {
 	.title {
 		width: 100%;
 		height: 80upx;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		@extend %flexs;
 		font-size: 26upx;
 		color: #999;
 	}
@@ -897,9 +923,7 @@ page {
 				height: 80upx;
 				border-radius: 40upx;
 				color: #fff;
-				display: flex;
-				align-items: center;
-				justify-content: center;
+				@extend %flexs;
 				background-color: #f47952;
 				font-size: 28upx;
 			}
@@ -947,73 +971,55 @@ page {
 			margin: 30upx 0;
 		}
 		.sp {
+			padding: 10rpx 0;
 			display: flex;
+			flex-wrap: wrap;
 			view {
 				font-size: 28upx;
-				padding: 5upx 20upx;
+				padding: 10upx;
 				border-radius: 8upx;
-				margin: 0 30upx 20upx 0;
+				margin: 10upx;
+				box-sizing: border-box;
 				background-color: #f6f6f6;
 				&.on {
-					padding: 3upx 18upx;
+					padding: 10upx;
+					margin: 8upx;
 					border: solid 1upx #f47925;
-				}
-			}
-		}
-		.length{
-			margin-top: 30upx;
-			border-top: solid 1upx #aaa;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding-top: 20upx;
-			.text{
-				font-size: 30upx;
-			}
-			.number{
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				.input{
-					width: 80upx;
-					height: 60upx;
-					margin: 0 10upx;
-					background-color: #f3f3f3;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					text-align: center;
-					input{
-						width: 80upx;
-						height: 60upx;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						text-align: center;
-						font-size: 26upx;
-					}
-				}
-				
-				.sub ,.add{
-					width: 60upx;
-					height: 60upx;
-					background-color: #f3f3f3;
-					border-radius: 5upx;
-					.icon{
-						font-size: 30upx;
-						width: 60upx;
-						height: 60upx;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						
-					}
 				}
 			}
 		}
 		
 	}
 }
+	.input{
+		width: 80upx;
+		height: 60upx;
+		margin: 0 10upx;
+		background-color: #f3f3f3;
+		@extend %flexs;
+		text-align: center;
+		input{
+			width: 80upx;
+			height: 60upx;
+			@extend %flexs;
+			text-align: center;
+			font-size: 26upx;
+		}
+	}
+	
+	.sub ,.add{
+		width: 60upx;
+		height: 60upx;
+		background-color: #f3f3f3;
+		border-radius: 5upx;
+		.icon{
+			font-size: 30upx;
+			width: 60upx;
+			height: 60upx;
+			@extend %flexs;
+			
+		}
+	}
 .share{
 	display: none;
 	&.show {
@@ -1078,20 +1084,35 @@ page {
 		.btn{
 			width: 100%;
 			height: 100upx;
-			display: flex;
-			justify-content: center;
-			align-items: center;
+			@extend %flexs;
 			font-size: 28upx;
 			border-top: solid 1upx #666666;
 		}
 		.h1{
 			width: 100%;
 			height: 80upx;
-			display: flex;
-			justify-content: center;
-			align-items: center;
+			@extend %flexs;
 			font-size: 34upx;
 		}
 	}
 }
+	.cartContent{
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		.price{
+			font-weight: 700;
+			color: orange;
+			padding-left: 10upx;
+		}
+		.cartImg{
+			width: 150upx;
+			height: 150upx;
+			position: relative;
+			top: -25px;
+			border: 2px solid white;
+			border-radius: 5px;
+		}
+	}
+
 </style>
