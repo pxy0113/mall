@@ -123,8 +123,8 @@
 
 
   },
-  onShow: function onShow() {var _this = this;
-    //页面显示时，加载订单信息
+  onShow: function onShow(option) {var _this = this;
+    // if(option.path&&option.path == 'cart'){
     uni.getStorage({
       key: 'buylist',
       success: function success(ret) {
@@ -143,6 +143,9 @@
         _this.freight = _this.freight.toFixed(2);
         _this.deduction = _this.deduction.toFixed(2);
       } });
+
+    // }
+    //页面显示时，加载订单信息
 
     uni.getStorage({
       key: 'selectAddress',
@@ -281,7 +284,11 @@ var render = function() {
               _c("view", { staticClass: "title" }, [_vm._v(_vm._s(row.name))]),
               _c("view", { staticClass: "spec" }, [
                 _vm._v(
-                  "选择" + _vm._s(row.spec) + " 数量:" + _vm._s(row.number)
+                  _vm._s(row.type) +
+                    " " +
+                    _vm._s(row.spec) +
+                    " 数量:" +
+                    _vm._s(row.number)
                 )
               ]),
               _c("view", { staticClass: "price-number" }, [

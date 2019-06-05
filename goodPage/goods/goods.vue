@@ -88,11 +88,15 @@
 			<view class="layer" @tap.stop="discard">
 				<view class="content">
 					<view class="row" v-for="(item,index) in goodsData.service" :key="index">
-						<view class="title">{{item.name}}</view>
-						<view class="description">{{item.description}}</view>
+						<view style="display: flex;justify-content: flex-start;align-items: flex-start;">
+							<icon type="success" size="20" style="margin: 10upx 10upx 10upx 0;"></icon>
+							<view>
+								<view class="title">{{item.name}}</view>
+								<view class="description">{{item.description}}</view>
+							</view>
+						</view>
 					</view>
 				</view>
-				<view class="btn"><view class="button" @tap="hideService">关闭</view></view>
 			</view>
 		</view>
 		<!-- 规格-模态层弹窗 -->
@@ -104,31 +108,46 @@
 					<view class="cartContent">
 						<img src="https://s2.ax1x.com/2019/03/28/AdOfUJ.jpg" alt="" 
 						class="cartImg">
-						<span class="price">{{goodsData.price}}</span>
+						<div class="save">
+							<div>
+								<p class="price">{{goodsData.price}}</p>
+								<p style="font-size: 25rpx;color: #C0C0C0;padding-left: 10upx;">库存 555 件</p>
+							</div>							
+							<icon type="clear" size="20" @tap="hideSpec"></icon>
+						</div>
 					</view>
-					<view class="sp">
-						<view v-for="(item,index) in goodsData.goodsType" :class="[index==selectGoods?'on':'']" @tap="selectgoods(index)" :key="index">{{item}}</view>
-					</view>
+					<view class="line">尺码</view>
 					<view class="sp">
 						<view v-for="(item,index) in goodsData.spec" :class="[index==selectSpec?'on':'']" @tap="setSelectSpec(index)" :key="index">{{item}}</view>
 					</view>
-					<view style="font-size: 28rpx;margin-top: 60rpx;">
-						<view style="display: flex;justify-content: flex-start;align-items: center;">
-							<view class="sub" @tap.stop="sub">
-								<view class="icon jian"></view>
+					<view>颜色分类</view>
+					<view class="sp">
+						<view v-for="(item,index) in goodsData.goodsType" :class="[index==selectGoods?'on':'']" @tap="selectgoods(index)" :key="index">{{item}}</view>
+					</view>
+					<view class="num line">
+						<view>购买数量</view>
+						<view style="font-size: 28rpx;margin-top: 5rpx;">
+							<view style="display: flex;justify-content: flex-start;align-items: center;">
+								<view class="sub" @tap.stop="sub">
+									<view class="icon jian"></view>
+								</view>
+								<view class="input" @tap.stop="discard">
+									<input type="number" v-model="goodsData.number" />
+								</view>
+								<view class="add"  @tap.stop="add">
+									<view class="icon jia"></view>
+								</view>
+
 							</view>
-							<view class="input" @tap.stop="discard">
-								<input type="number" v-model="goodsData.number" />
-							</view>
-							<view class="add"  @tap.stop="add">
-								<view class="icon jia"></view>
-							</view>
-							<span style="font-size: 25rpx;color: #C0C0C0;padding-left: 5rpx;">库存 555 件</span>
 						</view>
 					</view>
 					
 				</view>
-				<view class="btn"><view class="button" @tap="hideSpec">完成</view></view>
+				<!-- <view class="btn"><view class="button" @tap="hideSpec">完成</view></view> -->
+				<view class="btn">
+					<view class="joinCart" @tap="joinCart">加入购物车</view>
+					<view class="buy" @tap="buy">立即购买</view>
+				</view>
 			</view>
 		</view>
 		<!-- 商品主图轮播 -->
@@ -164,9 +183,19 @@
 			</view>
 			<view class="row" @tap="showSpec(false)">
 				<view v-if="selectSpec||selectGoods" class="text">
-					已选择 {{selectGoods?goodsData.goodsType[selectGoods]:''}} {{selectSpec?goodsData.spec[selectSpec]:''}}
+					已选择 {{goodsData.goodsType[selectGoods]}} {{selectSpec?goodsData.spec[selectSpec]:''}}
 				</view>			
-				<view class="text" v-else>请选择商品型号</view>
+				<view class="text" v-else>
+					<div>
+						规格 <span style="color: #333333;padding-left: 8upx;"> 选择 颜色分类,尺码</span> 
+					</div>						
+					<view class="mini">
+						<view class="sp">
+							<view v-for="(item,index) in goodsData.spec":key="index">{{item}}</view>
+							<view>共{{goodsData.spec.length}}种尺码可选</view>
+						</view>
+					</view>
+				</view>
 				<view class="arrow"><view class="icon xiangyou"></view></view>
 			</view>
 		</view>
@@ -231,7 +260,7 @@ export default {
 			shareClass:'',//分享弹窗css类，控制开关动画
 			// 商品信息
 			goodsData:{
-				id:1,
+				id:111,
 				name:"商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题",
 				price:"127.00",
 				number:1,
@@ -249,10 +278,6 @@ export default {
 					content:'很不错，之前买了很多次了，很好看，能放很久，和图片色差不大，值得购买！'
 				}
 				
-			},
-			goodsList:{
-				type:'',
-				spec:''
 			},
 			selectSpec:null,//选中规格
 			selectGoods:null,//选中商品类型
@@ -332,28 +357,89 @@ export default {
 		keep(){
 			this.isKeep = this.isKeep?false:true;
 		},
+		checkCart(){
+			uni.getStorage({
+				key:'cartList',
+				success: (res) => {
+					let list = res.data;
+					let isFind = false;
+					for(let i=0;i<list.length;i++){
+						let row = list[i];
+						if((row.id==this.goodsData.id)&&(row.spec==this.goodsData.spec[this.selectSpec])
+						&&(row.type==this.goodsData.goodsType[this.selectGoods]))
+						{	//找到商品一样的商品
+							list[i].number = list[i].number+this.goodsData.number;//数量自增
+							isFind = true;//找到一样的商品  bug商品Id相同 商品分类不同 需要进入下面的新增
+							break;//跳出循环
+						}
+					}
+					if(!isFind){
+						//没有找到一样的商品，新增一行到购物车商品列表头部
+						let goods = {
+							id:this.goodsData.id,
+							img:this.swiperList[0].img,
+							name:this.goodsData.name,
+							spec:this.goodsData.spec[this.selectSpec],
+							type:this.goodsData.goodsType[this.selectGoods],
+							price:this.goodsData.price,
+							number:this.goodsData.number};
+						list.unshift(goods);
+					}
+					console.log(list);
+					uni.setStorage({
+						key:'cartList',
+						data:list,
+						success: (ret) =>{
+							uni.showToast({title: "已加入购物车"});//都有了就会跳转
+						}
+					})
+				},
+				fail: () => {
+					uni.showToast({title: "加入购物车失败",icon:'none'});//都有了就会跳转
+				}
+			})
+		},
 		// 加入购物车
 		joinCart(){
-			if(this.selectSpec==null||this.selectGoods==null){
-				return this.showSpec(()=>{
-					uni.showToast({title: "已加入购物车"});
-				});
+			let spec = (this.selectSpec==null);
+			let goods = (this.selectGoods==null);
+			if(!spec&&!goods){
+				this.checkCart();
+				//uni.showToast({title: "已加入购物车"});//都有了就会跳转
+				this.specClass = 'none';
+			}else{
+				if(goods){					
+					uni.showToast({title:'请选择颜色分类',icon:'none' });
+					this.specClass = 'show';
+				};
+				if(spec){					
+					uni.showToast({title:'请选择尺码' ,icon:'none' });
+					this.specClass = 'show';
+				};
 			}
-			uni.showToast({title: "已加入购物车"});
 		},
 		//立即购买
 		buy(){
-			if(this.selectSpec==null||this.selectGoods==null){
-				return this.showSpec(()=>{
-					this.toConfirmation();
-				});
-			}
-			this.toConfirmation();
+			let spec = (this.selectSpec==null);
+			let goods = (this.selectGoods==null);
+			 if(!spec&&!goods){
+				this.toConfirmation();
+			 }else{
+				if(goods){					
+					uni.showToast({title:'请选择颜色分类',icon:'none' });
+					this.specClass = 'show';
+				};
+				if(spec){					
+					uni.showToast({title:'请选择尺码' ,icon:'none' });
+					this.specClass = 'show';
+				};
+			 }
+			
 		},
 		//跳转确认订单页面
 		toConfirmation(){
 			let tmpList=[];
-			let goods = {id:this.goodsData.id,img:'../../static/img/goods/p1.jpg',name:this.goodsData.name,spec:'规格:'+this.goodsData.spec[this.selectSpec],price:this.goodsData.price,number:this.goodsData.number};
+			let goods = {id:this.goodsData.id,img:'../../static/img/goods/p1.jpg',name:this.goodsData.name,type:this.goodsData.goodsType[this.selectGoods],spec:this.goodsData.spec[this.selectSpec],price:this.goodsData.price,number:this.goodsData.number};
 			tmpList.push(goods);
 			uni.setStorage({
 				key:'buylist',
@@ -466,6 +552,14 @@ page {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+%jb{
+	height: 80upx;
+	padding: 0 40upx;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	font-size: 28upx;
 }
 @keyframes showPopup {
 		0% {
@@ -725,7 +819,7 @@ page {
 	.row {
 		width: 100%;
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		margin: 0 0 30upx 0;
 		.text {
 			font-size: 24upx;
@@ -739,22 +833,23 @@ page {
 			.serviceitem{
 				margin-right: 10upx;
 			}
-			.sp {
-				width: 100%;
-				display: flex;
-				view {
-					background-color: #f6f6f6;
-					padding: 5upx 10upx;
-					color: #999;
-					margin-right: 10upx;
-					font-size: 20upx;
-					border-radius: 5upx;
-					&.on{
-						border: solid 1upx #f47952;
-						padding: 4upx 8upx;
-					}
-				}
-			}
+			// .sp {
+			// 	width: 100%;
+			// 	display: flex;
+			// 	view {
+			// 		background-color: #f6f6f6;
+			// 		padding: 5upx 10upx;
+			// 		color: #999;
+			// 		margin-right: 10upx;
+			// 		font-size: 20upx;
+			// 		border-radius: 5upx;
+			// 		&.on{
+			// 			border: solid 1upx #f47952;
+			// 			padding: 4upx 8upx;
+			// 		}
+			// 	}
+			// }
+			
 		}
 		.arrow {
 			position: absolute;
@@ -869,12 +964,7 @@ page {
 		margin-right: -2%;
 		.joinCart,
 		.buy {
-			height: 80upx;
-			padding: 0 40upx;
-			color: #fff;
-			display: flex;
-			align-items: center;
-			font-size: 28upx;
+			@extend %jb;
 		}
 		.joinCart {
 			background-color: #f0b46c;
@@ -906,7 +996,7 @@ page {
 		width: 92%;
 		padding: 0 4%;
 		height: 70%;
-		border-radius: 20upx 20upx 0 0;
+		border-radius: 10upx 10upx 0 0;
 		background-color: #fff;
 		display: flex;
 		flex-wrap: wrap;
@@ -915,17 +1005,34 @@ page {
 			width: 100%;
 			padding: 20upx 0;
 		}
+		.num{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
 		.btn {
+			margin: 6upx 0;
+			height: 80upx;
 			width: 100%;
-			height: 100upx;
-			.button {
-				width: 100%;
+			border-radius: 40upx;
+			overflow: hidden;
+			display: flex;
+			.joinCart,
+			.buy {
+				width: 51%;
 				height: 80upx;
-				border-radius: 40upx;
+				// padding: 0 40upx;
 				color: #fff;
-				@extend %flexs;
-				background-color: #f47952;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				font-size: 28upx;
+			}
+			.joinCart {
+				background-color: #f0b46c;
+			}
+			.buy {
+				background-color: #8bbce7;
 			}
 		}
 	}
@@ -966,6 +1073,7 @@ page {
 		}
 	}
 	&.spec {
+		font-size: 28upx;
 		.title {
 			font-size: 30upx;
 			margin: 30upx 0;
@@ -977,13 +1085,13 @@ page {
 			view {
 				font-size: 28upx;
 				padding: 10upx;
-				border-radius: 8upx;
-				margin: 10upx;
+				border-radius: 10upx;
+				margin:10upx 10upx 10upx 0;
 				box-sizing: border-box;
 				background-color: #f6f6f6;
 				&.on {
 					padding: 10upx;
-					margin: 8upx;
+					margin:8upx 8upx 8upx -2upx;
 					border: solid 1upx #f47925;
 				}
 			}
@@ -1103,6 +1211,8 @@ page {
 		.price{
 			font-weight: 700;
 			color: orange;
+			padding-top: 20upx;
+			font-size: 28upx;
 			padding-left: 10upx;
 		}
 		.cartImg{
@@ -1113,6 +1223,35 @@ page {
 			border: 2px solid white;
 			border-radius: 5px;
 		}
+		.save{
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			width: 80%;
+		}
 	}
-
+.line{
+	border-top: 1px solid #f6f6f6;
+	padding-top: 15upx;
+}
+.mini{
+	.sp {
+		padding: 10rpx 0;
+		display: flex;
+		flex-wrap: wrap;
+		view {
+			font-size: 28upx;
+			padding: 10upx;
+			border-radius: 10upx;
+			margin:10upx 10upx 10upx 0;
+			box-sizing: border-box;
+			background-color: #f6f6f6;
+			&.on {
+				padding: 10upx;
+				margin:8upx 8upx 8upx -2upx;
+				border: solid 1upx #f47925;
+			}
+		}
+	}
+}
 </style>

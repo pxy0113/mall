@@ -210,6 +210,35 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   data: function data() {
     return {
@@ -241,7 +270,7 @@
       shareClass: '', //分享弹窗css类，控制开关动画
       // 商品信息
       goodsData: {
-        id: 1,
+        id: 111,
         name: "商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题",
         price: "127.00",
         number: 1,
@@ -259,10 +288,6 @@
           content: '很不错，之前买了很多次了，很好看，能放很久，和图片色差不大，值得购买！' } },
 
 
-
-      goodsList: {
-        type: '',
-        spec: '' },
 
       selectSpec: null, //选中规格
       selectGoods: null, //选中商品类型
@@ -342,28 +367,89 @@
     keep: function keep() {
       this.isKeep = this.isKeep ? false : true;
     },
+    checkCart: function checkCart() {var _this2 = this;
+      uni.getStorage({
+        key: 'cartList',
+        success: function success(res) {
+          var list = res.data;
+          var isFind = false;
+          for (var i = 0; i < list.length; i++) {
+            var row = list[i];
+            if (row.id == _this2.goodsData.id && row.spec == _this2.goodsData.spec[_this2.selectSpec] &&
+            row.type == _this2.goodsData.goodsType[_this2.selectGoods])
+            {//找到商品一样的商品
+              list[i].number = list[i].number + _this2.goodsData.number; //数量自增
+              isFind = true; //找到一样的商品  bug商品Id相同 商品分类不同 需要进入下面的新增
+              break; //跳出循环
+            }
+          }
+          if (!isFind) {
+            //没有找到一样的商品，新增一行到购物车商品列表头部
+            var goods = {
+              id: _this2.goodsData.id,
+              img: _this2.swiperList[0].img,
+              name: _this2.goodsData.name,
+              spec: _this2.goodsData.spec[_this2.selectSpec],
+              type: _this2.goodsData.goodsType[_this2.selectGoods],
+              price: _this2.goodsData.price,
+              number: _this2.goodsData.number };
+            list.unshift(goods);
+          }
+          console.log(list);
+          uni.setStorage({
+            key: 'cartList',
+            data: list,
+            success: function success(ret) {
+              uni.showToast({ title: "已加入购物车" }); //都有了就会跳转
+            } });
+
+        },
+        fail: function fail() {
+          uni.showToast({ title: "加入购物车失败", icon: 'none' }); //都有了就会跳转
+        } });
+
+    },
     // 加入购物车
     joinCart: function joinCart() {
-      if (this.selectSpec == null || this.selectGoods == null) {
-        return this.showSpec(function () {
-          uni.showToast({ title: "已加入购物车" });
-        });
+      var spec = this.selectSpec == null;
+      var goods = this.selectGoods == null;
+      if (!spec && !goods) {
+        this.checkCart();
+        //uni.showToast({title: "已加入购物车"});//都有了就会跳转
+        this.specClass = 'none';
+      } else {
+        if (goods) {
+          uni.showToast({ title: '请选择颜色分类', icon: 'none' });
+          this.specClass = 'show';
+        };
+        if (spec) {
+          uni.showToast({ title: '请选择尺码', icon: 'none' });
+          this.specClass = 'show';
+        };
       }
-      uni.showToast({ title: "已加入购物车" });
     },
     //立即购买
-    buy: function buy() {var _this2 = this;
-      if (this.selectSpec == null || this.selectGoods == null) {
-        return this.showSpec(function () {
-          _this2.toConfirmation();
-        });
+    buy: function buy() {
+      var spec = this.selectSpec == null;
+      var goods = this.selectGoods == null;
+      if (!spec && !goods) {
+        this.toConfirmation();
+      } else {
+        if (goods) {
+          uni.showToast({ title: '请选择颜色分类', icon: 'none' });
+          this.specClass = 'show';
+        };
+        if (spec) {
+          uni.showToast({ title: '请选择尺码', icon: 'none' });
+          this.specClass = 'show';
+        };
       }
-      this.toConfirmation();
+
     },
     //跳转确认订单页面
     toConfirmation: function toConfirmation() {
       var tmpList = [];
-      var goods = { id: this.goodsData.id, img: '../../static/img/goods/p1.jpg', name: this.goodsData.name, spec: '规格:' + this.goodsData.spec[this.selectSpec], price: this.goodsData.price, number: this.goodsData.number };
+      var goods = { id: this.goodsData.id, img: '../../static/img/goods/p1.jpg', name: this.goodsData.name, type: this.goodsData.goodsType[this.selectGoods], spec: this.goodsData.spec[this.selectSpec], price: this.goodsData.price, number: this.goodsData.number };
       tmpList.push(goods);
       uni.setStorage({
         key: 'buylist',
@@ -684,7 +770,7 @@ var render = function() {
       {
         staticClass: "popup service",
         class: _vm.serviceClass,
-        attrs: { eventid: "2e32a098-14" },
+        attrs: { eventid: "2e32a098-13" },
         on: {
           touchmove: function($event) {
             $event.stopPropagation()
@@ -700,7 +786,7 @@ var render = function() {
           "view",
           {
             staticClass: "layer",
-            attrs: { eventid: "2e32a098-13" },
+            attrs: { eventid: "2e32a098-12" },
             on: {
               tap: function($event) {
                 $event.stopPropagation()
@@ -714,26 +800,34 @@ var render = function() {
               { staticClass: "content" },
               _vm._l(_vm.goodsData.service, function(item, index) {
                 return _c("view", { key: index, staticClass: "row" }, [
-                  _c("view", { staticClass: "title" }, [
-                    _vm._v(_vm._s(item.name))
-                  ]),
-                  _c("view", { staticClass: "description" }, [
-                    _vm._v(_vm._s(item.description))
-                  ])
+                  _c(
+                    "view",
+                    {
+                      staticStyle: {
+                        display: "flex",
+                        "justify-content": "flex-start",
+                        "align-items": "flex-start"
+                      }
+                    },
+                    [
+                      _c("icon", {
+                        staticStyle: { margin: "10rpx 10rpx 10rpx 0" },
+                        attrs: { type: "success", size: "20" }
+                      }),
+                      _c("view", [
+                        _c("view", { staticClass: "title" }, [
+                          _vm._v(_vm._s(item.name))
+                        ]),
+                        _c("view", { staticClass: "description" }, [
+                          _vm._v(_vm._s(item.description))
+                        ])
+                      ])
+                    ],
+                    1
+                  )
                 ])
               })
-            ),
-            _c("view", { staticClass: "btn" }, [
-              _c(
-                "view",
-                {
-                  staticClass: "button",
-                  attrs: { eventid: "2e32a098-12" },
-                  on: { tap: _vm.hideService }
-                },
-                [_vm._v("关闭")]
-              )
-            ])
+            )
           ]
         )
       ]
@@ -743,7 +837,7 @@ var render = function() {
       {
         staticClass: "popup spec",
         class: _vm.specClass,
-        attrs: { eventid: "2e32a098-23" },
+        attrs: { eventid: "2e32a098-24" },
         on: {
           touchmove: function($event) {
             $event.stopPropagation()
@@ -759,7 +853,7 @@ var render = function() {
           "view",
           {
             staticClass: "layer",
-            attrs: { eventid: "2e32a098-22" },
+            attrs: { eventid: "2e32a098-23" },
             on: {
               tap: function($event) {
                 $event.stopPropagation()
@@ -777,30 +871,43 @@ var render = function() {
                     alt: ""
                   }
                 }),
-                _c("span", { staticClass: "price" }, [
-                  _vm._v(_vm._s(_vm.goodsData.price))
-                ])
+                _c(
+                  "div",
+                  { staticClass: "save" },
+                  [
+                    _c(
+                      "div",
+                      [
+                        _c("p", { staticClass: "price" }, [
+                          _vm._v(_vm._s(_vm.goodsData.price))
+                        ]),
+                        _c(
+                          "p",
+                          {
+                            staticStyle: {
+                              "font-size": "25rpx",
+                              color: "#C0C0C0",
+                              "padding-left": "10rpx"
+                            }
+                          },
+                          [_vm._v("库存 555 件")]
+                        )
+                      ],
+                      1
+                    ),
+                    _c("icon", {
+                      attrs: {
+                        type: "clear",
+                        size: "20",
+                        eventid: "2e32a098-14"
+                      },
+                      on: { tap: _vm.hideSpec }
+                    })
+                  ],
+                  1
+                )
               ]),
-              _c(
-                "view",
-                { staticClass: "sp" },
-                _vm._l(_vm.goodsData.goodsType, function(item, index) {
-                  return _c(
-                    "view",
-                    {
-                      key: index,
-                      class: [index == _vm.selectGoods ? "on" : ""],
-                      attrs: { eventid: "2e32a098-15-" + index },
-                      on: {
-                        tap: function($event) {
-                          _vm.selectgoods(index)
-                        }
-                      }
-                    },
-                    [_vm._v(_vm._s(item))]
-                  )
-                })
-              ),
+              _c("view", { staticClass: "line" }, [_vm._v("尺码")]),
               _c(
                 "view",
                 { staticClass: "sp" },
@@ -810,7 +917,7 @@ var render = function() {
                     {
                       key: index,
                       class: [index == _vm.selectSpec ? "on" : ""],
-                      attrs: { eventid: "2e32a098-16-" + index },
+                      attrs: { eventid: "2e32a098-15-" + index },
                       on: {
                         tap: function($event) {
                           _vm.setSelectSpec(index)
@@ -821,110 +928,132 @@ var render = function() {
                   )
                 })
               ),
+              _c("view", [_vm._v("颜色分类")]),
               _c(
                 "view",
-                {
-                  staticStyle: { "font-size": "28rpx", "margin-top": "60rpx" }
-                },
-                [
-                  _c(
+                { staticClass: "sp" },
+                _vm._l(_vm.goodsData.goodsType, function(item, index) {
+                  return _c(
                     "view",
                     {
-                      staticStyle: {
-                        display: "flex",
-                        "justify-content": "flex-start",
-                        "align-items": "center"
+                      key: index,
+                      class: [index == _vm.selectGoods ? "on" : ""],
+                      attrs: { eventid: "2e32a098-16-" + index },
+                      on: {
+                        tap: function($event) {
+                          _vm.selectgoods(index)
+                        }
                       }
                     },
-                    [
-                      _c(
-                        "view",
-                        {
-                          staticClass: "sub",
-                          attrs: { eventid: "2e32a098-17" },
-                          on: {
-                            tap: function($event) {
-                              $event.stopPropagation()
-                              _vm.sub($event)
-                            }
-                          }
-                        },
-                        [_c("view", { staticClass: "icon jian" })]
-                      ),
-                      _c(
-                        "view",
-                        {
-                          staticClass: "input",
-                          attrs: { eventid: "2e32a098-19" },
-                          on: {
-                            tap: function($event) {
-                              $event.stopPropagation()
-                              _vm.discard($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.goodsData.number,
-                                expression: "goodsData.number"
-                              }
-                            ],
-                            attrs: { type: "number", eventid: "2e32a098-18" },
-                            domProps: { value: _vm.goodsData.number },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.goodsData.number = $event.target.value
-                              }
-                            }
-                          })
-                        ]
-                      ),
-                      _c(
-                        "view",
-                        {
-                          staticClass: "add",
-                          attrs: { eventid: "2e32a098-20" },
-                          on: {
-                            tap: function($event) {
-                              $event.stopPropagation()
-                              _vm.add($event)
-                            }
-                          }
-                        },
-                        [_c("view", { staticClass: "icon jia" })]
-                      ),
-                      _c(
-                        "span",
-                        {
-                          staticStyle: {
-                            "font-size": "25rpx",
-                            color: "#C0C0C0",
-                            "padding-left": "5rpx"
-                          }
-                        },
-                        [_vm._v("库存 555 件")]
-                      )
-                    ]
+                    [_vm._v(_vm._s(item))]
                   )
-                ]
-              )
+                })
+              ),
+              _c("view", { staticClass: "num line" }, [
+                _c("view", [_vm._v("购买数量")]),
+                _c(
+                  "view",
+                  {
+                    staticStyle: { "font-size": "28rpx", "margin-top": "5rpx" }
+                  },
+                  [
+                    _c(
+                      "view",
+                      {
+                        staticStyle: {
+                          display: "flex",
+                          "justify-content": "flex-start",
+                          "align-items": "center"
+                        }
+                      },
+                      [
+                        _c(
+                          "view",
+                          {
+                            staticClass: "sub",
+                            attrs: { eventid: "2e32a098-17" },
+                            on: {
+                              tap: function($event) {
+                                $event.stopPropagation()
+                                _vm.sub($event)
+                              }
+                            }
+                          },
+                          [_c("view", { staticClass: "icon jian" })]
+                        ),
+                        _c(
+                          "view",
+                          {
+                            staticClass: "input",
+                            attrs: { eventid: "2e32a098-19" },
+                            on: {
+                              tap: function($event) {
+                                $event.stopPropagation()
+                                _vm.discard($event)
+                              }
+                            }
+                          },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.goodsData.number,
+                                  expression: "goodsData.number"
+                                }
+                              ],
+                              attrs: { type: "number", eventid: "2e32a098-18" },
+                              domProps: { value: _vm.goodsData.number },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.goodsData.number = $event.target.value
+                                }
+                              }
+                            })
+                          ]
+                        ),
+                        _c(
+                          "view",
+                          {
+                            staticClass: "add",
+                            attrs: { eventid: "2e32a098-20" },
+                            on: {
+                              tap: function($event) {
+                                $event.stopPropagation()
+                                _vm.add($event)
+                              }
+                            }
+                          },
+                          [_c("view", { staticClass: "icon jia" })]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ])
             ]),
             _c("view", { staticClass: "btn" }, [
               _c(
                 "view",
                 {
-                  staticClass: "button",
+                  staticClass: "joinCart",
                   attrs: { eventid: "2e32a098-21" },
-                  on: { tap: _vm.hideSpec }
+                  on: { tap: _vm.joinCart }
                 },
-                [_vm._v("完成")]
+                [_vm._v("加入购物车")]
+              ),
+              _c(
+                "view",
+                {
+                  staticClass: "buy",
+                  attrs: { eventid: "2e32a098-22" },
+                  on: { tap: _vm.buy }
+                },
+                [_vm._v("立即购买")]
               )
             ])
           ]
@@ -938,7 +1067,7 @@ var render = function() {
         _c(
           "swiper",
           {
-            attrs: { circular: "true", eventid: "2e32a098-25" },
+            attrs: { circular: "true", eventid: "2e32a098-26" },
             on: { change: _vm.swiperChange }
           },
           _vm._l(_vm.swiperList, function(swiper, index0) {
@@ -947,7 +1076,7 @@ var render = function() {
               { key: swiper.id, attrs: { mpcomid: "2e32a098-0-" + index0 } },
               [
                 _c("image", {
-                  attrs: { src: swiper.img, eventid: "2e32a098-24-" + index0 },
+                  attrs: { src: swiper.img, eventid: "2e32a098-25-" + index0 },
                   on: {
                     tap: function($event) {
                       _vm.toSwiper(swiper)
@@ -998,7 +1127,7 @@ var render = function() {
         "view",
         {
           staticClass: "row",
-          attrs: { eventid: "2e32a098-26" },
+          attrs: { eventid: "2e32a098-27" },
           on: { tap: _vm.showService }
         },
         [_c("view", { staticClass: "text" }, [_vm._v("服务")]), _vm._m(3)]
@@ -1007,7 +1136,7 @@ var render = function() {
         "view",
         {
           staticClass: "row",
-          attrs: { eventid: "2e32a098-27" },
+          attrs: { eventid: "2e32a098-28" },
           on: {
             tap: function($event) {
               _vm.showSpec(false)
@@ -1019,19 +1148,38 @@ var render = function() {
             ? _c("view", { staticClass: "text" }, [
                 _vm._v(
                   "已选择 " +
-                    _vm._s(
-                      _vm.selectGoods
-                        ? _vm.goodsData.goodsType[_vm.selectGoods]
-                        : ""
-                    ) +
+                    _vm._s(_vm.goodsData.goodsType[_vm.selectGoods]) +
                     " " +
                     _vm._s(
                       _vm.selectSpec ? _vm.goodsData.spec[_vm.selectSpec] : ""
                     )
                 )
               ])
-            : _c("view", { staticClass: "text" }, [_vm._v("请选择商品型号")]),
-          _vm._m(4)
+            : _c("view", { staticClass: "text" }, [
+                _vm._m(4),
+                _c("view", { staticClass: "mini" }, [
+                  _c(
+                    "view",
+                    { staticClass: "sp" },
+                    [
+                      _vm._l(_vm.goodsData.spec, function(item, index) {
+                        return _c("view", { key: index }, [
+                          _vm._v(_vm._s(item))
+                        ])
+                      }),
+                      _c("view", [
+                        _vm._v(
+                          "共" +
+                            _vm._s(_vm.goodsData.spec.length) +
+                            "种尺码可选"
+                        )
+                      ])
+                    ],
+                    2
+                  )
+                ])
+              ]),
+          _vm._m(5)
         ]
       )
     ]),
@@ -1048,7 +1196,7 @@ var render = function() {
               "view",
               {
                 staticClass: "show",
-                attrs: { eventid: "2e32a098-28" },
+                attrs: { eventid: "2e32a098-29" },
                 on: {
                   tap: function($event) {
                     _vm.showComments(_vm.goodsData.id)
@@ -1138,6 +1286,19 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("view", { staticClass: "arrow" }, [
       _c("view", { staticClass: "icon xiangyou" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _vm._v("规格"),
+      _c(
+        "span",
+        { staticStyle: { color: "#333333", "padding-left": "8rpx" } },
+        [_vm._v("选择 颜色分类,尺码")]
+      )
     ])
   },
   function() {

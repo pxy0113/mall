@@ -35,7 +35,6 @@ page {
 .header .after .middle view,
 .swiper-box .indicator,
 .description .title,
-.popup .layer .btn .button,
 .input,
 .input input,
 .sub .icon,
@@ -54,6 +53,21 @@ page {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.footer .btn .joinCart,
+.footer .btn .buy {
+  height: 80rpx;
+  padding: 0 40rpx;
+  color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 28rpx;
 }
 @-webkit-keyframes showPopup {
 0% {
@@ -337,10 +351,10 @@ page {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   margin: 0 0 30rpx 0;
 }
 .spec .row .text {
@@ -360,25 +374,6 @@ page {
 }
 .spec .row .content .serviceitem {
       margin-right: 10rpx;
-}
-.spec .row .content .sp {
-      width: 100%;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-}
-.spec .row .content .sp view {
-        background-color: #f6f6f6;
-        padding: 5rpx 10rpx;
-        color: #999;
-        margin-right: 10rpx;
-        font-size: 20rpx;
-        border-radius: 5rpx;
-}
-.spec .row .content .sp view.on {
-          border: solid 1rpx #f47952;
-          padding: 4rpx 8rpx;
 }
 .spec .row .arrow {
     position: absolute;
@@ -533,21 +528,6 @@ page {
     display: flex;
     margin-right: -2%;
 }
-.footer .btn .joinCart,
-    .footer .btn .buy {
-      height: 80rpx;
-      padding: 0 40rpx;
-      color: #fff;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-          -ms-flex-align: center;
-              align-items: center;
-      font-size: 28rpx;
-}
 .footer .btn .joinCart {
       background-color: #f0b46c;
 }
@@ -577,7 +557,7 @@ page {
     width: 92%;
     padding: 0 4%;
     height: 70%;
-    border-radius: 20rpx 20rpx 0 0;
+    border-radius: 10rpx 10rpx 0 0;
     background-color: #fff;
     display: -webkit-box;
     display: -webkit-flex;
@@ -594,17 +574,55 @@ page {
       width: 100%;
       padding: 20rpx 0;
 }
-.popup .layer .btn {
-      width: 100%;
-      height: 100rpx;
+.popup .layer .num {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
 }
-.popup .layer .btn .button {
-        width: 100%;
+.popup .layer .btn {
+      margin: 6rpx 0;
+      height: 80rpx;
+      width: 100%;
+      border-radius: 40rpx;
+      overflow: hidden;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+}
+.popup .layer .btn .joinCart,
+      .popup .layer .btn .buy {
+        width: 51%;
         height: 80rpx;
-        border-radius: 40rpx;
         color: #fff;
-        background-color: #f47952;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
         font-size: 28rpx;
+}
+.popup .layer .btn .joinCart {
+        background-color: #f0b46c;
+}
+.popup .layer .btn .buy {
+        background-color: #8bbce7;
 }
 .popup.show {
     display: block;
@@ -642,33 +660,36 @@ page {
       font-size: 28rpx;
       color: #999;
 }
+.popup.spec {
+    font-size: 28rpx;
+}
 .popup.spec .title {
-    font-size: 30rpx;
-    margin: 30rpx 0;
+      font-size: 30rpx;
+      margin: 30rpx 0;
 }
 .popup.spec .sp {
-    padding: 10rpx 0;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
+      padding: 10rpx 0;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
 }
 .popup.spec .sp view {
-      font-size: 28rpx;
-      padding: 10rpx;
-      border-radius: 8rpx;
-      margin: 10rpx;
-      -webkit-box-sizing: border-box;
-              box-sizing: border-box;
-      background-color: #f6f6f6;
+        font-size: 28rpx;
+        padding: 10rpx;
+        border-radius: 10rpx;
+        margin: 10rpx 10rpx 10rpx 0;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        background-color: #f6f6f6;
 }
 .popup.spec .sp view.on {
-        padding: 10rpx;
-        margin: 8rpx;
-        border: solid 1rpx #f47925;
+          padding: 10rpx;
+          margin: 8rpx 8rpx 8rpx -2rpx;
+          border: solid 1rpx #f47925;
 }
 .input {
   width: 80rpx;
@@ -805,6 +826,8 @@ page {
 .cartContent .price {
     font-weight: 700;
     color: orange;
+    padding-top: 20rpx;
+    font-size: 28rpx;
     padding-left: 10rpx;
 }
 .cartContent .cartImg {
@@ -814,5 +837,48 @@ page {
     top: -25px;
     border: 2px solid white;
     border-radius: 5px;
+}
+.cartContent .save {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    width: 80%;
+}
+.line {
+  border-top: 1px solid #f6f6f6;
+  padding-top: 15rpx;
+}
+.mini .sp {
+  padding: 10rpx 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.mini .sp view {
+    font-size: 28rpx;
+    padding: 10rpx;
+    border-radius: 10rpx;
+    margin: 10rpx 10rpx 10rpx 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    background-color: #f6f6f6;
+}
+.mini .sp view.on {
+      padding: 10rpx;
+      margin: 8rpx 8rpx 8rpx -2rpx;
+      border: solid 1rpx #f47925;
 }
 

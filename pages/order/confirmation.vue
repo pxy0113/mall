@@ -29,7 +29,7 @@
 					</view>
 					<view class="info">
 						<view class="title">{{row.name}}</view>
-						<view class="spec">选择{{row.spec}} 数量:{{row.number}}</view>
+						<view class="spec">{{row.type}} {{row.spec}} 数量:{{row.number}}</view>
 						<view class="price-number">
 							<view class="price">￥{{row.price*row.number}}</view>
 							<view class="number">
@@ -113,27 +113,30 @@
 
 			};
 		},
-		onShow() {
-			//页面显示时，加载订单信息
-			uni.getStorage({
-				key:'buylist',
-				success: (ret) => {
-					this.buylist = ret.data;
-					this.goodsPrice=0;
-					//合计
-					let len = this.buylist.length;
-					for(let i=0;i<len;i++){
-						this.goodsPrice = this.goodsPrice + (this.buylist[i].number*this.buylist[i].price);
+		onShow(option) {
+			// if(option.path&&option.path == 'cart'){
+				uni.getStorage({
+					key:'buylist',
+					success: (ret) => {
+						this.buylist = ret.data;
+						this.goodsPrice=0;
+						//合计
+						let len = this.buylist.length;
+						for(let i=0;i<len;i++){
+							this.goodsPrice = this.goodsPrice + (this.buylist[i].number*this.buylist[i].price);
+						}
+						this.deduction = this.int/100;
+						this.sumPrice = this.goodsPrice-this.deduction+this.freight;
+						//强制保留两位小数
+						this.sumPrice = this.sumPrice.toFixed(2);
+						this.goodsPrice = this.goodsPrice.toFixed(2);
+						this.freight = this.freight.toFixed(2);
+						this.deduction = this.deduction.toFixed(2);
 					}
-					this.deduction = this.int/100;
-					this.sumPrice = this.goodsPrice-this.deduction+this.freight;
-					//强制保留两位小数
-					this.sumPrice = this.sumPrice.toFixed(2);
-					this.goodsPrice = this.goodsPrice.toFixed(2);
-					this.freight = this.freight.toFixed(2);
-					this.deduction = this.deduction.toFixed(2);
-				}
-			});
+				});
+			// }
+			//页面显示时，加载订单信息
+			
 			uni.getStorage({
 				key:'selectAddress',
 				success: (e) => {

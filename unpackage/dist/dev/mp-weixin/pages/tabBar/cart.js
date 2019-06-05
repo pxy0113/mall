@@ -87,13 +87,7 @@
       statusTop: null,
       selectedList: [],
       isAllselected: false,
-      goodsList: [
-      { id: 1, img: '../../static/img/goods/p1.jpg', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题', spec: '规格:S码', price: 127.5, number: 1, selected: false },
-      { id: 2, img: '../../static/img/goods/p2.jpg', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题', spec: '规格:S码', price: 127.5, number: 1, selected: false },
-      { id: 3, img: '../../static/img/goods/p3.jpg', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题', spec: '规格:S码', price: 127.5, number: 1, selected: false },
-      { id: 4, img: '../../static/img/goods/p4.jpg', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题', spec: '规格:S码', price: 127.5, number: 1, selected: false },
-      { id: 5, img: '../../static/img/goods/p5.jpg', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题', spec: '规格:S码', price: 127.5, number: 1, selected: false }],
-
+      goodsList: [],
       //控制滑动效果
       theIndex: null,
       oldIndex: null,
@@ -109,6 +103,7 @@
   //下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
   onPullDownRefresh: function onPullDownRefresh() {
     setTimeout(function () {
+      console.log('下拉再次请求购物车');
       uni.stopPullDownRefresh();
     }, 1000);
   },
@@ -119,6 +114,29 @@
 
 
 
+
+
+    // uni.setStorage({
+    // 	key:'cartList',
+    // 	data:[
+    // 		{id:1,img:'../../static/img/goods/p1.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'猪肉',spec:'s',price:127.5,number:1,selected:false},
+    // 		{id:2,img:'../../static/img/goods/p2.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'妞',spec:'xll',price:127.5,number:1,selected:false},
+    // 		{id:3,img:'../../static/img/goods/p3.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'玩具熊',spec:'xxxl',price:127.5,number:1,selected:false},
+    // 		{id:4,img:'../../static/img/goods/p4.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'原装',spec:'m',price:127.5,number:1,selected:false},
+    // 		{id:5,img:'../../static/img/goods/p5.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'哦豁',spec:'l',price:127.5,number:1,selected:false}
+    // 	]
+    // });
+    // 如果有session就读 没有就请求
+  },
+  onShow: function onShow() {var _this = this;
+    uni.getStorage({
+      key: 'cartList',
+      success: function success(res) {
+        _this.goodsList = res.data;
+      },
+      fail: function fail(err) {
+        _this.goodsList = [];
+      } });
 
   },
   methods: {
@@ -158,7 +176,7 @@
       //初始坐标
       this.initXY = [event.touches[0].pageX, event.touches[0].pageY];
     },
-    touchMove: function touchMove(index, event) {var _this = this;
+    touchMove: function touchMove(index, event) {var _this2 = this;
       //多点触控不触发
       if (event.touches.length > 1) {
         this.isStop = true;
@@ -185,7 +203,7 @@
           this.theIndex = null;
           this.isStop = true;
           setTimeout(function () {
-            _this.oldIndex = null;
+            _this2.oldIndex = null;
           }, 150);
         }
       }
@@ -236,6 +254,10 @@
       for (var _i3 = 0; _i3 < len; _i3++) {
         if (id == this.goodsList[_i3].id) {
           this.goodsList.splice(_i3, 1);
+          uni.setStorage({
+            key: 'cartList',
+            data: this.goodsList });
+
           break;
         }
       }
@@ -435,7 +457,12 @@ var render = function() {
                         _vm._v(_vm._s(row.name))
                       ]),
                       _c("view", { staticClass: "spec" }, [
-                        _vm._v(_vm._s(row.spec))
+                        _vm._v(
+                          _vm._s(row.type) +
+                            " " +
+                            _vm._s(row.spec) +
+                            "梵蒂冈梵蒂冈地方广泛大概豆腐干大概梵蒂冈梵蒂冈发个梵蒂冈"
+                        )
                       ]),
                       _c("view", { staticClass: "price-number" }, [
                         _c("view", { staticClass: "price" }, [

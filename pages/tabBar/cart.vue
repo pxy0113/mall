@@ -29,7 +29,7 @@
 						</view>
 						<view class="info">
 							<view class="title">{{row.name}}</view>
-							<view class="spec">{{row.spec}}</view>
+							<view class="spec">{{row.type}} {{row.spec}}梵蒂冈梵蒂冈地方广泛大概豆腐干大概梵蒂冈梵蒂冈发个梵蒂冈</view>
 							<view class="price-number">
 								<view class="price">￥{{row.price}}</view>
 								<view class="number">
@@ -77,13 +77,7 @@
 				statusTop:null,
 				selectedList:[],
 				isAllselected:false,
-				goodsList:[
-					{id:1,img:'../../static/img/goods/p1.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:2,img:'../../static/img/goods/p2.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:3,img:'../../static/img/goods/p3.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:4,img:'../../static/img/goods/p4.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:5,img:'../../static/img/goods/p5.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false}
-				],
+				goodsList:[],
 				//控制滑动效果
 				theIndex:null,
 				oldIndex:null,
@@ -99,6 +93,7 @@
 		//下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
 		onPullDownRefresh() {
 		    setTimeout(function () {
+				console.log('下拉再次请求购物车');
 		        uni.stopPullDownRefresh();
 		    }, 1000);
 		},
@@ -110,6 +105,29 @@
 			// #ifdef APP-PLUS
 			this.statusHeight = plus.navigator.getStatusbarHeight();
 			// #endif
+			
+			// uni.setStorage({
+			// 	key:'cartList',
+			// 	data:[
+			// 		{id:1,img:'../../static/img/goods/p1.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'猪肉',spec:'s',price:127.5,number:1,selected:false},
+			// 		{id:2,img:'../../static/img/goods/p2.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'妞',spec:'xll',price:127.5,number:1,selected:false},
+			// 		{id:3,img:'../../static/img/goods/p3.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'玩具熊',spec:'xxxl',price:127.5,number:1,selected:false},
+			// 		{id:4,img:'../../static/img/goods/p4.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'原装',spec:'m',price:127.5,number:1,selected:false},
+			// 		{id:5,img:'../../static/img/goods/p5.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'哦豁',spec:'l',price:127.5,number:1,selected:false}
+			// 	]
+			// });
+			// 如果有session就读 没有就请求
+		},
+		onShow() {
+			uni.getStorage({
+				key:'cartList',
+				success: (res) => {
+					this.goodsList = res.data;
+				},
+				fail: (err) => {
+					this.goodsList = [];
+				}
+			});
 		},
 		methods: {
 			//加入商品 参数 goods:商品数据
@@ -218,7 +236,7 @@
 							url:'../../pages/order/confirmation'
 						})
 					}
-				})
+				});
 			},
 			//删除商品
 			deleteGoods(id){
@@ -226,6 +244,10 @@
 				for(let i=0;i<len;i++){
 					if(id==this.goodsList[i].id){
 						this.goodsList.splice(i, 1);
+						uni.setStorage({
+							key:'cartList',
+							data:this.goodsList
+						})
 						break;
 					}
 				}
