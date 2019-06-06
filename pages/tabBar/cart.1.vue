@@ -9,49 +9,46 @@
 		<!-- 商品列表 -->
 		<view class="goods-list">
 			<view class="tis" v-if="goodsList.length==0">购物车是空的哦~</view>
-            <view class="goods-info" v-for="(row,index) in goodsList" :key="index" >
-				<view class="content">				
-					<view class="goods-body">
-						<view class="left">
-							<view class="checkbox-box1" @tap="selected(index)">
-								<view class="checkbox1">
-									<view :class="[row.selected?'on':'']"></view>
-								</view>
-							</view>
-							<image :src="row.img" ></image>
+            <view class="row" v-for="(row,index) in goodsList" :key="index" >
+				<!-- 删除按钮 -->
+				<view class="menu" @tap.stop="deleteGoods(row.id)">
+					<view class="icon shanchu"></view>
+				</view>
+				<!-- 商品 -->
+				<view class="carrier" :class="[theIndex==index?'open':oldIndex==index?'close':'']" @touchstart="touchStart(index,$event)" @touchmove="touchMove(index,$event)" @touchend="touchEnd(index,$event)">
+					<!-- checkbox -->
+					<view class="checkbox-box" @tap="selected(index)">
+						<view class="checkbox">
+							<view :class="[row.selected?'on':'']"></view>
 						</view>
-						
-						<view class="right">
-							<p class="Gtitle">{{row.name}}</p>
-							<p class="Gspec" @tap="toShowType(row)">{{row.goodsType[row.type]}} {{row.specList[row.spec]}}</icon></p>
-							<p style="font-size: 24upx;color: #EB4D3D;">当前库存已不足</p>
-							<p style="font-size: 24upx;color: #EB4D3D;">当前库存已不足</p>							
+					</view>
+					<!-- 商品信息 -->
+					<view class="goods-info" @tap="toGoods(row)">
+						<view class="img">
+							<image :src="row.img"></image>
+						</view>
+						<view class="info">
+							<view class="title">{{row.name}}</view>
+							<view class="spec">{{row.type}} {{row.spec}}</view>	
 							<view class="price-number">
 								<view class="price">￥{{row.price}}</view>
-								<uni-number-box @change="changeNumber($event,row)" v-model="row.number" :max="200"></uni-number-box>
+								<view class="number">
+									<view class="sub" @tap.stop="sub(index)">
+										<view class="icon jian"></view>
+									</view>
+									<view class="input" @tap.stop="discard">
+										<input type="number" v-model="row.number" @input="sum($event,index)" />
+									</view>
+									<view class="add"  @tap.stop="add(index)">
+										<view class="icon jia"></view>
+									</view>
+								</view>
 							</view>
 						</view>
-					</view>	
+					</view>
 				</view>
-
 			</view>
         </view>
-		<view class="pop" :class="showType" catchtouchmove="true">
-			<view class="mask" @tap="hideType" ></view>
-			<view class="layer">
-				<view style="width: 100%;padding: 10upx;font-size: 28upx;">
-					<view>颜色分类</view>
-					<view class="sp">
-						<view v-for="(item,index) in editData.specList" :class="[index==editData.spec?'on':'']" @tap="setSelectSpec(index)" :key="index">{{item}}</view>
-					</view>
-					<view>颜色分类</view>
-					<view class="sp">
-						<view v-for="(item,index) in editData.goodsType" :class="[index==editData.type?'on':'']" @tap="selectgoods(index)" :key="index">{{item}}</view>
-					</view>
-					<button style="background: #8bbce7;" @tap="editCart">确定</button>
-				</view>
-			</view>
-		</view>
 		<!-- 脚部菜单 -->
 		<view class="footer" :style="{bottom:footerbottom}">
 			<view class="checkbox-box" @tap="allSelect">
@@ -70,18 +67,10 @@
 </template>
 
 <script>
-import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
+
 	export default {
-		components:{uniNumberBox},
 		data() {
 			return {
-				editData:{
-					specList:[],
-					goodsType:[],
-					spec:'',
-					type:''
-				},
-				showType:'',//控制显示弹窗
 				sumPrice:'0.00',
 				headerPosition:"fixed",
 				headerTop:null,
@@ -117,47 +106,17 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 			this.statusHeight = plus.navigator.getStatusbarHeight();
 			// #endif
 			
-			uni.setStorage({
-				key:'cartList',
-				data:[
-					{
-						id:10,
-						img:'../../static/img/goods/p1.jpg',
-						name:'蝴蝶结丝绒长袖吊带连衣裙欧美复古',
-						type:2,
-						spec:1,
-						specList:["XS","S","M","L","XL","XXL"],
-						goodsType:["粉紫","樱桃红","湖水蓝"],
-						price:127.5,
-						number:1,
-						selected:false,
-					},
-					{
-						id:22,
-						img:'../../static/img/goods/p2.jpg',
-						name:'森系少女复古手链手环网红Ins',
-						type:4,
-						spec:1,
-						specList:["XS","S","M","L","XL","XXL"],
-						goodsType:["玫瑰金色链子粉晶拼珍珠","彩虹珠子草编森女手串","链子","特价散珠*1","波罗的海银色手镯"],
-						price:127.5,
-						number:1,
-						selected:false,
-					},
-					{
-						id:33,
-						img:'../../static/img/goods/p3.jpg',
-						name:'阳澄湖精品大闸蟹',
-						type:0,
-						spec:1,
-						specList:["500g","250g","1kg"],
-						goodsType:["公蟹",'母蟹','公母各半'],
-						price:127.5,
-						number:1,
-						selected:false,
-					},
-				]
-			});
+			// uni.setStorage({
+			// 	key:'cartList',
+			// 	data:[
+			// 		{id:1,img:'../../static/img/goods/p1.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'猪肉',spec:'s',price:127.5,number:1,selected:false},
+			// 		{id:2,img:'../../static/img/goods/p2.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'妞',spec:'xll',price:127.5,number:1,selected:false},
+			// 		{id:3,img:'../../static/img/goods/p3.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'玩具熊',spec:'xxxl',price:127.5,number:1,selected:false},
+			// 		{id:4,img:'../../static/img/goods/p4.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'原装',spec:'m',price:127.5,number:1,selected:false},
+			// 		{id:5,img:'../../static/img/goods/p5.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',type:'哦豁',spec:'l',price:127.5,number:1,selected:false}
+			// 	]
+			// });
+			// 如果有session就读 没有就请求
 		},
 		onShow() {
 			uni.getStorage({
@@ -171,77 +130,6 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 			});
 		},
 		methods: {
-			editCart(){
-				if(!this.editData.spec){
-					uni.showToast({
-						icon:'none',
-						title:'请选择类别'
-					});
-				}else if(!this.editData.type){
-					uni.showToast({
-						icon:'none',
-						title:'请选择规格'
-					});
-				}else{
-					this.checkCart(this.editData);
-				}
-			},
-			checkCart(obj){
-				this.goodsList.forEach(good =>{
-					if(good.id == obj.id){
-						if((good.spec==obj.spec)&&(good.type==obj.type)){
-							this.$set(good,obj)
-						}else{
-							this.goodsList.unshift(obj);
-						}
-						uni.setStorage({
-							key:'cartList',
-							data:this.goodsList,
-							success: (ret) =>{
-								console.log('update')
-							}
-						});
-					}
-				});
-				this.hideType();
-			},
-			//修改规格
-			setSelectSpec(index){
-				if(this.editData.spec == index){
-					this.editData.spec = null;
-				}else{
-					this.editData.spec = index;
-				}
-				
-			},
-			//修改类别
-			selectgoods(index){
-				if(this.editData.type == index){
-					this.editData.type = null;
-				}else{
-					this.editData.type =index;
-				}			
-			},
-			hideType(){
-				this.showType = 'hide';
-				console.log('hide')
-				setTimeout(() => {
-					this.showType = 'none';
-				}, 200);
-			},
-			toShowType(row){
-				this.editData = JSON.parse(JSON.stringify(row));
-				this.showType = 'show';
-			},
-			changeNumber(value,row){//改变数字
-				// this.$set(row,'number',value);
-				row.number = value;
-				this.sum();
-				uni.setStorage({
-					key:'cartList',
-					data:this.goodsList
-				});
-			},
 			//加入商品 参数 goods:商品数据
 			joinGoods(goods){
 				/*
@@ -266,7 +154,57 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 					this.goodsList[i].unshift(goods);
 				}
 			},
-
+			//控制左滑删除效果-begin
+			touchStart(index,event){
+				//多点触控不触发
+				if(event.touches.length>1){
+					this.isStop = true;
+					return ;
+				}
+				this.oldIndex = this.theIndex;
+				this.theIndex = null;
+				//初始坐标
+				this.initXY = [event.touches[0].pageX,event.touches[0].pageY];
+			},
+			touchMove(index,event){
+				//多点触控不触发
+				if(event.touches.length>1){
+					this.isStop = true;
+					return ;
+				}
+				let moveX = event.touches[0].pageX - this.initXY[0];
+				let moveY = event.touches[0].pageY - this.initXY[1];
+				
+				if(this.isStop||Math.abs(moveX)<5){
+					return ;
+				}
+				if (Math.abs(moveY) > Math.abs(moveX)){
+					// 竖向滑动-不触发左滑效果
+					this.isStop = true;
+					return;
+				}
+				
+				if(moveX<0){
+					this.theIndex = index;
+					this.isStop = true;
+				}else if(moveX>0){
+					if(this.theIndex!=null&&this.oldIndex==this.theIndex){
+						this.oldIndex = index;
+						this.theIndex = null;
+						this.isStop = true;
+						setTimeout(()=>{
+							this.oldIndex = null;
+						},150)
+					}
+				}
+			},
+			touchEnd(index,$event){
+				//结束禁止触发效果
+				this.isStop = false;
+			},
+			//控制左滑删除效果-end
+			
+			
 			//商品跳转
 			toGoods(e){
 				uni.showToast({title: '商品'+e.id,icon:"none"});
@@ -349,6 +287,19 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 				this.isAllselected = this.isAllselected||this.goodsList.length==0?false : true;
 				this.sum();
 			},
+			// 减少数量
+			sub(index){
+				if(this.goodsList[index].number<=1){
+					return;
+				}
+				this.goodsList[index].number--;
+				this.sum();
+			},
+			// 增加数量
+			add(index){
+				this.goodsList[index].number++;
+				this.sum();
+			},
 			// 合计
 			sum(e,index){
 				this.sumPrice=0;
@@ -390,60 +341,6 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 			&:before{content:"\e6a4";}
 		}
 		
-	}
-	@keyframes showPopup {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
-	@keyframes hidePopup {
-		0% {
-			opacity: 1;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
-	@keyframes showLayer {
-		0% {
-			transform: translateY(0);
-		}
-		100% {
-			transform: translateY(-100%);
-		}
-	}
-	@keyframes hideLayer {
-		0% {
-			transform: translateY(-100%);
-		}
-		100% {
-			transform: translateY(0);
-		}
-	}
-	.checkbox-box1{
-		margin: 11vw 5upx;
-		.checkbox1{
-			width: 35upx;
-			height: 35upx;
-			border-radius: 100%;
-			border: solid 2upx #8bbce7;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			.on{
-				width: 25upx;
-				height: 25upx;
-				border-radius: 100%;
-				background-color: #8bbce7;
-			}
-		}
-		.text{
-			font-size: 28upx;
-			margin-left: 10upx;
-		}
 	}
 	.checkbox-box{
 		display: flex;
@@ -517,31 +414,153 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 			align-items: center;
 			font-size: 32upx;
 		}
-		.goods-info{
-			margin: 20upx 0;
-			background: rgba(139,188,231,0.2);
-			.content{
-				padding: 10rpx;
+		.row{
+			width: calc(92%);
+			height: calc(26vw + 40upx); 
+			margin: 20upx auto;
+			
+			border-radius: 15upx;
+			box-shadow: 0upx 5upx 20upx rgba(0,0,0,0.1);
+			display: flex;
+			align-items: center;
+			position: relative;
+			// overflow: hidden;
+			z-index: 4;
+			border: 0;
+			.menu{
+				.icon{
+					color: #fff;
+					// font-size: 25upx;
+				}
+				position: absolute;
+				width: 30%;
+				height: 100%;
+				right: 0;
 				display: flex;
-				justify-content: flex-start;
+				justify-content: center;
 				align-items: center;
-				.goods-body{
-					margin: 0 10upx;
+				background-color: red;
+				color: #fff;
+				z-index: 2;
+			}
+			.carrier{
+				@keyframes showMenu {
+					0% {transform: translateX(0);}100% {transform: translateX(-30%);}
+				}
+				@keyframes closeMenu {
+					0% {transform: translateX(-30%);}100% {transform: translateX(0);}
+				}
+				&.open{
+					animation: showMenu 0.25s linear both;
+				}
+				&.close{
+					animation: closeMenu 0.15s linear both;
+				}
+				background-color: #fff;
+				.checkbox-box{
+					padding-left: 20upx;
+					flex-shrink: 0;
+					height: 22vw;
+					margin-right: 20upx;
+				}
+				position: absolute;
+				width: 100%;
+				padding: 0 0;
+				height: 100%;
+				z-index: 3;
+				display: flex;
+				align-items: center;
+
+				.goods-info{
+					width: 100%;
 					display: flex;
-					justify-content: flex-start;
-					.left{
-						display: flex;
-						flex:1 0 22vw;
+					padding-right: 20upx;
+					.img{
+						width: 22vw;
+						height: 22vw;
+						border-radius: 10upx;
+						overflow: hidden;
+						flex-shrink: 0;
+						margin-right: 10upx;
 						image{
-							width: 20vw;
-							height:22vw;
-							border: 1px solid white;
-							border-radius: 7upx;
+							width: 22vw;
+							height: 22vw;
 						}
 					}
-					.right{
-						padding-left:10rpx;
-						width:65vw;
+					.info{
+						width: 100%;
+						height: 22vw;
+						overflow: hidden;
+						display: flex;
+						flex-wrap: wrap;
+						position: relative;
+						.title{
+							width: 100%;
+							font-size: 28upx;
+							display: -webkit-box;
+							-webkit-box-orient: vertical;
+							-webkit-line-clamp: 2;
+							// text-align: justify;
+							overflow: hidden;
+						}
+						.spec{
+							font-size: 20upx;
+							background-color: #f3f3f3;
+							color: #a7a7a7;
+							height: 30upx;
+							display: flex;
+							align-items: center;
+							padding: 0 10upx;
+							border-radius: 15upx;
+							margin-bottom: 20vw;
+						}
+						.price-number{
+							position: absolute;
+							width: 100%;
+							bottom: 0upx;
+							display: flex;
+							justify-content: space-between;
+							align-items: flex-end;
+							font-size: 28upx;
+							height: 60upx;
+							.price{
+							}
+							.number{
+								display: flex;
+								justify-content: center;
+								align-items: flex-end;
+								.input{
+									width: 60upx;
+									height: 60upx;
+									margin: 0 10upx;
+									background-color: #f3f3f3;
+									input{
+										width: 60upx;
+										height: 60upx;
+										display: flex;
+										justify-content: center;
+										align-items: center;
+										text-align: center;
+										font-size: 26upx;
+									}
+								}
+								.sub ,.add{
+									width: 45upx;
+									height: 45upx;
+									background-color: #f3f3f3;
+									border-radius: 5upx;
+									.icon{
+										font-size: 22upx;
+										width: 45upx;
+										height: 45upx;
+										display: flex;
+										justify-content: center;
+										align-items: center;
+										
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -595,153 +614,6 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 				align-items: center;
 				
 				border-radius: 30upx;
-			}
-		}
-	}	
-	.price-number{
-		width: 100%;
-		bottom: 0upx;
-		display: inline-flex;
-		justify-content: space-between;
-		align-items: center;
-		font-size: 28upx;
-		height: 50upx;
-		.uni-numbox{
-			height: 50rpx;
-		}
-		.uni-numbox__minus, .uni-numbox__plus {
-		margin:0;
-		background-color:#f8f8f8;
-		width:50rpx;
-		font-size:30rpx;
-		height:100%;
-		line-height:50rpx;
-		text-align:center;
-		color:#333;
-		position:relative;
-		
-		}
-		.uni-numbox__value {
-		position:relative;
-		background-color:#ffffff;
-		min-width:80rpx;
-		line-height:50rpx;
-		height:100%;
-		text-align:center;
-		
-		}
-		input {
-		cursor:auto;
-		display:block;
-		height:50upx;
-		text-overflow:clip;
-		//overflow:hidden;
-		white-space:nowrap;
-		font-family:UICTFontTextStyleBody;
-		min-height:50rpx;
-		
-		}
-		.uni-numbox--disabled {
-		color:#c0c0c0;
-		
-		}
-		.uni-numbox__minus, .uni-numbox__plus {
-		margin:0;
-		background-color:#f8f8f8;
-		width:50rpx;
-		font-size:30rpx;
-		height:100%;
-		line-height:50rpx;
-		text-align:center;
-		color:#333;
-		position:relative;
-		
-		}
-	}
-	.Gtitle{
-		width: 100%;
-		font-size: 28upx;
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 2;
-		overflow: hidden;
-	}
-	.Gspec{
-		font-size: 22upx;
-		margin: 8upx 0;
-		padding: 5upx;
-		color: #c0c0c0;
-		// max-height: 8vw;
-		width: 70%;
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 2;
-		overflow: hidden;
-	}
-	.pop {
-		position: fixed;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 20;
-		display: none;
-		.mask{
-			position: fixed;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			z-index: 21;
-			background-color: rgba(0, 0, 0, 0.6);
-		}
-		.layer {
-			position: fixed;
-			z-index: 22;
-			bottom: -40%;
-			width: 92%;
-			padding: 0 4%;
-			height: 40%;
-			border-radius: 10upx 10upx 0 0;
-			background-color: #fff;
-			display: flex;
-			flex-wrap: wrap;
-			align-content: space-between;
-		}
-		&.show {
-			display: block;
-			.mask{
-				animation: showPopup 0.2s linear both;
-			}
-			.layer {
-				animation: showLayer 0.2s linear both;
-			}
-		}
-		&.hide {
-			display: block;
-			.mask{
-				animation: hidePopup 0.2s linear both;
-			}
-			
-			.layer {
-				animation: hideLayer 0.2s linear both;
-			}
-		}
-		&.none {
-			display: none;
-		}
-		.sp {
-			padding: 10rpx 0;
-			display: flex;
-			flex-wrap: wrap;
-			view {
-				font-size: 28upx;
-				padding: 10upx;
-				border-radius: 10upx;
-				margin:10upx 10upx 10upx 0;
-				background-color: #f6f6f6;
-				border: solid 1upx #f6f6f6;
-				&.on {
-					border: solid 1upx #f47925;
-				}
 			}
 		}
 	}

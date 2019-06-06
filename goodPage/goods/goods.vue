@@ -380,24 +380,25 @@ export default {
 							img:this.swiperList[0].img,
 							name:this.goodsData.name,
 							spec:this.goodsData.spec[this.selectSpec],
+							specList:this.goodsData.spec,
+							goodsType:this.goodsData.goodsType,
 							type:this.goodsData.goodsType[this.selectGoods],
 							price:this.goodsData.price,
 							number:this.goodsData.number};
 						list.unshift(goods);
 					}
-					console.log(list);
 					uni.setStorage({
 						key:'cartList',
 						data:list,
 						success: (ret) =>{
 							uni.showToast({title: "已加入购物车"});//都有了就会跳转
 						}
-					})
+					});
 				},
 				fail: () => {
 					uni.showToast({title: "加入购物车失败",icon:'none'});//都有了就会跳转
 				}
-			})
+			});
 		},
 		// 加入购物车
 		joinCart(){

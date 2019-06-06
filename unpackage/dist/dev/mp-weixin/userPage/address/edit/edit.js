@@ -294,7 +294,7 @@ var _mpvueCityPicker = _interopRequireDefault(__webpack_require__(/*! @/componen
       //实际应用中请提交ajax,模板定时器模拟提交效果
       setTimeout(function () {
         uni.setStorage({
-          key: 'saveAddress',
+          key: 'address',
           data: data,
           success: function success() {
             uni.hideLoading();

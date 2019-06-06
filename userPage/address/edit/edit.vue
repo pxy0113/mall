@@ -137,7 +137,7 @@
 				//实际应用中请提交ajax,模板定时器模拟提交效果
 				setTimeout(()=>{
 					uni.setStorage({
-						key:'saveAddress',
+						key:'address',
 						data:data,
 						success() {
 							uni.hideLoading();

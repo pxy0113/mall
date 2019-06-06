@@ -390,12 +390,13 @@
               img: _this2.swiperList[0].img,
               name: _this2.goodsData.name,
               spec: _this2.goodsData.spec[_this2.selectSpec],
+              specList: _this2.goodsData.spec,
+              goodsType: _this2.goodsData.goodsType,
               type: _this2.goodsData.goodsType[_this2.selectGoods],
               price: _this2.goodsData.price,
               number: _this2.goodsData.number };
             list.unshift(goods);
           }
-          console.log(list);
           uni.setStorage({
             key: 'cartList',
             data: list,

@@ -30,20 +30,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": -1,
-					"name": "goods",
-					"pathName": "goodPage/goods/goods",
-					"query": "cid=3&&name=蜜汁牛扒&&price=￥1888",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "cart",
+					"name": "va",
 					"pathName": "pages/tabBar/cart",
-					"query": "",
 					"scene": null
 				}
 			]
