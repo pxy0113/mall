@@ -1,6 +1,6 @@
 <template>	
 	<view class="popup spec" :class="specClass" ><!--@tap="hideSpec"-->
-			<view class="mask" @tap="hideSpec"></view>
+			<view class="mask" @tap="hideSpec(0)"></view>
 			<view class="layer">
 				<view class="content">
 					<view class="cartContent">
@@ -11,7 +11,7 @@
 								<p class="price">{{goodsData.price}}</p>
 								<p style="font-size: 25rpx;color: #C0C0C0;padding-left: 10upx;">库存 555 件</p>
 							</div>							
-							<icon type="clear" size="20" @tap="hideSpec"></icon>
+							<icon type="clear" size="20" @tap="hideSpec(0)"></icon>
 						</div>
 					</view>
 					<view class="line">尺码</view>
@@ -25,17 +25,17 @@
 					<view class="num line">
 						<view>购买数量</view>
 						<view style="font-size: 28rpx;margin-top: 5rpx;">
-							<uni-number-box @change="changeNumber($event)" v-model="goodsData.number" :max="200"></uni-number-box>
+							<uni-number-box @change="changeNum($event)" v-model="goodsData.number" :max="200" :min="1"></uni-number-box>
 						</view>
 					</view>
 					
 				</view>
 				<view class="btn" v-if="place==1">
-					<view class="joinCart" @tap.stop.prevent="joinCart">加入购物车</view>
-					<view class="buy" @tap.stop.prevent="buy">立即购买</view>
+					<view class="joinCart" @tap.stop.prevent="cartBtnFun(1)">加入购物车</view>
+					<view class="buy" @tap.stop.prevent="cartBtnFun(2)">立即购买</view>
 				</view>
 				<view class="btn" v-if="place==2">
-					<view class="ok">确定</view>
+					<view class="ok" @tap.stop.prevent="cartBtnFun(3)">确定</view>
 				</view>
 			</view>
 		</view>
@@ -68,23 +68,23 @@ export default {
     data () {//数据
         return {
         	specClass:'show',
-			goodsData:JSON.parse(JSON.stringify(this.list))
+			goodsData:{}
         }
     },
 	onShow: () => {
 		this.specClass = 'show';
 	},
     methods: {//方法
-		changeNumber(value){//改变数字
+		changeNum(value){//改变数字
 			this.goodsData.number= value;
 			console.log(this.goodsData);
 		},
-		hideSpec() {
+		hideSpec(type) {
 			this.specClass = 'hide';
 			setTimeout(() => {
 				this.specClass = 'none';
 			}, 200);
-			this.$emit('emitData',this.goodsData,0);
+			this.$emit('emitData',this.goodsData,type);
 		},
     	//选择规格
     	setSelectSpec(index){
@@ -103,12 +103,12 @@ export default {
 				this.goodsData.type = index;
 			}
     	},
-		joinCart(){//加入购物车
+		cartBtnFun(type){//加入购物车1，立即购买2，确定提交3
 			let spec = (this.goodsData.spec==null);
 			let goods = (this.goodsData.type==null);
 			if(!spec&&!goods){
-				this.$emit('emitData',this.goodsData,1);
-				this.specClass = 'none';
+				this.hideSpec(type);
+				// this.$emit('emitData',this.goodsData,type);
 			}else{
 				if(goods){					
 					uni.showToast({title:'请选择颜色分类',icon:'none' });
@@ -117,34 +117,19 @@ export default {
 					uni.showToast({title:'请选择尺码' ,icon:'none' });
 				};
 			}
-		},
-		//立即购买
-		buy(){
-			let spec = (this.goodsData.spec==null);
-			let goods = (this.goodsData.type==null);
-			 if(!spec&&!goods){
-				this.$emit('emitData',this.goodsData,2);
-			 }else{
-				if(goods){					
-					uni.showToast({title:'请选择颜色分类',icon:'none' });
-				};
-				if(spec){					
-					uni.showToast({title:'请选择尺码' ,icon:'none' });
-				};
-			 }
-			
-		},
+		}
     },
     computed: {//计算属性
         	
     },
     watch: {//监测数据变化
-  //   	list:{
-		// 	handler:function(newValue,old){
-		// 		this.goodsData = JSON.parse(JSON.stringify(newValue));
-		// 	},
-		// 	immediate:true
-		// }
+    	list:{
+			handler:function(newValue,old){
+				this.goodsData = JSON.parse(JSON.stringify(newValue));
+				this.specClass = 'show'
+			},
+			immediate:true
+		}
 	},
     
     //===================组件钩子===========================
@@ -223,6 +208,32 @@ export default {
 		.content {
 			width: 100%;
 			padding: 20upx 0;
+			.cartContent{
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+				.price{
+					font-weight: 700;
+					color: orange;
+					padding-top: 20upx;
+					font-size: 28upx;
+					padding-left: 10upx;
+				}
+				.cartImg{
+					width: 150upx;
+					height: 150upx;
+					position: relative;
+					top: -25px;
+					border: 2px solid white;
+					border-radius: 5px;
+				}
+				.save{
+					display: flex;
+					justify-content: space-between;
+					align-items: flex-start;
+					width: 80%;
+				}
+			}
 		}
 		.num{
 			display: flex;
@@ -283,19 +294,6 @@ export default {
 	&.none {
 		display: none;
 	}
-	&.service {
-		.row {
-			margin: 30upx 0;
-			.title {
-				font-size: 30upx;
-				margin: 10upx 0;
-			}
-			.description {
-				font-size: 28upx;
-				color: #999;
-			}
-		}
-	}
 	&.spec {
 		font-size: 28upx;
 		.title {
@@ -311,12 +309,10 @@ export default {
 				padding: 10upx;
 				border-radius: 10upx;
 				margin:10upx 10upx 10upx 0;
-				box-sizing: border-box;
+				border: 1upx solid #f6f6f6;
 				background-color: #f6f6f6;
 				&.on {
-					padding: 10upx;
-					margin:8upx 8upx 8upx -2upx;
-					border: solid 1upx #f47925;
+					border: 1upx solid #f47925;
 				}
 			}
 		}

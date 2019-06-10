@@ -1,11 +1,11 @@
 <template>
 	<view>
 		<view class="status" :style="{position:headerPosition,top:statusTop}"></view>
-		<view class="header" :style="{position:headerPosition,top:headerTop}">
+<!-- 		<view class="header" :style="{position:headerPosition,top:headerTop}">
 			<view class="title">购物车</view>
-		</view>
+		</view> -->
 		<!-- 占位 -->
-		<view class="place"></view>
+		<!-- <view class="place"></view> -->
 		<!-- 商品列表 -->
 		<view class="goods-list">
 			<view class="tis" v-if="goodsList.length==0">购物车是空的哦~</view>
@@ -28,7 +28,7 @@
 							<p style="font-size: 24upx;color: #EB4D3D;">当前库存已不足</p>							
 							<view class="price-number">
 								<view class="price">￥{{row.price}}</view>
-								<uni-number-box @change="changeNumber($event,row)" v-model="row.number" :max="200"></uni-number-box>
+								<uni-number-box @change="changeNumber($event,row)" v-model="row.number" :max="200" :min="1"></uni-number-box>
 							</view>
 						</view>
 					</view>	
@@ -36,22 +36,8 @@
 
 			</view>
         </view>
-		<view class="pop" :class="showType" catchtouchmove="true">
-			<view class="mask" @tap="hideType" ></view>
-			<view class="layer">
-				<view style="width: 100%;padding: 10upx;font-size: 28upx;">
-					<view>颜色分类</view>
-					<view class="sp">
-						<view v-for="(item,index) in editData.specList" :class="[index==editData.spec?'on':'']" @tap="setSelectSpec(index)" :key="index">{{item}}</view>
-					</view>
-					<view>颜色分类</view>
-					<view class="sp">
-						<view v-for="(item,index) in editData.goodsType" :class="[index==editData.type?'on':'']" @tap="selectgoods(index)" :key="index">{{item}}</view>
-					</view>
-					<button style="background: #8bbce7;" @tap="editCart">确定</button>
-				</view>
-			</view>
-		</view>
+
+		
 		<!-- 脚部菜单 -->
 		<view class="footer" :style="{bottom:footerbottom}">
 			<view class="checkbox-box" @tap="allSelect">
@@ -66,15 +52,18 @@
 				<view class="btn" @tap="toConfirmation">结算({{selectedList.length}})</view>
 			</view>
 		</view>
+		<card ref="card" :list="editData" :place="2" v-if="showCard" @emitData="updateData"></card>
 	</view>
 </template>
 
 <script>
 import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
+import card from '@/components/good-card/card.vue'
 	export default {
-		components:{uniNumberBox},
+		components:{uniNumberBox,card},
 		data() {
 			return {
+				showCard:false,
 				editData:{
 					specList:[],
 					goodsType:[],
@@ -105,6 +94,15 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 		onPullDownRefresh() {
 		    setTimeout(function () {
 				console.log('下拉再次请求购物车');
+				uni.getStorage({
+					key:'cartList',
+					success: (res) => {
+						this.goodsList = res.data;
+					},
+					fail: (err) => {
+						this.goodsList = [];
+					}
+				});
 		        uni.stopPullDownRefresh();
 		    }, 1000);
 		},
@@ -130,7 +128,7 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 						goodsType:["粉紫","樱桃红","湖水蓝"],
 						price:127.5,
 						number:1,
-						selected:false,
+						// selected:false,
 					},
 					{
 						id:22,
@@ -142,7 +140,7 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 						goodsType:["玫瑰金色链子粉晶拼珍珠","彩虹珠子草编森女手串","链子","特价散珠*1","波罗的海银色手镯"],
 						price:127.5,
 						number:1,
-						selected:false,
+						// selected:false,
 					},
 					{
 						id:33,
@@ -154,7 +152,7 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 						goodsType:["公蟹",'母蟹','公母各半'],
 						price:127.5,
 						number:1,
-						selected:false,
+						// selected:false,
 					},
 				]
 			});
@@ -163,84 +161,43 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 			uni.getStorage({
 				key:'cartList',
 				success: (res) => {
-					this.goodsList = res.data;
+					this.goodsList = res.data;//selectList
 				},
 				fail: (err) => {
 					this.goodsList = [];
 				}
 			});
 		},
+		watch:{
+			goodsList:{
+				handler(newV,oldV){
+					this.sum();
+					uni.setStorage({
+						key:'cartList',
+						data:newV
+					});
+				},
+				deep:true
+			}
+		},
 		methods: {
-			editCart(){
-				if(!this.editData.spec){
-					uni.showToast({
-						icon:'none',
-						title:'请选择类别'
-					});
-				}else if(!this.editData.type){
-					uni.showToast({
-						icon:'none',
-						title:'请选择规格'
-					});
-				}else{
-					this.checkCart(this.editData);
-				}
-			},
-			checkCart(obj){
-				this.goodsList.forEach(good =>{
-					if(good.id == obj.id){
-						if((good.spec==obj.spec)&&(good.type==obj.type)){
-							this.$set(good,obj)
-						}else{
-							this.goodsList.unshift(obj);
+			updateData(data,type){
+				if(type==3){
+					this.goodsList.forEach((item,index) =>{
+						if(item.id == data.id){
+							this.goodsList.splice(index,1,data);
 						}
-						uni.setStorage({
-							key:'cartList',
-							data:this.goodsList,
-							success: (ret) =>{
-								console.log('update')
-							}
-						});
-					}
-				});
-				this.hideType();
-			},
-			//修改规格
-			setSelectSpec(index){
-				if(this.editData.spec == index){
-					this.editData.spec = null;
-				}else{
-					this.editData.spec = index;
+					});
 				}
 				
 			},
-			//修改类别
-			selectgoods(index){
-				if(this.editData.type == index){
-					this.editData.type = null;
-				}else{
-					this.editData.type =index;
-				}			
-			},
-			hideType(){
-				this.showType = 'hide';
-				console.log('hide')
-				setTimeout(() => {
-					this.showType = 'none';
-				}, 200);
-			},
 			toShowType(row){
+				this.showCard = true;
 				this.editData = JSON.parse(JSON.stringify(row));
-				this.showType = 'show';
+				
 			},
 			changeNumber(value,row){//改变数字
-				// this.$set(row,'number',value);
 				row.number = value;
-				this.sum();
-				uni.setStorage({
-					key:'cartList',
-					data:this.goodsList
-				});
 			},
 			//加入商品 参数 goods:商品数据
 			joinGoods(goods){
@@ -306,10 +263,6 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 				for(let i=0;i<len;i++){
 					if(id==this.goodsList[i].id){
 						this.goodsList.splice(i, 1);
-						uni.setStorage({
-							key:'cartList',
-							data:this.goodsList
-						})
 						break;
 					}
 				}
@@ -351,7 +304,7 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 			},
 			// 合计
 			sum(e,index){
-				this.sumPrice=0;
+				this.sumPrice = 0;
 				let len = this.goodsList.length;
 				for(let i=0;i<len;i++){
 					if(this.goodsList[i].selected) {
@@ -390,38 +343,6 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 			&:before{content:"\e6a4";}
 		}
 		
-	}
-	@keyframes showPopup {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
-	@keyframes hidePopup {
-		0% {
-			opacity: 1;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
-	@keyframes showLayer {
-		0% {
-			transform: translateY(0);
-		}
-		100% {
-			transform: translateY(-100%);
-		}
-	}
-	@keyframes hideLayer {
-		0% {
-			transform: translateY(-100%);
-		}
-		100% {
-			transform: translateY(0);
-		}
 	}
 	.checkbox-box1{
 		margin: 11vw 5upx;
@@ -678,71 +599,5 @@ import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 		-webkit-line-clamp: 2;
 		overflow: hidden;
 	}
-	.pop {
-		position: fixed;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 20;
-		display: none;
-		.mask{
-			position: fixed;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			z-index: 21;
-			background-color: rgba(0, 0, 0, 0.6);
-		}
-		.layer {
-			position: fixed;
-			z-index: 22;
-			bottom: -40%;
-			width: 92%;
-			padding: 0 4%;
-			height: 40%;
-			border-radius: 10upx 10upx 0 0;
-			background-color: #fff;
-			display: flex;
-			flex-wrap: wrap;
-			align-content: space-between;
-		}
-		&.show {
-			display: block;
-			.mask{
-				animation: showPopup 0.2s linear both;
-			}
-			.layer {
-				animation: showLayer 0.2s linear both;
-			}
-		}
-		&.hide {
-			display: block;
-			.mask{
-				animation: hidePopup 0.2s linear both;
-			}
-			
-			.layer {
-				animation: hideLayer 0.2s linear both;
-			}
-		}
-		&.none {
-			display: none;
-		}
-		.sp {
-			padding: 10rpx 0;
-			display: flex;
-			flex-wrap: wrap;
-			view {
-				font-size: 28upx;
-				padding: 10upx;
-				border-radius: 10upx;
-				margin:10upx 10upx 10upx 0;
-				background-color: #f6f6f6;
-				border: solid 1upx #f6f6f6;
-				&.on {
-					border: solid 1upx #f47925;
-				}
-			}
-		}
-	}
+
 </style>

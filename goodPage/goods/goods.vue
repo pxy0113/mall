@@ -100,56 +100,7 @@
 			</view>
 		</view>
 		<!-- 规格-模态层弹窗 -->
-		<view class="popup spec" :class="specClass" @touchmove.stop.prevent="discard" @tap="hideSpec">
-			<!-- 遮罩层 -->
-			<view class="mask"></view>
-			<view class="layer" @tap.stop="discard">
-				<view class="content">
-					<view class="cartContent">
-						<img src="https://s2.ax1x.com/2019/03/28/AdOfUJ.jpg" alt="" 
-						class="cartImg">
-						<div class="save">
-							<div>
-								<p class="price">{{goodsData.price}}</p>
-								<p style="font-size: 25rpx;color: #C0C0C0;padding-left: 10upx;">库存 555 件</p>
-							</div>							
-							<icon type="clear" size="20" @tap="hideSpec"></icon>
-						</div>
-					</view>
-					<view class="line">尺码</view>
-					<view class="sp">
-						<view v-for="(item,index) in goodsData.spec" :class="[index==selectSpec?'on':'']" @tap="setSelectSpec(index)" :key="index">{{item}}</view>
-					</view>
-					<view>颜色分类</view>
-					<view class="sp">
-						<view v-for="(item,index) in goodsData.goodsType" :class="[index==selectGoods?'on':'']" @tap="selectgoods(index)" :key="index">{{item}}</view>
-					</view>
-					<view class="num line">
-						<view>购买数量</view>
-						<view style="font-size: 28rpx;margin-top: 5rpx;">
-							<view style="display: flex;justify-content: flex-start;align-items: center;">
-								<view class="sub" @tap.stop="sub">
-									<view class="icon jian"></view>
-								</view>
-								<view class="input" @tap.stop="discard">
-									<input type="number" v-model="goodsData.number" />
-								</view>
-								<view class="add"  @tap.stop="add">
-									<view class="icon jia"></view>
-								</view>
-
-							</view>
-						</view>
-					</view>
-					
-				</view>
-				<!-- <view class="btn"><view class="button" @tap="hideSpec">完成</view></view> -->
-				<view class="btn">
-					<view class="joinCart" @tap="joinCart">加入购物车</view>
-					<view class="buy" @tap="buy">立即购买</view>
-				</view>
-			</view>
-		</view>
+		<card ref="card" :list="goodsData" :place="1" v-if="showCard" @emitData="emitData"></card>
 		<!-- 商品主图轮播 -->
 		<view class="swiper-box">
 			<swiper circular="true"  @change="swiperChange">
@@ -181,9 +132,9 @@
 				<view class="text">服务</view>
 				<view class="arrow"><view class="icon xiangyou"></view></view>
 			</view>
-			<view class="row" @tap="showSpec(false)">
-				<view v-if="selectSpec||selectGoods" class="text">
-					已选择 {{goodsData.goodsType[selectGoods]}} {{selectSpec?goodsData.spec[selectSpec]:''}}
+			<view class="row" @tap="showSpec">
+				<view v-if="goodsData.spec!==null&&goodsData.type!==null"  class="text">
+					已选择 {{goodsData.goodsType[goodsData.type]}} {{goodsData.specList[goodsData.spec]}}
 				</view>			
 				<view class="text" v-else>
 					<div>
@@ -191,8 +142,8 @@
 					</div>						
 					<view class="mini">
 						<view class="sp">
-							<view v-for="(item,index) in goodsData.spec":key="index">{{item}}</view>
-							<view>共{{goodsData.spec.length}}种尺码可选</view>
+							<view v-for="(item,index) in goodsData.specList":key="index">{{item}}</view>
+							<view>共{{goodsData.specList.length}}种尺码可选</view>
 						</view>
 					</view>
 				</view>
@@ -229,9 +180,12 @@
 </template>
 
 <script>
+import card from '@/components/good-card/card.vue'
 export default {
+	components:{card},
 	data() {
 		return {
+			showCard:false,
 			//控制渐变标题栏的参数
 			beforeHeaderzIndex: 11,//层级
 			afterHeaderzIndex: 10,//层级
@@ -256,7 +210,6 @@ export default {
 			anchorlist:[],//导航条锚点
 			selectAnchor:0,//选中锚点
 			serviceClass: '',//服务弹窗css类，控制开关动画
-			specClass: '',//规格弹窗css类，控制开关动画
 			shareClass:'',//分享弹窗css类，控制开关动画
 			// 商品信息
 			goodsData:{
@@ -269,7 +222,9 @@ export default {
 					{name:"极速退款",description:"此商品享受退货极速退款服务"},
 					{name:"7天退换",description:"此商品享受7天无理由退换服务"}
 				],
-				spec:["XS","S","M","L","XL","XXL"],
+				spec:null,
+				type:null,
+				specList:["XS","S","M","L","XL","XXL"],
 				goodsType:["玫瑰金色链子粉晶拼珍珠","彩虹珠子草编森女手串","链子","特价散珠*1","波罗的海银色手镯"],
 				comment:{
 					number:102,
@@ -279,8 +234,6 @@ export default {
 				}
 				
 			},
-			selectSpec:null,//选中规格
-			selectGoods:null,//选中商品类型
 			isKeep:false,//收藏
 			//商品描述html
 			descriptionStr:'<div style="text-align:center;"><img width="100%" src="https://s2.ax1x.com/2019/03/28/AdOogx.jpg"/><img width="100%" src="https://s2.ax1x.com/2019/03/28/AdOHKK.jpg"/><img width="100%" src="https://s2.ax1x.com/2019/03/28/AdOTv6.jpg"/></div>'
@@ -298,6 +251,9 @@ export default {
 	},
 	onReady(){
 		this.calcAnchor();//计算锚点高度，页面数据是ajax加载时，请把此行放在数据渲染完成事件中执行以保证高度计算正确
+	},
+	onHide(){
+		console.log('我hide了')
 	},
 	onPageScroll(e) {
 		//锚点切换
@@ -345,19 +301,31 @@ export default {
 		},
 		// 分享
 		share(){
-			this.shareClass = 'show';
+			this.shareClass = 'showSe';
 		},
 		hideShare(){
-			this.shareClass = 'hide';
+			this.shareClass = 'hideSe';
 			setTimeout(() => {
-				this.shareClass = 'none';
+				this.shareClass = 'noneSe';
 			}, 150);
 		},
 		//收藏
 		keep(){
 			this.isKeep = this.isKeep?false:true;
 		},
-		checkCart(){
+		emitData(data,type){			
+			this.showCard = false;
+			this.goodsData.spec = data.spec;
+			this.goodsData.type = data.type;
+			this.goodsData.number = data.number;
+			if(type==1){
+				this.checkCart(data);
+			}
+			if(type==2){
+				this.toConfirmation();
+			}
+		},
+		checkCart(data){
 			uni.getStorage({
 				key:'cartList',
 				success: (res) => {
@@ -365,10 +333,10 @@ export default {
 					let isFind = false;
 					for(let i=0;i<list.length;i++){
 						let row = list[i];
-						if((row.id==this.goodsData.id)&&(row.spec==this.goodsData.spec[this.selectSpec])
-						&&(row.type==this.goodsData.goodsType[this.selectGoods]))
+						if((row.id==data.id)&&(row.spec==data.spec)
+						&&(row.type==data.type))
 						{	//找到商品一样的商品
-							list[i].number = list[i].number+this.goodsData.number;//数量自增
+							list[i].number = list[i].number+data.number;//数量自增
 							isFind = true;//找到一样的商品  bug商品Id相同 商品分类不同 需要进入下面的新增
 							break;//跳出循环
 						}
@@ -379,13 +347,13 @@ export default {
 							id:this.goodsData.id,
 							img:this.swiperList[0].img,
 							name:this.goodsData.name,
-							spec:this.goodsData.spec[this.selectSpec],
-							specList:this.goodsData.spec,
+							spec:this.goodsData.spec,
+							specList:this.goodsData.specList,
 							goodsType:this.goodsData.goodsType,
-							type:this.goodsData.goodsType[this.selectGoods],
+							type:this.goodsData.type,
 							price:this.goodsData.price,
 							number:this.goodsData.number};
-						list.unshift(goods);
+						list.unshift(data);
 					}
 					uni.setStorage({
 						key:'cartList',
@@ -402,37 +370,36 @@ export default {
 		},
 		// 加入购物车
 		joinCart(){
-			let spec = (this.selectSpec==null);
-			let goods = (this.selectGoods==null);
+			let spec = (this.goodsData.spec==null);
+			let goods = (this.goodsData.type==null);
 			if(!spec&&!goods){
-				this.checkCart();
+				this.checkCart(this.goodsData);
 				//uni.showToast({title: "已加入购物车"});//都有了就会跳转
-				this.specClass = 'none';
 			}else{
 				if(goods){					
 					uni.showToast({title:'请选择颜色分类',icon:'none' });
-					this.specClass = 'show';
+					this.showCard = true;
 				};
 				if(spec){					
 					uni.showToast({title:'请选择尺码' ,icon:'none' });
-					this.specClass = 'show';
+					this.showCard = true;
 				};
 			}
 		},
 		//立即购买
 		buy(){
-			let spec = (this.selectSpec==null);
-			let goods = (this.selectGoods==null);
+			let spec = (this.goodsData.spec==null);
+			let goods = (this.goodsData.type==null);
 			 if(!spec&&!goods){
 				this.toConfirmation();
 			 }else{
 				if(goods){					
 					uni.showToast({title:'请选择颜色分类',icon:'none' });
-					this.specClass = 'show';
+					this.showCard = true;
 				};
 				if(spec){					
 					uni.showToast({title:'请选择尺码' ,icon:'none' });
-					this.specClass = 'show';
+					this.showCard = true;
 				};
 			 }
 			
@@ -440,7 +407,7 @@ export default {
 		//跳转确认订单页面
 		toConfirmation(){
 			let tmpList=[];
-			let goods = {id:this.goodsData.id,img:'../../static/img/goods/p1.jpg',name:this.goodsData.name,type:this.goodsData.goodsType[this.selectGoods],spec:this.goodsData.spec[this.selectSpec],price:this.goodsData.price,number:this.goodsData.number};
+			let goods = {id:this.goodsData.id,img:'../../static/img/goods/p1.jpg',name:this.goodsData.name,type:this.goodsData.type,spec:this.goodsData.spec,price:this.goodsData.price,number:this.goodsData.number};
 			tmpList.push(goods);
 			uni.setStorage({
 				key:'buylist',
@@ -457,25 +424,6 @@ export default {
 			uni.navigateTo({
 				url:'./discuss'
 			});
-		},
-		//选择规格
-		setSelectSpec(index){
-			this.selectSpec = index;
-		},
-		//选择类别
-		selectgoods(index){
-			this.selectGoods = index;
-		},
-		//减少数量
-		sub(){
-			if(this.goodsData.number<=1){
-				return;
-			}
-			this.goodsData.number--;
-		},
-		//增加数量
-		add(){
-			this.goodsData.number++;
 		},
 		//跳转锚点
 		toAnchor(index){
@@ -509,35 +457,25 @@ export default {
 		},
 		//服务弹窗
 		showService() {
-			console.log('show');
-			this.serviceClass = 'show';
+			this.serviceClass = 'showSe';
 		},
 		//关闭服务弹窗
 		hideService() {
-			this.serviceClass = 'hide';
+			this.serviceClass = 'hideSe';
 			setTimeout(() => {
-				this.serviceClass = 'none';
+				this.serviceClass = 'noneSe';
 			}, 200);
 		},
 		//规格弹窗
-		showSpec(fun) {
+		showSpec(){
 			console.log('show');
-			this.specClass = 'show';
-			this.specCallback = fun;
+			this.showCard = true;
+			// this.specCallback = fun;
 		},
 		specCallback(){
 			return;
 		},
-		//关闭规格弹窗
-		hideSpec() {
-			this.specClass = 'hide';
-			//回调
-			this.selectSpec&&this.specCallback&&this.specCallback();
-			this.specCallback = false;
-			setTimeout(() => {
-				this.specClass = 'none';
-			}, 200);
-		},
+
 		discard() {
 			//丢弃
 		}
@@ -545,7 +483,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped="scoped">
 page {
 	background-color: #f8f8f8;
 }
@@ -562,7 +500,7 @@ page {
 	align-items: center;
 	font-size: 28upx;
 }
-@keyframes showPopup {
+@keyframes showP {
 		0% {
 			opacity: 0;
 		}
@@ -570,7 +508,7 @@ page {
 			opacity: 1;
 		}
 	}
-	@keyframes hidePopup {
+	@keyframes hideP {
 		0% {
 			opacity: 1;
 		}
@@ -578,7 +516,7 @@ page {
 			opacity: 0;
 		}
 	}
-	@keyframes showLayer {
+	@keyframes showLa {
 		0% {
 			transform: translateY(0);
 		}
@@ -586,7 +524,7 @@ page {
 			transform: translateY(-100%);
 		}
 	}
-	@keyframes hideLayer {
+	@keyframes hideLa {
 		0% {
 			transform: translateY(-100%);
 		}
@@ -643,12 +581,7 @@ page {
 			content: '\e614';
 		}
 	}
-	&.jia {
-		&:before{content:"\e641";}
-	}
-	&.jian {
-		&:before{content:"\e643";}
-	}
+
 }
 .status {
 	width: 100%;
@@ -834,22 +767,7 @@ page {
 			.serviceitem{
 				margin-right: 10upx;
 			}
-			// .sp {
-			// 	width: 100%;
-			// 	display: flex;
-			// 	view {
-			// 		background-color: #f6f6f6;
-			// 		padding: 5upx 10upx;
-			// 		color: #999;
-			// 		margin-right: 10upx;
-			// 		font-size: 20upx;
-			// 		border-radius: 5upx;
-			// 		&.on{
-			// 			border: solid 1upx #f47952;
-			// 			padding: 4upx 8upx;
-			// 		}
-			// 	}
-			// }
+	
 			
 		}
 		.arrow {
@@ -1038,26 +956,26 @@ page {
 		}
 	}
 	
-	&.show {
+	&.showSe {
 		display: block;
 		.mask{
-			animation: showPopup 0.2s linear both;
+			animation: showP 0.2s linear both;
 		}
 		.layer {
-			animation: showLayer 0.2s linear both;
+			animation: showLa 0.2s linear both;
 		}
 	}
-	&.hide {
+	&.hideSe {
 		display: block;
 		.mask{
-			animation: hidePopup 0.2s linear both;
+			animation: hideP 0.2s linear both;
 		}
 		
 		.layer {
-			animation: hideLayer 0.2s linear both;
+			animation: hideLa 0.2s linear both;
 		}
 	}
-	&.none {
+	&.noneSe {
 		display: none;
 	}
 	&.service {
@@ -1079,24 +997,6 @@ page {
 			font-size: 30upx;
 			margin: 30upx 0;
 		}
-		.sp {
-			padding: 10rpx 0;
-			display: flex;
-			flex-wrap: wrap;
-			view {
-				font-size: 28upx;
-				padding: 10upx;
-				border-radius: 10upx;
-				margin:10upx 10upx 10upx 0;
-				box-sizing: border-box;
-				background-color: #f6f6f6;
-				&.on {
-					padding: 10upx;
-					margin:8upx 8upx 8upx -2upx;
-					border: solid 1upx #f47925;
-				}
-			}
-		}
 		
 	}
 }
@@ -1115,42 +1015,29 @@ page {
 			font-size: 26upx;
 		}
 	}
-	
-	.sub ,.add{
-		width: 60upx;
-		height: 60upx;
-		background-color: #f3f3f3;
-		border-radius: 5upx;
-		.icon{
-			font-size: 30upx;
-			width: 60upx;
-			height: 60upx;
-			@extend %flexs;
-			
-		}
-	}
+
 .share{
 	display: none;
-	&.show {
+	&.showSe {
 		display: block;
 		.mask{
-			animation: showPopup 0.15s linear both;
+			animation: showP 0.15s linear both;
 		}
 		.layer {
-			animation: showLayer 0.15s linear both;
+			animation: showLa 0.15s linear both;
 		}
 	}
-	&.hide {
+	&.hideSe {
 		display: block;
 		.mask{
-			animation: hidePopup 0.15s linear both;
+			animation: hideP 0.15s linear both;
 		}
 		
 		.layer {
-			animation: hideLayer 0.15s linear both;
+			animation: hideLa 0.15s linear both;
 		}
 	}
-	&.none {
+	&.noneSe {
 		display: none;
 	}
 	.mask{
@@ -1205,32 +1092,7 @@ page {
 		}
 	}
 }
-	.cartContent{
-		display: flex;
-		justify-content: flex-start;
-		align-items: flex-start;
-		.price{
-			font-weight: 700;
-			color: orange;
-			padding-top: 20upx;
-			font-size: 28upx;
-			padding-left: 10upx;
-		}
-		.cartImg{
-			width: 150upx;
-			height: 150upx;
-			position: relative;
-			top: -25px;
-			border: 2px solid white;
-			border-radius: 5px;
-		}
-		.save{
-			display: flex;
-			justify-content: space-between;
-			align-items: flex-start;
-			width: 80%;
-		}
-	}
+
 .line{
 	border-top: 1px solid #f6f6f6;
 	padding-top: 15upx;
