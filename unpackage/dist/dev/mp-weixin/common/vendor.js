@@ -6971,7 +6971,7 @@ try {
 
 
 
-var _uniNumberBox = _interopRequireDefault(__webpack_require__(/*! @/components/uni-number-box/uni-number-box.vue */ "D:\\pxy\\mall\\components\\uni-number-box\\uni-number-box.vue"));var _this = void 0;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default2 =
+var _uniNumberBox = _interopRequireDefault(__webpack_require__(/*! @/components/uni-number-box/uni-number-box.vue */ "D:\\pxy\\mall\\components\\uni-number-box\\uni-number-box.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default2 =
 {
   name: 'card',
   components: { //组件模板
@@ -7001,17 +7001,17 @@ var _uniNumberBox = _interopRequireDefault(__webpack_require__(/*! @/components/
 
   },
   onShow: function onShow() {
-    _this.specClass = 'show';
+
   },
   methods: { //方法
     changeNum: function changeNum(value) {//改变数字
       this.goodsData.number = value;
       console.log(this.goodsData);
     },
-    hideSpec: function hideSpec(type) {var _this2 = this;
+    hideSpec: function hideSpec(type) {var _this = this;
       this.specClass = 'hide';
       setTimeout(function () {
-        _this2.specClass = 'none';
+        _this.specClass = 'none';
       }, 200);
       this.$emit('emitData', this.goodsData, type);
     },

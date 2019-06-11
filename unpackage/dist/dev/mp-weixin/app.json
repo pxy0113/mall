@@ -40,9 +40,9 @@
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "",
-    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#8bbce7",
+    "backgroundColorTop": "#8bbce7",
     "backgroundColor": "#ffffff",
-    "backgroundColorTop": "#ffffff",
     "backgroundColorBottom": "#ffffff"
   },
   "usingComponents": {},

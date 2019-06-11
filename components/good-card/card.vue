@@ -72,7 +72,7 @@ export default {
         }
     },
 	onShow: () => {
-		this.specClass = 'show';
+
 	},
     methods: {//方法
 		changeNum(value){//改变数字

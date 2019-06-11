@@ -1,125 +1,132 @@
 <template>
+	
 	<view>
-		<!-- 状态栏 -->
-		<view class="status" :style="{ position: headerPosition,top:statusTop,opacity: afterHeaderOpacity}"></view>
-		<!-- 顶部导航栏 -->
-		<view class="header" :style="{ position: headerPosition,top:headerTop,opacity: afterHeaderOpacity }">
-			<!-- 定位城市 -->
-			<view class="addr">
-				<view class="icon location"></view>
-				{{ city }}
-			</view>
-			<!-- 搜索框 -->
-			<view class="input-box">
-					<text style="color: #C0C0C0;font-size: 12px;padding-left: 5px;width: 100%;" @tap="toSearch()">搜索</text>
-<!-- 				<input
-					placeholder="默认关键字"
-					placeholder-style="color:#c0c0c0;"
-					@tap="toSearch()"
-				/> -->
-				<view class="icon search"></view>
-			</view>
-			<!-- 右侧图标按钮 -->
-			<view class="icon-btn">
-				<view class="icon yuyin"></view>
-				<view class="icon tongzhi"></view>
-			</view>
-		</view>
-		<!-- 占位 -->
-		<view class="place"></view>
-		<!-- 轮播图 -->
-		<view class="swiper">
-			<view class="swiper-box">
-				<swiper circular="true" autoplay="true" @change="swiperChange">
-					<swiper-item v-for="swiper in swiperList" :key="swiper.id">
-						<image :src="swiper.img" @tap="toSwiper(swiper)"></image>
-					</swiper-item>
-				</swiper>
-				<view class="indicator">
-					<view
-						class="dots"
-						v-for="(swiper, index) in swiperList"
-						:class="[currentSwiper >= index ? 'on' : '']"
-						:key="index"
-					></view>
+		<skeleton v-if="showSkeleton" ref="skeleton" loading="chiaroscuro" selector="skeleton" bgcolor="#FFF"></skeleton>
+		<view class="skeleton">
+				<!-- 状态栏 -->
+				<view class="status" :style="{ position: headerPosition,top:statusTop,opacity: afterHeaderOpacity}"></view>
+				<!-- 顶部导航栏 -->
+				<view class="header skeleton-rect" :style="{ position: headerPosition,top:headerTop,opacity: afterHeaderOpacity }">
+					<!-- 定位城市 -->
+					<view class="addr">
+						<view class="icon location"></view>
+						{{ city }}
+					</view>
+					<!-- 搜索框 -->
+					<view class="input-box">
+							<text style="color: #C0C0C0;font-size: 28upx;padding-left: 5px;width: 100%;" @tap="toSearch()">搜索</text>
+		<!-- 				<input
+							placeholder="默认关键字"
+							placeholder-style="color:#c0c0c0;"
+							@tap="toSearch()"
+						/> -->
+						<view class="icon search"></view>
+					</view>
+					<!-- 右侧图标按钮 -->
+					<view class="icon-btn">
+						<view class="icon yuyin"></view>
+						<view class="icon tongzhi"></view>
+					</view>
 				</view>
-			</view>
-		</view>
-		<!-- 分类列表 -->
-		<view class="category-list">
-			<view
-				class="category"
-				v-for="(row, index) in categoryList"
-				:key="index"
-				@tap="toCategory(row)"
-			>
-				<view class="img"><image :src="row.img"></image></view>
-				<view class="text">{{ row.name }}</view>
-			</view>
-		</view>
-		<!-- 广告图 -->
-		<view class="banner"><image src="../../static/img/banner.jpg"></image></view>
-		<!-- 活动区 -->
-		<view class="promotion">
-			<view class="text">优惠专区</view>
-			<view class="list">
-				<view
-					class="column"
-					v-for="(row, index) in Promotion"
-					@tap="toPromotion(row)"
-					:key="index"
-				>
-					<view class="top">
-						<view class="title">{{ row.title }}</view>
-						<view class="countdown" v-if="row.countdown">
-							<view>{{ row.countdown.h }}</view>
-							:
-							<view>{{ row.countdown.m }}</view>
-							:
-							<view>{{ row.countdown.s }}</view>
+				<!-- 占位 -->
+				<view class="place"></view>
+				<!-- 轮播图 -->
+				<view class="swiper skeleton-rect">
+					<view class="swiper-box">
+						<swiper circular="true" autoplay="true" @change="swiperChange">
+							<swiper-item v-for="swiper in swiperList" :key="swiper.id">
+								<image :src="swiper.img" @tap="toSwiper(swiper)"></image>
+							</swiper-item>
+						</swiper>
+						<view class="indicator">
+							<view
+								class="dots"
+								v-for="(swiper, index) in swiperList"
+								:class="[currentSwiper >= index ? 'on' : '']"
+								:key="index"
+							></view>
 						</view>
 					</view>
-					<view class="left">
-						<view class="ad">{{ row.ad }}</view>
-						<view class="into">点击进入</view>
-					</view>
-					<view class="right"><image :src="row.img"></image></view>
 				</view>
-			</view>
-		</view>
-		<!-- 商品列表 -->
-		<view class="goods-list">
-			<view class="title">
-				<image src="../../static/img/hua.png"></image>
-				猜你喜欢
-				<image src="../../static/img/hua.png"></image>
-			</view>
-			<view class="product-list">
-				<view
-					class="product" :class="'product-'+index"
-					v-for="(product,index) in productList"
-					:key="product.goods_id"
-					@tap="toGoods(product)"
-				>
-					<image mode="widthFix" :src="product.img"></image>
-					<view class="name">{{ product.name }}</view>
-					<view class="info">
-						<view class="price">{{ product.price }}</view>
-						<view class="slogan">{{ product.slogan }}</view>
+				<!-- 分类列表 -->
+				<view class="category-list">
+					<view
+						class="category skeleton-radius"
+						v-for="(row, index) in categoryList"
+						:key="index"
+						@tap="toCategory(row)"
+					>
+						<view class="img"><image :src="row.img"></image></view>
+						<view class="text">{{ row.name }}</view>
 					</view>
 				</view>
+				<!-- 广告图 -->
+				<view class="banner skeleton-rect"><image src="../../static/img/banner.jpg"></image></view>
+				<!-- 活动区 -->
+				<view class="promotion">
+					<view class="text">优惠专区</view>
+					<view class="list">
+						<view
+							class="column skeleton-rect"
+							v-for="(row, index) in Promotion"
+							@tap="toPromotion(row)"
+							:key="index"
+						>
+							<view class="top">
+								<view class="title">{{ row.title }}</view>
+								<view class="countdown" v-if="row.countdown">
+									<view>{{ row.countdown.h }}</view>
+									:
+									<view>{{ row.countdown.m }}</view>
+									:
+									<view>{{ row.countdown.s }}</view>
+								</view>
+							</view>
+							<view class="left">
+								<view class="ad">{{ row.ad }}</view>
+								<view class="into">点击进入</view>
+							</view>
+							<view class="right"><image :src="row.img"></image></view>
+						</view>
+					</view>
+				</view>
+				<!-- 商品列表 -->
+				<view class="goods-list skeleton-rect">
+					<view class="title">
+						<image src="../../static/img/hua.png"></image>
+						猜你喜欢
+						<image src="../../static/img/hua.png"></image>
+					</view>
+					<view class="product-list">
+						<view
+							class="product" :class="'product-'+index"
+							v-for="(product,index) in productList"
+							:key="product.goods_id"
+							@tap="toGoods(product)"
+						>
+							<image mode="widthFix" :src="product.img"></image>
+							<view class="name">{{ product.name }}</view>
+							<view class="info">
+								<view class="price">{{ product.price }}</view>
+								<view class="slogan">{{ product.slogan }}</view>
+							</view>
+						</view>
+					</view>
+					<view class="loading-text">{{ loadingText }}</view>
+				</view>
 			</view>
-			<view class="loading-text">{{ loadingText }}</view>
-		</view>
 	</view>
 </template>
 
 <script>
 //高德SDK
 import amap from '@/common/SDK/amap-wx.js';
+import skeleton from '@/components/quick-skeleton/quick-skeleton.vue'
 export default {
+	components:{skeleton},
 	data() {
 		return {
+			showSkeleton:true,//骨架屏
 			productName:'product',
 			afterHeaderOpacity: 1,//不透明度
 			headerPosition: 'fixed',
@@ -129,9 +136,6 @@ export default {
 			currentSwiper: 0,
 			// 轮播图片
 			swiperList: [
-				{ id: 1, src: 'url1', img: '../../static/img/1.jpg' },
-				{ id: 2, src: 'url2', img: '../../static/img/2.jpg' },
-				{ id: 3, src: 'url3', img: '../../static/img/3.jpg' }
 			],
 			// 分类菜单
 			categoryList: [
@@ -262,27 +266,43 @@ export default {
 		}
 	},
 	onLoad() {
-		// #ifdef APP-PLUS
-		this.statusHeight = plus.navigator.getStatusbarHeight();
-		// #endif
-		this.amapPlugin = new amap.AMapWX({
-			//高德地图KEY，随时失效，请务必替换为自己的KEY，参考：http://ask.dcloud.net.cn/article/35070
-			key: '04cff6663be3cb476b9915914506122e'
-		});
-		//定位地址
-		this.amapPlugin.getRegeo({
-			success: data => {
-				this.city = data[0].regeocodeData.addressComponent.city.replace(/市/g, ''); //把"市"去掉
-			},
-		  fail: info => {
-			//失败回调
-			console.log(info)
-		  }
-		});
-		//开启定时器
-		this.Timer();
-		//加载活动专区
-		this.loadPromotion();
+		
+
+	},
+	onReady() {
+		const that = this;
+		
+		that.$refs.skeleton.attachedAction();
+		
+		that.$refs.skeleton.readyAction();		
+		setTimeout(() =>{
+			that.showSkeleton = false;
+			// #ifdef APP-PLUS
+			this.statusHeight = plus.navigator.getStatusbarHeight();
+			// #endif
+			this.amapPlugin = new amap.AMapWX({
+				//高德地图KEY，随时失效，请务必替换为自己的KEY，参考：http://ask.dcloud.net.cn/article/35070
+				key: '04cff6663be3cb476b9915914506122e'
+			});
+			//定位地址
+			this.amapPlugin.getRegeo({
+				success: data => {
+					this.city = data[0].regeocodeData.addressComponent.city.replace(/市/g, ''); //把"市"去掉
+				},
+			  fail: info => {
+				//失败回调
+				console.log(info)
+			  }
+			});
+			//开启定时器
+			this.Timer();
+			this.swiperList = [//为了骨架屏 把他放到这里再结束
+				{ id: 1, src: 'url1', img: '../../static/img/1.jpg' },
+				{ id: 2, src: 'url2', img: '../../static/img/2.jpg' },
+				{ id: 3, src: 'url3', img: '../../static/img/3.jpg' }];
+			//加载活动专区
+			this.loadPromotion();
+		},3000);
 	},
 	methods: {
 		tranProduct(index){

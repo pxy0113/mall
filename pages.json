@@ -4,7 +4,6 @@
 			"path": "pages/tabBar/home",
 			"style": {
 				"navigationBarTitleText": "首页",
-				"navigationBarTextStyle":"black",
 				"enablePullDownRefresh": true,
 				"onReachBottomDistance":50,
 				"app-plus": {
@@ -16,7 +15,6 @@
 		{
 			"path": "pages/tabBar/category",
 			"style": {
-				"navigationBarTextStyle":"black",
 				"app-plus": {
 					"titleNView": false ,//禁用原生导航栏
 					"bounce":"none"
@@ -28,7 +26,6 @@
 			"path": "pages/tabBar/cart",
 			"style": {
 				"enablePullDownRefresh": true,
-				"navigationBarTextStyle":"black",
 				"app-plus": {
 					"titleNView": false ,//禁用原生导航栏
 					"softinputNavBar":"none"
@@ -39,9 +36,6 @@
 			"path": "pages/tabBar/user",
 			"style": {
 				"enablePullDownRefresh": true,
-				"navigationBarBackgroundColor":"#8bbce7",
-				"backgroundColorTop":"#8bbce7",
-				"navigationBarTextStyle":"white",
 				"app-plus": {
 					"titleNView": false //禁用原生导航栏
 					
@@ -68,7 +62,6 @@
 			    "path" : "goods/goods",
 			    "style" : {
 					"navigationBarTitleText" : "",
-					"navigationBarBackgroundColor":"#f1f1f1",
 					"onReachBottomDistance":50,
 					"h5":{
 						"titleNView":false
@@ -81,7 +74,6 @@
 		},{
 		    "path" : "search/searchView",
 		    "style" : {
-				"navigationBarBackgroundColor":"#ffffff",
 				"navigationBarTitleText":"搜索商品",
 				"backgroundColorTop":"#ffffff",
 				"backgroundColorBottom":"#ffffff"
@@ -89,7 +81,6 @@
 		},{
 		    "path" : "goods/discuss",
 		    "style" : {
-				"navigationBarBackgroundColor":"#ffffff",
 				"navigationBarTitleText": "评论列表",
 				"backgroundColorTop":"#ffffff",
 				"backgroundColorBottom":"#ffffff"
@@ -100,7 +91,6 @@
 		"pages":[{
             "path" : "payment/payment",
             "style" : {
-				"navigationBarBackgroundColor":"#ffffff",
 				"navigationBarTitleText":"订单支付",
 				"backgroundColorTop":"#ffffff",
 				"backgroundColorBottom":"#ffffff"
@@ -109,7 +99,6 @@
         ,{
             "path" : "success/success",
             "style" : {
-				"navigationBarBackgroundColor":"#ffffff",
 				"navigationBarTitleText":"支付成功",
 				"backgroundColorTop":"#ffffff",
 				"backgroundColorBottom":"#ffffff"
@@ -122,8 +111,6 @@
             "path" : "coupon/coupon",
             "style" : {
 				"navigationBarTitleText": "优惠券",
-				"navigationBarBackgroundColor":"#8bbce7",
-				"navigationBarTextStyle":"white",
 				"app-plus":{
 					"bounce":"none"
 				}
@@ -133,8 +120,6 @@
             "path" : "keep/keep",
             "style" : {
 				"navigationBarTitleText": "我的收藏",
-				"navigationBarBackgroundColor":"#8bbce7",
-				"navigationBarTextStyle":"white",
 				"app-plus":{
 					"bounce":"none"
 				}
@@ -143,7 +128,6 @@
         ,{
             "path" : "address/address",
             "style" : {
-				"navigationBarBackgroundColor":"#ffffff",
 				"navigationBarTitleText":"地址管理",
 				"backgroundColorTop":"#ffffff",
 				"backgroundColorBottom":"#ffffff"
@@ -152,7 +136,6 @@
         ,{
             "path" : "address/edit/edit",
             "style" : {
-				"navigationBarBackgroundColor":"#ffffff",
 				"navigationBarTitleText":"编辑收件人地址",
 				"backgroundColorTop":"#ffffff",
 				"backgroundColorBottom":"#ffffff"
@@ -161,7 +144,6 @@
         ,{
             "path" : "deposit/deposit",
             "style" : {
-				"navigationBarBackgroundColor":"#ffffff",
 				"navigationBarTitleText":"充值",
 				"backgroundColorTop":"#ffffff",
 				"backgroundColorBottom":"#ffffff"
@@ -170,7 +152,6 @@
 		,{
             "path" : "order_list/order_list",
             "style" : {
-				"navigationBarTitleText":"我的订单",
 				"navigationBarBackgroundColor":"#f8f8f8",
 				"backgroundColorTop":"#f3f3f3",
 				"backgroundColorBottom":"#ffffff"
@@ -179,7 +160,6 @@
         ,{
             "path" : "setting/setting",
             "style" : {
-				"navigationBarBackgroundColor":"#f8f8f8",
 				"navigationBarTitleText":"我的设置",
 				"backgroundColorTop":"#ffffff",
 				"backgroundColorBottom":"#f3f3f3"
@@ -212,9 +192,9 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText" : "",
-		"navigationBarBackgroundColor" : "#ffffff",
+		"navigationBarBackgroundColor":"#8bbce7",
+		"backgroundColorTop":"#8bbce7",
 		"backgroundColor" : "#ffffff",
-		"backgroundColorTop":"#ffffff",
 		"backgroundColorBottom":"#ffffff"
 	},
 	"tabBar": {
