@@ -378,13 +378,12 @@ var _card = _interopRequireDefault(__webpack_require__(/*! @/components/good-car
         } });
 
     },
-    // 加入购物车
-    joinCart: function joinCart() {
+    joinOrBuy: function joinOrBuy(type) {//买或者加购
       var spec = this.goodsData.spec == null;
       var goods = this.goodsData.type == null;
       if (!spec && !goods) {
-        this.checkCart(this.goodsData);
-        //uni.showToast({title: "已加入购物车"});//都有了就会跳转
+        type == 1 && this.checkCart(this.goodsData);
+        type == 2 && this.toConfirmation();
       } else {
         if (goods) {
           uni.showToast({ title: '请选择颜色分类', icon: 'none' });
@@ -395,24 +394,6 @@ var _card = _interopRequireDefault(__webpack_require__(/*! @/components/good-car
           this.showCard = true;
         };
       }
-    },
-    //立即购买
-    buy: function buy() {
-      var spec = this.goodsData.spec == null;
-      var goods = this.goodsData.type == null;
-      if (!spec && !goods) {
-        this.toConfirmation();
-      } else {
-        if (goods) {
-          uni.showToast({ title: '请选择颜色分类', icon: 'none' });
-          this.showCard = true;
-        };
-        if (spec) {
-          uni.showToast({ title: '请选择尺码', icon: 'none' });
-          this.showCard = true;
-        };
-      }
-
     },
     //跳转确认订单页面
     toConfirmation: function toConfirmation() {
@@ -552,7 +533,11 @@ var render = function() {
               _c("view", {
                 staticClass: "icon cart",
                 attrs: { eventid: "2e32a098-1" },
-                on: { tap: _vm.joinCart }
+                on: {
+                  tap: function($event) {
+                    _vm.joinOrBuy(1)
+                  }
+                }
               })
             ])
           ]
@@ -601,7 +586,11 @@ var render = function() {
               _c("view", {
                 staticClass: "icon cart",
                 attrs: { eventid: "2e32a098-4" },
-                on: { tap: _vm.joinCart }
+                on: {
+                  tap: function($event) {
+                    _vm.joinOrBuy(1)
+                  }
+                }
               })
             ])
           ]
@@ -646,7 +635,11 @@ var render = function() {
             {
               staticClass: "joinCart",
               attrs: { eventid: "2e32a098-7" },
-              on: { tap: _vm.joinCart }
+              on: {
+                tap: function($event) {
+                  _vm.joinOrBuy(1)
+                }
+              }
             },
             [_vm._v("加入购物车")]
           ),
@@ -655,7 +648,11 @@ var render = function() {
             {
               staticClass: "buy",
               attrs: { eventid: "2e32a098-8" },
-              on: { tap: _vm.buy }
+              on: {
+                tap: function($event) {
+                  _vm.joinOrBuy(2)
+                }
+              }
             },
             [_vm._v("立即购买")]
           )

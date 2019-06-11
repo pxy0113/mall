@@ -125,47 +125,47 @@ var _card = _interopRequireDefault(__webpack_require__(/*! @/components/good-car
 
 
 
-    uni.setStorage({
-      key: 'cartList',
-      data: [
-      {
-        id: 10,
-        img: '../../static/img/goods/p1.jpg',
-        name: '蝴蝶结丝绒长袖吊带连衣裙欧美复古',
-        type: 2,
-        spec: 1,
-        specList: ["XS", "S", "M", "L", "XL", "XXL"],
-        goodsType: ["粉紫", "樱桃红", "湖水蓝"],
-        price: 127.5,
-        number: 1
-        // selected:false,
-      },
-      {
-        id: 22,
-        img: '../../static/img/goods/p2.jpg',
-        name: '森系少女复古手链手环网红Ins',
-        type: 4,
-        spec: 1,
-        specList: ["XS", "S", "M", "L", "XL", "XXL"],
-        goodsType: ["玫瑰金色链子粉晶拼珍珠", "彩虹珠子草编森女手串", "链子", "特价散珠*1", "波罗的海银色手镯"],
-        price: 127.5,
-        number: 1
-        // selected:false,
-      },
-      {
-        id: 33,
-        img: '../../static/img/goods/p3.jpg',
-        name: '阳澄湖精品大闸蟹',
-        type: 0,
-        spec: 1,
-        specList: ["500g", "250g", "1kg"],
-        goodsType: ["公蟹", '母蟹', '公母各半'],
-        price: 127.5,
-        number: 1
-        // selected:false,
-      }] });
-
-
+    // uni.setStorage({
+    // 	key:'cartList',
+    // 	data:[
+    // 		{
+    // 			id:10,
+    // 			img:'../../static/img/goods/p1.jpg',
+    // 			name:'蝴蝶结丝绒长袖吊带连衣裙欧美复古',
+    // 			type:2,
+    // 			spec:1,
+    // 			specList:["XS","S","M","L","XL","XXL"],
+    // 			goodsType:["粉紫","樱桃红","湖水蓝"],
+    // 			price:127.5,
+    // 			number:1,
+    // 			// selected:false,
+    // 		},
+    // 		{
+    // 			id:22,
+    // 			img:'../../static/img/goods/p2.jpg',
+    // 			name:'森系少女复古手链手环网红Ins',
+    // 			type:4,
+    // 			spec:1,
+    // 			specList:["XS","S","M","L","XL","XXL"],
+    // 			goodsType:["玫瑰金色链子粉晶拼珍珠","彩虹珠子草编森女手串","链子","特价散珠*1","波罗的海银色手镯"],
+    // 			price:127.5,
+    // 			number:1,
+    // 			// selected:false,
+    // 		},
+    // 		{
+    // 			id:33,
+    // 			img:'../../static/img/goods/p3.jpg',
+    // 			name:'阳澄湖精品大闸蟹',
+    // 			type:0,
+    // 			spec:1,
+    // 			specList:["500g","250g","1kg"],
+    // 			goodsType:["公蟹",'母蟹','公母各半'],
+    // 			price:127.5,
+    // 			number:1,
+    // 			// selected:false,
+    // 		},
+    // 	]
+    // });
   },
   onShow: function onShow() {var _this2 = this;
     uni.getStorage({

@@ -110,12 +110,8 @@ export default {
 				this.hideSpec(type);
 				// this.$emit('emitData',this.goodsData,type);
 			}else{
-				if(goods){					
-					uni.showToast({title:'请选择颜色分类',icon:'none' });
-				};
-				if(spec){					
-					uni.showToast({title:'请选择尺码' ,icon:'none' });
-				};
+				goods&&uni.showToast({title:'请选择颜色分类',icon:'none' });
+				spec&&uni.showToast({title:'请选择尺码' ,icon:'none' });
 			}
 		}
     },

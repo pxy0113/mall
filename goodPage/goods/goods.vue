@@ -8,7 +8,7 @@
 				<view class="middle"></view>
 				<view class="icon-btn">
 					<view class="icon tongzhi"></view>
-					<view class="icon cart" @tap="joinCart"></view>
+					<view class="icon cart" @tap="joinOrBuy(1)"></view>
 				</view>
 			</view>
 			<!-- 头部-滚动渐变显示 -->
@@ -19,7 +19,7 @@
 				</view>
 				<view class="icon-btn">
 					<view class="icon tongzhi"></view>
-					<view class="icon cart" @tap="joinCart"></view>
+					<view class="icon cart" @tap="joinOrBuy(1)"></view>
 				</view>
 			</view>
 		</view>
@@ -40,8 +40,8 @@
 				</view>
 			</view>
 			<view class="btn">
-				<view class="joinCart" @tap="joinCart">加入购物车</view>
-				<view class="buy" @tap="buy">立即购买</view>
+				<view class="joinCart" @tap="joinOrBuy(1)">加入购物车</view>
+				<view class="buy" @tap="joinOrBuy(2)">立即购买</view>
 			</view>
 		</view>
 		<!-- share弹窗 -->
@@ -368,13 +368,12 @@ export default {
 				}
 			});
 		},
-		// 加入购物车
-		joinCart(){
+		joinOrBuy(type){//买或者加购
 			let spec = (this.goodsData.spec==null);
 			let goods = (this.goodsData.type==null);
 			if(!spec&&!goods){
-				this.checkCart(this.goodsData);
-				//uni.showToast({title: "已加入购物车"});//都有了就会跳转
+				type==1&&this.checkCart(this.goodsData);	
+				type==2&&this.toConfirmation();
 			}else{
 				if(goods){					
 					uni.showToast({title:'请选择颜色分类',icon:'none' });
@@ -385,24 +384,6 @@ export default {
 					this.showCard = true;
 				};
 			}
-		},
-		//立即购买
-		buy(){
-			let spec = (this.goodsData.spec==null);
-			let goods = (this.goodsData.type==null);
-			 if(!spec&&!goods){
-				this.toConfirmation();
-			 }else{
-				if(goods){					
-					uni.showToast({title:'请选择颜色分类',icon:'none' });
-					this.showCard = true;
-				};
-				if(spec){					
-					uni.showToast({title:'请选择尺码' ,icon:'none' });
-					this.showCard = true;
-				};
-			 }
-			
 		},
 		//跳转确认订单页面
 		toConfirmation(){
