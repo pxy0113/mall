@@ -203,7 +203,8 @@ page {
 .sub-list.shop .row .left image {
         width: 18vw;
         height: 18vw;
-        border-radius: 100%;
+        -webkit-border-radius: 100%;
+                border-radius: 100%;
 }
 .sub-list.shop .row .right {
       height: 20vw;
@@ -305,6 +306,7 @@ page {
                 animation: closeMenu 0.15s linear both;
 }
 .sub-list .row .carrier .goods-info {
+        width: -webkit-calc(100% - 40rpx);
         width: calc(100% - 40rpx);
         padding: 20rpx;
         -webkit-flex-wrap: nowrap;
@@ -312,9 +314,12 @@ page {
                 flex-wrap: nowrap;
 }
 .sub-list .row .carrier .goods-info .img {
+          width: -webkit-calc(30vw - 40rpx);
           width: calc(30vw - 40rpx);
+          height: -webkit-calc(30vw - 40rpx);
           height: calc(30vw - 40rpx);
-          border-radius: 10rpx;
+          -webkit-border-radius: 10rpx;
+                  border-radius: 10rpx;
           overflow: hidden;
           -webkit-flex-shrink: 0;
               -ms-flex-negative: 0;
@@ -322,11 +327,14 @@ page {
           margin-right: 20rpx;
 }
 .sub-list .row .carrier .goods-info .img image {
+            width: -webkit-calc(30vw - 40rpx);
             width: calc(30vw - 40rpx);
+            height: -webkit-calc(30vw - 40rpx);
             height: calc(30vw - 40rpx);
 }
 .sub-list .row .carrier .goods-info .info {
           width: 100%;
+          height: -webkit-calc(30vw - 40rpx);
           height: calc(30vw - 40rpx);
           overflow: hidden;
           -webkit-flex-wrap: wrap;

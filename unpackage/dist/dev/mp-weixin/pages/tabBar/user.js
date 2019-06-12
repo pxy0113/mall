@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -106,7 +106,7 @@
 
 
 
-
+var _request = _interopRequireDefault(__webpack_require__(/*! @/common/api/request.js */ "D:\\pxy\\mall\\common\\api\\request.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   data: function data() {
     return {
@@ -256,21 +256,35 @@
 
     },
     getSkeyAndOpenId: function getSkeyAndOpenId(code) {
-      // code换取session_key跟openid  
-      // 这一步最好在后台做 也就是我直接传code给后台 后台写死secret跟appid 
-      // 然后得到session_key跟openid 用session_key进行sha1/md5加密后 把skey,openid给我
-      var secret = '119afffd251e8b1b6e0f0a96e977bb7d';
-      var appid = 'wx0904846d9b4c40fe';
+      console.log(code);
       uni.request({
-        url: "https://api.weixin.qq.com/sns/jscode2session?appid=".concat(appid, "&secret=").concat(secret, "&js_code=").concat(code, "&grant_type=authorization_code"), //change
+        url: 'http://m252t77964.wicp.vip:52923/EShop/login',
+        data: {
+          jsCode: code },
+
         success: function (info) {
-          this.saveStorage('skey', info.data.session_key);
-          this.saveStorage('openid', info.data.openid);
+          console.log('ok');
+          console.log(info);
         }.bind(this),
         fail: function fail(e) {
           console.log(e);
         } });
 
+      // code换取session_key跟openid  
+      // 这一步最好在后台做 也就是我直接传code给后台 后台写死secret跟appid 
+      // 然后得到session_key跟openid 用session_key进行sha1/md5加密后 把skey,openid给我
+      // let secret = '119afffd251e8b1b6e0f0a96e977bb7d';
+      // let appid = 'wx0904846d9b4c40fe';
+      // uni.request({
+      // 	url: `https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${secret}&js_code=${code}&grant_type=authorization_code`,//change
+      // 	success: function(info) {
+      // 		this.saveStorage('skey',info.data.session_key);
+      // 		this.saveStorage('openid',info.data.openid);
+      // 	}.bind(this),
+      // 	fail: function(e) {
+      // 		console.log(e)
+      // 	}
+      // });
     },
     saveStorage: function saveStorage(name, data) {
       uni.setStorage({
@@ -524,6 +538,87 @@ var staticRenderFns = [
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "D:\\pxy\\mall\\common\\api\\apiList.js":
+/*!*****************************************!*\
+  !*** D:/pxy/mall/common/api/apiList.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var host = 'http://120.78.121.164:8080'; // 设置API接口的ip地址和端口
+
+var apiList = {
+
+  login: host + '/EShop/login', //用户登录的API
+
+  getMyInfo: host + '/ucenter/User/myInfo' //用户注册的API
+
+  //...
+};
+
+
+module.exports = apiList; //暴露出来
+
+/***/ }),
+
+/***/ "D:\\pxy\\mall\\common\\api\\request.js":
+/*!*****************************************!*\
+  !*** D:/pxy/mall/common/api/request.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _apiList = _interopRequireDefault(__webpack_require__(/*! ./apiList */ "D:\\pxy\\mall\\common\\api\\apiList.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  引入apiList.js文件
+
+var apiRequest = function apiRequest(url, method, data, header) {//接收所需要的参数，如果不够还可以自己自定义参数
+  var promise = new Promise(function (resolve, reject) {
+    uni.request({
+      url: url,
+      data: data ? data : null,
+      method: method,
+      header: header ? header : { 'content-type': 'application/x-www-form-urlencoded' }, //application/json
+      success: function success(res) {
+        //接口调用成功
+        resolve(res); //根据业务需要resolve接口返回的json的数据
+      },
+      fail: function fail(res) {
+        // fail调用接口失败
+        reject({ errormsg: '网络错误,请稍后重试', code: -1 });
+      } });
+
+  });
+  return promise; //注意，这里返回的是promise对象
+};
+
+//登录接口的调用
+var login = function login(data) {
+  return new Promise(function (resolve, reject) {
+    resolve(apiRequest(_apiList.default.login, 'POST', data));
+  });
+};
+//注册接口的调用
+var getMyInfo = function getMyInfo(data) {
+  return new Promise(function (resolve, reject) {
+    resolve(apiRequest(_apiList.default.getMyInfo, 'POST', data));
+  });
+};
+
+//最后需要将具体调用的函数暴露出，给具体业务调用
+//在需要的地方引入
+// import api from '../../common/api/request.js'
+// 				api.getMyInfo().then(res =>{
+// 					console.log(res)
+// 				});
+var _default =
+{
+  login: login,
+  getMyInfo: getMyInfo };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

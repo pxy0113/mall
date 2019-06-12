@@ -149,19 +149,24 @@
 		},
 		onHide() {
 			//页面隐藏清除订单信息
+			console.log('页面隐藏');
+			this.clearOrder();
+		},
+		onUnload() {
+			console.log('取消订单');
 			this.clearOrder();
 		},
 		onBackPress() {
-			//页面后退时候，清除订单信息
+			//页面后退时候，清除订单信息 //只适用于5+app h5
 			this.clearOrder();
 		},
 		methods: {
 			clearOrder(){
 				uni.removeStorage({
 					key: 'buylist',
-					success: function (res) {
+					success: (res) => {
 						this.buylist = [];
-						console.log('remove buylist success');
+						console.log('remove buylist success');						
 					}
 				});
 			},
@@ -192,7 +197,7 @@
 								url:"../../payPage/payment/payment?amount="+this.sumPrice
 							})
 						}
-					})
+					});//跳转到订单界面说明已经提交订单成功 订单已入库 则购物车不需要保留选中状态
 				},1000)
 				
 			},

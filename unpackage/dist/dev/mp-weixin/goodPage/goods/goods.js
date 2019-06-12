@@ -363,6 +363,7 @@ var _card = _interopRequireDefault(__webpack_require__(/*! @/components/good-car
               type: _this2.goodsData.type,
               price: _this2.goodsData.price,
               number: _this2.goodsData.number };
+            console.log(list);
             list.unshift(data);
           }
           uni.setStorage({
@@ -374,7 +375,24 @@ var _card = _interopRequireDefault(__webpack_require__(/*! @/components/good-car
 
         },
         fail: function fail() {
-          uni.showToast({ title: "加入购物车失败", icon: 'none' }); //都有了就会跳转
+          uni.setStorage({
+            key: 'cartList',
+            data: [{
+              id: _this2.goodsData.id,
+              img: _this2.swiperList[0].img,
+              name: _this2.goodsData.name,
+              spec: _this2.goodsData.spec,
+              specList: _this2.goodsData.specList,
+              goodsType: _this2.goodsData.goodsType,
+              type: _this2.goodsData.type,
+              price: _this2.goodsData.price,
+              number: _this2.goodsData.number }],
+
+
+            success: function success(ret) {
+              uni.showToast({ title: "已加入购物车" });
+            } });
+
         } });
 
     },

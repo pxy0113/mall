@@ -75,7 +75,8 @@
         -webkit-align-items: center;
             -ms-flex-align: center;
                 align-items: center;
-        border-radius: 10rpx;
+        -webkit-border-radius: 10rpx;
+                border-radius: 10rpx;
         -webkit-box-shadow: 0rpx 5rpx 20rpx rgba(0, 0, 0, 0.05);
                 box-shadow: 0rpx 5rpx 20rpx rgba(0, 0, 0, 0.05);
         font-size: 36rpx;
@@ -201,7 +202,8 @@
 .pay .btn {
     width: 70%;
     height: 80rpx;
-    border-radius: 80rpx;
+    -webkit-border-radius: 80rpx;
+            border-radius: 80rpx;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;

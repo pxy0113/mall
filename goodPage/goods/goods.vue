@@ -353,6 +353,7 @@ export default {
 							type:this.goodsData.type,
 							price:this.goodsData.price,
 							number:this.goodsData.number};
+							console.log(list)
 						list.unshift(data);
 					}
 					uni.setStorage({
@@ -364,7 +365,24 @@ export default {
 					});
 				},
 				fail: () => {
-					uni.showToast({title: "加入购物车失败",icon:'none'});//都有了就会跳转
+					uni.setStorage({
+						key:'cartList',
+						data:[{
+								id:this.goodsData.id,
+								img:this.swiperList[0].img,
+								name:this.goodsData.name,
+								spec:this.goodsData.spec,
+								specList:this.goodsData.specList,
+								goodsType:this.goodsData.goodsType,
+								type:this.goodsData.type,
+								price:this.goodsData.price,
+								number:this.goodsData.number,
+								}
+						],
+						success: (ret) =>{
+							uni.showToast({title: "已加入购物车"});
+						}
+					})
 				}
 			});
 		},

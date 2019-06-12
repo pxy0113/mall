@@ -80,14 +80,16 @@
           uni.navigateTo({
             url: '../../goodPage/goods/goods-list?cid=' + Math.random() + '&&name=' + code });
 
-          _this.searchSession.push(code);
-          var d = Array.from(new Set(_this.searchSession)); //去重
-          uni.setStorage({
-            key: 'searchSession',
-            data: d,
-            success: function success() {
-              console.log('success');
-            } });
+          if (_this.searchSession.indexOf(code) < 0) {
+            _this.searchSession.push(code);
+            uni.setStorage({
+              key: 'searchSession',
+              data: _this.searchSession,
+              success: function success() {
+                console.log('success');
+              } });
+
+          }
 
         }, 2000);
       }

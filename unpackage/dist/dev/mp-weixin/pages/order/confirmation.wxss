@@ -30,7 +30,8 @@
   margin: 30rpx auto 20rpx auto;
   -webkit-box-shadow: 0rpx 5rpx 20rpx rgba(0, 0, 0, 0.1);
           box-shadow: 0rpx 5rpx 20rpx rgba(0, 0, 0, 0.1);
-  border-radius: 20rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -74,7 +75,8 @@
   margin: 30rpx auto 20rpx auto;
   -webkit-box-shadow: 0rpx 5rpx 20rpx rgba(0, 0, 0, 0.1);
           box-shadow: 0rpx 5rpx 20rpx rgba(0, 0, 0, 0.1);
-  border-radius: 20rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
 }
 .buy-list .row {
     margin: 30rpx 0;
@@ -89,7 +91,8 @@
 .buy-list .row .goods-info .img {
         width: 22vw;
         height: 22vw;
-        border-radius: 10rpx;
+        -webkit-border-radius: 10rpx;
+                border-radius: 10rpx;
         overflow: hidden;
         -webkit-flex-shrink: 0;
             -ms-flex-negative: 0;
@@ -135,7 +138,8 @@
               -ms-flex-align: center;
                   align-items: center;
           padding: 0 10rpx;
-          border-radius: 20rpx;
+          -webkit-border-radius: 20rpx;
+                  border-radius: 20rpx;
           margin-bottom: 20vw;
 }
 .buy-list .row .goods-info .info .price-number {
@@ -180,7 +184,8 @@
   margin: 30rpx auto 20rpx auto;
   -webkit-box-shadow: 0rpx 5rpx 20rpx rgba(0, 0, 0, 0.1);
           box-shadow: 0rpx 5rpx 20rpx rgba(0, 0, 0, 0.1);
-  border-radius: 20rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
 }
 .order .row {
     margin: 20rpx 0;
@@ -277,7 +282,8 @@
           -ms-flex-align: center;
               align-items: center;
       font-size: 30rpx;
-      border-radius: 40rpx;
+      -webkit-border-radius: 40rpx;
+              border-radius: 40rpx;
 }
 .detail {
   width: 86%;
@@ -285,7 +291,8 @@
   margin: 30rpx auto 20rpx auto;
   -webkit-box-shadow: 0rpx 5rpx 20rpx rgba(0, 0, 0, 0.1);
           box-shadow: 0rpx 5rpx 20rpx rgba(0, 0, 0, 0.1);
-  border-radius: 20rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
 }
 .detail .row {
     height: 60rpx;

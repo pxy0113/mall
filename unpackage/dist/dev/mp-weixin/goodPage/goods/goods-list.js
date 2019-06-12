@@ -37,10 +37,16 @@
 
 
 
+
+
+
+
 var _default2 = _interopRequireDefault(__webpack_require__(/*! ../../static/img/goods/default.jpg */ "D:\\pxy\\mall\\static\\img\\goods\\default.jpg"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   data: function data() {
     return {
+      top: false,
+      isTouch: false,
       defaultImg: _default2.default,
       goodsList: [
       { goods_id: 0, img: '../../static/img/goods/p1.jpg', name: '牛肉牛肉', price: '168', slogan: '1235人付款', show: false },
@@ -96,6 +102,7 @@ var _default2 = _interopRequireDefault(__webpack_require__(/*! ../../static/img/
     //兼容iOS端下拉时顶部漂移
     if (e.scrollTop >= 0) {
       this.headerPosition = "fixed";
+      e.scrollTop > 1000 ? this.top = true : this.top = false;
     } else {
       this.headerPosition = "absolute";
     }
@@ -129,6 +136,14 @@ var _default2 = _interopRequireDefault(__webpack_require__(/*! ../../static/img/
     }
   },
   methods: {
+    toTop: function toTop() {//点击回到顶部
+      this.isTouch = true;
+      uni.pageScrollTo({
+        scrollTop: 0,
+        duration: 300 });
+
+      this.isTouch = false;
+    },
     reload: function reload() {
       console.log("reload");
       var tmpArr = [];
@@ -266,7 +281,23 @@ var render = function() {
       _c("view", { staticClass: "loading-text" }, [
         _vm._v(_vm._s(_vm.loadingText))
       ])
-    ])
+    ]),
+    _vm.top
+      ? _c(
+          "view",
+          {
+            class: [_vm.isTouch ? "b" : "a"],
+            attrs: { eventid: "23025e9a-2" },
+            on: { tap: _vm.toTop }
+          },
+          [
+            _c("image", {
+              staticStyle: { width: "60rpx", height: "60rpx" },
+              attrs: { src: "../../static/img/hj.png" }
+            })
+          ]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []

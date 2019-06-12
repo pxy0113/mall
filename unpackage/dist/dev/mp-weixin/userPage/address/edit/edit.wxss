@@ -140,7 +140,8 @@
             box-shadow: 0rpx 5rpx 10rpx rgba(0, 0, 0, 0.4);
     width: 70%;
     height: 80rpx;
-    border-radius: 80rpx;
+    -webkit-border-radius: 80rpx;
+            border-radius: 80rpx;
     background-color: #8bbce7;
     color: #fff;
     -webkit-box-pack: center;

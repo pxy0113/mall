@@ -70,15 +70,17 @@ export default {
 					uni.navigateTo({
 						url: '../../goodPage/goods/goods-list?cid='+Math.random()+'&&name='+code
 					});
-					this.searchSession.push(code);
-					let d = Array.from(new Set(this.searchSession));//去重
-					uni.setStorage({
-						key: 'searchSession',
-						data: d,
-						success: () =>{
-							console.log('success');
-						}
-					});
+					if(this.searchSession.indexOf(code)<0){
+						this.searchSession.push(code);
+						uni.setStorage({
+							key: 'searchSession',
+							data: this.searchSession,
+							success: () =>{
+								console.log('success');
+							}
+						});
+					}
+
 				}, 2000);
 			}
 
@@ -133,6 +135,7 @@ export default {
 .input-box {
 	width: 100%;
 	height: 65upx;
+	margin-top: 20upx;
 	background-color: #f5f5f5;
 	border-radius: 30upx;
 	position: relative;

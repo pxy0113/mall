@@ -5,7 +5,7 @@
         <view class="header" :style="{position:headerPosition}">
 			<view class="addr"><view class="icon location"></view>{{city}}</view>
 			<view class="input-box">
-					<text style="color: #C0C0C0;font-size: 12px;padding-left: 5px;width: 100%;" @tap="toSearch()">搜索</text>
+					<text style="color: #C0C0C0;font-size: 28upx;padding-left: 5px;width: 100%;" @tap="toSearch()">搜索</text>
 				<view class="icon search"></view>
 			</view>
 			<view class="icon-btn">

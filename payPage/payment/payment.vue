@@ -92,7 +92,7 @@
 					});
 					setTimeout(()=>{
 						uni.redirectTo({
-							url:'../../pay/success/success?amount='+this.amount
+							url:'../success/success?amount='+this.amount
 						});
 					},300);
 				},700)

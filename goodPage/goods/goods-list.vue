@@ -23,6 +23,10 @@
 			</view>
 			<view class="loading-text">{{loadingText}}</view>
 		</view>
+		<view :class="[isTouch?'b':'a']" 
+		 v-if="top" @tap="toTop">
+			<image src="../../static/img/hj.png" style="width: 60upx;height: 60upx;"></image>
+		</view>
 	</view>
 </template>
 
@@ -31,6 +35,8 @@ import zero from '../../static/img/goods/default.jpg'
 	export default {
 		data() {
 			return {
+				top:false,
+				isTouch:false,
 				defaultImg:zero,
 				goodsList: [
 					{ goods_id: 0, img: '../../static/img/goods/p1.jpg', name: '牛肉牛肉', price: '168', slogan: '1235人付款' ,show:false},
@@ -86,6 +92,7 @@ import zero from '../../static/img/goods/default.jpg'
 			//兼容iOS端下拉时顶部漂移
 			if(e.scrollTop>=0){
 				this.headerPosition = "fixed";
+				e.scrollTop>1000?this.top=true:this.top=false;
 			}else{
 				this.headerPosition = "absolute";
 			}
@@ -119,6 +126,14 @@ import zero from '../../static/img/goods/default.jpg'
 			}
 		},
 		methods:{
+			toTop(){//点击回到顶部
+				this.isTouch = true;
+				uni.pageScrollTo({
+					scrollTop: 0,
+					duration: 300
+				});
+				this.isTouch = false;
+			},
 			reload(){
 				console.log("reload");
 				let tmpArr = []
@@ -293,5 +308,44 @@ import zero from '../../static/img/goods/default.jpg'
 			}
 			
 		}
+	}
+	.a{
+		border: 1px solid #8BBCE7;
+		color:#8BBCE7;
+		border-radius: 100%;
+		position: fixed;
+		bottom: 50upx;right: 50upx;
+		z-index: 2;
+		background: #fff;
+		padding: 5upx;
+	}
+
+	@keyframes spin {
+	    0% {
+			opacity: 1;
+			bottom:50upx;
+		}
+		50% {
+			opacity: 0.6;
+			bottom:100upx;
+		}
+		100% {
+			opacity: 0;
+			bottom:150upx;
+		}
+	}
+	a:hover{
+		animation: spin 1.2s 1;
+	}
+	.b{
+		border: 1px solid #8BBCE7;
+		color:#8BBCE7;
+		border-radius: 100%;
+		position: fixed;
+		bottom: 50upx;right: 50upx;
+		animation: spin 1.2s 1;
+		z-index: 2;
+		background: #fff;
+		padding: 5upx;
 	}
 </style>

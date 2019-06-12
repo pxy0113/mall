@@ -134,7 +134,8 @@
 .pay .btn {
     width: 70%;
     height: 80rpx;
-    border-radius: 80rpx;
+    -webkit-border-radius: 80rpx;
+            border-radius: 80rpx;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;

@@ -116,7 +116,7 @@ var _card = _interopRequireDefault(__webpack_require__(/*! @/components/good-car
       uni.stopPullDownRefresh();
     }, 1000);
   },
-  onLoad: function onLoad() {
+  onLoad: function onLoad(option) {
     //兼容H5下结算条位置
 
 
@@ -124,7 +124,7 @@ var _card = _interopRequireDefault(__webpack_require__(/*! @/components/good-car
 
 
 
-
+    console.log('i am cart');
     // uni.setStorage({
     // 	key:'cartList',
     // 	data:[
@@ -167,11 +167,17 @@ var _card = _interopRequireDefault(__webpack_require__(/*! @/components/good-car
     // 	]
     // });
   },
+
   onShow: function onShow() {var _this2 = this;
     uni.getStorage({
       key: 'cartList',
       success: function success(res) {
-        _this2.goodsList = res.data; //selectList
+        _this2.goodsList = res.data;
+        _this2.goodsList.some(function (item) {
+          item.selected = false;
+        });
+        _this2.selectedList = [];
+        _this2.isAllselected = false;
       },
       fail: function fail(err) {
         _this2.goodsList = [];
@@ -295,7 +301,7 @@ var _card = _interopRequireDefault(__webpack_require__(/*! @/components/good-car
     // 选中商品
     selected: function selected(index) {
       this.goodsList[index].selected = this.goodsList[index].selected ? false : true;
-      var i = this.selectedList.indexOf(this.goodsList[index].id);
+      var i = this.selectedList.indexOf(this.goodsList[index].id); //这里是判断id 所以相同id不同尺寸的会计算错误 导致结算数量错误
       i > -1 ? this.selectedList.splice(i, 1) : this.selectedList.push(this.goodsList[index].id);
       this.isAllselected = this.selectedList.length == this.goodsList.length;
       this.sum();

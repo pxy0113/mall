@@ -189,7 +189,7 @@ var render = function() {
             {
               staticStyle: {
                 color: "#C0C0C0",
-                "font-size": "12px",
+                "font-size": "28rpx",
                 "padding-left": "5px",
                 width: "100%"
               },

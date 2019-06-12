@@ -1,11 +1,11 @@
 <template>
 	<view>
 		<view class="status" :style="{position:headerPosition,top:statusTop}"></view>
-<!-- 		<view class="header" :style="{position:headerPosition,top:headerTop}">
+		<!-- <view class="header" :style="{position:headerPosition,top:headerTop}">
 			<view class="title">购物车</view>
 		</view> -->
 		<!-- 占位 -->
-		<!-- <view class="place"></view> -->
+<!-- 		<view class="place"></view> -->
 		<!-- 商品列表 -->
 		<view class="goods-list">
 			<view class="tis" v-if="goodsList.length==0">购物车是空的哦~</view>
@@ -106,7 +106,7 @@ import card from '@/components/good-card/card.vue'
 		        uni.stopPullDownRefresh();
 		    }, 1000);
 		},
-		onLoad() {
+		onLoad(option) {
 			//兼容H5下结算条位置
 			// #ifdef H5
 				this.footerbottom = document.getElementsByTagName('uni-tabbar')[0].offsetHeight+'px';
@@ -114,7 +114,7 @@ import card from '@/components/good-card/card.vue'
 			// #ifdef APP-PLUS
 			this.statusHeight = plus.navigator.getStatusbarHeight();
 			// #endif
-			
+			console.log('i am cart')
 			// uni.setStorage({
 			// 	key:'cartList',
 			// 	data:[
@@ -157,11 +157,17 @@ import card from '@/components/good-card/card.vue'
 			// 	]
 			// });
 		},
+		
 		onShow() {
 			uni.getStorage({
 				key:'cartList',
 				success: (res) => {
-					this.goodsList = res.data;//selectList
+					this.goodsList = res.data;
+					this.goodsList.some(item =>{
+						item.selected = false;
+					});
+					this.selectedList = [];
+					this.isAllselected = false;
 				},
 				fail: (err) => {
 					this.goodsList = [];
@@ -285,7 +291,7 @@ import card from '@/components/good-card/card.vue'
 			// 选中商品
 			selected(index){
 				this.goodsList[index].selected = this.goodsList[index].selected?false:true;
-				let i = this.selectedList.indexOf(this.goodsList[index].id);
+				let i = this.selectedList.indexOf(this.goodsList[index].id);//这里是判断id 所以相同id不同尺寸的会计算错误 导致结算数量错误
 				i>-1?this.selectedList.splice(i, 1):this.selectedList.push(this.goodsList[index].id);
 				this.isAllselected = this.selectedList.length == this.goodsList.length;
 				this.sum();
@@ -410,7 +416,8 @@ import card from '@/components/good-card/card.vue'
 		position: fixed;
 		top: 0;
 		z-index: 10;
-		background-color: #fff;
+		// background-color: #8bbce7;
+		background: linear-gradient(rgba(139,188,231,1),rgba(139,188,231,0.6));
 		/*  #ifdef  APP-PLUS  */
 		top: var(--status-bar-height);
 		/*  #endif  */
@@ -429,7 +436,7 @@ import card from '@/components/good-card/card.vue'
 	}
 	.goods-list{
 		width: 100%;
-		padding: 20upx 0 120upx 0;
+		padding: 10upx 0 120upx 0;
 		.tis{
 			width: 100%;
 			height: 60upx;
@@ -470,8 +477,8 @@ import card from '@/components/good-card/card.vue'
 	}
 	
 	.footer{
-		width: 92%;
-		padding: 0 4%;
+		width: 96%;
+		padding-left:4%;
 		background-color: #fbfbfb;
 		height: 100upx;
 		display: flex;
@@ -508,14 +515,14 @@ import card from '@/components/good-card/card.vue'
 			}
 			.btn{
 				padding: 0 30upx;
-				height: 50upx;
+				height: 100upx;
 				background-color: #8bbce7;
 				color: #fff;
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				
-				border-radius: 30upx;
+				// border-radius: 30upx;
 			}
 		}
 	}	
@@ -590,7 +597,7 @@ import card from '@/components/good-card/card.vue'
 	.Gspec{
 		font-size: 22upx;
 		margin: 8upx 0;
-		padding: 5upx;
+		padding: 8upx 6upx;
 		color: #c0c0c0;
 		// max-height: 8vw;
 		width: 70%;

@@ -65,7 +65,8 @@ view {
             box-shadow: 0rpx 5rpx 10rpx rgba(0, 0, 0, 0.4);
     width: 70%;
     height: 80rpx;
-    border-radius: 80rpx;
+    -webkit-border-radius: 80rpx;
+            border-radius: 80rpx;
     background-color: #8bbce7;
     color: #fff;
     -webkit-box-pack: center;
@@ -114,6 +115,7 @@ view {
         width: 70rpx;
         height: 70rpx;
         background: -webkit-gradient(linear, left top, right top, from(#ccc), to(#aaa));
+        background: -webkit-linear-gradient(left, #ccc, #aaa);
         background: -o-linear-gradient(left, #ccc, #aaa);
         background: linear-gradient(to right, #ccc, #aaa);
         color: #fff;
@@ -125,7 +127,8 @@ view {
         -webkit-align-items: center;
             -ms-flex-align: center;
                 align-items: center;
-        border-radius: 60rpx;
+        -webkit-border-radius: 60rpx;
+                border-radius: 60rpx;
         font-size: 35rpx;
 }
 .list .row .center {
@@ -154,7 +157,8 @@ view {
           background-color: #8bbce7;
           color: #fff;
           padding: 0 18rpx;
-          border-radius: 24rpx;
+          -webkit-border-radius: 24rpx;
+                  border-radius: 24rpx;
           margin-left: 20rpx;
 }
 .list .row .center .address {

@@ -79,7 +79,8 @@ page {
 .btn {
   width: 50%;
   height: 80rpx;
-  border-radius: 80rpx;
+  -webkit-border-radius: 80rpx;
+          border-radius: 80rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

@@ -96,7 +96,7 @@
 	</view>
 </template>
 <script>
-
+import api from '@/common/api/request.js'
 	export default {
 		data() {
 			return {
@@ -238,7 +238,7 @@
 				uni.login({
 					provider: 'weixin',
 					success: function(loginRes) {
-						console.log('-------获取code-------')
+						console.log('-------获取code-------');
 						console.log(loginRes.code);
 						this.getSkeyAndOpenId(loginRes.code);
 						this.isTrue = true;
@@ -246,21 +246,35 @@
 				});
 			},
 			getSkeyAndOpenId(code){
-				// code换取session_key跟openid  
-				// 这一步最好在后台做 也就是我直接传code给后台 后台写死secret跟appid 
-				// 然后得到session_key跟openid 用session_key进行sha1/md5加密后 把skey,openid给我
-				let secret = '119afffd251e8b1b6e0f0a96e977bb7d';
-				let appid = 'wx0904846d9b4c40fe';
+				console.log(code)
 				uni.request({
-					url: `https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${secret}&js_code=${code}&grant_type=authorization_code`,//change
+					url:'http://m252t77964.wicp.vip:52923/EShop/login',
+					data:{
+						jsCode:code
+					},
 					success: function(info) {
-						this.saveStorage('skey',info.data.session_key);
-						this.saveStorage('openid',info.data.openid);
+						console.log('ok')
+						console.log(info)
 					}.bind(this),
 					fail: function(e) {
 						console.log(e)
 					}
 				});
+				// code换取session_key跟openid  
+				// 这一步最好在后台做 也就是我直接传code给后台 后台写死secret跟appid 
+				// 然后得到session_key跟openid 用session_key进行sha1/md5加密后 把skey,openid给我
+				// let secret = '119afffd251e8b1b6e0f0a96e977bb7d';
+				// let appid = 'wx0904846d9b4c40fe';
+				// uni.request({
+				// 	url: `https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${secret}&js_code=${code}&grant_type=authorization_code`,//change
+				// 	success: function(info) {
+				// 		this.saveStorage('skey',info.data.session_key);
+				// 		this.saveStorage('openid',info.data.openid);
+				// 	}.bind(this),
+				// 	fail: function(e) {
+				// 		console.log(e)
+				// 	}
+				// });
 			},
 			saveStorage(name,data){
 				uni.setStorage({

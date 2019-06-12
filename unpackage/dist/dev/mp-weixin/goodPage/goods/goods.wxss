@@ -255,12 +255,14 @@ page.data-v-70c85128 {
 .header .before .back .icon.data-v-70c85128 {
     color: #fff;
     background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 100%;
+    -webkit-border-radius: 100%;
+            border-radius: 100%;
 }
 .header .before .icon-btn .icon.data-v-70c85128 {
     color: #fff;
     background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 100%;
+    -webkit-border-radius: 100%;
+            border-radius: 100%;
 }
 .header .after.data-v-70c85128 {
     background-color: #f1f1f1;
@@ -300,7 +302,8 @@ page.data-v-70c85128 {
 .swiper-box .indicator.data-v-70c85128 {
     padding: 0 25rpx;
     height: 40rpx;
-    border-radius: 40rpx;
+    -webkit-border-radius: 40rpx;
+            border-radius: 40rpx;
     font-size: 22rpx;
     position: absolute;
     bottom: 20rpx;
@@ -432,7 +435,8 @@ page.data-v-70c85128 {
 .comments .comment .user-info .face image.data-v-70c85128 {
         width: 40rpx;
         height: 40rpx;
-        border-radius: 100%;
+        -webkit-border-radius: 100%;
+                border-radius: 100%;
 }
 .comments .comment .user-info .username.data-v-70c85128 {
       font-size: 24rpx;
@@ -512,7 +516,8 @@ page.data-v-70c85128 {
 }
 .footer .btn.data-v-70c85128 {
     height: 80rpx;
-    border-radius: 40rpx;
+    -webkit-border-radius: 40rpx;
+            border-radius: 40rpx;
     overflow: hidden;
     display: -webkit-box;
     display: -webkit-flex;
@@ -549,7 +554,8 @@ page.data-v-70c85128 {
     width: 92%;
     padding: 0 4%;
     height: 70%;
-    border-radius: 10rpx 10rpx 0 0;
+    -webkit-border-radius: 10rpx 10rpx 0 0;
+            border-radius: 10rpx 10rpx 0 0;
     background-color: #fff;
     display: -webkit-box;
     display: -webkit-flex;
@@ -584,7 +590,8 @@ page.data-v-70c85128 {
       margin: 6rpx 0;
       height: 80rpx;
       width: 100%;
-      border-radius: 40rpx;
+      -webkit-border-radius: 40rpx;
+              border-radius: 40rpx;
       overflow: hidden;
       display: -webkit-box;
       display: -webkit-flex;
@@ -783,7 +790,8 @@ page.data-v-70c85128 {
 .mini .sp view.data-v-70c85128 {
     font-size: 28rpx;
     padding: 10rpx;
-    border-radius: 10rpx;
+    -webkit-border-radius: 10rpx;
+            border-radius: 10rpx;
     margin: 10rpx 10rpx 10rpx 0;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;

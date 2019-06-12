@@ -32,7 +32,8 @@ page {
   margin: 10rpx 0;
   padding: 10rpx;
   background: white;
-  border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
 }
 .comment .user-info {
     width: 100%;
@@ -54,7 +55,8 @@ page {
 .comment .user-info .face image {
         width: 40rpx;
         height: 40rpx;
-        border-radius: 100%;
+        -webkit-border-radius: 100%;
+                border-radius: 100%;
 }
 .comment .user-info .username {
       font-size: 24rpx;

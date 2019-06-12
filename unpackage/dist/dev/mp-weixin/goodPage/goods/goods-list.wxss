@@ -93,7 +93,8 @@
   width: 100%;
   height: 65rpx;
   background-color: #f5f5f5;
-  border-radius: 30rpx;
+  -webkit-border-radius: 30rpx;
+          border-radius: 30rpx;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -161,7 +162,8 @@
 }
 .goods-list .product-list .product {
     width: 48%;
-    border-radius: 20rpx;
+    -webkit-border-radius: 20rpx;
+            border-radius: 20rpx;
     background-color: #fff;
     margin: 0 0 15rpx 0;
     -webkit-box-shadow: 0rpx 5rpx 25rpx rgba(0, 0, 0, 0.1);
@@ -169,7 +171,8 @@
 }
 .goods-list .product-list .product image {
       width: 100%;
-      border-radius: 20rpx 20rpx 0 0;
+      -webkit-border-radius: 20rpx 20rpx 0 0;
+              border-radius: 20rpx 20rpx 0 0;
 }
 .goods-list .product-list .product .name {
       width: 92%;
@@ -205,5 +208,63 @@
 .goods-list .product-list .product .info .slogan {
         color: #807c87;
         font-size: 24rpx;
+}
+.a {
+  border: 1px solid #8BBCE7;
+  color: #8BBCE7;
+  -webkit-border-radius: 100%;
+          border-radius: 100%;
+  position: fixed;
+  bottom: 50rpx;
+  right: 50rpx;
+  z-index: 2;
+  background: #fff;
+  padding: 5rpx;
+}
+@-webkit-keyframes spin {
+0% {
+    opacity: 1;
+    bottom: 50rpx;
+}
+50% {
+    opacity: 0.6;
+    bottom: 100rpx;
+}
+100% {
+    opacity: 0;
+    bottom: 150rpx;
+}
+}
+@keyframes spin {
+0% {
+    opacity: 1;
+    bottom: 50rpx;
+}
+50% {
+    opacity: 0.6;
+    bottom: 100rpx;
+}
+100% {
+    opacity: 0;
+    bottom: 150rpx;
+}
+}
+._a:hover {
+  -webkit-animation: spin 1.2s 1;
+          animation: spin 1.2s 1;
+}
+.b {
+  border: 1px solid #8BBCE7;
+  color: #8BBCE7;
+  -webkit-border-radius: 100%;
+          border-radius: 100%;
+  position: fixed;
+  bottom: 50rpx;
+  right: 50rpx;
+  -webkit-animation: spin 1.2s 1;
+          animation: spin 1.2s 1;
+  z-index: 2;
+  background: #fff;
+  padding: 5rpx;
 }
 

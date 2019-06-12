@@ -23,13 +23,13 @@ const apiRequest = (url, method, data, header) => {     //接收所需要的参�
 //登录接口的调用
 let login = (data)=>{
   return new Promise((resolve, reject) => {
-    resolve (apiRequest(apiList.login, 'GET', data))
+    resolve (apiRequest(apiList.login, 'POST', data))
   })
 }
 //注册接口的调用
 let getMyInfo= (data) => {
   return new Promise((resolve, reject) => {
-    resolve(apiRequest(apiList.getMyInfo, 'get', data))
+    resolve(apiRequest(apiList.getMyInfo, 'POST', data))
   })
 }
 

@@ -159,23 +159,28 @@
   },
   onHide: function onHide() {
     //页面隐藏清除订单信息
+    console.log('页面隐藏');
+    this.clearOrder();
+  },
+  onUnload: function onUnload() {
+    console.log('取消订单');
     this.clearOrder();
   },
   onBackPress: function onBackPress() {
-    //页面后退时候，清除订单信息
+    //页面后退时候，清除订单信息 //只适用于5+app h5
     this.clearOrder();
   },
   methods: {
-    clearOrder: function clearOrder() {
+    clearOrder: function clearOrder() {var _this2 = this;
       uni.removeStorage({
         key: 'buylist',
         success: function success(res) {
-          this.buylist = [];
+          _this2.buylist = [];
           console.log('remove buylist success');
         } });
 
     },
-    toPay: function toPay() {var _this2 = this;
+    toPay: function toPay() {var _this3 = this;
       //商品列表
       var paymentOrder = [];
       var goodsid = [];
@@ -199,10 +204,10 @@
           success: function success() {
             uni.hideLoading();
             uni.redirectTo({
-              url: "../../payPage/payment/payment?amount=" + _this2.sumPrice });
+              url: "../../payPage/payment/payment?amount=" + _this3.sumPrice });
 
           } });
-
+        //跳转到订单界面说明已经提交订单成功 订单已入库 则购物车不需要保留选中状态
       }, 1000);
 
     },
