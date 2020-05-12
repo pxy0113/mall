@@ -1,0 +1,7 @@
+<view class="loading-box" wx:if="{{isShow}}" catchtouchmove="ture">
+	<view class="loading-item">
+		<view wx:if="{{param.icon == 'logo'}}" class="loading-icon logoIcon"></view>
+		<view wx:if="{{param.icon == 'primal'}}" class="loading-icon primalIcon"></view>
+		<view class="loading-text">{{param.title}}</view>
+	</view>
+</view>

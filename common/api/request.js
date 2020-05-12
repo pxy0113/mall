@@ -6,14 +6,14 @@ const apiRequest = (url, method, data, header) => {     //接收所需要的参�
       url: url,
       data: data ? data : null,
       method: method,
-      header: header ? header : { 'content-type':'application/x-www-form-urlencoded'}, //application/json
+      header: header ? header : { 'content-type':'application/json'}, //application/json
       success: function (res) {
         //接口调用成功
         resolve(res);    //根据业务需要resolve接口返回的json的数据
       },
       fail: function (res) {
         // fail调用接口失败
-        reject({ errormsg: '网络错误,请稍后重试', code: -1 });
+        reject({ errormsg: res, code: -1 });
       }
     })
   });

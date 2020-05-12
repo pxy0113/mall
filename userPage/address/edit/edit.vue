@@ -6,7 +6,7 @@
 					收件人
 				</view>
 				<view class="input">
-					<input placeholder="请输入收件人姓名" type="text" v-model="name" />
+					<input placeholder="请输入收件人姓名" type="text" v-model="address.name" />
 				</view>
 			</view>
 			<view class="row">
@@ -14,7 +14,7 @@
 					电话号码
 				</view>
 				<view class="input">
-					<input placeholder="请输入收件人电话号码" type="text" v-model="tel" />
+					<input placeholder="请输入收件人电话号码" type="text" v-model="address.phone" />
 				</view>
 			</view>
 			<view class="row">
@@ -31,7 +31,7 @@
 					详细地址
 				</view>
 				<view class="input">
-					<textarea v-model="detailed" auto-height="true" placeholder="输入详细地址"></textarea>
+					<textarea v-model="address.detail" auto-height="true" placeholder="输入详细地址"></textarea>
 				</view>
 			</view>
 			<view class="row">
@@ -39,21 +39,17 @@
 					设置默认地址
 				</view>
 				<view class="input switch">
-					<switch color="#8bbce7" :checked="isDefault" @change=isDefaultChange />
-				</view>
-			</view>
-			<view class="row" v-if="editType=='edit'" @tap="del">
-				<view class="del">
-					删除收货地址
+					<switch color="#8bbce7" :checked="isDefault" @change="isDefaultChange" />
 				</view>
 			</view>
 		</view>
 		<view class="save" @tap="save">
-			<view class="btn">
+			<view class="circleBtn">
 				保存地址
 			</view>
 		</view>
 		<mpvue-city-picker :themeColor="themeColor" ref="mpvueCityPicker" :pickerValueDefault="cityPickerValue" @onCancel="onCancel" @onConfirm="onConfirm"></mpvue-city-picker>
+	    <y-loading id="y-loading" class="y-loading"></y-loading>
 	</view>
 </template>
 
@@ -65,11 +61,13 @@
 		},
 		data() {
 			return {
+				editId:0,
 				editType:'edit',
-				id:'',
-				name:'',
-				tel:'',
-				detailed:'',
+				address:{
+					name:'',
+					phone:'',
+					detail:'',
+				},
 				isDefault:false,
 				cityPickerValue: [0, 0, 1],
 				themeColor: '#007AFF',
@@ -90,63 +88,66 @@
 			isDefaultChange(e){
 				this.isDefault = e.detail.value;
 			},
-			del(){
-				uni.showModal({
-					title: '删除提示',
-					content: '你将删除这个收货地址',
-					success: (res)=>{
-						if (res.confirm) {
-							uni.setStorage({
-								key:'delAddress',
-								data:{id:this.id},
-								success() {
-									uni.navigateBack();
-								}
-							})
-						} else if (res.cancel) {
-							console.log('用户点击取消');
-						}
-					}
-				});
-				
-			},
 			save(){
-				let data={"name":this.name,"head":this.name.substr(0,1),"tel":this.tel,"address":{"region":this.region,"detailed":this.detailed},"isDefault":this.isDefault}
 				if(this.editType=='edit'){
-					data.id = this.id
+					this.address.id = this.editId;
 				}
-				if(!data.name){
+				if(!this.address.name){
 					uni.showToast({title:'请输入收件人姓名',icon:'none'});
 					return ;
 				}
-				if(!data.tel){
+				if(!this.address.phone){
 					uni.showToast({title:'请输入收件人电话号码',icon:'none'});
 					return ;
 				}
-				if(!data.address.detailed){
+				if(!this.address.detail){
 					uni.showToast({title:'请输入收件人详细地址',icon:'none'});
 					return ;
 				}
-				if(data.address.region.value.length==0){
+				if(this.region.value.length==0){
 					uni.showToast({title:'请选择收件地址',icon:'none'});
 					return ;
 				}
 				uni.showLoading({
 					title:'正在提交'
-				})
-				//实际应用中请提交ajax,模板定时器模拟提交效果
-				setTimeout(()=>{
-					uni.setStorage({
-						key:'address',
-						data:data,
-						success() {
-							uni.hideLoading();
-							uni.navigateBack();
-						}
-					})
-				},300)
-				
-				
+				});
+				let extend = {
+					prov:this.region.value[0],
+					city:this.region.value[1],
+					area:this.region.value[2],
+					isDefault:this.isDefault?1:0,
+					cityPickerValue:this.region.label
+				}
+				let list = Object.assign({},this.address,extend);
+				let url = this.editType=='add'?'EShop/addAddress':'EShop/modifyAddress';
+				this.$postRequest({
+					url: url,
+					data: list,
+					allSuccess: res => {
+						uni.hideLoading();
+						uni.showToast({							
+							title:'保存成功',
+							icon:'success',
+							duration:2500
+						});
+						let pages = getCurrentPages();//所有页面栈的数组
+						let Page = pages[pages.length - 1];//当前页
+						 if(pages.length > 1){ //说明有上一页存在
+						   //上一个页面实例对象
+						  let prePage = pages[pages.length - 2];
+						   //关键在这里，调用上一页的函数
+						   prePage.$vm.getAddressList();
+						 }
+						 
+						uni.navigateBack({
+							delta: 1
+						});
+					},
+					allError:() =>{
+						uni.hideLoading();
+					}
+				});
+							
 			}
 		},
 		onLoad(e) {
@@ -154,18 +155,19 @@
 			
 			this.editType = e.type;
 			if(e.type=='edit'){
-				uni.getStorage({
-					key:'address',
-					success: (e) => {
-						this.id = e.data.id;
-						this.name = e.data.name;
-						this.tel = e.data.tel;
-						this.detailed = e.data.address.detailed;
-						this.isDefault = e.data.isDefault;
-						this.cityPickerValue = e.data.address.region.value;
-						this.region = e.data.address.region;
-					}
-				})
+				let list = JSON.parse(e.list);
+				this.editId = list.id;
+				this.address = {
+					phone:list.phone,
+					name:list.name,
+					detail:list.detail
+				};
+				this.isDefault = list.isDefault==1?true:false;//待修
+				this.cityPickerValue = [list.prov,list.city,list.area];
+				this.region.label = list.cityPickerValue;
+				this.region.value[0] = list.prov;
+				this.region.value[1] = list.city;
+				this.region.value[2] = list.area;
 			}
 			
 		},
@@ -195,24 +197,6 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		.btn{
-			box-shadow: 0upx 5upx 10upx rgba(0,0,0,0.4);
-			width: 70%;
-			height: 80upx;
-			border-radius: 80upx;
-			background-color: #8bbce7;
-			color: #fff;
-			justify-content: center;
-			align-items: center;
-			.icon{
-				height: 80upx;
-				color: #fff;
-				font-size: 30upx;
-				justify-content: center;
-				align-items: center;
-			}
-			font-size: 30upx;
-		}
 	}
 	.content{
 		display: flex;
@@ -244,16 +228,6 @@
 					margin: 20upx 0;
 					min-height: 120upx;
 				}
-			}
-			.del{
-				width: 100%;
-				height: 100upx;
-				justify-content: center;
-				align-items: center;
-				font-size: 36upx;
-				color: #8bbce7;
-				background-color: rgba(255,0,0,0.05);
-				border-bottom: solid 1upx #eee;
 			}
 		}
 	}

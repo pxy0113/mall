@@ -13,5 +13,162 @@
 
 
 
-/*每个页面公共css */
+	/*每个页面公共css */
+	/*商品列表样式*/
+.xy-product-list{
+		width: 92%;
+		padding: 0 4% 3vw 4%; 
+		display: -webkit-box; 
+		display: -webkit-flex; 
+		display: -ms-flexbox; 
+		display: flex;
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-between;
+		    -ms-flex-pack: justify;
+		        justify-content: space-between;
+		-webkit-flex-wrap: wrap;
+		    -ms-flex-wrap: wrap;
+		        flex-wrap: wrap;
+}
+.xy-product{
+		width: 48%;
+		border-radius: 20rpx;
+		background-color: #fff;
+		margin: 0 0 15rpx 0;
+		-webkit-box-shadow: 0rpx 5rpx 25rpx rgba(0,0,0,0.1);
+		        box-shadow: 0rpx 5rpx 25rpx rgba(0,0,0,0.1);
+}
+.xy-product-info{
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-between;
+		    -ms-flex-pack: justify;
+		        justify-content: space-between;
+		-webkit-box-align: end;
+		-webkit-align-items: flex-end;
+		    -ms-flex-align: end;
+		        align-items: flex-end;
+		width: 92%;
+		padding: 10rpx 4% 10rpx 4%;
+}
+.xy-product-img{
+		width: 100%;
+		border-radius: 20rpx 20rpx 0 0;
+}
+.xy-product-name{
+		width: 92%;
+		padding: 10rpx 4%;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		text-align: justify;
+		overflow: hidden;
+		font-size: 30rpx;
+}
+.xy-product-price{
+		color: #e65339;
+		font-size: 30rpx;
+		font-weight: 600;
+}
+.xy-product-slogan{
+		color: #807c87;
+		font-size: 24rpx;
+}
+.xy-loading-text{
+		width: 100%;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+		height: 60rpx;
+		color: #979797;
+		font-size: 24rpx;
+}
+	/*带圆形边框的按钮*/
+.circleBtn{
+		-webkit-box-shadow: 0rpx 5rpx 10rpx rgba(0,0,0,0.4);
+		        box-shadow: 0rpx 5rpx 10rpx rgba(0,0,0,0.4);
+		width: 70%;
+		height: 80rpx;
+		border-radius: 80rpx;
+		background-color: #8bbce7;
+		color: #fff;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		overflow: hidden;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+		font-size: 30rpx;
+}
+.circleBtn-icon{
+		height: 80rpx;
+		color: #fff;
+		font-size: 30rpx;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+}
+	/*二等分原型按钮*/
+.circleBtn-two{
+		width: 102%;
+		height: 80rpx;
+		color: #fff;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+		font-size: 28rpx;
+}
+	/*普通按钮*/
+.defaultBtn{
+		background-color: #8bbce7;
+		padding: 10rpx 30rpx;
+/* 		height: 50upx; */
+		color:#FFFFFF;
+		border-radius: 30rpx;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+}
 

@@ -44,7 +44,7 @@
 			</view>
 		</view>
 		<view class="pay">
-			<view class="btn" @tap="doDeposit">立即支付</view>
+			<view class="circleBtn" @tap="doDeposit">立即支付</view>
 			<view class="tis">
 				点击立即支付，即代表您同意<view class="terms">
 					《条款协议》
@@ -171,17 +171,6 @@
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap;
-		.btn{
-			width: 70%;
-			height: 80upx;
-			border-radius: 80upx;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			color: #fff;
-			background-color: #8bbce7;
-			box-shadow: 0upx 5upx 10upx rgba(0,0,0,0.2);
-		}
 		.tis{
 			margin-top: 10upx;
 			width: 100%;

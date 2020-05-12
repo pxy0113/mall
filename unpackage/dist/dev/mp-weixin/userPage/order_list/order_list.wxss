@@ -105,8 +105,7 @@ page {
 .order-list .list .onorder image {
         width: 20vw;
         height: 20vw;
-        -webkit-border-radius: 100%;
-                border-radius: 100%;
+        border-radius: 100%;
 }
 .order-list .list .onorder .text {
         width: 100%;
@@ -127,11 +126,9 @@ page {
                 align-items: center;
 }
 .order-list .list .row {
-      width: -webkit-calc(100% - 40rpx);
       width: calc(100% - 40rpx);
       padding: 10rpx 20rpx;
-      -webkit-border-radius: 10rpx;
-              border-radius: 10rpx;
+      border-radius: 10rpx;
       background-color: #fff;
       margin-bottom: 20rpx;
 }
@@ -165,8 +162,7 @@ page {
 .order-list .list .row .order-info .left image {
             width: 25vw;
             height: 25vw;
-            -webkit-border-radius: 10rpx;
-                    border-radius: 10rpx;
+            border-radius: 10rpx;
 }
 .order-list .list .row .order-info .right {
           width: 100%;
@@ -258,8 +254,7 @@ page {
           min-width: 120rpx;
           height: 50rpx;
           padding: 0 20rpx;
-          -webkit-border-radius: 50rpx;
-                  border-radius: 50rpx;
+          border-radius: 50rpx;
           display: -webkit-box;
           display: -webkit-flex;
           display: -ms-flexbox;

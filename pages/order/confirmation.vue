@@ -92,7 +92,7 @@
 		<view class="footer">
 			<view class="settlement">
 				<view class="sum">合计:<view class="money">￥{{sumPrice}}</view></view>
-				<view class="btn" @tap="toPay">提交订单</view>
+				<view class="defaultBtn" @tap="toPay">提交订单</view>
 			</view>
 		</view>
 	</view>
@@ -150,7 +150,6 @@
 		onHide() {
 			//页面隐藏清除订单信息
 			console.log('页面隐藏');
-			this.clearOrder();
 		},
 		onUnload() {
 			console.log('取消订单');
@@ -158,6 +157,7 @@
 		},
 		onBackPress() {
 			//页面后退时候，清除订单信息 //只适用于5+app h5
+			console.log('页面后退')
 			this.clearOrder();
 		},
 		methods: {
@@ -195,7 +195,15 @@
 							uni.hideLoading();
 							uni.redirectTo({
 								url:"../../payPage/payment/payment?amount="+this.sumPrice
-							})
+							});
+							let pages = getCurrentPages();//所有页面栈的数组
+							let Page = pages[pages.length - 1];//当前页
+							     if(pages.length > 1){ //说明有上一页存在
+							       //上一个页面实例对象
+							      let prePage = pages[pages.length - 2];
+							       //关键在这里，调用上一页的函数
+								   prePage.$vm.successPay();
+							   }
 						}
 					});//跳转到订单界面说明已经提交订单成功 订单已入库 则购物车不需要保留选中状态
 				},1000)
@@ -371,17 +379,6 @@
 				.money{
 					font-weight: 600;
 				}
-			}
-			.btn{
-				padding: 0 30upx;
-				height: 60upx;
-				background-color: #8bbce7;
-				color: #fff;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				font-size: 30upx;
-				border-radius: 40upx;
 			}
 		}
 	}

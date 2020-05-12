@@ -80,7 +80,7 @@
 			</view>
 		</view>
 		<!-- 工具栏 -->
-		<view class="toolbar">
+		<view class="toolbar">		
 			<view class="title">我的工具栏</view>
 			<view class="list">
 				<view class="box" v-for="(row,index) in mytoolbarList" :key="index" @tap="toPage(row.url)">
@@ -93,6 +93,7 @@
 		</view>
 		<!-- 占位 -->
 		<view class="place-bottom"></view>
+		<y-loading id="y-loading" class="y-loading"></y-loading>
 	</view>
 </template>
 <script>
@@ -157,23 +158,10 @@ import api from '@/common/api/request.js'
 			// #ifdef APP-PLUS
 			this.statusHeight = plus.navigator.getStatusbarHeight();
 			// #endif
+			
 		},
 		onReady(){
-			uni.showToast({
-				title: 'loading...',
-				icon:'loading',
-				image:"../../static/img/user/tre.gif",
-				duration:5000
-			});
-			//此处，演示,每次页面初次渲染都把登录状态重置
-			// uni.setStorage({
-			// 	key: 'UserInfo',
-			// 	data: false,
-			// 	success: function () {
-			// 	},
-			// 	fail:function(e){
-			// 	}
-			// });
+			
 		},
 		onShow(){
 			uni.getStorage({
@@ -192,11 +180,11 @@ import api from '@/common/api/request.js'
 				uni.checkSession({
 					success: (res) => {
 						this.isTrue = true;
-						//直接拿openId
+						console.log('直接拿openId')
 						this.toGetUserData();
 					},
-					fail: (err) => {//没有登陆态
-						// this.toLogin();
+					fail: (err) => {//登陆态过期
+						this.toLogin();
 						//登陆=》登陆后通过code获取session_key 转换成skey存入storage
 					}
 				});
@@ -246,35 +234,26 @@ import api from '@/common/api/request.js'
 				});
 			},
 			getSkeyAndOpenId(code){
-				console.log(code)
-				uni.request({
-					url:'http://m252t77964.wicp.vip:52923/EShop/login',
-					data:{
-						jsCode:code
-					},
-					success: function(info) {
-						console.log('ok')
-						console.log(info)
-					}.bind(this),
-					fail: function(e) {
-						console.log(e)
+				// this.$yLoading().show();
+				this.$postRequest({
+					url: 'EShop/login',
+					data: { jsCode:code },
+					hasToken:false,
+					allSuccess: res => {
+						uni.setStorage({
+							key:'skey',
+							data:res.session_key
+						});
+						uni.setStorage({
+							key:'token',
+							data:res.token
+						});
 					}
 				});
-				// code换取session_key跟openid  
-				// 这一步最好在后台做 也就是我直接传code给后台 后台写死secret跟appid 
-				// 然后得到session_key跟openid 用session_key进行sha1/md5加密后 把skey,openid给我
+
 				// let secret = '119afffd251e8b1b6e0f0a96e977bb7d';
 				// let appid = 'wx0904846d9b4c40fe';
-				// uni.request({
-				// 	url: `https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${secret}&js_code=${code}&grant_type=authorization_code`,//change
-				// 	success: function(info) {
-				// 		this.saveStorage('skey',info.data.session_key);
-				// 		this.saveStorage('openid',info.data.openid);
-				// 	}.bind(this),
-				// 	fail: function(e) {
-				// 		console.log(e)
-				// 	}
-				// });
+
 			},
 			saveStorage(name,data){
 				uni.setStorage({

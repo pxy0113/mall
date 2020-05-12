@@ -30,12 +30,12 @@
 					</view>
 					
 				</view>
-				<view class="btn" v-if="place==1">
-					<view class="joinCart" @tap.stop.prevent="cartBtnFun(1)">加入购物车</view>
-					<view class="buy" @tap.stop.prevent="cartBtnFun(2)">立即购买</view>
+				<view class="circleBtn" v-if="place==1" style="margin: 0 auto;margin-bottom: 5%;">
+					<view class="circleBtn-two buy" @tap.stop.prevent="cartBtnFun(1)">加入购物车</view>
+					<view class="circleBtn-two" @tap.stop.prevent="cartBtnFun(2)">立即购买</view>
 				</view>
-				<view class="btn" v-if="place==2">
-					<view class="ok" @tap.stop.prevent="cartBtnFun(3)">确定</view>
+				<view class="circleBtn ok" v-if="place==2">
+					<view  @tap.stop.prevent="cartBtnFun(3)">确定</view>
 				</view>
 			</view>
 		</view>
@@ -192,10 +192,10 @@ export default {
 	.layer {
 		position: fixed;
 		z-index: 22;
-		bottom: -70%;
+		bottom: -75%;
 		width: 92%;
 		padding: 0 4%;
-		height: 70%;
+		height: 75%;
 		border-radius: 10upx 10upx 0 0;
 		background-color: #fff;
 		display: flex;
@@ -219,7 +219,7 @@ export default {
 					width: 150upx;
 					height: 150upx;
 					position: relative;
-					top: -25px;
+					top: -60rpx;
 					border: 2px solid white;
 					border-radius: 5px;
 				}
@@ -236,36 +236,14 @@ export default {
 			justify-content: space-between;
 			align-items: center;
 		}
-		.btn {
-			margin: 6upx 0;
-			height: 80upx;
-			width: 100%;
-			border-radius: 40upx;
-			overflow: hidden;
-			display: flex;
-			.joinCart,
-			.buy,
-			.ok {
-				height: 80upx;
-				color: #fff;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				font-size: 28upx;
-			}
-			.joinCart {
-				width: 51%;
-				background-color: #f0b46c;
-			}
-			.buy {
-				width: 51%;
-				background-color: #8bbce7;
-			}
-			.ok{
-				width: 102%;
-				background-color: #f0b46c;
-			}
+		.buy {
+			background-color: #f0b46c!important;
 		}
+		.ok{
+			background-color: #f0b46c!important;
+			margin: 0 auto 5% auto;
+		}
+		
 	}
 	
 	&.show {

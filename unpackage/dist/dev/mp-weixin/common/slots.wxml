@@ -1,1 +1,5 @@
+<import src="/components/quick-skeleton/quick-skeleton.vue.wxml" />
+<import src="/components/uni-number-box/uni-number-box.vue.wxml" />
+<import src="/components/good-card/card.vue.wxml" />
+<import src="/components/mpvue-citypicker/mpvueCityPicker.vue.wxml" />
 

@@ -1,4 +1,4 @@
-<template>
+ <template>
 	<view>
 		<view class="status" :style="{position:headerPosition,top:statusTop}"></view>
 		<!-- <view class="header" :style="{position:headerPosition,top:headerTop}">
@@ -8,8 +8,10 @@
 <!-- 		<view class="place"></view> -->
 		<!-- 商品列表 -->
 		<view class="goods-list">
-			<view class="tis" v-if="goodsList.length==0">购物车是空的哦~</view>
-            <view class="goods-info" v-for="(row,index) in goodsList" :key="index" >
+			<view style="position: relative;">
+				<y-prompt id="y-prompt"  @btnClick=""></y-prompt>
+			</view>
+            <view class="goods-info" v-for="(row,index) in cartList" :key="index" >
 				<view class="content">				
 					<view class="goods-body">
 						<view class="left">
@@ -35,6 +37,7 @@
 				</view>
 
 			</view>
+
         </view>
 
 		
@@ -46,7 +49,7 @@
 				</view>
 				<view class="text">全选</view>
 			</view>
-			<view class="delBtn" @tap="deleteList" v-if="selectedList.length>0">删除</view>
+			<view class="defaultBtn delBtn" @tap="deleteList" v-if="selectedList.length>0">删除</view>
 			<view class="settlement">
 				<view class="sum">合计:<view class="money">￥{{sumPrice}}</view></view>
 				<view class="btn" @tap="toConfirmation">结算({{selectedList.length}})</view>
@@ -59,10 +62,15 @@
 <script>
 import uniNumberBox from '@/components/uni-number-box/uni-number-box.vue'
 import card from '@/components/good-card/card.vue'
+import {  
+	mapState,  
+	mapActions  
+} from 'vuex';  
 	export default {
 		components:{uniNumberBox,card},
 		data() {
 			return {
+				buySuccess:false,
 				showCard:false,
 				editData:{
 					specList:[],
@@ -77,11 +85,7 @@ import card from '@/components/good-card/card.vue'
 				statusTop:null,
 				selectedList:[],
 				isAllselected:false,
-				goodsList:[],
-				//控制滑动效果
-				theIndex:null,
-				oldIndex:null,
-				isStop:false
+				goodsList:[]
 			}
 		},
 		onPageScroll(e){
@@ -114,67 +118,70 @@ import card from '@/components/good-card/card.vue'
 			// #ifdef APP-PLUS
 			this.statusHeight = plus.navigator.getStatusbarHeight();
 			// #endif
-			console.log('i am cart')
-			// uni.setStorage({
-			// 	key:'cartList',
-			// 	data:[
-			// 		{
-			// 			id:10,
-			// 			img:'../../static/img/goods/p1.jpg',
-			// 			name:'蝴蝶结丝绒长袖吊带连衣裙欧美复古',
-			// 			type:2,
-			// 			spec:1,
-			// 			specList:["XS","S","M","L","XL","XXL"],
-			// 			goodsType:["粉紫","樱桃红","湖水蓝"],
-			// 			price:127.5,
-			// 			number:1,
-			// 			// selected:false,
-			// 		},
-			// 		{
-			// 			id:22,
-			// 			img:'../../static/img/goods/p2.jpg',
-			// 			name:'森系少女复古手链手环网红Ins',
-			// 			type:4,
-			// 			spec:1,
-			// 			specList:["XS","S","M","L","XL","XXL"],
-			// 			goodsType:["玫瑰金色链子粉晶拼珍珠","彩虹珠子草编森女手串","链子","特价散珠*1","波罗的海银色手镯"],
-			// 			price:127.5,
-			// 			number:1,
-			// 			// selected:false,
-			// 		},
-			// 		{
-			// 			id:33,
-			// 			img:'../../static/img/goods/p3.jpg',
-			// 			name:'阳澄湖精品大闸蟹',
-			// 			type:0,
-			// 			spec:1,
-			// 			specList:["500g","250g","1kg"],
-			// 			goodsType:["公蟹",'母蟹','公母各半'],
-			// 			price:127.5,
-			// 			number:1,
-			// 			// selected:false,
-			// 		},
-			// 	]
-			// });
+			console.log('第一次load的时候请求购物车列表并且存入cartList')
+
+					let arr = [{
+						id:10,
+						img:'../../static/img/goods/p1.jpg',
+						name:'蝴蝶结丝绒长袖吊带连衣裙欧美复古',
+						type:2,
+						spec:1,
+						specList:["XS","S","M","L","XL","XXL"],
+						goodsType:["粉紫","樱桃红","湖水蓝"],
+						price:127.5,
+						number:1,
+						// selected:false,
+					},
+					{
+						id:22,
+						img:'../../static/img/goods/p2.jpg',
+						name:'森系少女复古手链手环网红Ins',
+						type:4,
+						spec:1,
+						specList:["XS","S","M","L","XL","XXL"],
+						goodsType:["玫瑰金色链子粉晶拼珍珠","彩虹珠子草编森女手串","链子","特价散珠*1","波罗的海银色手镯"],
+						price:127.5,
+						number:1,
+						// selected:false,
+					},
+					{
+						id:33,
+						img:'../../static/img/goods/p3.jpg',
+						name:'阳澄湖精品大闸蟹',
+						type:0,
+						spec:1,
+						specList:["500g","250g","1kg"],
+						goodsType:["公蟹",'母蟹','公母各半'],
+						price:127.5,
+						number:1,
+						// selected:false,
+					}];
+				this.setCart(arr);
 		},
 		
 		onShow() {
-			uni.getStorage({
-				key:'cartList',
-				success: (res) => {
-					this.goodsList = res.data;
-					this.goodsList.some(item =>{
-						item.selected = false;
-					});
-					this.selectedList = [];
-					this.isAllselected = false;
-				},
-				fail: (err) => {
-					this.goodsList = [];
-				}
-			});
+			this.$yPrompt().hide();
+			if(this.cartList.length>0){//待改进
+				this.isAllselected = this.selectedList.length == this.cartList.length;
+			}else{
+				this.isAllselected = false;
+				this.$yPrompt().show({
+					title: '购物车还没有东西哦',
+					msg: '赶快去逛逛吧'
+				});
+			}
+			this.sum();
+		},
+		computed:{
+			...mapState(['cartList']) 
 		},
 		watch:{
+			cartList:{
+				handler(newV,oldV){
+					this.sum();
+				},
+				deep:true
+			},
 			goodsList:{
 				handler(newV,oldV){
 					this.sum();
@@ -187,13 +194,31 @@ import card from '@/components/good-card/card.vue'
 			}
 		},
 		methods: {
+			 ...mapActions(['setCart']),
+			
+			successPay(){//下订单成功后
+				uni.getStorage({
+					key:'paymentOrder',
+					success: (res) => {
+						res.data.forEach(item =>{
+							this.cartList.forEach((buy,index) =>{
+								if((buy.id==item.id)&&(buy.spec==item.spec)&&(buy.type==item.type)){
+										this.cartList.splice(index,1);
+								}
+							});
+						});
+						this.selectedList = [];
+					}
+				})
+			},
 			updateData(data,type){
 				if(type==3){
-					this.goodsList.forEach((item,index) =>{
+					this.cartList.forEach((item,index) =>{
 						if(item.id == data.id){
-							this.goodsList.splice(index,1,data);
+							this.cartList.splice(index,1,data);
 						}
 					});
+					console.log(this.$store.state.cartList);
 				}
 				
 			},
@@ -240,10 +265,10 @@ import card from '@/components/good-card/card.vue'
 			//跳转确认订单页面
 			toConfirmation(){
 				let tmpList=[];
-				let len = this.goodsList.length;
+				let len = this.cartList.length;
 				for(let i=0;i<len;i++){
-					if(this.goodsList[i].selected) {
-						tmpList.push(this.goodsList[i]);
+					if(this.cartList[i].selected) {
+						tmpList.push(this.cartList[i]);
 					}
 				}
 				if(tmpList.length<1){
@@ -265,17 +290,21 @@ import card from '@/components/good-card/card.vue'
 			},
 			//删除商品
 			deleteGoods(id){
-				let len = this.goodsList.length;
+				let len = this.cartList.length;
 				for(let i=0;i<len;i++){
-					if(id==this.goodsList[i].id){
-						this.goodsList.splice(i, 1);
+					if(id==this.cartList[i].id){
+						this.cartList.splice(i, 1);
 						break;
 					}
 				}
 				this.selectedList.splice(this.selectedList.indexOf(id), 1);
 				this.sum();
-				this.oldIndex = null;
-				this.theIndex = null;
+				if(this.cartList.length==0){
+					this.$yPrompt().show({
+						title: '购物车还没有东西哦',
+						msg: '赶快去逛逛吧'
+					});
+				}
 			},
 			// 删除商品s
 			deleteList(){
@@ -285,39 +314,39 @@ import card from '@/components/good-card/card.vue'
 					this.deleteGoods(this.selectedList[0]);
 				}
 				this.selectedList = [];
-				this.isAllselected = this.selectedList.length == this.goodsList.length && this.goodsList.length>0;
+				this.isAllselected = this.selectedList.length == this.cartList.length && this.cartList.length>0;
 				this.sum();
 			},
 			// 选中商品
 			selected(index){
-				this.goodsList[index].selected = this.goodsList[index].selected?false:true;
-				let i = this.selectedList.indexOf(this.goodsList[index].id);//这里是判断id 所以相同id不同尺寸的会计算错误 导致结算数量错误
-				i>-1?this.selectedList.splice(i, 1):this.selectedList.push(this.goodsList[index].id);
-				this.isAllselected = this.selectedList.length == this.goodsList.length;
+				this.cartList[index].selected = this.cartList[index].selected?false:true;
+				let i = this.selectedList.indexOf(this.cartList[index].id);//这里是判断id 所以相同id不同尺寸的会计算错误 导致结算数量错误
+				i>-1?this.selectedList.splice(i, 1):this.selectedList.push(this.cartList[index].id);
+				this.isAllselected = this.selectedList.length == this.cartList.length;
 				this.sum();
 			},
 			//全选
 			allSelect(){
-				let len = this.goodsList.length;
+				let len = this.cartList.length;
 				let arr = [];
 				for(let i=0;i<len;i++){
-					this.goodsList[i].selected = this.isAllselected? false : true;
-					arr.push(this.goodsList[i].id);
+					this.cartList[i].selected = this.isAllselected? false : true;
+					arr.push(this.cartList[i].id);
 				}
 				this.selectedList = this.isAllselected?[]:arr;
-				this.isAllselected = this.isAllselected||this.goodsList.length==0?false : true;
+				this.isAllselected = this.isAllselected||this.cartList.length==0?false : true;
 				this.sum();
 			},
 			// 合计
 			sum(e,index){
 				this.sumPrice = 0;
-				let len = this.goodsList.length;
+				let len = this.cartList.length;
 				for(let i=0;i<len;i++){
-					if(this.goodsList[i].selected) {
+					if(this.cartList[i].selected) {
 						if(e && i==index){
-							this.sumPrice = this.sumPrice + (e.detail.value*this.goodsList[i].price);
+							this.sumPrice = this.sumPrice + (e.detail.value*this.cartList[i].price);
 						}else{
-							this.sumPrice = this.sumPrice + (this.goodsList[i].number*this.goodsList[i].price);
+							this.sumPrice = this.sumPrice + (this.cartList[i].number*this.cartList[i].price);
 						}
 					}
 				}
@@ -489,14 +518,9 @@ import card from '@/components/good-card/card.vue'
 		bottom: 0upx;
 		z-index: 5;
 		.delBtn{
-			border: solid 1upx #8bbce7;
+			border:1upx solid #8bbce7;
+			background: #fff;
 			color: #8bbce7;
-			padding: 0 30upx;
-			height: 50upx;
-			border-radius: 30upx;
-			display: flex;
-			justify-content: center;
-			align-items: center;
 		}
 		.settlement{
 			width: 60%;

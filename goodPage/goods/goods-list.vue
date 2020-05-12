@@ -10,19 +10,19 @@
 		<view class="place">
 		</view>
 		<!-- 商品列表 -->
-		<view class="goods-list">
-			<view class="product-list">
-				<view class="product" :class="'product-'+index" v-for="(goods,index) in goodsList" :key="goods.goods_id" @tap="toGoods(goods)">
-					<image mode="widthFix" :src="goods.img"></image>
-					<view class="name">{{goods.name}}</view>
-					<view class="info">
-						<view class="price">{{goods.price}}</view>
-						<view class="slogan">{{goods.slogan}}</view>
-					</view>
+		<view class="xy-product-list">
+			<view class="xy-product" :class="'product-'+index" v-for="(goods,index) in goodsList" :key="goods.goods_id" @tap="toGoods(goods)">
+				<image class="xy-product-img" mode="widthFix" :src="goods.img"></image>
+				<view class="xy-product-name">{{goods.name}}</view>
+				<view class="xy-product-info">
+					<view class="xy-product-price">{{goods.price}}</view>
+					<view class="xy-product-slogan">{{goods.slogan}}</view>
 				</view>
 			</view>
-			<view class="loading-text">{{loadingText}}</view>
 		</view>
+		<view class="xy-loading-text">{{loadingText}}</view>
+		
+		<!--列表结束-->
 		<view :class="[isTouch?'b':'a']" 
 		 v-if="top" @tap="toTop">
 			<image src="../../static/img/hj.png" style="width: 60upx;height: 60upx;"></image>
@@ -252,63 +252,6 @@ import zero from '../../static/img/goods/default.jpg'
 		font-size: 28upx;
 	}
 }
-.goods-list{
-		.loading-text{
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 60upx;
-			color: #979797;
-			font-size: 24upx;
-		}
-		.product-list{
-			width: 92%;
-			padding: 0 4% 3vw 4%; 
-			display: flex;
-			justify-content: space-between;
-			flex-wrap: wrap;
-			.product{
-				width: 48%;
-				border-radius: 20upx;
-				background-color: #fff;
-				margin: 0 0 15upx 0;
-				box-shadow: 0upx 5upx 25upx rgba(0,0,0,0.1);
-				image{
-					width: 100%;
-					border-radius: 20upx 20upx 0 0;
-				}
-				.name{
-					width: 92%;
-					padding: 10upx 4%;
-					display: -webkit-box;
-					-webkit-box-orient: vertical;
-					-webkit-line-clamp: 2;
-					text-align: justify;
-					overflow: hidden;
-					font-size: 30upx;
-				}
-				.info{
-					display: flex;
-					justify-content: space-between;
-					align-items: flex-end;
-					width: 92%;
-					padding: 10upx 4% 10upx 4%;
-					
-					.price{
-						color: #e65339;
-						font-size: 30upx;
-						font-weight: 600;
-					}
-					.slogan{
-						color: #807c87;
-						font-size: 24upx;
-					}
-				}
-			}
-			
-		}
-	}
 	.a{
 		border: 1px solid #8BBCE7;
 		color:#8BBCE7;

@@ -1,9 +1,656 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["userPage/address/edit/edit"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--18-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!D:/pxy/mall/components/mpvue-citypicker/mpvueCityPicker.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ 154:
+/*!*************************************************************************!*\
+  !*** D:/VUEJS/mall/main.js?{"page":"userPage%2Faddress%2Fedit%2Fedit"} ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+__webpack_require__(/*! uni-pages */ 1);
+var _mpvuePageFactory = _interopRequireDefault(__webpack_require__(/*! mpvue-page-factory */ 17));
+var _edit = _interopRequireDefault(__webpack_require__(/*! ./userPage/address/edit/edit.vue */ 155));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Page((0, _mpvuePageFactory.default)(_edit.default));
+
+/***/ }),
+
+/***/ 155:
+/*!****************************************************!*\
+  !*** D:/VUEJS/mall/userPage/address/edit/edit.vue ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _edit_vue_vue_type_template_id_556cb222___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit.vue?vue&type=template&id=556cb222& */ 156);
+/* harmony import */ var _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit.vue?vue&type=script&lang=js& */ 158);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit.vue?vue&type=style&index=0&lang=scss& */ 170);
+/* harmony import */ var _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/lib/runtime/componentNormalizer.js */ 9);
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _edit_vue_vue_type_template_id_556cb222___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _edit_vue_vue_type_template_id_556cb222___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "D:/VUEJS/mall/userPage/address/edit/edit.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ 156:
+/*!***********************************************************************************!*\
+  !*** D:/VUEJS/mall/userPage/address/edit/edit.vue?vue&type=template&id=556cb222& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_template_id_556cb222___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./edit.vue?vue&type=template&id=556cb222& */ 157);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_template_id_556cb222___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_template_id_556cb222___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ 157:
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/VUEJS/mall/userPage/address/edit/edit.vue?vue&type=template&id=556cb222& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "view",
+    [
+      _c("view", { staticClass: "content" }, [
+        _c("view", { staticClass: "row" }, [
+          _c("view", { staticClass: "nominal" }, [_vm._v("收件人")]),
+          _c("view", { staticClass: "input" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.address.name,
+                  expression: "address.name"
+                }
+              ],
+              attrs: {
+                placeholder: "请输入收件人姓名",
+                type: "text",
+                eventid: "23e2d4c9-0"
+              },
+              domProps: { value: _vm.address.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.address.name = $event.target.value
+                }
+              }
+            })
+          ])
+        ]),
+        _c("view", { staticClass: "row" }, [
+          _c("view", { staticClass: "nominal" }, [_vm._v("电话号码")]),
+          _c("view", { staticClass: "input" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.address.phone,
+                  expression: "address.phone"
+                }
+              ],
+              attrs: {
+                placeholder: "请输入收件人电话号码",
+                type: "text",
+                eventid: "23e2d4c9-1"
+              },
+              domProps: { value: _vm.address.phone },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.address.phone = $event.target.value
+                }
+              }
+            })
+          ])
+        ]),
+        _c("view", { staticClass: "row" }, [
+          _c("view", { staticClass: "nominal" }, [_vm._v("所在地区")]),
+          _c(
+            "view",
+            {
+              staticClass: "input",
+              attrs: { eventid: "23e2d4c9-2" },
+              on: { tap: _vm.chooseCity }
+            },
+            [_vm._v(_vm._s(_vm.region.label))]
+          )
+        ]),
+        _c("view", { staticClass: "row" }, [
+          _c("view", { staticClass: "nominal" }, [_vm._v("详细地址")]),
+          _c("view", { staticClass: "input" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.address.detail,
+                  expression: "address.detail"
+                }
+              ],
+              attrs: {
+                "auto-height": "true",
+                placeholder: "输入详细地址",
+                eventid: "23e2d4c9-3"
+              },
+              domProps: { value: _vm.address.detail },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.address.detail = $event.target.value
+                }
+              }
+            })
+          ])
+        ]),
+        _c("view", { staticClass: "row" }, [
+          _c("view", { staticClass: "nominal" }, [_vm._v("设置默认地址")]),
+          _c("view", { staticClass: "input switch" }, [
+            _c("switch", {
+              attrs: {
+                color: "#8bbce7",
+                checked: _vm.isDefault,
+                eventid: "23e2d4c9-4"
+              },
+              on: { change: _vm.isDefaultChange }
+            })
+          ])
+        ])
+      ]),
+      _c(
+        "view",
+        {
+          staticClass: "save",
+          attrs: { eventid: "23e2d4c9-5" },
+          on: { tap: _vm.save }
+        },
+        [_c("view", { staticClass: "circleBtn" }, [_vm._v("保存地址")])]
+      ),
+      _c("mpvue-city-picker", {
+        ref: "mpvueCityPicker",
+        attrs: {
+          themeColor: _vm.themeColor,
+          pickerValueDefault: _vm.cityPickerValue,
+          eventid: "23e2d4c9-6",
+          mpcomid: "23e2d4c9-0"
+        },
+        on: { onCancel: _vm.onCancel, onConfirm: _vm.onConfirm }
+      }),
+      _c("y-loading", {
+        staticClass: "y-loading",
+        attrs: { id: "y-loading", mpcomid: "23e2d4c9-1" }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ 158:
+/*!*****************************************************************************!*\
+  !*** D:/VUEJS/mall/userPage/address/edit/edit.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--18-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./edit.vue?vue&type=script&lang=js& */ 159);
+/* harmony import */ var _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ 159:
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--18-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/VUEJS/mall/userPage/address/edit/edit.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _mpvueCityPicker = _interopRequireDefault(__webpack_require__(/*! @/components/mpvue-citypicker/mpvueCityPicker.vue */ 160));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+{
+  components: {
+    mpvueCityPicker: _mpvueCityPicker.default },
+
+  data: function data() {
+    return {
+      editId: 0,
+      editType: 'edit',
+      address: {
+        name: '',
+        phone: '',
+        detail: '' },
+
+      isDefault: false,
+      cityPickerValue: [0, 0, 1],
+      themeColor: '#007AFF',
+      region: { label: "请点击选择地址", value: [], cityCode: "" } };
+
+  },
+  methods: {
+    onCancel: function onCancel(e) {
+      console.log(e);
+    },
+    chooseCity: function chooseCity() {
+      this.$refs.mpvueCityPicker.show();
+    },
+    onConfirm: function onConfirm(e) {
+      this.region = e;
+      this.cityPickerValue = e.value;
+    },
+    isDefaultChange: function isDefaultChange(e) {
+      this.isDefault = e.detail.value;
+    },
+    save: function save() {
+      if (this.editType == 'edit') {
+        this.address.id = this.editId;
+      }
+      if (!this.address.name) {
+        uni.showToast({ title: '请输入收件人姓名', icon: 'none' });
+        return;
+      }
+      if (!this.address.phone) {
+        uni.showToast({ title: '请输入收件人电话号码', icon: 'none' });
+        return;
+      }
+      if (!this.address.detail) {
+        uni.showToast({ title: '请输入收件人详细地址', icon: 'none' });
+        return;
+      }
+      if (this.region.value.length == 0) {
+        uni.showToast({ title: '请选择收件地址', icon: 'none' });
+        return;
+      }
+      uni.showLoading({
+        title: '正在提交' });
+
+      var extend = {
+        prov: this.region.value[0],
+        city: this.region.value[1],
+        area: this.region.value[2],
+        isDefault: this.isDefault ? 1 : 0,
+        cityPickerValue: this.region.label };
+
+      var list = Object.assign({}, this.address, extend);
+      var url = this.editType == 'add' ? 'EShop/addAddress' : 'EShop/modifyAddress';
+      this.$postRequest({
+        url: url,
+        data: list,
+        allSuccess: function allSuccess(res) {
+          uni.hideLoading();
+          uni.showToast({
+            title: '保存成功',
+            icon: 'success',
+            duration: 2500 });
+
+          var pages = getCurrentPages(); //所有页面栈的数组
+          var Page = pages[pages.length - 1]; //当前页
+          if (pages.length > 1) {//说明有上一页存在
+            //上一个页面实例对象
+            var prePage = pages[pages.length - 2];
+            //关键在这里，调用上一页的函数
+            prePage.$vm.getAddressList();
+          }
+
+          uni.navigateBack({
+            delta: 1 });
+
+        },
+        allError: function allError() {
+          uni.hideLoading();
+        } });
+
+
+    } },
+
+  onLoad: function onLoad(e) {
+    //获取传递过来的参数
+
+    this.editType = e.type;
+    if (e.type == 'edit') {
+      var list = JSON.parse(e.list);
+      this.editId = list.id;
+      this.address = {
+        phone: list.phone,
+        name: list.name,
+        detail: list.detail };
+
+      this.isDefault = list.isDefault == 1 ? true : false; //待修
+      this.cityPickerValue = [list.prov, list.city, list.area];
+      this.region.label = list.cityPickerValue;
+      this.region.value[0] = list.prov;
+      this.region.value[1] = list.city;
+      this.region.value[2] = list.area;
+    }
+
+  },
+  onBackPress: function onBackPress() {
+    if (this.$refs.mpvueCityPicker.showPicker) {
+      this.$refs.mpvueCityPicker.pickerCancel();
+      return true;
+    }
+  },
+  onUnload: function onUnload() {
+    if (this.$refs.mpvueCityPicker.showPicker) {
+      this.$refs.mpvueCityPicker.pickerCancel();
+    }
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 12)["default"]))
+
+/***/ }),
+
+/***/ 160:
+/*!*********************************************************************!*\
+  !*** D:/VUEJS/mall/components/mpvue-citypicker/mpvueCityPicker.vue ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mpvueCityPicker_vue_vue_type_template_id_cb56286e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mpvueCityPicker.vue?vue&type=template&id=cb56286e& */ 161);
+/* harmony import */ var _mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mpvueCityPicker.vue?vue&type=script&lang=js& */ 163);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mpvueCityPicker.vue?vue&type=style&index=0&lang=css& */ 168);
+/* harmony import */ var _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/lib/runtime/componentNormalizer.js */ 9);
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _mpvueCityPicker_vue_vue_type_template_id_cb56286e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _mpvueCityPicker_vue_vue_type_template_id_cb56286e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "D:/VUEJS/mall/components/mpvue-citypicker/mpvueCityPicker.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ 161:
+/*!****************************************************************************************************!*\
+  !*** D:/VUEJS/mall/components/mpvue-citypicker/mpvueCityPicker.vue?vue&type=template&id=cb56286e& ***!
+  \****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_template_id_cb56286e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./mpvueCityPicker.vue?vue&type=template&id=cb56286e& */ 162);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_template_id_cb56286e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_template_id_cb56286e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ 162:
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/VUEJS/mall/components/mpvue-citypicker/mpvueCityPicker.vue?vue&type=template&id=cb56286e& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "mpvue-picker" }, [
+    _c("div", {
+      class: { pickerMask: _vm.showPicker },
+      attrs: { catchtouchmove: "true", eventid: "68f59eff-0" },
+      on: { click: _vm.maskClick }
+    }),
+    _c(
+      "div",
+      {
+        staticClass: "mpvue-picker-content ",
+        class: { "mpvue-picker-view-show": _vm.showPicker }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "mpvue-picker__hd",
+            attrs: { catchtouchmove: "true" }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "mpvue-picker__action",
+                attrs: { eventid: "68f59eff-1" },
+                on: { click: _vm.pickerCancel }
+              },
+              [_vm._v("取消")]
+            ),
+            _c(
+              "div",
+              {
+                staticClass: "mpvue-picker__action",
+                style: { color: _vm.themeColor },
+                attrs: { eventid: "68f59eff-2" },
+                on: { click: _vm.pickerConfirm }
+              },
+              [_vm._v("确定")]
+            )
+          ]
+        ),
+        _c(
+          "picker-view",
+          {
+            staticClass: "mpvue-picker-view",
+            attrs: {
+              "indicator-style": "height: 40px;",
+              value: _vm.pickerValue,
+              eventid: "68f59eff-3"
+            },
+            on: { change: _vm.pickerChange }
+          },
+          [
+            _c(
+              "block",
+              [
+                _c(
+                  "picker-view-column",
+                  { attrs: { mpcomid: "68f59eff-0" } },
+                  _vm._l(_vm.provinceDataList, function(item, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "picker-item" },
+                      [_vm._v(_vm._s(item.label))]
+                    )
+                  })
+                ),
+                _c(
+                  "picker-view-column",
+                  { attrs: { mpcomid: "68f59eff-1" } },
+                  _vm._l(_vm.cityDataList, function(item, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "picker-item" },
+                      [_vm._v(_vm._s(item.label))]
+                    )
+                  })
+                ),
+                _c(
+                  "picker-view-column",
+                  { attrs: { mpcomid: "68f59eff-2" } },
+                  _vm._l(_vm.areaDataList, function(item, index) {
+                    return _c(
+                      "div",
+                      { key: index, staticClass: "picker-item" },
+                      [_vm._v(_vm._s(item.label))]
+                    )
+                  })
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ 163:
+/*!**********************************************************************************************!*\
+  !*** D:/VUEJS/mall/components/mpvue-citypicker/mpvueCityPicker.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--18-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./mpvueCityPicker.vue?vue&type=script&lang=js& */ 164);
+/* harmony import */ var _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ 164:
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--18-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/VUEJS/mall/components/mpvue-citypicker/mpvueCityPicker.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -34,9 +681,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _province = _interopRequireDefault(__webpack_require__(/*! ./city-data/province.js */ "D:\\pxy\\mall\\components\\mpvue-citypicker\\city-data\\province.js"));
-var _city = _interopRequireDefault(__webpack_require__(/*! ./city-data/city.js */ "D:\\pxy\\mall\\components\\mpvue-citypicker\\city-data\\city.js"));
-var _area = _interopRequireDefault(__webpack_require__(/*! ./city-data/area.js */ "D:\\pxy\\mall\\components\\mpvue-citypicker\\city-data\\area.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default2 =
+var _province = _interopRequireDefault(__webpack_require__(/*! ./city-data/province.js */ 165));
+var _city = _interopRequireDefault(__webpack_require__(/*! ./city-data/city.js */ 166));
+var _area = _interopRequireDefault(__webpack_require__(/*! ./city-data/area.js */ 167));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default2 =
 {
   data: function data() {
     return {
@@ -147,521 +794,1674 @@ var _area = _interopRequireDefault(__webpack_require__(/*! ./city-data/area.js *
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--18-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!D:/pxy/mall/userPage/address/edit/edit.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ 165:
+/*!***********************************************************************!*\
+  !*** D:/VUEJS/mall/components/mpvue-citypicker/city-data/province.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /* eslint-disable */
+var provinceData = [{
+  "label": "北京市",
+  "value": "11" },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var _mpvueCityPicker = _interopRequireDefault(__webpack_require__(/*! @/components/mpvue-citypicker/mpvueCityPicker.vue */ "D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
-  components: {
-    mpvueCityPicker: _mpvueCityPicker.default },
+  "label": "天津市",
+  "value": "12" },
 
-  data: function data() {
-    return {
-      editType: 'edit',
-      id: '',
-      name: '',
-      tel: '',
-      detailed: '',
-      isDefault: false,
-      cityPickerValue: [0, 0, 1],
-      themeColor: '#007AFF',
-      region: { label: "请点击选择地址", value: [], cityCode: "" } };
+{
+  "label": "河北省",
+  "value": "13" },
 
-  },
-  methods: {
-    onCancel: function onCancel(e) {
-      console.log(e);
-    },
-    chooseCity: function chooseCity() {
-      this.$refs.mpvueCityPicker.show();
-    },
-    onConfirm: function onConfirm(e) {
-      this.region = e;
-      this.cityPickerValue = e.value;
-    },
-    isDefaultChange: function isDefaultChange(e) {
-      this.isDefault = e.detail.value;
-    },
-    del: function del() {var _this = this;
-      uni.showModal({
-        title: '删除提示',
-        content: '你将删除这个收货地址',
-        success: function success(res) {
-          if (res.confirm) {
-            uni.setStorage({
-              key: 'delAddress',
-              data: { id: _this.id },
-              success: function success() {
-                uni.navigateBack();
-              } });
+{
+  "label": "山西省",
+  "value": "14" },
 
-          } else if (res.cancel) {
-            console.log('用户点击取消');
-          }
-        } });
+{
+  "label": "内蒙古自治区",
+  "value": "15" },
+
+{
+  "label": "辽宁省",
+  "value": "21" },
+
+{
+  "label": "吉林省",
+  "value": "22" },
+
+{
+  "label": "黑龙江省",
+  "value": "23" },
+
+{
+  "label": "上海市",
+  "value": "31" },
+
+{
+  "label": "江苏省",
+  "value": "32" },
+
+{
+  "label": "浙江省",
+  "value": "33" },
+
+{
+  "label": "安徽省",
+  "value": "34" },
+
+{
+  "label": "福建省",
+  "value": "35" },
+
+{
+  "label": "江西省",
+  "value": "36" },
+
+{
+  "label": "山东省",
+  "value": "37" },
+
+{
+  "label": "河南省",
+  "value": "41" },
+
+{
+  "label": "湖北省",
+  "value": "42" },
+
+{
+  "label": "湖南省",
+  "value": "43" },
+
+{
+  "label": "广东省",
+  "value": "44" },
+
+{
+  "label": "广西壮族自治区",
+  "value": "45" },
+
+{
+  "label": "海南省",
+  "value": "46" },
+
+{
+  "label": "重庆市",
+  "value": "50" },
+
+{
+  "label": "四川省",
+  "value": "51" },
+
+{
+  "label": "贵州省",
+  "value": "52" },
+
+{
+  "label": "云南省",
+  "value": "53" },
+
+{
+  "label": "西藏自治区",
+  "value": "54" },
+
+{
+  "label": "陕西省",
+  "value": "61" },
+
+{
+  "label": "甘肃省",
+  "value": "62" },
+
+{
+  "label": "青海省",
+  "value": "63" },
+
+{
+  "label": "宁夏回族自治区",
+  "value": "64" },
+
+{
+  "label": "新疆维吾尔自治区",
+  "value": "65" },
+
+{
+  "label": "台湾",
+  "value": "66" },
+
+{
+  "label": "香港",
+  "value": "67" },
+
+{
+  "label": "澳门",
+  "value": "68" }];var _default =
 
 
-    },
-    save: function save() {
-      var data = { "name": this.name, "head": this.name.substr(0, 1), "tel": this.tel, "address": { "region": this.region, "detailed": this.detailed }, "isDefault": this.isDefault };
-      if (this.editType == 'edit') {
-        data.id = this.id;
-      }
-      if (!data.name) {
-        uni.showToast({ title: '请输入收件人姓名', icon: 'none' });
-        return;
-      }
-      if (!data.tel) {
-        uni.showToast({ title: '请输入收件人电话号码', icon: 'none' });
-        return;
-      }
-      if (!data.address.detailed) {
-        uni.showToast({ title: '请输入收件人详细地址', icon: 'none' });
-        return;
-      }
-      if (data.address.region.value.length == 0) {
-        uni.showToast({ title: '请选择收件地址', icon: 'none' });
-        return;
-      }
-      uni.showLoading({
-        title: '正在提交' });
-
-      //实际应用中请提交ajax,模板定时器模拟提交效果
-      setTimeout(function () {
-        uni.setStorage({
-          key: 'address',
-          data: data,
-          success: function success() {
-            uni.hideLoading();
-            uni.navigateBack();
-          } });
-
-      }, 300);
-
-
-    } },
-
-  onLoad: function onLoad(e) {var _this2 = this;
-    //获取传递过来的参数
-
-    this.editType = e.type;
-    if (e.type == 'edit') {
-      uni.getStorage({
-        key: 'address',
-        success: function success(e) {
-          _this2.id = e.data.id;
-          _this2.name = e.data.name;
-          _this2.tel = e.data.tel;
-          _this2.detailed = e.data.address.detailed;
-          _this2.isDefault = e.data.isDefault;
-          _this2.cityPickerValue = e.data.address.region.value;
-          _this2.region = e.data.address.region;
-        } });
-
-    }
-
-  },
-  onBackPress: function onBackPress() {
-    if (this.$refs.mpvueCityPicker.showPicker) {
-      this.$refs.mpvueCityPicker.pickerCancel();
-      return true;
-    }
-  },
-  onUnload: function onUnload() {
-    if (this.$refs.mpvueCityPicker.showPicker) {
-      this.$refs.mpvueCityPicker.pickerCancel();
-    }
-  } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
+provinceData;exports.default = _default;
 
 /***/ }),
 
-/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/vue-loader/lib/index.js?!D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue?vue&type=style&index=0&lang=scss&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-1!./node_modules/css-loader??ref--8-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/lib/loader.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/vue-loader/lib??vue-loader-options!D:/pxy/mall/userPage/address/edit/edit.vue?vue&type=style&index=0&lang=scss& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ 166:
+/*!*******************************************************************!*\
+  !*** D:/VUEJS/mall/components/mpvue-citypicker/city-data/city.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue?vue&type=style&index=0&lang=css&":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!D:/pxy/mall/components/mpvue-citypicker/mpvueCityPicker.vue?vue&type=style&index=0&lang=css& ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue?vue&type=template&id=58e0d0f2&":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!D:/pxy/mall/components/mpvue-citypicker/mpvueCityPicker.vue?vue&type=template&id=58e0d0f2& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "mpvue-picker" }, [
-    _c("div", {
-      class: { pickerMask: _vm.showPicker },
-      attrs: { catchtouchmove: "true", eventid: "f1d1f3aa-0" },
-      on: { click: _vm.maskClick }
-    }),
-    _c(
-      "div",
-      {
-        staticClass: "mpvue-picker-content ",
-        class: { "mpvue-picker-view-show": _vm.showPicker }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "mpvue-picker__hd",
-            attrs: { catchtouchmove: "true" }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "mpvue-picker__action",
-                attrs: { eventid: "f1d1f3aa-1" },
-                on: { click: _vm.pickerCancel }
-              },
-              [_vm._v("取消")]
-            ),
-            _c(
-              "div",
-              {
-                staticClass: "mpvue-picker__action",
-                style: { color: _vm.themeColor },
-                attrs: { eventid: "f1d1f3aa-2" },
-                on: { click: _vm.pickerConfirm }
-              },
-              [_vm._v("确定")]
-            )
-          ]
-        ),
-        _c(
-          "picker-view",
-          {
-            staticClass: "mpvue-picker-view",
-            attrs: {
-              "indicator-style": "height: 40px;",
-              value: _vm.pickerValue,
-              eventid: "f1d1f3aa-3"
-            },
-            on: { change: _vm.pickerChange }
-          },
-          [
-            _c(
-              "block",
-              [
-                _c(
-                  "picker-view-column",
-                  { attrs: { mpcomid: "f1d1f3aa-0" } },
-                  _vm._l(_vm.provinceDataList, function(item, index) {
-                    return _c(
-                      "div",
-                      { key: index, staticClass: "picker-item" },
-                      [_vm._v(_vm._s(item.label))]
-                    )
-                  })
-                ),
-                _c(
-                  "picker-view-column",
-                  { attrs: { mpcomid: "f1d1f3aa-1" } },
-                  _vm._l(_vm.cityDataList, function(item, index) {
-                    return _c(
-                      "div",
-                      { key: index, staticClass: "picker-item" },
-                      [_vm._v(_vm._s(item.label))]
-                    )
-                  })
-                ),
-                _c(
-                  "picker-view-column",
-                  { attrs: { mpcomid: "f1d1f3aa-2" } },
-                  _vm._l(_vm.areaDataList, function(item, index) {
-                    return _c(
-                      "div",
-                      { key: index, staticClass: "picker-item" },
-                      [_vm._v(_vm._s(item.label))]
-                    )
-                  })
-                )
-              ],
-              1
-            )
-          ],
-          1
-        )
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /* eslint-disable */
+var cityData = [
+[{
+  "label": "市辖区",
+  "value": "1101" }],
+
+[{
+  "label": "市辖区",
+  "value": "1201" }],
+
+[{
+  "label": "石家庄市",
+  "value": "1301" },
+
+{
+  "label": "唐山市",
+  "value": "1302" },
+
+{
+  "label": "秦皇岛市",
+  "value": "1303" },
+
+{
+  "label": "邯郸市",
+  "value": "1304" },
+
+{
+  "label": "邢台市",
+  "value": "1305" },
+
+{
+  "label": "保定市",
+  "value": "1306" },
+
+{
+  "label": "张家口市",
+  "value": "1307" },
+
+{
+  "label": "承德市",
+  "value": "1308" },
+
+{
+  "label": "沧州市",
+  "value": "1309" },
+
+{
+  "label": "廊坊市",
+  "value": "1310" },
+
+{
+  "label": "衡水市",
+  "value": "1311" }],
 
 
+[{
+  "label": "太原市",
+  "value": "1401" },
+
+{
+  "label": "大同市",
+  "value": "1402" },
+
+{
+  "label": "阳泉市",
+  "value": "1403" },
+
+{
+  "label": "长治市",
+  "value": "1404" },
+
+{
+  "label": "晋城市",
+  "value": "1405" },
+
+{
+  "label": "朔州市",
+  "value": "1406" },
+
+{
+  "label": "晋中市",
+  "value": "1407" },
+
+{
+  "label": "运城市",
+  "value": "1408" },
+
+{
+  "label": "忻州市",
+  "value": "1409" },
+
+{
+  "label": "临汾市",
+  "value": "1410" },
+
+{
+  "label": "吕梁市",
+  "value": "1411" }],
+
+
+[{
+  "label": "呼和浩特市",
+  "value": "1501" },
+
+{
+  "label": "包头市",
+  "value": "1502" },
+
+{
+  "label": "乌海市",
+  "value": "1503" },
+
+{
+  "label": "赤峰市",
+  "value": "1504" },
+
+{
+  "label": "通辽市",
+  "value": "1505" },
+
+{
+  "label": "鄂尔多斯市",
+  "value": "1506" },
+
+{
+  "label": "呼伦贝尔市",
+  "value": "1507" },
+
+{
+  "label": "巴彦淖尔市",
+  "value": "1508" },
+
+{
+  "label": "乌兰察布市",
+  "value": "1509" },
+
+{
+  "label": "兴安盟",
+  "value": "1522" },
+
+{
+  "label": "锡林郭勒盟",
+  "value": "1525" },
+
+{
+  "label": "阿拉善盟",
+  "value": "1529" }],
+
+
+[{
+  "label": "沈阳市",
+  "value": "2101" },
+
+{
+  "label": "大连市",
+  "value": "2102" },
+
+{
+  "label": "鞍山市",
+  "value": "2103" },
+
+{
+  "label": "抚顺市",
+  "value": "2104" },
+
+{
+  "label": "本溪市",
+  "value": "2105" },
+
+{
+  "label": "丹东市",
+  "value": "2106" },
+
+{
+  "label": "锦州市",
+  "value": "2107" },
+
+{
+  "label": "营口市",
+  "value": "2108" },
+
+{
+  "label": "阜新市",
+  "value": "2109" },
+
+{
+  "label": "辽阳市",
+  "value": "2110" },
+
+{
+  "label": "盘锦市",
+  "value": "2111" },
+
+{
+  "label": "铁岭市",
+  "value": "2112" },
+
+{
+  "label": "朝阳市",
+  "value": "2113" },
+
+{
+  "label": "葫芦岛市",
+  "value": "2114" }],
+
+
+[{
+  "label": "长春市",
+  "value": "2201" },
+
+{
+  "label": "吉林市",
+  "value": "2202" },
+
+{
+  "label": "四平市",
+  "value": "2203" },
+
+{
+  "label": "辽源市",
+  "value": "2204" },
+
+{
+  "label": "通化市",
+  "value": "2205" },
+
+{
+  "label": "白山市",
+  "value": "2206" },
+
+{
+  "label": "松原市",
+  "value": "2207" },
+
+{
+  "label": "白城市",
+  "value": "2208" },
+
+{
+  "label": "延边朝鲜族自治州",
+  "value": "2224" }],
+
+
+[{
+  "label": "哈尔滨市",
+  "value": "2301" },
+
+{
+  "label": "齐齐哈尔市",
+  "value": "2302" },
+
+{
+  "label": "鸡西市",
+  "value": "2303" },
+
+{
+  "label": "鹤岗市",
+  "value": "2304" },
+
+{
+  "label": "双鸭山市",
+  "value": "2305" },
+
+{
+  "label": "大庆市",
+  "value": "2306" },
+
+{
+  "label": "伊春市",
+  "value": "2307" },
+
+{
+  "label": "佳木斯市",
+  "value": "2308" },
+
+{
+  "label": "七台河市",
+  "value": "2309" },
+
+{
+  "label": "牡丹江市",
+  "value": "2310" },
+
+{
+  "label": "黑河市",
+  "value": "2311" },
+
+{
+  "label": "绥化市",
+  "value": "2312" },
+
+{
+  "label": "大兴安岭地区",
+  "value": "2327" }],
+
+
+[{
+  "label": "市辖区",
+  "value": "3101" }],
+
+[{
+  "label": "南京市",
+  "value": "3201" },
+
+{
+  "label": "无锡市",
+  "value": "3202" },
+
+{
+  "label": "徐州市",
+  "value": "3203" },
+
+{
+  "label": "常州市",
+  "value": "3204" },
+
+{
+  "label": "苏州市",
+  "value": "3205" },
+
+{
+  "label": "南通市",
+  "value": "3206" },
+
+{
+  "label": "连云港市",
+  "value": "3207" },
+
+{
+  "label": "淮安市",
+  "value": "3208" },
+
+{
+  "label": "盐城市",
+  "value": "3209" },
+
+{
+  "label": "扬州市",
+  "value": "3210" },
+
+{
+  "label": "镇江市",
+  "value": "3211" },
+
+{
+  "label": "泰州市",
+  "value": "3212" },
+
+{
+  "label": "宿迁市",
+  "value": "3213" }],
+
+
+[{
+  "label": "杭州市",
+  "value": "3301" },
+
+{
+  "label": "宁波市",
+  "value": "3302" },
+
+{
+  "label": "温州市",
+  "value": "3303" },
+
+{
+  "label": "嘉兴市",
+  "value": "3304" },
+
+{
+  "label": "湖州市",
+  "value": "3305" },
+
+{
+  "label": "绍兴市",
+  "value": "3306" },
+
+{
+  "label": "金华市",
+  "value": "3307" },
+
+{
+  "label": "衢州市",
+  "value": "3308" },
+
+{
+  "label": "舟山市",
+  "value": "3309" },
+
+{
+  "label": "台州市",
+  "value": "3310" },
+
+{
+  "label": "丽水市",
+  "value": "3311" }],
+
+
+[{
+  "label": "合肥市",
+  "value": "3401" },
+
+{
+  "label": "芜湖市",
+  "value": "3402" },
+
+{
+  "label": "蚌埠市",
+  "value": "3403" },
+
+{
+  "label": "淮南市",
+  "value": "3404" },
+
+{
+  "label": "马鞍山市",
+  "value": "3405" },
+
+{
+  "label": "淮北市",
+  "value": "3406" },
+
+{
+  "label": "铜陵市",
+  "value": "3407" },
+
+{
+  "label": "安庆市",
+  "value": "3408" },
+
+{
+  "label": "黄山市",
+  "value": "3410" },
+
+{
+  "label": "滁州市",
+  "value": "3411" },
+
+{
+  "label": "阜阳市",
+  "value": "3412" },
+
+{
+  "label": "宿州市",
+  "value": "3413" },
+
+{
+  "label": "六安市",
+  "value": "3415" },
+
+{
+  "label": "亳州市",
+  "value": "3416" },
+
+{
+  "label": "池州市",
+  "value": "3417" },
+
+{
+  "label": "宣城市",
+  "value": "3418" }],
+
+
+[{
+  "label": "福州市",
+  "value": "3501" },
+
+{
+  "label": "厦门市",
+  "value": "3502" },
+
+{
+  "label": "莆田市",
+  "value": "3503" },
+
+{
+  "label": "三明市",
+  "value": "3504" },
+
+{
+  "label": "泉州市",
+  "value": "3505" },
+
+{
+  "label": "漳州市",
+  "value": "3506" },
+
+{
+  "label": "南平市",
+  "value": "3507" },
+
+{
+  "label": "龙岩市",
+  "value": "3508" },
+
+{
+  "label": "宁德市",
+  "value": "3509" }],
+
+
+[{
+  "label": "南昌市",
+  "value": "3601" },
+
+{
+  "label": "景德镇市",
+  "value": "3602" },
+
+{
+  "label": "萍乡市",
+  "value": "3603" },
+
+{
+  "label": "九江市",
+  "value": "3604" },
+
+{
+  "label": "新余市",
+  "value": "3605" },
+
+{
+  "label": "鹰潭市",
+  "value": "3606" },
+
+{
+  "label": "赣州市",
+  "value": "3607" },
+
+{
+  "label": "吉安市",
+  "value": "3608" },
+
+{
+  "label": "宜春市",
+  "value": "3609" },
+
+{
+  "label": "抚州市",
+  "value": "3610" },
+
+{
+  "label": "上饶市",
+  "value": "3611" }],
+
+
+[{
+  "label": "济南市",
+  "value": "3701" },
+
+{
+  "label": "青岛市",
+  "value": "3702" },
+
+{
+  "label": "淄博市",
+  "value": "3703" },
+
+{
+  "label": "枣庄市",
+  "value": "3704" },
+
+{
+  "label": "东营市",
+  "value": "3705" },
+
+{
+  "label": "烟台市",
+  "value": "3706" },
+
+{
+  "label": "潍坊市",
+  "value": "3707" },
+
+{
+  "label": "济宁市",
+  "value": "3708" },
+
+{
+  "label": "泰安市",
+  "value": "3709" },
+
+{
+  "label": "威海市",
+  "value": "3710" },
+
+{
+  "label": "日照市",
+  "value": "3711" },
+
+{
+  "label": "莱芜市",
+  "value": "3712" },
+
+{
+  "label": "临沂市",
+  "value": "3713" },
+
+{
+  "label": "德州市",
+  "value": "3714" },
+
+{
+  "label": "聊城市",
+  "value": "3715" },
+
+{
+  "label": "滨州市",
+  "value": "3716" },
+
+{
+  "label": "菏泽市",
+  "value": "3717" }],
+
+
+[{
+  "label": "郑州市",
+  "value": "4101" },
+
+{
+  "label": "开封市",
+  "value": "4102" },
+
+{
+  "label": "洛阳市",
+  "value": "4103" },
+
+{
+  "label": "平顶山市",
+  "value": "4104" },
+
+{
+  "label": "安阳市",
+  "value": "4105" },
+
+{
+  "label": "鹤壁市",
+  "value": "4106" },
+
+{
+  "label": "新乡市",
+  "value": "4107" },
+
+{
+  "label": "焦作市",
+  "value": "4108" },
+
+{
+  "label": "濮阳市",
+  "value": "4109" },
+
+{
+  "label": "许昌市",
+  "value": "4110" },
+
+{
+  "label": "漯河市",
+  "value": "4111" },
+
+{
+  "label": "三门峡市",
+  "value": "4112" },
+
+{
+  "label": "南阳市",
+  "value": "4113" },
+
+{
+  "label": "商丘市",
+  "value": "4114" },
+
+{
+  "label": "信阳市",
+  "value": "4115" },
+
+{
+  "label": "周口市",
+  "value": "4116" },
+
+{
+  "label": "驻马店市",
+  "value": "4117" },
+
+{
+  "label": "省直辖县级行政区划",
+  "value": "4190" }],
+
+
+[{
+  "label": "武汉市",
+  "value": "4201" },
+
+{
+  "label": "黄石市",
+  "value": "4202" },
+
+{
+  "label": "十堰市",
+  "value": "4203" },
+
+{
+  "label": "宜昌市",
+  "value": "4205" },
+
+{
+  "label": "襄阳市",
+  "value": "4206" },
+
+{
+  "label": "鄂州市",
+  "value": "4207" },
+
+{
+  "label": "荆门市",
+  "value": "4208" },
+
+{
+  "label": "孝感市",
+  "value": "4209" },
+
+{
+  "label": "荆州市",
+  "value": "4210" },
+
+{
+  "label": "黄冈市",
+  "value": "4211" },
+
+{
+  "label": "咸宁市",
+  "value": "4212" },
+
+{
+  "label": "随州市",
+  "value": "4213" },
+
+{
+  "label": "恩施土家族苗族自治州",
+  "value": "4228" },
+
+{
+  "label": "省直辖县级行政区划",
+  "value": "4290" }],
+
+
+[{
+  "label": "长沙市",
+  "value": "4301" },
+
+{
+  "label": "株洲市",
+  "value": "4302" },
+
+{
+  "label": "湘潭市",
+  "value": "4303" },
+
+{
+  "label": "衡阳市",
+  "value": "4304" },
+
+{
+  "label": "邵阳市",
+  "value": "4305" },
+
+{
+  "label": "岳阳市",
+  "value": "4306" },
+
+{
+  "label": "常德市",
+  "value": "4307" },
+
+{
+  "label": "张家界市",
+  "value": "4308" },
+
+{
+  "label": "益阳市",
+  "value": "4309" },
+
+{
+  "label": "郴州市",
+  "value": "4310" },
+
+{
+  "label": "永州市",
+  "value": "4311" },
+
+{
+  "label": "怀化市",
+  "value": "4312" },
+
+{
+  "label": "娄底市",
+  "value": "4313" },
+
+{
+  "label": "湘西土家族苗族自治州",
+  "value": "4331" }],
+
+
+[{
+  "label": "广州市",
+  "value": "4401" },
+
+{
+  "label": "韶关市",
+  "value": "4402" },
+
+{
+  "label": "深圳市",
+  "value": "4403" },
+
+{
+  "label": "珠海市",
+  "value": "4404" },
+
+{
+  "label": "汕头市",
+  "value": "4405" },
+
+{
+  "label": "佛山市",
+  "value": "4406" },
+
+{
+  "label": "江门市",
+  "value": "4407" },
+
+{
+  "label": "湛江市",
+  "value": "4408" },
+
+{
+  "label": "茂名市",
+  "value": "4409" },
+
+{
+  "label": "肇庆市",
+  "value": "4412" },
+
+{
+  "label": "惠州市",
+  "value": "4413" },
+
+{
+  "label": "梅州市",
+  "value": "4414" },
+
+{
+  "label": "汕尾市",
+  "value": "4415" },
+
+{
+  "label": "河源市",
+  "value": "4416" },
+
+{
+  "label": "阳江市",
+  "value": "4417" },
+
+{
+  "label": "清远市",
+  "value": "4418" },
+
+{
+  "label": "东莞市",
+  "value": "4419" },
+
+{
+  "label": "中山市",
+  "value": "4420" },
+
+{
+  "label": "潮州市",
+  "value": "4451" },
+
+{
+  "label": "揭阳市",
+  "value": "4452" },
+
+{
+  "label": "云浮市",
+  "value": "4453" }],
+
+
+[{
+  "label": "南宁市",
+  "value": "4501" },
+
+{
+  "label": "柳州市",
+  "value": "4502" },
+
+{
+  "label": "桂林市",
+  "value": "4503" },
+
+{
+  "label": "梧州市",
+  "value": "4504" },
+
+{
+  "label": "北海市",
+  "value": "4505" },
+
+{
+  "label": "防城港市",
+  "value": "4506" },
+
+{
+  "label": "钦州市",
+  "value": "4507" },
+
+{
+  "label": "贵港市",
+  "value": "4508" },
+
+{
+  "label": "玉林市",
+  "value": "4509" },
+
+{
+  "label": "百色市",
+  "value": "4510" },
+
+{
+  "label": "贺州市",
+  "value": "4511" },
+
+{
+  "label": "河池市",
+  "value": "4512" },
+
+{
+  "label": "来宾市",
+  "value": "4513" },
+
+{
+  "label": "崇左市",
+  "value": "4514" }],
+
+
+[{
+  "label": "海口市",
+  "value": "4601" },
+
+{
+  "label": "三亚市",
+  "value": "4602" },
+
+{
+  "label": "三沙市",
+  "value": "4603" },
+
+{
+  "label": "儋州市",
+  "value": "4604" },
+
+{
+  "label": "省直辖县级行政区划",
+  "value": "4690" }],
+
+
+[{
+  "label": "市辖区",
+  "value": "5001" },
+
+{
+  "label": "县",
+  "value": "5002" }],
+
+
+[{
+  "label": "成都市",
+  "value": "5101" },
+
+{
+  "label": "自贡市",
+  "value": "5103" },
+
+{
+  "label": "攀枝花市",
+  "value": "5104" },
+
+{
+  "label": "泸州市",
+  "value": "5105" },
+
+{
+  "label": "德阳市",
+  "value": "5106" },
+
+{
+  "label": "绵阳市",
+  "value": "5107" },
+
+{
+  "label": "广元市",
+  "value": "5108" },
+
+{
+  "label": "遂宁市",
+  "value": "5109" },
+
+{
+  "label": "内江市",
+  "value": "5110" },
+
+{
+  "label": "乐山市",
+  "value": "5111" },
+
+{
+  "label": "南充市",
+  "value": "5113" },
+
+{
+  "label": "眉山市",
+  "value": "5114" },
+
+{
+  "label": "宜宾市",
+  "value": "5115" },
+
+{
+  "label": "广安市",
+  "value": "5116" },
+
+{
+  "label": "达州市",
+  "value": "5117" },
+
+{
+  "label": "雅安市",
+  "value": "5118" },
+
+{
+  "label": "巴中市",
+  "value": "5119" },
+
+{
+  "label": "资阳市",
+  "value": "5120" },
+
+{
+  "label": "阿坝藏族羌族自治州",
+  "value": "5132" },
+
+{
+  "label": "甘孜藏族自治州",
+  "value": "5133" },
+
+{
+  "label": "凉山彝族自治州",
+  "value": "5134" }],
+
+
+[{
+  "label": "贵阳市",
+  "value": "5201" },
+
+{
+  "label": "六盘水市",
+  "value": "5202" },
+
+{
+  "label": "遵义市",
+  "value": "5203" },
+
+{
+  "label": "安顺市",
+  "value": "5204" },
+
+{
+  "label": "毕节市",
+  "value": "5205" },
+
+{
+  "label": "铜仁市",
+  "value": "5206" },
+
+{
+  "label": "黔西南布依族苗族自治州",
+  "value": "5223" },
+
+{
+  "label": "黔东南苗族侗族自治州",
+  "value": "5226" },
+
+{
+  "label": "黔南布依族苗族自治州",
+  "value": "5227" }],
+
+
+[{
+  "label": "昆明市",
+  "value": "5301" },
+
+{
+  "label": "曲靖市",
+  "value": "5303" },
+
+{
+  "label": "玉溪市",
+  "value": "5304" },
+
+{
+  "label": "保山市",
+  "value": "5305" },
+
+{
+  "label": "昭通市",
+  "value": "5306" },
+
+{
+  "label": "丽江市",
+  "value": "5307" },
+
+{
+  "label": "普洱市",
+  "value": "5308" },
+
+{
+  "label": "临沧市",
+  "value": "5309" },
+
+{
+  "label": "楚雄彝族自治州",
+  "value": "5323" },
+
+{
+  "label": "红河哈尼族彝族自治州",
+  "value": "5325" },
+
+{
+  "label": "文山壮族苗族自治州",
+  "value": "5326" },
+
+{
+  "label": "西双版纳傣族自治州",
+  "value": "5328" },
+
+{
+  "label": "大理白族自治州",
+  "value": "5329" },
+
+{
+  "label": "德宏傣族景颇族自治州",
+  "value": "5331" },
+
+{
+  "label": "怒江傈僳族自治州",
+  "value": "5333" },
+
+{
+  "label": "迪庆藏族自治州",
+  "value": "5334" }],
+
+
+[{
+  "label": "拉萨市",
+  "value": "5401" },
+
+{
+  "label": "日喀则市",
+  "value": "5402" },
+
+{
+  "label": "昌都市",
+  "value": "5403" },
+
+{
+  "label": "林芝市",
+  "value": "5404" },
+
+{
+  "label": "山南市",
+  "value": "5405" },
+
+{
+  "label": "那曲地区",
+  "value": "5424" },
+
+{
+  "label": "阿里地区",
+  "value": "5425" }],
+
+
+[{
+  "label": "西安市",
+  "value": "6101" },
+
+{
+  "label": "铜川市",
+  "value": "6102" },
+
+{
+  "label": "宝鸡市",
+  "value": "6103" },
+
+{
+  "label": "咸阳市",
+  "value": "6104" },
+
+{
+  "label": "渭南市",
+  "value": "6105" },
+
+{
+  "label": "延安市",
+  "value": "6106" },
+
+{
+  "label": "汉中市",
+  "value": "6107" },
+
+{
+  "label": "榆林市",
+  "value": "6108" },
+
+{
+  "label": "安康市",
+  "value": "6109" },
+
+{
+  "label": "商洛市",
+  "value": "6110" }],
+
+
+[{
+  "label": "兰州市",
+  "value": "6201" },
+
+{
+  "label": "嘉峪关市",
+  "value": "6202" },
+
+{
+  "label": "金昌市",
+  "value": "6203" },
+
+{
+  "label": "白银市",
+  "value": "6204" },
+
+{
+  "label": "天水市",
+  "value": "6205" },
+
+{
+  "label": "武威市",
+  "value": "6206" },
+
+{
+  "label": "张掖市",
+  "value": "6207" },
+
+{
+  "label": "平凉市",
+  "value": "6208" },
+
+{
+  "label": "酒泉市",
+  "value": "6209" },
+
+{
+  "label": "庆阳市",
+  "value": "6210" },
+
+{
+  "label": "定西市",
+  "value": "6211" },
+
+{
+  "label": "陇南市",
+  "value": "6212" },
+
+{
+  "label": "临夏回族自治州",
+  "value": "6229" },
+
+{
+  "label": "甘南藏族自治州",
+  "value": "6230" }],
+
+
+[{
+  "label": "西宁市",
+  "value": "6301" },
+
+{
+  "label": "海东市",
+  "value": "6302" },
+
+{
+  "label": "海北藏族自治州",
+  "value": "6322" },
+
+{
+  "label": "黄南藏族自治州",
+  "value": "6323" },
+
+{
+  "label": "海南藏族自治州",
+  "value": "6325" },
+
+{
+  "label": "果洛藏族自治州",
+  "value": "6326" },
+
+{
+  "label": "玉树藏族自治州",
+  "value": "6327" },
+
+{
+  "label": "海西蒙古族藏族自治州",
+  "value": "6328" }],
+
+
+[{
+  "label": "银川市",
+  "value": "6401" },
+
+{
+  "label": "石嘴山市",
+  "value": "6402" },
+
+{
+  "label": "吴忠市",
+  "value": "6403" },
+
+{
+  "label": "固原市",
+  "value": "6404" },
+
+{
+  "label": "中卫市",
+  "value": "6405" }],
+
+
+[{
+  "label": "乌鲁木齐市",
+  "value": "6501" },
+
+{
+  "label": "克拉玛依市",
+  "value": "6502" },
+
+{
+  "label": "吐鲁番市",
+  "value": "6504" },
+
+{
+  "label": "哈密市",
+  "value": "6505" },
+
+{
+  "label": "昌吉回族自治州",
+  "value": "6523" },
+
+{
+  "label": "博尔塔拉蒙古自治州",
+  "value": "6527" },
+
+{
+  "label": "巴音郭楞蒙古自治州",
+  "value": "6528" },
+
+{
+  "label": "阿克苏地区",
+  "value": "6529" },
+
+{
+  "label": "克孜勒苏柯尔克孜自治州",
+  "value": "6530" },
+
+{
+  "label": "喀什地区",
+  "value": "6531" },
+
+{
+  "label": "和田地区",
+  "value": "6532" },
+
+{
+  "label": "伊犁哈萨克自治州",
+  "value": "6540" },
+
+{
+  "label": "塔城地区",
+  "value": "6542" },
+
+{
+  "label": "阿勒泰地区",
+  "value": "6543" },
+
+{
+  "label": "自治区直辖县级行政区划",
+  "value": "6590" }],
+
+
+[{
+  "label": "台北",
+  "value": "6601" },
+
+{
+  "label": "高雄",
+  "value": "6602" },
+
+{
+  "label": "基隆",
+  "value": "6603" },
+
+{
+  "label": "台中",
+  "value": "6604" },
+
+{
+  "label": "台南",
+  "value": "6605" },
+
+{
+  "label": "新竹",
+  "value": "6606" },
+
+{
+  "label": "嘉义",
+  "value": "6607" },
+
+{
+  "label": "宜兰",
+  "value": "6608" },
+
+{
+  "label": "桃园",
+  "value": "6609" },
+
+{
+  "label": "苗栗",
+  "value": "6610" },
+
+{
+  "label": "彰化",
+  "value": "6611" },
+
+{
+  "label": "南投",
+  "value": "6612" },
+
+{
+  "label": "云林",
+  "value": "6613" },
+
+{
+  "label": "屏东",
+  "value": "6614" },
+
+{
+  "label": "台东",
+  "value": "6615" },
+
+{
+  "label": "花莲",
+  "value": "6616" },
+
+{
+  "label": "澎湖",
+  "value": "6617" }],
+
+
+[{
+  "label": "香港岛",
+  "value": "6701" },
+
+{
+  "label": "九龙",
+  "value": "6702" },
+
+{
+  "label": "新界",
+  "value": "6703" }],
+
+
+[{
+  "label": "澳门半岛",
+  "value": "6801" },
+
+{
+  "label": "氹仔岛",
+  "value": "6802" },
+
+{
+  "label": "路环岛",
+  "value": "6803" },
+
+{
+  "label": "路氹城",
+  "value": "6804" }]];var _default =
+
+
+
+cityData;exports.default = _default;
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue?vue&type=template&id=0d4e611e&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!D:/pxy/mall/userPage/address/edit/edit.vue?vue&type=template&id=0d4e611e& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "view",
-    [
-      _c("view", { staticClass: "content" }, [
-        _c("view", { staticClass: "row" }, [
-          _c("view", { staticClass: "nominal" }, [_vm._v("收件人")]),
-          _c("view", { staticClass: "input" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.name,
-                  expression: "name"
-                }
-              ],
-              attrs: {
-                placeholder: "请输入收件人姓名",
-                type: "text",
-                eventid: "a4c9ffc6-0"
-              },
-              domProps: { value: _vm.name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.name = $event.target.value
-                }
-              }
-            })
-          ])
-        ]),
-        _c("view", { staticClass: "row" }, [
-          _c("view", { staticClass: "nominal" }, [_vm._v("电话号码")]),
-          _c("view", { staticClass: "input" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.tel,
-                  expression: "tel"
-                }
-              ],
-              attrs: {
-                placeholder: "请输入收件人电话号码",
-                type: "text",
-                eventid: "a4c9ffc6-1"
-              },
-              domProps: { value: _vm.tel },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.tel = $event.target.value
-                }
-              }
-            })
-          ])
-        ]),
-        _c("view", { staticClass: "row" }, [
-          _c("view", { staticClass: "nominal" }, [_vm._v("所在地区")]),
-          _c(
-            "view",
-            {
-              staticClass: "input",
-              attrs: { eventid: "a4c9ffc6-2" },
-              on: { tap: _vm.chooseCity }
-            },
-            [_vm._v(_vm._s(_vm.region.label))]
-          )
-        ]),
-        _c("view", { staticClass: "row" }, [
-          _c("view", { staticClass: "nominal" }, [_vm._v("详细地址")]),
-          _c("view", { staticClass: "input" }, [
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.detailed,
-                  expression: "detailed"
-                }
-              ],
-              attrs: {
-                "auto-height": "true",
-                placeholder: "输入详细地址",
-                eventid: "a4c9ffc6-3"
-              },
-              domProps: { value: _vm.detailed },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.detailed = $event.target.value
-                }
-              }
-            })
-          ])
-        ]),
-        _c("view", { staticClass: "row" }, [
-          _c("view", { staticClass: "nominal" }, [_vm._v("设置默认地址")]),
-          _c("view", { staticClass: "input switch" }, [
-            _c("switch", {
-              attrs: {
-                color: "#8bbce7",
-                checked: _vm.isDefault,
-                eventid: "a4c9ffc6-4"
-              },
-              on: { change: _vm.isDefaultChange }
-            })
-          ])
-        ]),
-        _vm.editType == "edit"
-          ? _c(
-              "view",
-              {
-                staticClass: "row",
-                attrs: { eventid: "a4c9ffc6-5" },
-                on: { tap: _vm.del }
-              },
-              [_c("view", { staticClass: "del" }, [_vm._v("删除收货地址")])]
-            )
-          : _vm._e()
-      ]),
-      _c(
-        "view",
-        {
-          staticClass: "save",
-          attrs: { eventid: "a4c9ffc6-6" },
-          on: { tap: _vm.save }
-        },
-        [_c("view", { staticClass: "btn" }, [_vm._v("保存地址")])]
-      ),
-      _c("mpvue-city-picker", {
-        ref: "mpvueCityPicker",
-        attrs: {
-          themeColor: _vm.themeColor,
-          pickerValueDefault: _vm.cityPickerValue,
-          eventid: "a4c9ffc6-7",
-          mpcomid: "a4c9ffc6-0"
-        },
-        on: { onCancel: _vm.onCancel, onConfirm: _vm.onConfirm }
-      })
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "D:\\pxy\\mall\\components\\mpvue-citypicker\\city-data\\area.js":
-/*!*****************************************************************!*\
-  !*** D:/pxy/mall/components/mpvue-citypicker/city-data/area.js ***!
-  \*****************************************************************/
+/***/ 167:
+/*!*******************************************************************!*\
+  !*** D:/VUEJS/mall/components/mpvue-citypicker/city-data/area.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13211,1864 +15011,59 @@ areaData;exports.default = _default;
 
 /***/ }),
 
-/***/ "D:\\pxy\\mall\\components\\mpvue-citypicker\\city-data\\city.js":
-/*!*****************************************************************!*\
-  !*** D:/pxy/mall/components/mpvue-citypicker/city-data/city.js ***!
-  \*****************************************************************/
+/***/ 168:
+/*!******************************************************************************************************!*\
+  !*** D:/VUEJS/mall/components/mpvue-citypicker/mpvueCityPicker.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./mpvueCityPicker.vue?vue&type=style&index=0&lang=css& */ 169);
+/* harmony import */ var _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ 169:
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/VUEJS/mall/components/mpvue-citypicker/mpvueCityPicker.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /* eslint-disable */
-var cityData = [
-[{
-  "label": "市辖区",
-  "value": "1101" }],
-
-[{
-  "label": "市辖区",
-  "value": "1201" }],
-
-[{
-  "label": "石家庄市",
-  "value": "1301" },
-
-{
-  "label": "唐山市",
-  "value": "1302" },
-
-{
-  "label": "秦皇岛市",
-  "value": "1303" },
-
-{
-  "label": "邯郸市",
-  "value": "1304" },
-
-{
-  "label": "邢台市",
-  "value": "1305" },
-
-{
-  "label": "保定市",
-  "value": "1306" },
-
-{
-  "label": "张家口市",
-  "value": "1307" },
-
-{
-  "label": "承德市",
-  "value": "1308" },
-
-{
-  "label": "沧州市",
-  "value": "1309" },
-
-{
-  "label": "廊坊市",
-  "value": "1310" },
-
-{
-  "label": "衡水市",
-  "value": "1311" }],
-
-
-[{
-  "label": "太原市",
-  "value": "1401" },
-
-{
-  "label": "大同市",
-  "value": "1402" },
-
-{
-  "label": "阳泉市",
-  "value": "1403" },
-
-{
-  "label": "长治市",
-  "value": "1404" },
-
-{
-  "label": "晋城市",
-  "value": "1405" },
-
-{
-  "label": "朔州市",
-  "value": "1406" },
-
-{
-  "label": "晋中市",
-  "value": "1407" },
-
-{
-  "label": "运城市",
-  "value": "1408" },
-
-{
-  "label": "忻州市",
-  "value": "1409" },
-
-{
-  "label": "临汾市",
-  "value": "1410" },
-
-{
-  "label": "吕梁市",
-  "value": "1411" }],
-
-
-[{
-  "label": "呼和浩特市",
-  "value": "1501" },
-
-{
-  "label": "包头市",
-  "value": "1502" },
-
-{
-  "label": "乌海市",
-  "value": "1503" },
-
-{
-  "label": "赤峰市",
-  "value": "1504" },
-
-{
-  "label": "通辽市",
-  "value": "1505" },
-
-{
-  "label": "鄂尔多斯市",
-  "value": "1506" },
-
-{
-  "label": "呼伦贝尔市",
-  "value": "1507" },
-
-{
-  "label": "巴彦淖尔市",
-  "value": "1508" },
-
-{
-  "label": "乌兰察布市",
-  "value": "1509" },
-
-{
-  "label": "兴安盟",
-  "value": "1522" },
-
-{
-  "label": "锡林郭勒盟",
-  "value": "1525" },
-
-{
-  "label": "阿拉善盟",
-  "value": "1529" }],
-
-
-[{
-  "label": "沈阳市",
-  "value": "2101" },
-
-{
-  "label": "大连市",
-  "value": "2102" },
-
-{
-  "label": "鞍山市",
-  "value": "2103" },
-
-{
-  "label": "抚顺市",
-  "value": "2104" },
-
-{
-  "label": "本溪市",
-  "value": "2105" },
-
-{
-  "label": "丹东市",
-  "value": "2106" },
-
-{
-  "label": "锦州市",
-  "value": "2107" },
-
-{
-  "label": "营口市",
-  "value": "2108" },
-
-{
-  "label": "阜新市",
-  "value": "2109" },
-
-{
-  "label": "辽阳市",
-  "value": "2110" },
-
-{
-  "label": "盘锦市",
-  "value": "2111" },
-
-{
-  "label": "铁岭市",
-  "value": "2112" },
-
-{
-  "label": "朝阳市",
-  "value": "2113" },
-
-{
-  "label": "葫芦岛市",
-  "value": "2114" }],
-
-
-[{
-  "label": "长春市",
-  "value": "2201" },
-
-{
-  "label": "吉林市",
-  "value": "2202" },
-
-{
-  "label": "四平市",
-  "value": "2203" },
-
-{
-  "label": "辽源市",
-  "value": "2204" },
-
-{
-  "label": "通化市",
-  "value": "2205" },
-
-{
-  "label": "白山市",
-  "value": "2206" },
-
-{
-  "label": "松原市",
-  "value": "2207" },
-
-{
-  "label": "白城市",
-  "value": "2208" },
-
-{
-  "label": "延边朝鲜族自治州",
-  "value": "2224" }],
-
-
-[{
-  "label": "哈尔滨市",
-  "value": "2301" },
-
-{
-  "label": "齐齐哈尔市",
-  "value": "2302" },
-
-{
-  "label": "鸡西市",
-  "value": "2303" },
-
-{
-  "label": "鹤岗市",
-  "value": "2304" },
-
-{
-  "label": "双鸭山市",
-  "value": "2305" },
-
-{
-  "label": "大庆市",
-  "value": "2306" },
-
-{
-  "label": "伊春市",
-  "value": "2307" },
-
-{
-  "label": "佳木斯市",
-  "value": "2308" },
-
-{
-  "label": "七台河市",
-  "value": "2309" },
-
-{
-  "label": "牡丹江市",
-  "value": "2310" },
-
-{
-  "label": "黑河市",
-  "value": "2311" },
-
-{
-  "label": "绥化市",
-  "value": "2312" },
-
-{
-  "label": "大兴安岭地区",
-  "value": "2327" }],
-
-
-[{
-  "label": "市辖区",
-  "value": "3101" }],
-
-[{
-  "label": "南京市",
-  "value": "3201" },
-
-{
-  "label": "无锡市",
-  "value": "3202" },
-
-{
-  "label": "徐州市",
-  "value": "3203" },
-
-{
-  "label": "常州市",
-  "value": "3204" },
-
-{
-  "label": "苏州市",
-  "value": "3205" },
-
-{
-  "label": "南通市",
-  "value": "3206" },
-
-{
-  "label": "连云港市",
-  "value": "3207" },
-
-{
-  "label": "淮安市",
-  "value": "3208" },
-
-{
-  "label": "盐城市",
-  "value": "3209" },
-
-{
-  "label": "扬州市",
-  "value": "3210" },
-
-{
-  "label": "镇江市",
-  "value": "3211" },
-
-{
-  "label": "泰州市",
-  "value": "3212" },
-
-{
-  "label": "宿迁市",
-  "value": "3213" }],
-
-
-[{
-  "label": "杭州市",
-  "value": "3301" },
-
-{
-  "label": "宁波市",
-  "value": "3302" },
-
-{
-  "label": "温州市",
-  "value": "3303" },
-
-{
-  "label": "嘉兴市",
-  "value": "3304" },
-
-{
-  "label": "湖州市",
-  "value": "3305" },
-
-{
-  "label": "绍兴市",
-  "value": "3306" },
-
-{
-  "label": "金华市",
-  "value": "3307" },
-
-{
-  "label": "衢州市",
-  "value": "3308" },
-
-{
-  "label": "舟山市",
-  "value": "3309" },
-
-{
-  "label": "台州市",
-  "value": "3310" },
-
-{
-  "label": "丽水市",
-  "value": "3311" }],
-
-
-[{
-  "label": "合肥市",
-  "value": "3401" },
-
-{
-  "label": "芜湖市",
-  "value": "3402" },
-
-{
-  "label": "蚌埠市",
-  "value": "3403" },
-
-{
-  "label": "淮南市",
-  "value": "3404" },
-
-{
-  "label": "马鞍山市",
-  "value": "3405" },
-
-{
-  "label": "淮北市",
-  "value": "3406" },
-
-{
-  "label": "铜陵市",
-  "value": "3407" },
-
-{
-  "label": "安庆市",
-  "value": "3408" },
-
-{
-  "label": "黄山市",
-  "value": "3410" },
-
-{
-  "label": "滁州市",
-  "value": "3411" },
-
-{
-  "label": "阜阳市",
-  "value": "3412" },
-
-{
-  "label": "宿州市",
-  "value": "3413" },
-
-{
-  "label": "六安市",
-  "value": "3415" },
-
-{
-  "label": "亳州市",
-  "value": "3416" },
-
-{
-  "label": "池州市",
-  "value": "3417" },
-
-{
-  "label": "宣城市",
-  "value": "3418" }],
-
-
-[{
-  "label": "福州市",
-  "value": "3501" },
-
-{
-  "label": "厦门市",
-  "value": "3502" },
-
-{
-  "label": "莆田市",
-  "value": "3503" },
-
-{
-  "label": "三明市",
-  "value": "3504" },
-
-{
-  "label": "泉州市",
-  "value": "3505" },
-
-{
-  "label": "漳州市",
-  "value": "3506" },
-
-{
-  "label": "南平市",
-  "value": "3507" },
-
-{
-  "label": "龙岩市",
-  "value": "3508" },
-
-{
-  "label": "宁德市",
-  "value": "3509" }],
-
-
-[{
-  "label": "南昌市",
-  "value": "3601" },
-
-{
-  "label": "景德镇市",
-  "value": "3602" },
-
-{
-  "label": "萍乡市",
-  "value": "3603" },
-
-{
-  "label": "九江市",
-  "value": "3604" },
-
-{
-  "label": "新余市",
-  "value": "3605" },
-
-{
-  "label": "鹰潭市",
-  "value": "3606" },
-
-{
-  "label": "赣州市",
-  "value": "3607" },
-
-{
-  "label": "吉安市",
-  "value": "3608" },
-
-{
-  "label": "宜春市",
-  "value": "3609" },
-
-{
-  "label": "抚州市",
-  "value": "3610" },
-
-{
-  "label": "上饶市",
-  "value": "3611" }],
-
-
-[{
-  "label": "济南市",
-  "value": "3701" },
-
-{
-  "label": "青岛市",
-  "value": "3702" },
-
-{
-  "label": "淄博市",
-  "value": "3703" },
-
-{
-  "label": "枣庄市",
-  "value": "3704" },
-
-{
-  "label": "东营市",
-  "value": "3705" },
-
-{
-  "label": "烟台市",
-  "value": "3706" },
-
-{
-  "label": "潍坊市",
-  "value": "3707" },
-
-{
-  "label": "济宁市",
-  "value": "3708" },
-
-{
-  "label": "泰安市",
-  "value": "3709" },
-
-{
-  "label": "威海市",
-  "value": "3710" },
-
-{
-  "label": "日照市",
-  "value": "3711" },
-
-{
-  "label": "莱芜市",
-  "value": "3712" },
-
-{
-  "label": "临沂市",
-  "value": "3713" },
-
-{
-  "label": "德州市",
-  "value": "3714" },
-
-{
-  "label": "聊城市",
-  "value": "3715" },
-
-{
-  "label": "滨州市",
-  "value": "3716" },
-
-{
-  "label": "菏泽市",
-  "value": "3717" }],
-
-
-[{
-  "label": "郑州市",
-  "value": "4101" },
-
-{
-  "label": "开封市",
-  "value": "4102" },
-
-{
-  "label": "洛阳市",
-  "value": "4103" },
-
-{
-  "label": "平顶山市",
-  "value": "4104" },
-
-{
-  "label": "安阳市",
-  "value": "4105" },
-
-{
-  "label": "鹤壁市",
-  "value": "4106" },
-
-{
-  "label": "新乡市",
-  "value": "4107" },
-
-{
-  "label": "焦作市",
-  "value": "4108" },
-
-{
-  "label": "濮阳市",
-  "value": "4109" },
-
-{
-  "label": "许昌市",
-  "value": "4110" },
-
-{
-  "label": "漯河市",
-  "value": "4111" },
-
-{
-  "label": "三门峡市",
-  "value": "4112" },
-
-{
-  "label": "南阳市",
-  "value": "4113" },
-
-{
-  "label": "商丘市",
-  "value": "4114" },
-
-{
-  "label": "信阳市",
-  "value": "4115" },
-
-{
-  "label": "周口市",
-  "value": "4116" },
-
-{
-  "label": "驻马店市",
-  "value": "4117" },
-
-{
-  "label": "省直辖县级行政区划",
-  "value": "4190" }],
-
-
-[{
-  "label": "武汉市",
-  "value": "4201" },
-
-{
-  "label": "黄石市",
-  "value": "4202" },
-
-{
-  "label": "十堰市",
-  "value": "4203" },
-
-{
-  "label": "宜昌市",
-  "value": "4205" },
-
-{
-  "label": "襄阳市",
-  "value": "4206" },
-
-{
-  "label": "鄂州市",
-  "value": "4207" },
-
-{
-  "label": "荆门市",
-  "value": "4208" },
-
-{
-  "label": "孝感市",
-  "value": "4209" },
-
-{
-  "label": "荆州市",
-  "value": "4210" },
-
-{
-  "label": "黄冈市",
-  "value": "4211" },
-
-{
-  "label": "咸宁市",
-  "value": "4212" },
-
-{
-  "label": "随州市",
-  "value": "4213" },
-
-{
-  "label": "恩施土家族苗族自治州",
-  "value": "4228" },
-
-{
-  "label": "省直辖县级行政区划",
-  "value": "4290" }],
-
-
-[{
-  "label": "长沙市",
-  "value": "4301" },
-
-{
-  "label": "株洲市",
-  "value": "4302" },
-
-{
-  "label": "湘潭市",
-  "value": "4303" },
-
-{
-  "label": "衡阳市",
-  "value": "4304" },
-
-{
-  "label": "邵阳市",
-  "value": "4305" },
-
-{
-  "label": "岳阳市",
-  "value": "4306" },
-
-{
-  "label": "常德市",
-  "value": "4307" },
-
-{
-  "label": "张家界市",
-  "value": "4308" },
-
-{
-  "label": "益阳市",
-  "value": "4309" },
-
-{
-  "label": "郴州市",
-  "value": "4310" },
-
-{
-  "label": "永州市",
-  "value": "4311" },
-
-{
-  "label": "怀化市",
-  "value": "4312" },
-
-{
-  "label": "娄底市",
-  "value": "4313" },
-
-{
-  "label": "湘西土家族苗族自治州",
-  "value": "4331" }],
-
-
-[{
-  "label": "广州市",
-  "value": "4401" },
-
-{
-  "label": "韶关市",
-  "value": "4402" },
-
-{
-  "label": "深圳市",
-  "value": "4403" },
-
-{
-  "label": "珠海市",
-  "value": "4404" },
-
-{
-  "label": "汕头市",
-  "value": "4405" },
-
-{
-  "label": "佛山市",
-  "value": "4406" },
-
-{
-  "label": "江门市",
-  "value": "4407" },
-
-{
-  "label": "湛江市",
-  "value": "4408" },
-
-{
-  "label": "茂名市",
-  "value": "4409" },
-
-{
-  "label": "肇庆市",
-  "value": "4412" },
-
-{
-  "label": "惠州市",
-  "value": "4413" },
-
-{
-  "label": "梅州市",
-  "value": "4414" },
-
-{
-  "label": "汕尾市",
-  "value": "4415" },
-
-{
-  "label": "河源市",
-  "value": "4416" },
-
-{
-  "label": "阳江市",
-  "value": "4417" },
-
-{
-  "label": "清远市",
-  "value": "4418" },
-
-{
-  "label": "东莞市",
-  "value": "4419" },
-
-{
-  "label": "中山市",
-  "value": "4420" },
-
-{
-  "label": "潮州市",
-  "value": "4451" },
-
-{
-  "label": "揭阳市",
-  "value": "4452" },
-
-{
-  "label": "云浮市",
-  "value": "4453" }],
-
-
-[{
-  "label": "南宁市",
-  "value": "4501" },
-
-{
-  "label": "柳州市",
-  "value": "4502" },
-
-{
-  "label": "桂林市",
-  "value": "4503" },
-
-{
-  "label": "梧州市",
-  "value": "4504" },
-
-{
-  "label": "北海市",
-  "value": "4505" },
-
-{
-  "label": "防城港市",
-  "value": "4506" },
-
-{
-  "label": "钦州市",
-  "value": "4507" },
-
-{
-  "label": "贵港市",
-  "value": "4508" },
-
-{
-  "label": "玉林市",
-  "value": "4509" },
-
-{
-  "label": "百色市",
-  "value": "4510" },
-
-{
-  "label": "贺州市",
-  "value": "4511" },
-
-{
-  "label": "河池市",
-  "value": "4512" },
-
-{
-  "label": "来宾市",
-  "value": "4513" },
-
-{
-  "label": "崇左市",
-  "value": "4514" }],
-
-
-[{
-  "label": "海口市",
-  "value": "4601" },
-
-{
-  "label": "三亚市",
-  "value": "4602" },
-
-{
-  "label": "三沙市",
-  "value": "4603" },
-
-{
-  "label": "儋州市",
-  "value": "4604" },
-
-{
-  "label": "省直辖县级行政区划",
-  "value": "4690" }],
-
-
-[{
-  "label": "市辖区",
-  "value": "5001" },
-
-{
-  "label": "县",
-  "value": "5002" }],
-
-
-[{
-  "label": "成都市",
-  "value": "5101" },
-
-{
-  "label": "自贡市",
-  "value": "5103" },
-
-{
-  "label": "攀枝花市",
-  "value": "5104" },
-
-{
-  "label": "泸州市",
-  "value": "5105" },
-
-{
-  "label": "德阳市",
-  "value": "5106" },
-
-{
-  "label": "绵阳市",
-  "value": "5107" },
-
-{
-  "label": "广元市",
-  "value": "5108" },
-
-{
-  "label": "遂宁市",
-  "value": "5109" },
-
-{
-  "label": "内江市",
-  "value": "5110" },
-
-{
-  "label": "乐山市",
-  "value": "5111" },
-
-{
-  "label": "南充市",
-  "value": "5113" },
-
-{
-  "label": "眉山市",
-  "value": "5114" },
-
-{
-  "label": "宜宾市",
-  "value": "5115" },
-
-{
-  "label": "广安市",
-  "value": "5116" },
-
-{
-  "label": "达州市",
-  "value": "5117" },
-
-{
-  "label": "雅安市",
-  "value": "5118" },
-
-{
-  "label": "巴中市",
-  "value": "5119" },
-
-{
-  "label": "资阳市",
-  "value": "5120" },
-
-{
-  "label": "阿坝藏族羌族自治州",
-  "value": "5132" },
-
-{
-  "label": "甘孜藏族自治州",
-  "value": "5133" },
-
-{
-  "label": "凉山彝族自治州",
-  "value": "5134" }],
-
-
-[{
-  "label": "贵阳市",
-  "value": "5201" },
-
-{
-  "label": "六盘水市",
-  "value": "5202" },
-
-{
-  "label": "遵义市",
-  "value": "5203" },
-
-{
-  "label": "安顺市",
-  "value": "5204" },
-
-{
-  "label": "毕节市",
-  "value": "5205" },
-
-{
-  "label": "铜仁市",
-  "value": "5206" },
-
-{
-  "label": "黔西南布依族苗族自治州",
-  "value": "5223" },
-
-{
-  "label": "黔东南苗族侗族自治州",
-  "value": "5226" },
-
-{
-  "label": "黔南布依族苗族自治州",
-  "value": "5227" }],
-
-
-[{
-  "label": "昆明市",
-  "value": "5301" },
-
-{
-  "label": "曲靖市",
-  "value": "5303" },
-
-{
-  "label": "玉溪市",
-  "value": "5304" },
-
-{
-  "label": "保山市",
-  "value": "5305" },
-
-{
-  "label": "昭通市",
-  "value": "5306" },
-
-{
-  "label": "丽江市",
-  "value": "5307" },
-
-{
-  "label": "普洱市",
-  "value": "5308" },
-
-{
-  "label": "临沧市",
-  "value": "5309" },
-
-{
-  "label": "楚雄彝族自治州",
-  "value": "5323" },
-
-{
-  "label": "红河哈尼族彝族自治州",
-  "value": "5325" },
-
-{
-  "label": "文山壮族苗族自治州",
-  "value": "5326" },
-
-{
-  "label": "西双版纳傣族自治州",
-  "value": "5328" },
-
-{
-  "label": "大理白族自治州",
-  "value": "5329" },
-
-{
-  "label": "德宏傣族景颇族自治州",
-  "value": "5331" },
-
-{
-  "label": "怒江傈僳族自治州",
-  "value": "5333" },
-
-{
-  "label": "迪庆藏族自治州",
-  "value": "5334" }],
-
-
-[{
-  "label": "拉萨市",
-  "value": "5401" },
-
-{
-  "label": "日喀则市",
-  "value": "5402" },
-
-{
-  "label": "昌都市",
-  "value": "5403" },
-
-{
-  "label": "林芝市",
-  "value": "5404" },
-
-{
-  "label": "山南市",
-  "value": "5405" },
-
-{
-  "label": "那曲地区",
-  "value": "5424" },
-
-{
-  "label": "阿里地区",
-  "value": "5425" }],
-
-
-[{
-  "label": "西安市",
-  "value": "6101" },
-
-{
-  "label": "铜川市",
-  "value": "6102" },
-
-{
-  "label": "宝鸡市",
-  "value": "6103" },
-
-{
-  "label": "咸阳市",
-  "value": "6104" },
-
-{
-  "label": "渭南市",
-  "value": "6105" },
-
-{
-  "label": "延安市",
-  "value": "6106" },
-
-{
-  "label": "汉中市",
-  "value": "6107" },
-
-{
-  "label": "榆林市",
-  "value": "6108" },
-
-{
-  "label": "安康市",
-  "value": "6109" },
-
-{
-  "label": "商洛市",
-  "value": "6110" }],
-
-
-[{
-  "label": "兰州市",
-  "value": "6201" },
-
-{
-  "label": "嘉峪关市",
-  "value": "6202" },
-
-{
-  "label": "金昌市",
-  "value": "6203" },
-
-{
-  "label": "白银市",
-  "value": "6204" },
-
-{
-  "label": "天水市",
-  "value": "6205" },
-
-{
-  "label": "武威市",
-  "value": "6206" },
-
-{
-  "label": "张掖市",
-  "value": "6207" },
-
-{
-  "label": "平凉市",
-  "value": "6208" },
-
-{
-  "label": "酒泉市",
-  "value": "6209" },
-
-{
-  "label": "庆阳市",
-  "value": "6210" },
-
-{
-  "label": "定西市",
-  "value": "6211" },
-
-{
-  "label": "陇南市",
-  "value": "6212" },
-
-{
-  "label": "临夏回族自治州",
-  "value": "6229" },
-
-{
-  "label": "甘南藏族自治州",
-  "value": "6230" }],
-
-
-[{
-  "label": "西宁市",
-  "value": "6301" },
-
-{
-  "label": "海东市",
-  "value": "6302" },
-
-{
-  "label": "海北藏族自治州",
-  "value": "6322" },
-
-{
-  "label": "黄南藏族自治州",
-  "value": "6323" },
-
-{
-  "label": "海南藏族自治州",
-  "value": "6325" },
-
-{
-  "label": "果洛藏族自治州",
-  "value": "6326" },
-
-{
-  "label": "玉树藏族自治州",
-  "value": "6327" },
-
-{
-  "label": "海西蒙古族藏族自治州",
-  "value": "6328" }],
-
-
-[{
-  "label": "银川市",
-  "value": "6401" },
-
-{
-  "label": "石嘴山市",
-  "value": "6402" },
-
-{
-  "label": "吴忠市",
-  "value": "6403" },
-
-{
-  "label": "固原市",
-  "value": "6404" },
-
-{
-  "label": "中卫市",
-  "value": "6405" }],
-
-
-[{
-  "label": "乌鲁木齐市",
-  "value": "6501" },
-
-{
-  "label": "克拉玛依市",
-  "value": "6502" },
-
-{
-  "label": "吐鲁番市",
-  "value": "6504" },
-
-{
-  "label": "哈密市",
-  "value": "6505" },
-
-{
-  "label": "昌吉回族自治州",
-  "value": "6523" },
-
-{
-  "label": "博尔塔拉蒙古自治州",
-  "value": "6527" },
-
-{
-  "label": "巴音郭楞蒙古自治州",
-  "value": "6528" },
-
-{
-  "label": "阿克苏地区",
-  "value": "6529" },
-
-{
-  "label": "克孜勒苏柯尔克孜自治州",
-  "value": "6530" },
-
-{
-  "label": "喀什地区",
-  "value": "6531" },
-
-{
-  "label": "和田地区",
-  "value": "6532" },
-
-{
-  "label": "伊犁哈萨克自治州",
-  "value": "6540" },
-
-{
-  "label": "塔城地区",
-  "value": "6542" },
-
-{
-  "label": "阿勒泰地区",
-  "value": "6543" },
-
-{
-  "label": "自治区直辖县级行政区划",
-  "value": "6590" }],
-
-
-[{
-  "label": "台北",
-  "value": "6601" },
-
-{
-  "label": "高雄",
-  "value": "6602" },
-
-{
-  "label": "基隆",
-  "value": "6603" },
-
-{
-  "label": "台中",
-  "value": "6604" },
-
-{
-  "label": "台南",
-  "value": "6605" },
-
-{
-  "label": "新竹",
-  "value": "6606" },
-
-{
-  "label": "嘉义",
-  "value": "6607" },
-
-{
-  "label": "宜兰",
-  "value": "6608" },
-
-{
-  "label": "桃园",
-  "value": "6609" },
-
-{
-  "label": "苗栗",
-  "value": "6610" },
-
-{
-  "label": "彰化",
-  "value": "6611" },
-
-{
-  "label": "南投",
-  "value": "6612" },
-
-{
-  "label": "云林",
-  "value": "6613" },
-
-{
-  "label": "屏东",
-  "value": "6614" },
-
-{
-  "label": "台东",
-  "value": "6615" },
-
-{
-  "label": "花莲",
-  "value": "6616" },
-
-{
-  "label": "澎湖",
-  "value": "6617" }],
-
-
-[{
-  "label": "香港岛",
-  "value": "6701" },
-
-{
-  "label": "九龙",
-  "value": "6702" },
-
-{
-  "label": "新界",
-  "value": "6703" }],
-
-
-[{
-  "label": "澳门半岛",
-  "value": "6801" },
-
-{
-  "label": "氹仔岛",
-  "value": "6802" },
-
-{
-  "label": "路环岛",
-  "value": "6803" },
-
-{
-  "label": "路氹城",
-  "value": "6804" }]];var _default =
-
-
-
-cityData;exports.default = _default;
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
-/***/ "D:\\pxy\\mall\\components\\mpvue-citypicker\\city-data\\province.js":
-/*!*********************************************************************!*\
-  !*** D:/pxy/mall/components/mpvue-citypicker/city-data/province.js ***!
-  \*********************************************************************/
+/***/ 170:
+/*!**************************************************************************************!*\
+  !*** D:/VUEJS/mall/userPage/address/edit/edit.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-1!./node_modules/css-loader??ref--8-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/lib/loader.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./edit.vue?vue&type=style&index=0&lang=scss& */ 171);
+/* harmony import */ var _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_C_Users_pxy_Downloads_HBuilderX_2_1_3_20190723_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ 171:
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-1!./node_modules/css-loader??ref--8-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/lib/loader.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/VUEJS/mall/userPage/address/edit/edit.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /* eslint-disable */
-var provinceData = [{
-  "label": "北京市",
-  "value": "11" },
-
-{
-  "label": "天津市",
-  "value": "12" },
-
-{
-  "label": "河北省",
-  "value": "13" },
-
-{
-  "label": "山西省",
-  "value": "14" },
-
-{
-  "label": "内蒙古自治区",
-  "value": "15" },
-
-{
-  "label": "辽宁省",
-  "value": "21" },
-
-{
-  "label": "吉林省",
-  "value": "22" },
-
-{
-  "label": "黑龙江省",
-  "value": "23" },
-
-{
-  "label": "上海市",
-  "value": "31" },
-
-{
-  "label": "江苏省",
-  "value": "32" },
-
-{
-  "label": "浙江省",
-  "value": "33" },
-
-{
-  "label": "安徽省",
-  "value": "34" },
-
-{
-  "label": "福建省",
-  "value": "35" },
-
-{
-  "label": "江西省",
-  "value": "36" },
-
-{
-  "label": "山东省",
-  "value": "37" },
-
-{
-  "label": "河南省",
-  "value": "41" },
-
-{
-  "label": "湖北省",
-  "value": "42" },
-
-{
-  "label": "湖南省",
-  "value": "43" },
-
-{
-  "label": "广东省",
-  "value": "44" },
-
-{
-  "label": "广西壮族自治区",
-  "value": "45" },
-
-{
-  "label": "海南省",
-  "value": "46" },
-
-{
-  "label": "重庆市",
-  "value": "50" },
-
-{
-  "label": "四川省",
-  "value": "51" },
-
-{
-  "label": "贵州省",
-  "value": "52" },
-
-{
-  "label": "云南省",
-  "value": "53" },
-
-{
-  "label": "西藏自治区",
-  "value": "54" },
-
-{
-  "label": "陕西省",
-  "value": "61" },
-
-{
-  "label": "甘肃省",
-  "value": "62" },
-
-{
-  "label": "青海省",
-  "value": "63" },
-
-{
-  "label": "宁夏回族自治区",
-  "value": "64" },
-
-{
-  "label": "新疆维吾尔自治区",
-  "value": "65" },
-
-{
-  "label": "台湾",
-  "value": "66" },
-
-{
-  "label": "香港",
-  "value": "67" },
-
-{
-  "label": "澳门",
-  "value": "68" }];var _default =
-
-
-provinceData;exports.default = _default;
-
-/***/ }),
-
-/***/ "D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue":
-/*!*******************************************************************!*\
-  !*** D:/pxy/mall/components/mpvue-citypicker/mpvueCityPicker.vue ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _mpvueCityPicker_vue_vue_type_template_id_58e0d0f2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mpvueCityPicker.vue?vue&type=template&id=58e0d0f2& */ "D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue?vue&type=template&id=58e0d0f2&");
-/* harmony import */ var _mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mpvueCityPicker.vue?vue&type=script&lang=js& */ "D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mpvueCityPicker.vue?vue&type=style&index=0&lang=css& */ "D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _mpvueCityPicker_vue_vue_type_template_id_58e0d0f2___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _mpvueCityPicker_vue_vue_type_template_id_58e0d0f2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "D:/pxy/mall/components/mpvue-citypicker/mpvueCityPicker.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************!*\
-  !*** D:/pxy/mall/components/mpvue-citypicker/mpvueCityPicker.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--18-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./mpvueCityPicker.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue?vue&type=script&lang=js&");
-/* harmony import */ var _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue?vue&type=style&index=0&lang=css&":
-/*!****************************************************************************************************!*\
-  !*** D:/pxy/mall/components/mpvue-citypicker/mpvueCityPicker.vue?vue&type=style&index=0&lang=css& ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!./mpvueCityPicker.vue?vue&type=style&index=0&lang=css& */ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue?vue&type=template&id=58e0d0f2&":
-/*!**************************************************************************************************!*\
-  !*** D:/pxy/mall/components/mpvue-citypicker/mpvueCityPicker.vue?vue&type=template&id=58e0d0f2& ***!
-  \**************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_template_id_58e0d0f2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!./mpvueCityPicker.vue?vue&type=template&id=58e0d0f2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!D:\\pxy\\mall\\components\\mpvue-citypicker\\mpvueCityPicker.vue?vue&type=template&id=58e0d0f2&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_template_id_58e0d0f2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_mpvueCityPicker_vue_vue_type_template_id_58e0d0f2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "D:\\pxy\\mall\\main.js?{\"page\":\"userPage%2Faddress%2Fedit%2Fedit\"}":
-/*!***********************************************************************!*\
-  !*** D:/pxy/mall/main.js?{"page":"userPage%2Faddress%2Fedit%2Fedit"} ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-__webpack_require__(/*! uni-pages */ "D:\\pxy\\mall\\pages.json");
-var _mpvuePageFactory = _interopRequireDefault(__webpack_require__(/*! mpvue-page-factory */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mpvue-page-factory/index.js"));
-var _edit = _interopRequireDefault(__webpack_require__(/*! ./userPage/address/edit/edit.vue */ "D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-Page((0, _mpvuePageFactory.default)(_edit.default));
-
-/***/ }),
-
-/***/ "D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue":
-/*!**************************************************!*\
-  !*** D:/pxy/mall/userPage/address/edit/edit.vue ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _edit_vue_vue_type_template_id_0d4e611e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit.vue?vue&type=template&id=0d4e611e& */ "D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue?vue&type=template&id=0d4e611e&");
-/* harmony import */ var _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit.vue?vue&type=script&lang=js& */ "D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit.vue?vue&type=style&index=0&lang=scss& */ "D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue?vue&type=style&index=0&lang=scss&");
-/* harmony import */ var _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _edit_vue_vue_type_template_id_0d4e611e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _edit_vue_vue_type_template_id_0d4e611e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "D:/pxy/mall/userPage/address/edit/edit.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue?vue&type=script&lang=js&":
-/*!***************************************************************************!*\
-  !*** D:/pxy/mall/userPage/address/edit/edit.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--18-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue?vue&type=script&lang=js&");
-/* harmony import */ var _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_18_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue?vue&type=style&index=0&lang=scss&":
-/*!************************************************************************************!*\
-  !*** D:/pxy/mall/userPage/address/edit/edit.vue?vue&type=style&index=0&lang=scss& ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-1!./node_modules/css-loader??ref--8-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/lib/loader.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/vue-loader/lib??vue-loader-options!./edit.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/vue-loader/lib/index.js?!D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue?vue&type=style&index=0&lang=scss&");
-/* harmony import */ var _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue?vue&type=template&id=0d4e611e&":
-/*!*********************************************************************************!*\
-  !*** D:/pxy/mall/userPage/address/edit/edit.vue?vue&type=template&id=0d4e611e& ***!
-  \*********************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_template_id_0d4e611e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!./edit.vue?vue&type=template&id=0d4e611e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!D:\\pxy\\mall\\userPage\\address\\edit\\edit.vue?vue&type=template&id=0d4e611e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_template_id_0d4e611e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_C_Users_Administrator_Downloads_HBuilderX_0_1_49_20180917_alpha_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_vue_vue_type_template_id_0d4e611e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
+// extracted by mini-css-extract-plugin
 
 /***/ })
 
-},[["D:\\pxy\\mall\\main.js?{\"page\":\"userPage%2Faddress%2Fedit%2Fedit\"}","common/runtime","common/vendor"]]]);
+},[[154,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../../../.sourcemap/mp-weixin/userPage/address/edit/edit.js.map

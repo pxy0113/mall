@@ -45,7 +45,10 @@
     "backgroundColor": "#ffffff",
     "backgroundColorBottom": "#ffffff"
   },
-  "usingComponents": {},
+  "usingComponents": {
+    "y-loading": "wxcomponents/loading/index",
+    "y-prompt": "wxcomponents/prompt/index"
+  },
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#8bbce7",
@@ -103,5 +106,5 @@
       "desc": "请点击确定"
     }
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap89.json"
 }

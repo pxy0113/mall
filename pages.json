@@ -196,7 +196,14 @@
 		"navigationBarBackgroundColor":"#8bbce7",
 		"backgroundColorTop":"#8bbce7",
 		"backgroundColor" : "#ffffff",
-		"backgroundColorBottom":"#ffffff"
+		"backgroundColorBottom":"#ffffff",
+		"usingComponents": {
+			"y-loading": "wxcomponents/loading/index",
+			"y-prompt": "wxcomponents/prompt/index"
+		}
+	},
+	"networkTimeout": {
+			"request": 15000
 	},
 	"tabBar": {
 		"color": "#333333",

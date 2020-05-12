@@ -12,6 +12,38 @@ export default {
 			return false;
 		}
 	},
+	login(){
+		console.log('啊啊啊啊地方');
+		// uni.login({
+		// 	provider: 'weixin',
+		// 	success: function(loginRes) {
+		// 		console.log('-------获取code-------');
+		// 		console.log(loginRes.code);
+		// 		getSkeyAndOpenId(loginRes.code);
+		// 		return {isTrue:true};
+		// 	}
+		// });
+	},
+	getSkeyAndOpenId(code){
+		console.log(code);
+		// this.$postRequest({
+		// 	url: 'EShop/login',
+		// 	data: { jsCode:code },
+		// 	hasToken:false,
+		// 	isLoad:false,
+		// 	allSuccess: res => {
+		// 		uni.setStorage({
+		// 			key:'skey',
+		// 			data:res.session_key
+		// 		});
+		// 		uni.setStorage({
+		// 			key:'token',
+		// 			data:res.token
+		// 		});
+		// 	}
+		// });
+	},
+	
 	filterObj(arr){ //过滤为空的参数不传递
 		let objAr = {};
 		for (let i in arr) {

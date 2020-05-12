@@ -1,36 +1,42 @@
 <template>
 	<view>
-		<view class="content">
-			<view class="list">
-				<view class="row" v-for="(row,index) in addressList" :key="index" @tap="select(row)">
-					<view class="left">
-						<view class="head">
-							{{row.head}}
+		<view class="content" style="margin-bottom: 50px;">
+			<view class="list" style="position: relative;">
+				<view class="row view" v-for="(row,index) in addressList" :key="index" @tap="select(row)">
+					<view class="left view">
+						<view class="head view">
+							A
 						</view>
 					</view>
-					<view class="center">
-						<view class="name-tel">
-							<view class="name">{{row.name}}</view>
-							<view class="tel">{{row.tel}}</view>
-							<view class="default" v-if="row.isDefault">
+					<view class="center view">
+						<view class="name-tel view">
+							<view class="name view">{{row.name}}</view>
+							<view class="tel view">{{row.phone}}</view>
+							<view class="default view" v-if="row.isDefault==1">
 								默认
 							</view>
 						</view>
-						<view class="address">
-							{{row.address.region.label}} {{row.address.detailed}}
+						<view class="address view">
+							{{row.cityPickerValue?row.cityPickerValue:''}}
+							{{row.detail?row.detail:''}}
 						</view>
 					</view>
-					<view class="right">
-						<view class="icon bianji" @tap.stop="edit(row)">
-							
+					<view class="right view">
+						<view class="icon bianji view" @tap.stop="edit(row)">
 						</view>
+						<icon type="cancel" @tap.stop="del(row)"></icon>					
 					</view>
 				</view>
+				<view class="row view"></view>
+				
+				<y-prompt id="y-prompt" class="y-prompt" fix="true"></y-prompt>
 			</view>
 		</view>
-		<view class="add">
-			<view class="btn" @tap="add">
-				<view class="icon tianjia"></view>新增地址
+		
+		<y-loading id="y-loading"></y-loading>
+		<view class="add view">
+			<view class="circleBtn" @tap="add">
+				<view class="circleBtn-icon tianjia view"></view>新增地址
 			</view>
 		</view>
 	</view>
@@ -39,74 +45,122 @@
 	export default {
 		data() {
 			return {
+				refresh:false,
 				isSelect:false,
-				addressList:[
-					{id:1,name:"大黑哥",head:"大",tel:"18816881688",address:{region:{"label":"广东省-深圳市-福田区","value":[18,2,1],"cityCode":"440304"},detailed:'深南大道1111号无名摩登大厦6楼A2'},isDefault:true},
-					{id:2,name:"大黑哥",head:"大",tel:"15812341234",address:{region:{"label":"广东省-深圳市-福田区","value":[18,2,1],"cityCode":"440304"},detailed:'深北小道2222号有名公寓502'},isDefault:false},
-					{id:3,name:"老大哥",head:"老",tel:"18155467897",address:{region:{"label":"广东省-深圳市-福田区","value":[18,2,1],"cityCode":"440304"},detailed:'深南大道1111号无名摩登大厦6楼A2'},isDefault:false},
-					{id:4,name:"王小妹",head:"王",tel:"13425654895",address:{region:{"label":"广东省-深圳市-福田区","value":[18,2,1],"cityCode":"440304"},detailed:'深南大道1111号无名摩登大厦6楼A2'},isDefault:false},
-				]
+				addressList:[]
 			};
 		},
 		onShow() {
 			
-			uni.getStorage({
-				key:'delAddress',
-				success: (e) => {
-					let len = this.addressList.length;
-					if(e.data.hasOwnProperty('id')){
-						for(let i=0;i<len;i++){
-							if(this.addressList[i].id==e.data.id){
-								this.addressList.splice(i,1);
-								break;
-							}
-						}
-					}
-					uni.removeStorage({
-						key:'delAddress'
-					})
-				}
-			})
-			uni.getStorage({
-				key:'saveAddress',
-				success: (e) => {
-					let len = this.addressList.length;
-					if(e.data.hasOwnProperty('id')){
-						for(let i=0;i<len;i++){
-							if(this.addressList[i].id==e.data.id){
-								this.addressList.splice(i,1,e.data);
-								break;
-							}
-						}
-					}else{
-						let lastid = this.addressList[len-1];
-						lastid++;
-						e.data.id = lastid;
-						this.addressList.push(e.data);
-					}
-					uni.removeStorage({
-						key:'saveAddress'
-					})
-				}
-			})
+			// uni.getStorage({
+			// 	key:'delAddress',
+			// 	success: (e) => {
+			// 		let len = this.addressList.length;
+			// 		if(e.data.hasOwnProperty('id')){
+			// 			for(let i=0;i<len;i++){
+			// 				if(this.addressList[i].id==e.data.id){
+			// 					this.addressList.splice(i,1);
+			// 					break;
+			// 				}
+			// 			}
+			// 		}
+			// 		uni.removeStorage({
+			// 			key:'delAddress'
+			// 		})
+			// 	}
+			// });
+			// uni.getStorage({
+			// 	key:'saveAddress',
+			// 	success: (e) => {
+			// 		let len = this.addressList.length;
+			// 		if(e.data.hasOwnProperty('id')){
+			// 			for(let i=0;i<len;i++){
+			// 				if(this.addressList[i].id==e.data.id){
+			// 					this.addressList.splice(i,1,e.data);
+			// 					break;
+			// 				}
+			// 			}
+			// 		}else{
+			// 			let lastid = this.addressList[len-1];
+			// 			lastid++;
+			// 			e.data.id = lastid;
+			// 			this.addressList.push(e.data);
+			// 		}
+			// 		uni.removeStorage({
+			// 			key:'saveAddress'
+			// 		})
+			// 	}
+			// });
+
 		},
 		onLoad(e) {
 			if(e.type=='select'){
 				this.isSelect = true;
 			}
+			this.getAddressList();
 		},
 		methods:{
-			edit(row){
-				uni.setStorage({
-					key:'address',
-					data:row,
-					success() {
-						uni.navigateTo({
-							url:"edit/edit?type=edit"
-						})
+			getAddressList(){
+				this.$yLoading().show();
+				// this.$yPrompt().hide();
+				this.$postRequest({
+					url: 'EShop/getAddress',
+					allSuccess: res => {
+						this.addressList = res.data;
+						if(this.addressList.length==0){
+							this.$yPrompt().show({
+								title: '暂时没有地址',
+								msg: '快来添加一个吧'
+							});
+						}
+					},
+					allError: () => {
+						this.$yPrompt().show({
+							title: '加载失败',
+							msg: '数据加载失败请重新加载',
+							btnTitle: '重新加载',
+							isBtn: true,
+							btnClick: () => {
+								this.getAddressList();
+							}
+						});
 					}
 				});
-				
+			},
+			
+			del(row){
+				uni.showModal({
+					title: '删除提示',
+					content: '你将删除这个收货地址',
+					success: (res)=>{
+						if (res.confirm) {
+							this.$postRequest({
+								url: 'EShop/delAddress',
+								data:{id:row.id},
+								isLoad:false,
+								allSuccess: res => {
+									this.addressList.splice(this.addressList.indexOf(row),1);
+								},
+								allError: err => {
+									uni.showToast({
+										title:err.result,
+										icon:'none'
+									});
+								}
+							});
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
+			},
+			
+			edit(row){
+
+				uni.navigateTo({
+					url:"edit/edit?type=edit&&list="+JSON.stringify(row)
+				});
+		
 			},
 			add(){
 				uni.navigateTo({
@@ -131,7 +185,7 @@
 </script>
 
 <style lang="scss">
-view{
+.view{
 	display: flex;
 }
 @font-face {font-family:"HMfont-home";src:url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAMIAAsAAAAABvwAAAK8AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqBSIFAATYCJAMMCwgABCAFhG0HVBskBsiusClj9ljNiEIaBdizs389YOCARVDt99mzu+8dMMpzQEn5KEAZRez+yRDbSDIixkYo1tF/+vv5OxYJFk2VghXWbbzzPn8D/OMG3vvXGTU90ZFhOrNJROZwCRGjj/Iry36wAbfSxBsuNGggeG9sMbJKDd7xg8vpr4ACmWdZLnMtGxMwwUD3wCiywi3oDWMXuITzBNpNc4BP3j5/Q1thTQvE1SQiaOd8isKSrUJds7aIVyqt6XECAF6Gj49/sBcUSZVZc09duQng/CfPcXTVrIs+gj+fBWwTGZsghbhcGzurJhgZ1S6rt2fXipDmCv5PyNMltf2HRxJEzSrsBKtIk9wU32WS+E1w14UZ1HFiG+QkJg3ODWmyn5/20eOvTz5LnR6l8aWDT5Sn3wLtYlfNe7RIik/fN961C3Vftf6YZLr5ZMcjU/LExqD9u3LzvKE8KQtBGAp9ilm1XbAK2m83TdlozEvQ0Zbrh8HBMrKDB03MjRwHaJKP2f5jf+NfDvML4f+tHQX8+EJvkwL1z9Mqwfi/kd+zq+hCS5+LynN5piObGRlNaNedmrJc/R7jVUO3agmtOT7zJy32WkjWahGihbQJlQ5bklpT7ENotyG3ucOAjpoobVi3BxB6HSDp9h2yXne0kDSoDPtBrTdQaHc61D07LEezm1Im4wBLc2z6UoaO0bpR8SdHLifNCkPKL+s4CaLX5Skm77hknWNBdxLt9SzEmkqBWXAZ57lgSyVl37YaZqMzt7tWd6OtshTQdYJixLAAKplDTT5RCv3Bplu6/ycWcXJEW+pqrL+YGkuGR14unh7onazsVXcv13RNRPb0mBCqUaKAssDCcjsmUKt+VIr5zJbGiMjIGTfqV+sr21pfUXxALmvCmpMjRY5i9G5CZepynIyYZOr+sksyR2W0UHLiChIrRmXfA0E') format('woff2');}
@@ -154,24 +208,6 @@ view{
 		height: 120upx;
 		justify-content: center;
 		align-items: center;
-		.btn{
-			box-shadow: 0upx 5upx 10upx rgba(0,0,0,0.4);
-			width: 70%;
-			height: 80upx;
-			border-radius: 80upx;
-			background-color: #8bbce7;
-			color: #fff;
-			justify-content: center;
-			align-items: center;
-			.icon{
-				height: 80upx;
-				color: #fff;
-				font-size: 30upx;
-				justify-content: center;
-				align-items: center;
-			}
-			font-size: 30upx;
-		}
 	}
 	.list{
 		flex-wrap: wrap;

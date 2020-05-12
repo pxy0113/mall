@@ -39,9 +39,9 @@
 					<view class="text">{{isKeep?'已':''}}收藏</view>
 				</view>
 			</view>
-			<view class="btn">
-				<view class="joinCart" @tap="joinOrBuy(1)">加入购物车</view>
-				<view class="buy" @tap="joinOrBuy(2)">立即购买</view>
+			<view class="circleBtn">
+				<view class="circleBtn-two joinCart" @tap="joinOrBuy(1)">加入购物车</view>
+				<view class="circleBtn-two" @tap="joinOrBuy(2)">立即购买</view>
 			</view>
 		</view>
 		<!-- share弹窗 -->
@@ -181,6 +181,9 @@
 
 <script>
 import card from '@/components/good-card/card.vue'
+import {  
+	mapActions  
+} from 'vuex';  
 export default {
 	components:{card},
 	data() {
@@ -275,6 +278,7 @@ export default {
 		
 	},
 	methods: {
+		...mapActions(['setCart']),
 		toSwiper(item){
 			let arr = [];
 			this.swiperList.forEach(item =>{
@@ -326,65 +330,36 @@ export default {
 			}
 		},
 		checkCart(data){
-			uni.getStorage({
-				key:'cartList',
-				success: (res) => {
-					let list = res.data;
-					let isFind = false;
-					for(let i=0;i<list.length;i++){
-						let row = list[i];
-						if((row.id==data.id)&&(row.spec==data.spec)
-						&&(row.type==data.type))
-						{	//找到商品一样的商品
-							list[i].number = list[i].number+data.number;//数量自增
-							isFind = true;//找到一样的商品  bug商品Id相同 商品分类不同 需要进入下面的新增
-							break;//跳出循环
-						}
-					}
-					if(!isFind){
-						//没有找到一样的商品，新增一行到购物车商品列表头部
-						let goods = {
-							id:this.goodsData.id,
-							img:this.swiperList[0].img,
-							name:this.goodsData.name,
-							spec:this.goodsData.spec,
-							specList:this.goodsData.specList,
-							goodsType:this.goodsData.goodsType,
-							type:this.goodsData.type,
-							price:this.goodsData.price,
-							number:this.goodsData.number};
-							console.log(list)
-						list.unshift(data);
-					}
-					uni.setStorage({
-						key:'cartList',
-						data:list,
-						success: (ret) =>{
-							uni.showToast({title: "已加入购物车"});//都有了就会跳转
-						}
-					});
-				},
-				fail: () => {
-					uni.setStorage({
-						key:'cartList',
-						data:[{
-								id:this.goodsData.id,
-								img:this.swiperList[0].img,
-								name:this.goodsData.name,
-								spec:this.goodsData.spec,
-								specList:this.goodsData.specList,
-								goodsType:this.goodsData.goodsType,
-								type:this.goodsData.type,
-								price:this.goodsData.price,
-								number:this.goodsData.number,
-								}
-						],
-						success: (ret) =>{
-							uni.showToast({title: "已加入购物车"});
-						}
-					})
+			let list = this.$store.state.cartList;//JSON换一下
+			let isFind = false;
+			for(let i=0;i<list.length;i++){
+				let row = list[i];
+				if((row.id==data.id)&&(row.spec==data.spec)
+				&&(row.type==data.type))
+				{	//找到商品一样的商品
+					list[i].number = list[i].number+data.number;//数量自增
+					isFind = true;//找到一样的商品  bug商品Id相同 商品分类不同 需要进入下面的新增
+					break;//跳出循环
 				}
-			});
+			}
+			if(!isFind){
+				//没有找到一样的商品，新增一行到购物车商品列表头部
+				let goods = {
+					id:this.goodsData.id,
+					img:this.swiperList[0].img,
+					name:this.goodsData.name,
+					spec:this.goodsData.spec,
+					specList:this.goodsData.specList,
+					goodsType:this.goodsData.goodsType,
+					type:this.goodsData.type,
+					price:this.goodsData.price,
+					number:this.goodsData.number,
+				};
+				list.unshift(data);
+			};
+			// this.setCart(list);
+			uni.showToast({title: "已加入购物车"});//都有了就会跳转
+			
 		},
 		joinOrBuy(type){//买或者加购
 			let spec = (this.goodsData.spec==null);
@@ -874,22 +849,8 @@ page {
 			}
 		}
 	}
-	.btn {
-		height: 80upx;
-		border-radius: 40upx;
-		overflow: hidden;
-		display: flex;
-		margin-right: -2%;
-		.joinCart,
-		.buy {
-			@extend %jb;
-		}
-		.joinCart {
-			background-color: #f0b46c;
-		}
-		.buy {
-			background-color: #8bbce7;
-		}
+	.joinCart {
+		background-color: #f0b46c;
 	}
 }
 .popup {

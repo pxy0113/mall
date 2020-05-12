@@ -69,8 +69,7 @@ view {
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
-    -webkit-border-radius: 10rpx;
-            border-radius: 10rpx;
+    border-radius: 10rpx;
     font-size: 34rpx;
 }
 

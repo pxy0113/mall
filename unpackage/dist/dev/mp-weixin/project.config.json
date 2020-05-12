@@ -4,18 +4,14 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
-		"es6": true,
+		"urlCheck": true,
 		"postcss": false,
-		"minified": true,
-		"newFeature": true,
-		"autoAudits": false,
-		"checkInvalidKey": true
+		"es6": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
 	"appid": "wx0904846d9b4c40fe",
-	"projectname": "商城",
+	"projectname": "%E5%95%86%E5%9F%8E",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {

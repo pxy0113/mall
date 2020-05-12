@@ -52,8 +52,7 @@ page {
 .checkbox-box1 .checkbox1 {
     width: 35rpx;
     height: 35rpx;
-    -webkit-border-radius: 100%;
-            border-radius: 100%;
+    border-radius: 100%;
     border: solid 2rpx #8bbce7;
     display: -webkit-box;
     display: -webkit-flex;
@@ -71,8 +70,7 @@ page {
 .checkbox-box1 .checkbox1 .on {
       width: 25rpx;
       height: 25rpx;
-      -webkit-border-radius: 100%;
-              border-radius: 100%;
+      border-radius: 100%;
       background-color: #8bbce7;
 }
 .checkbox-box1 .text {
@@ -92,8 +90,7 @@ page {
 .checkbox-box .checkbox {
     width: 35rpx;
     height: 35rpx;
-    -webkit-border-radius: 100%;
-            border-radius: 100%;
+    border-radius: 100%;
     border: solid 2rpx #8bbce7;
     display: -webkit-box;
     display: -webkit-flex;
@@ -111,8 +108,7 @@ page {
 .checkbox-box .checkbox .on {
       width: 25rpx;
       height: 25rpx;
-      -webkit-border-radius: 100%;
-              border-radius: 100%;
+      border-radius: 100%;
       background-color: #8bbce7;
 }
 .checkbox-box .text {
@@ -143,7 +139,6 @@ page {
   top: 0;
   z-index: 10;
   background: -webkit-gradient(linear, left top, left bottom, from(#8bbce7), to(rgba(139, 188, 231, 0.6)));
-  background: -webkit-linear-gradient(#8bbce7, rgba(139, 188, 231, 0.6));
   background: -o-linear-gradient(#8bbce7, rgba(139, 188, 231, 0.6));
   background: linear-gradient(#8bbce7, rgba(139, 188, 231, 0.6));
 }
@@ -219,8 +214,7 @@ page {
             width: 20vw;
             height: 22vw;
             border: 1px solid white;
-            -webkit-border-radius: 7rpx;
-                    border-radius: 7rpx;
+            border-radius: 7rpx;
 }
 .goods-list .goods-info .content .goods-body .right {
           padding-left: 10rpx;
@@ -249,24 +243,9 @@ page {
   z-index: 5;
 }
 .footer .delBtn {
-    border: solid 1rpx #8bbce7;
+    border: 1rpx solid #8bbce7;
+    background: #fff;
     color: #8bbce7;
-    padding: 0 30rpx;
-    height: 50rpx;
-    -webkit-border-radius: 30rpx;
-            border-radius: 30rpx;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
 }
 .footer .settlement {
     width: 60%;

@@ -1,0 +1,8 @@
+<view wx:if="{{visible}}" class="no-data-box i-class {{fix ? 'no-data-box-fix' : ''}}">
+	<view class="no-data-box-item">
+		<view class="iconfont icon-meiyoushuju no-data-box-item-icon"></view>
+		<view class="no-data-box-item-txt">{{paramObj.title}}</view>
+		<view wx:if="{{paramObj.msg}}" class="no-data-errTxt">{{paramObj.msg}}</view>
+		<button wx:if="{{paramObj.isBtn}}" size="mini" class="no-data-btn" bindtap="onPromptClick">{{paramObj.btnTitle}}</button>
+	</view>
+</view>

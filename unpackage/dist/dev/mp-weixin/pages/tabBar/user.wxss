@@ -151,14 +151,12 @@ page {
             flex-shrink: 0;
     margin-right: 20rpx;
     border: solid 1rpx #fff;
-    -webkit-border-radius: 100%;
-            border-radius: 100%;
+    border-radius: 100%;
 }
 .user .left image {
       width: 20vw;
       height: 20vw;
-      -webkit-border-radius: 100%;
-              border-radius: 100%;
+      border-radius: 100%;
 }
 .user .right {
     width: 100%;
@@ -178,8 +176,7 @@ page {
     width: 10vw;
     height: 10vw;
     margin-left: 5vw;
-    -webkit-border-radius: 100%;
-            border-radius: 100%;
+    border-radius: 100%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -193,7 +190,6 @@ page {
         -ms-flex-align: center;
             align-items: center;
     background: -webkit-gradient(linear, right top, left top, from(#fbbb37), color-stop(105%, #fcf0d0));
-    background: -webkit-linear-gradient(right, #fbbb37 0%, #fcf0d0 105%);
     background: -o-linear-gradient(right, #fbbb37 0%, #fcf0d0 105%);
     background: linear-gradient(to left, #fbbb37 0%, #fcf0d0 105%);
 }
@@ -208,8 +204,7 @@ page {
   background-color: #fff;
   -webkit-box-shadow: 0rpx 0rpx 25rpx rgba(0, 0, 0, 0.1);
           box-shadow: 0rpx 0rpx 25rpx rgba(0, 0, 0, 0.1);
-  -webkit-border-radius: 15rpx;
-          border-radius: 15rpx;
+  border-radius: 15rpx;
 }
 .order .list {
     display: -webkit-box;
@@ -340,13 +335,11 @@ page {
   margin: -65rpx auto 20rpx auto;
   padding: 30rpx 4%;
   background: -webkit-gradient(linear, right top, left top, from(#dea96d), to(#f6d59b));
-  background: -webkit-linear-gradient(right, #dea96d 0%, #f6d59b 100%);
   background: -o-linear-gradient(right, #dea96d 0%, #f6d59b 100%);
   background: linear-gradient(to left, #dea96d 0%, #f6d59b 100%);
   -webkit-box-shadow: 0rpx 0rpx 25rpx rgba(0, 0, 0, 0.2);
           box-shadow: 0rpx 0rpx 25rpx rgba(0, 0, 0, 0.2);
-  -webkit-border-radius: 15rpx;
-          border-radius: 15rpx;
+  border-radius: 15rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -392,8 +385,7 @@ page {
   background-color: #fff;
   -webkit-box-shadow: 0rpx 0rpx 25rpx rgba(0, 0, 0, 0.1);
           box-shadow: 0rpx 0rpx 25rpx rgba(0, 0, 0, 0.1);
-  -webkit-border-radius: 15rpx;
-          border-radius: 15rpx;
+  border-radius: 15rpx;
 }
 .toolbar .title {
     padding-top: 10rpx;
@@ -457,8 +449,7 @@ page {
   width: 150rpx;
   height: 150rpx;
   background: #eee;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   border: 2px solid #fff;
   -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
